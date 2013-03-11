@@ -1,0 +1,17 @@
+
+url={
+	home_without_sign_in: "",
+	home_with_sign_in: "",
+	docs: "",
+	blog: "",
+	support: "",
+	sign_in: "",
+	register_page: "",
+	free_plan: "",
+	paid_plan: "",
+	sign_in_with_github: "",
+	register_a_new_account: "",
+	i_forgot_my_password: "",
+	didnt_rec_conf_instru: "",
+	"Comments" : "To be completed"
+};
