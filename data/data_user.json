@@ -1,0 +1,14 @@
+{
+    "registered_user": {
+        "valid_user": {
+
+        },
+        "invalid_user": {
+
+        }
+    },
+    "unregistered_user": {
+
+    }
+}
+
