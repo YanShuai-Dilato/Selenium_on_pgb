@@ -1,5 +1,5 @@
 {
-	"start_page": {
+	"home_page": {
 		"home": "//*[@id='main-nav']/a[2]",
 		"docs": "//*[@id='main-nav']/a[3]",
 		"blog": "//*[@id='main-nav']/a[4]",
