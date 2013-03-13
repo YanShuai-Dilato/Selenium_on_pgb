@@ -1,0 +1,15 @@
+{
+    "registered_user": {
+        "valid_user": {
+            "username": "shuai.yan@dilatoit.com",
+            "password": "yanshuai110"
+        },
+        "invalid_user": {
+
+        }
+    },
+    "unregistered_user": {
+
+    }
+}
+

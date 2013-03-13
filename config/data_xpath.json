@@ -1,0 +1,94 @@
+{
+	"home_page": {
+		"home": "//*[@id='main-nav']/a[2]",
+		"docs": "//*[@id='main-nav']/a[3]",
+		"blog": "//*[@id='main-nav']/a[4]",
+		"support": "//*[@id='main-nav']/a[5]",
+		"help": "//*[@id='footer-navigation']/nav/a[4]",
+		"sign_in": "//*[@id='account-nav']/a[1]",
+		"register": "//*[@id='account-nav']/a[2]",
+		"get_started": "",
+		"check_our_faq": "",
+		"free_plan": "",
+		"paid_plan": "",
+		"contact_us": "",
+		"learn_more": "",
+		"find_out_more": "",
+		"terms_of_user": "",
+		"p_p_c": ""
+	},
+	"sign_in_page": {
+		"adobe_id": "//*[@id='person_email']",
+		"password": "//*[@id='person_password']",
+		"btn_sign_in": "//*[@id='new_person']/footer/input",
+		"sign_in_with_github": "",
+		"register_a_new_account": "",
+		"i_forgot_my_password": "",
+		"didnt_rec_conf_instru": ""
+	},
+	"register_page": {
+		"free_plan": "",
+		"paid_plan": "",
+		"contact_us": ""
+	},
+	"sign_in_succ": {
+		"new_app": "//*[@id='new-app-btn']",
+		"open_src_address": "",
+		"private_repo": "//*[@id='new-app']/form/div[1]/a[2]",
+		"paste_git_repo": "//*[@id='new-app']/form/div[2]/div[1]/div/input",
+		"upload_a_zip": "//*[@id='app_archive']",
+		"connect_to_github_account": "",
+		"upgrade_now": "",
+		"close": "//*[@id='new-app']/form/div[1]/a[3]",
+		"enable_debug": "//*[@id='debugging-334366']",
+		"enable_hydration": "//*[@id='app-334366']/footer/label[2]",
+		"ready_to_build": "//*[@id='app-334366']/footer/a",
+		"delete": "//*[@id='app-334366']/footer/form/a",
+		"the_new_app": "//*[@id='app-334366']/section[1]/a/h1"
+	},
+	"app_detail_page": {
+		"builds": {
+			"update_code": "",
+			"rebuild_all": ""
+		},
+		"collaborators": {
+			"add_colla": "",
+			"email_address": "",
+			"role_tester": "",
+			"role_dev": "",
+			"cancel": "",
+			"add": "",
+			"edit": "",
+			"delete": "",
+			"save": ""
+		},
+		"settings": {
+			"basic": {
+				"select_file": "",
+				"upload": "",
+				"enable_debug": "",
+				"enable_hydration": "",
+				"only_approved_colla_can_dnld": ""
+			},
+			"configuration": {
+				"select_file": "",
+				"app_title": "",
+				"package": "",
+				"version": "",
+				"configuration": "",
+				"desc": "",
+				"save": ""
+			},
+			"danger_zone": {
+				"delete_this_app": ""
+			}
+		}
+	},
+	"docs": {
+		"each_link": ""
+	},
+	"blog": {
+		"see_all_blog_posts": "",
+		"read_the_rest": ""
+	}
+}

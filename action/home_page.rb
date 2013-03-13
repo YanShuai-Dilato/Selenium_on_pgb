@@ -8,7 +8,7 @@ class HomePage
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("..\\data\\data_xpath.json"))
+        @data = JSON.parse(File.read("..\\config\\data_xpath.json"))
     end
 
     def click_sign_in

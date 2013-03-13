@@ -8,8 +8,8 @@ class SignInPage
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("..\\data\\data_xpath.json"))
-        @user = JSON.parse(File.read("..\\data\\data_user.json"))
+        @data = JSON.parse(File.read("..\\config\\data_xpath.json"))
+        @user = JSON.parse(File.read("..\\config\\data_user.json"))
     end
 
     def sign_in_with

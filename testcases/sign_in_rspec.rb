@@ -18,6 +18,7 @@ describe "phonegap login with registered valid user" do
         @url = "https://build.phonegap.com/people/sign_in"
         @driver.navigate.to @url
         sleep 3
+        @exp_url = JSON.parse(File.read(File.dirname(__FILE__) + "\\..\\config\\data_url.json"))
     end
 
     before(:each) do
@@ -27,6 +28,8 @@ describe "phonegap login with registered valid user" do
     it "should login in successfully" do 
         begin
             @click_element.sign_in_with
+            sleep 3
+            @driver.current_url.should eql @exp_url["sign_in_successfully"]
         ensure
             close_browser
         end
