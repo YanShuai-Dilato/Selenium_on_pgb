@@ -19,6 +19,10 @@ To test website: http://build.phonegap.com/ using selenium and RSpec in Ruby
 
 ### Update details:
 
-data/data.json    --- to get the xpath of each control
-  
-data/dest_url     --- to verify the final url
+Folder "action" includes the logic actions
+
+Folder "tools" includes the helper actions, such as "click". 
+
+Folder "testcase" includes the test cases 
+
+Folder "data" includes all the data that the test cases need.
