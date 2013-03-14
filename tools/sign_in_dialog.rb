@@ -23,3 +23,7 @@ module SignInDialog
         @driver.close
     end
 end
+
+# need 
+# => a driver @driver
+# => a data @data

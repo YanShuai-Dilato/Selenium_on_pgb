@@ -6,11 +6,11 @@ module NewAppDialog
     end
 
     def get_btn_new_app
-        @driver.find_element(:xpath => @data["sign_in_succ"]["new_app"])
+        @driver.find_element(:xpath => home["new_app"])
     end
 
     def get_btn_close
-        @driver.find_element(:xpath => @data["sign_in_succ"]["close"])
+        @driver.find_element(:xpath => home["close"])
     end
 
     def get_private_tab

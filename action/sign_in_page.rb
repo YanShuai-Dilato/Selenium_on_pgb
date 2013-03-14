@@ -16,5 +16,6 @@ class SignInPage
         field_adobe_id.send_keys(@user["registered_user"]["valid_user"]["username"])
         field_password.send_keys(@user["registered_user"]["valid_user"]["password"])
         to_sign_in.click
+        sleep 3
     end
 end

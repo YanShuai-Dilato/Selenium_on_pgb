@@ -14,14 +14,16 @@ describe "Test new an app by zip file" do
     include NewAppDialog
 
     before(:all) do
-        @driver = Selenium::WebDriver.for :firefox
+        @driver = Selenium::WebDriver.for :chrome
         @url = "https://build.phonegap.com/people/sign_in"
         @driver.navigate.to @url
+        SignInPage.new(@driver).sign_in_with
         sleep 3
+        # @driver.navigate.to @driver.current_url
+        # sleep 2
     end
 
     before(:each) do
-        SignInPage.new(@driver).sign_in_with
         @click_element = UploadAnApp.new(@driver)
     end
 
@@ -31,5 +33,12 @@ describe "Test new an app by zip file" do
 
     it "should upload an app successfully" do
         @click_element.new_app_with_zip
+    end
+
+    def element_present?(how, what)
+        @driver.find_element(how, what)
+        true
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+        false
     end
 end
