@@ -1,7 +1,7 @@
 {
     "new_app": {
-        "by_zip": "..\/data\/ÃÕÃÀÁÊÈ12AFdz¡¼«¶Ç\/phonegap-phonegap-start.zip",
-        "by_repo": {}
+        "by_zip": "..\/data\/phonegap-phonegap-start.zip",
+        "by_repo": "https://github.com/YanShuai-Dilato/phonegap-start.git"
     },
     "signing_key": {
         "for_ios": "",

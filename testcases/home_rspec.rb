@@ -7,27 +7,25 @@ require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
-require File.dirname(__FILE__) + "\\..\\action\\home_page"
-require File.dirname(__FILE__) + "\\..\\tools\\home_dialog"
+require File.dirname(__FILE__) + "\/..\/action\/home_page"
+require File.dirname(__FILE__) + "\/..\/action\/base_env"
 
 describe "phonegap login" do
-    include HomeDialog
 
     before(:all) do
-        @driver = Selenium::WebDriver.for :firefox
-        @url = "http://build.phonegap.com"
-        @driver.navigate.to @url
-    end
-
-    before(:each) do
-        @click_element = HomePage.new(@driver)
+        @driver = BaseEnv.browser
+        @base_url = BaseEnv.base_url
     end
 
     it "should open the login page" do 
         begin
+            @driver.navigate.to @base_url
+            @click_element = HomePage.new(@driver)
             @click_element.click_sign_in
+            sleep 3
+            @driver.current_url.should eql @base_url + "/people/sign_in"
         ensure
-            close_browser
+            @click_element.close_current_browser
         end
     end
 end

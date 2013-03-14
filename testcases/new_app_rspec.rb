@@ -5,9 +5,9 @@ require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
-require File.dirname(__FILE__) + "\\..\\action\\upload_an_app"
-require File.dirname(__FILE__) + "\\..\\tools\\new_app_dialog"
-require File.dirname(__FILE__) + "\\..\\action\\sign_in_page"
+require File.dirname(__FILE__) + "\/..\/action\/upload_an_app"
+require File.dirname(__FILE__) + "\/..\/tools\/new_app_dialog"
+require File.dirname(__FILE__) + "\/..\/action\/sign_in_page"
 
 
 describe "Test new an app by zip file" do
@@ -31,8 +31,12 @@ describe "Test new an app by zip file" do
         close_browser
     end
 
-    it "should upload an app successfully" do
-        @click_element.new_app_with_zip
+    #it "should by zip upload an app successfully" do
+    #    @click_element.new_app_with_zip
+    #end
+
+    it "should by repo upload an app successfully" do
+        @click_element.new_app_with_pub_repo
     end
 
     def element_present?(how, what)

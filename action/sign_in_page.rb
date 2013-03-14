@@ -8,14 +8,17 @@ class SignInPage
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("..\\config\\data_xpath.json"))
         @user = JSON.parse(File.read("..\\config\\data_user.json"))
     end
 
     def sign_in_with
-        field_adobe_id.send_keys(@user["registered_user"]["valid_user"]["username"])
-        field_password.send_keys(@user["registered_user"]["valid_user"]["password"])
-        to_sign_in.click
+        get_field_adobe_id.send_keys(@user["registered_user"]["valid_user"]["username"])
+        get_field_password.send_keys(@user["registered_user"]["valid_user"]["password"])
+        get_sign_in.click
         sleep 3
+    end
+
+    def close_current_browser
+        close_browser
     end
 end
