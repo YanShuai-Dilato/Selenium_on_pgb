@@ -13,3 +13,7 @@ module HomeDialog
     def paid_plan_link()    @driver.find_element(:xpath => home["paid_plan"])    end
     def close_browser()     @driver.close    end
 end
+
+# require 
+# => @data 
+# => @driver
