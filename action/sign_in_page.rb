@@ -1,14 +1,14 @@
 # sign_in_page.rb
 
 require 'json'
-require File.dirname(__FILE__) + "\\..\\tools\\sign_in_dialog"
+require File.dirname(__FILE__) + "\/..\/tools\/sign_in_dialog"
 
 class SignInPage
     include SignInDialog
 
     def initialize(driver)
         @driver = driver
-        @user = JSON.parse(File.read("..\\config\\data_user.json"))
+        @user = JSON.parse(File.read("..\/data\/data_user.json"))
     end
 
     def sign_in_with

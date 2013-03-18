@@ -8,7 +8,7 @@ require 'rubygems'
 require 'selenium-webdriver'
 
 require File.dirname(__FILE__) + "\/..\/action\/home_page"
-require File.dirname(__FILE__) + "\/..\/action\/base_env"
+require File.dirname(__FILE__) + "\/..\/data\/base_env"
 
 describe "phonegap login" do
 

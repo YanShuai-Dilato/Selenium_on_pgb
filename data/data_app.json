@@ -1,15 +1,27 @@
 {
     "new_app": {
-        "by_zip": "..\/assets\/application\/phonegap-phonegap-start.zip",
+        "by_zip":  "..\/assets\/application\/phonegap-phonegap-start.zip",
+        "by_html": "..\/assets\/application\/index.html",
         "by_repo": "https://github.com/YanShuai-Dilato/phonegap-start.git"
     },
     "signing_key": {
-        "for_ios": "",
-        "for_android": "",
-        "for_blackberry": ""
+        "for_ios": {
+            "cert":    "..\/assets\/signing_key\/ios\/LichuanIQEKey.p12",
+            "profile": "..\/assets\/signing_key\/ios\/Lichuanlu.mobileprovision"
+        },
+        "for_android": {
+            "keystore": "..\/assets\/signing_key\/android\/android-dilato.keystore"
+        },
+        "for_blackberry": {
+            "db": "..\/assets\/signing_key\/blackberry\/barsigner.db",
+            "csk": "..\/assets\/signing_key\/blackberry\/barsigner.csk"
+        }
     },
     "app_detail": {
-        "title": "",
-        "desc": ""
+        "title": "!>[~12AFdz¡¼«¶ÇÐäÿ×÷ĊęĮĿōŘťſЊџЛяѨ҉ҝҾӲӼͲϟϺ͵ͺͼ;΄Όήϋϗϯϲϳ϶ϸϼϾἇἿώ῀ῼあ你",
+        "desc": "Description~12AFdz¡¼«¶ÇÐäÿ×÷ĊęĮĿōŘťſЊџЛяѨ҉",
+        "icon": "..\/assets\/application\/亜印gっをげwにwpw声wんw儀栄wペイ儀絵印rgるう.jpg",
+        "package": "pkgéè儀絵印んずぐ",
+        "version": "99.9儀絵印ん"
     }
 }
