@@ -13,7 +13,9 @@ To test website: http://build.phonegap.com/ using selenium and RSpec in Ruby
 
 3,  http://fijiaaron.wordpress.com/2010/09/29/writing-page-based-tests-with-selenium-in-ruby/
 
-4,  and Google.com
+4,  http://stackoverflow.com/questions/14700123/selenium-webdriver-ruby-how-to-wait-for-images-to-be-fully-loaded-after-clic
+
+
 
 
 
@@ -25,6 +27,6 @@ Folder "tools" includes the helper actions, such as "click".
 
 Folder "testcase" includes the test cases 
 
-Folder "config" includes the util tools that read data and provide data ref
+Folder "data" includes the util tools that read data and provide data ref
 
-Folder "data" includes all the data that the test cases need.
+Folder "assets" includes all the data that the test cases need.

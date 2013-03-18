@@ -1,14 +1,14 @@
-# home_page.rb
+$:.unshift File.join(File.dirname(__FILE__),"..")
 
 require 'json'
-require File.dirname(__FILE__) + "\/..\/tools\/home_dialog"
+require "tools/home_dialog"
 
 class HomePage
     include HomeDialog
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("..\/config\/data_xpath.json"))
+        @data = JSON.parse(File.read("data/data_xpath.json"))
     end
 
     def click_sign_in

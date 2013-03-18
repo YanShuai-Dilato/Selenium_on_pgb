@@ -1,5 +1,3 @@
-# sign_in_rspec.rb
-
 #encoding: utf-8
 
 require 'rspec'
@@ -7,8 +5,10 @@ require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
-require File.dirname(__FILE__) + "\/..\/action\/sign_in_page"
-require File.dirname(__FILE__) + "\/..\/action\/base_env"
+$:.unshift File.join(File.dirname(__FILE__),"..")
+
+require "action/sign_in_page"
+require "action/base_env"
 
 describe "phonegap login with registered valid user" do
     before(:all) do

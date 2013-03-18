@@ -2,6 +2,7 @@
 
 module NewAppDialog
     def home()                  @the_home_page = @data["sign_in_succ"]    end
+    	
     def new_app_btn()           @driver.find_element(:xpath => home["new_app"])    end
     def close_btn()             @driver.find_element(:xpath => home["close"])    end
     def opensource_tab()        @driver.find_element(:xpath => home["opensource_repo"]);end

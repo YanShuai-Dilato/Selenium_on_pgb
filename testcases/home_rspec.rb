@@ -7,25 +7,28 @@ require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
-require File.dirname(__FILE__) + "\/..\/action\/home_page"
-require File.dirname(__FILE__) + "\/..\/data\/base_env"
+$:.unshift File.join(File.dirname(__FILE__),"..")
+
+require "action/home_page"
+require "data/base_env"
 
 describe "phonegap login" do
+    include BaseEnv
 
     before(:all) do
-        @driver = BaseEnv.browser
-        @base_url = BaseEnv.base_url
+        @driver = browser
+        @base_url = base_url
+        @click_element = HomePage.new(@driver)
+    end
+
+    after(:each) do
+        @click_element.close_current_browser
     end
 
     it "should open the login page" do 
-        begin
-            @driver.navigate.to @base_url
-            @click_element = HomePage.new(@driver)
-            @click_element.click_sign_in
-            sleep 3
-            @driver.current_url.should eql @base_url + "/people/sign_in"
-        ensure
-            @click_element.close_current_browser
-        end
+        @driver.navigate.to @base_url
+        @click_element.click_sign_in
+        sleep 3
+        @driver.current_url.should eql @base_url + "/people/sign_in"
     end
 end
