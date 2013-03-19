@@ -21,10 +21,15 @@
 		"adobe_id": "//*[@id='person_email']",
 		"password": "//*[@id='person_password']",
 		"btn_sign_in": "//*[@id='new_person']/footer/input",
-		"sign_in_with_github": "",
+		"sign_in_with_github":  "//*[@id='github-btn']",
 		"register_a_new_account": "",
 		"i_forgot_my_password": "",
 		"didnt_rec_conf_instru": ""
+	},
+	"sign_in_github_page": {
+		"username_or_email": "//*[@id='login_field']",
+		"password": "//*[@id='password']",
+		"sign_in": "//*[@id='login']/form/div[3]/input[4]"
 	},
 	"register_page": {
 		"free_plan": "//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small",
@@ -52,7 +57,7 @@
 			"rebuild_all": ""
 		},
 		"collaborators": {
-			"add_colla": "",
+			"add_collaborator": "",
 			"email_address": "",
 			"role_tester": "",
 			"role_dev": "",
@@ -85,10 +90,15 @@
 		}
 	},
 	"docs": {
-		"each_link": ""
+		"header_home": "//*[@id='main-nav']/a[2]",
+		"header_docs": "//*[@id='main-nav']/a[3]",
+		"header_blog": "//*[@id='main-nav']/a[4]",
+		"header_support": "//*[@id='main-nav']/a[5]",
+		"documentation": "//*[@id='page-content']/div/article/header/h1",
+		"preparing_your_application": "//*[@id='docs-menu']/a[1]"
 	},
 	"blog": {
-		"see_all_blog_posts": "",
+		"recent_blog_posts": "//*[@id='page-content']/div/article/header/h1",
 		"read_the_rest": ""
 	}
 }
