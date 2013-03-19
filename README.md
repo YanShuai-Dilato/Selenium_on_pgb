@@ -15,6 +15,12 @@ To test website: http://build.phonegap.com/ using selenium and RSpec in Ruby
 
 4,  http://stackoverflow.com/questions/14700123/selenium-webdriver-ruby-how-to-wait-for-images-to-be-fully-loaded-after-clic
 
+5,  http://selenium.googlecode.com/svn/trunk/docs/api/rb/Selenium/WebDriver/Driver.html
+
+6,  http://rubydoc.info/github/rspec/rspec-core/frames 
+
+7,  http://testdrivenwebsites.com/2011/08/17/different-ways-of-code-reuse-in-rspec/
+
 
 
 
