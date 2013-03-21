@@ -6,7 +6,7 @@ class HomePage
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("../data/data_xpath.json"))
+        @data = YAML::load(File.read("../data/data_xpath.yaml"))
     end
 
     def click_sign_in()      sign_in_link.click     end

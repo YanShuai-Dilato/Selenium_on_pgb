@@ -21,8 +21,8 @@ To test website: http://build.phonegap.com/ using selenium and RSpec in Ruby
 
 7,  http://testdrivenwebsites.com/2011/08/17/different-ways-of-code-reuse-in-rspec/
 
-
-
+### Output html
+$ rspec ~/folderA/file.rb --format h > ./result.html
 
 
 ### Update details:

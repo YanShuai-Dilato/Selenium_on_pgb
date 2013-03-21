@@ -18,8 +18,8 @@ describe "Create an app " do
         @driver = browser
         @url = base_url + "/people/sign_in"
         @driver.get @url
-        SignInPage.new(@driver).sign_in_with
-        wait_for_element_present(5, :xpath, new_app_btn)
+        SignInPage.new(@driver).sign_in_with_adobe_id
+        # wait_for_element_present(5, :xpath, new_app_btn)
     end
 
     before(:each) do
@@ -35,11 +35,11 @@ describe "Create an app " do
             @click_element.new_app_with_zip
         end
     end
-
+=begin
     describe "-> by git repo " do 
         it "should work successfully" do 
 
         end
     end
-
+=end
 end

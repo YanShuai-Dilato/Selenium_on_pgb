@@ -18,8 +18,8 @@ class NewAppPage
         close_btn.click
         new_app_btn.click
         private_tab.click
-        get_upload_a_zip.send_keys @app_data["new_app"]["by_zip"]
-        wait_for_element_present(5, :xpath, @data["sign_in_succ"]["ready_to_build"])
+        upload_a_zip.send_keys @app_data[:new_app][:by_zip]
+        wait_for_element_present(5, :xpath, @data[:sign_in_succ][:ready_to_build])
     end
 
     def new_app_with_pub_repo
@@ -27,8 +27,8 @@ class NewAppPage
         close_btn.click
         new_app_btn.click
         opensource_tab.click
-        get_paste_git_repo.send_keys @app_data["new_app"]["by_repo"]
-        wait_for_element_present(5, :xpath, @data["sign_in_succ"]["ready_to_build"])
+        get_paste_git_repo.send_keys @app_data[:new_app][:by_repo]
+        wait_for_element_present(5, :xpath, @data[:sign_in_succ][:ready_to_build])
     end
 
     def close_current_browser

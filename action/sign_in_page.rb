@@ -11,7 +11,7 @@ class SignInPage
 
     def initialize(driver)
         @driver = driver
-        @data = JSON.parse(File.read("../data/data_xpath.json"))
+        @data = YAML::load(File.read("../data/data_xpath.yaml"))
     end
 
     def sign_in_with_adobe_id

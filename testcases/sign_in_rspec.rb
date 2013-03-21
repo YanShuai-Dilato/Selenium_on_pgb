@@ -14,8 +14,8 @@ describe "At build.phonegap.com " do
     before(:all) do
         @driver = browser
         @base_url = base_url
-        @data = JSON.parse(File.read("../data/data_xpath.json"))
-        @exp_url = JSON.parse(File.read("../data/data_url.json"))
+        @data = YAML::load(File.read("../data/data_xpath.yaml"))
+        @exp_url = YAML::load(File.read("../data/data_url.yaml"))
         @click_element = SignInPage.new(@driver)
     end
 
@@ -26,7 +26,7 @@ describe "At build.phonegap.com " do
     after(:all) do 
         @click_element.close_current_browser
     end
-=begin
+
     describe "-> with Adobe ID " do
         it "should sign in successfully" do 
             @click_element.sign_in_with_adobe_id
@@ -40,17 +40,17 @@ describe "At build.phonegap.com " do
             @driver.current_url.should == @exp_url["sign_in_successfully"]
         end
     end
-
+=begin
     describe "-> register a new account" do
         it "" do 
 
         end
     end
-=end
+
     describe "-> I forgot my password" do 
         it "" do 
 
         end
     end
-
+=end
 end

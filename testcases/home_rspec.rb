@@ -15,7 +15,7 @@ describe "phonegap Home page" do
         @driver = browser
         @base_url = base_url
         @click_element = HomePage.new(@driver)
-        @data = JSON.parse(File.read("../data/data_xpath.json"))
+        @data = YAML::load(File.read("../data/data_xpath.yaml"))
     end
 
     before(:each) do
