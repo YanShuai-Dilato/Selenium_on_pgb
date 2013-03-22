@@ -1,7 +1,6 @@
 #encoding: utf-8
 
 require 'rspec'
-require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 

@@ -1,7 +1,7 @@
 # new_app_dialog.rb
 
 module NewAppDialog
-    def home_newapp()                  @the_home_page = @data[:sign_in_succ]    end
+    def home_newapp()                  @the_home_page = @data[:sign_in_succ_page]    end
     	
     def new_app_btn()           @driver.find_element(:xpath => home_newapp[:new_app_btn])    end
     def close_btn()             @driver.find_element(:xpath => home_newapp[:close])    end

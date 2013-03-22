@@ -1,5 +1,4 @@
 require 'rspec'
-require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
@@ -19,6 +18,7 @@ describe "Create an app " do
         @url = base_url + "/people/sign_in"
         @driver.get @url
         SignInPage.new(@driver).sign_in_with_adobe_id
+        sleep 5
         # wait_for_element_present(5, :xpath, new_app_btn)
     end
 
@@ -33,6 +33,7 @@ describe "Create an app " do
     describe "-> by zip file " do 
         it "should work successfully" do
             @click_element.new_app_with_zip
+            # then what?
         end
     end
 =begin

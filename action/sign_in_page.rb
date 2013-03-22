@@ -22,10 +22,14 @@ class SignInPage
 
     def sign_in_with_github_id
         sign_in_with_github.click
-        wait_for_page_with_title(5, "sign in · github")
+        wait_for_page_with_title(5, "sign in · github") # it works
         gh_username.send_keys(user_github_id[:username])
         gh_password.send_keys(user_github_id[:password])
         gh_sign_in.click
+    end
+
+    def open_forgot_my_password
+        forgot_my_password_link.click
     end
 
     def close_current_browser

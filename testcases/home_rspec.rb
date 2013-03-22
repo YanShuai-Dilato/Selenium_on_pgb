@@ -1,7 +1,6 @@
 #encoding: utf-8
 
 require 'rspec'
-require 'json'
 require 'rubygems'
 require 'selenium-webdriver'
 
@@ -45,6 +44,7 @@ describe "phonegap Home page" do
             @click_element.click_support_link
             tabs = @driver.window_handles
             @driver.switch_to.window(tabs[1])
+            sleep 5
             @driver.current_url.should == "http://community.phonegap.com/nitobi/products/nitobi_phonegap_build"
             @driver.switch_to.window(tabs[0])
         end

@@ -9,17 +9,16 @@ class NewAppPage
     def initialize(driver)
         @driver = driver
         @base_url = "https://build.phonegap.com"
-        @data = JSON.parse(File.read("../data/data_xpath.json"))
-        @app_data = JSON.parse(File.read("../data/data_app.json"))
+        @data = YAML::load(File.read("../data/data_xpath.yaml"))
+        @app_data = YAML::load(File.read("../data/data_app.yaml"))
     end
 
     def new_app_with_zip
         new_app_btn.click
-        close_btn.click
-        new_app_btn.click
         private_tab.click
         upload_a_zip.send_keys @app_data[:new_app][:by_zip]
-        wait_for_element_present(5, :xpath, @data[:sign_in_succ][:ready_to_build])
+        sleep 5
+        # wait_for_element_present(5, :xpath, @data[:sign_in_succ_page][:ready_to_build])
     end
 
     def new_app_with_pub_repo
@@ -27,8 +26,8 @@ class NewAppPage
         close_btn.click
         new_app_btn.click
         opensource_tab.click
-        get_paste_git_repo.send_keys @app_data[:new_app][:by_repo]
-        wait_for_element_present(5, :xpath, @data[:sign_in_succ][:ready_to_build])
+        paste_git_repo.send_keys @app_data[:new_app][:by_repo]
+        wait_for_element_present(5, :xpath, @data[:sign_in_succ_page][:ready_to_build])
     end
 
     def close_current_browser

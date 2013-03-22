@@ -1,6 +1,7 @@
 :home_without_sign_in: ""
 :home_with_sign_in: ""
 :sign_in_successfully: "https://build.phonegap.com/apps"
+:forgot_your_password: "https://build.phonegap.com/people/password/new"
 :docs: 
 :blog: ""
 :support: ""
