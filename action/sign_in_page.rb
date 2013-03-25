@@ -1,31 +1,34 @@
 #encoding: utf-8
-require 'json'
-require "../tools/sign_in_dialog"
-require "../tools/sign_in_github_dialog"
-require "../data/base_env"
+require 'yaml'
+
+require_relative "../tools/sign_in_dialog"
+require_relative "../tools/sign_in_github_dialog"
+require_relative "../data/base_env"
+require_relative "../lib/webdriver_wait"
 
 class SignInPage
     include SignInDialog
     include SignInGithubDialog
     include BaseEnv
+    include WebdriverWait
 
     def initialize(driver)
         @driver = driver
-        @data = YAML::load(File.read("../data/data_xpath.yaml"))
+        @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
     end
 
-    def sign_in_with_adobe_id
-        email_or_adobe_id.send_keys(user_adobe_id[:username])
-        password.send_keys(user_adobe_id[:password])
+    def sign_in_with_adobe_id(id,password)
+        id_textinput.send_keys(id)
+        password_textinput.send_keys(password)
         sign_in_btn.click
     end
 
-    def sign_in_with_github_id
-        sign_in_with_github.click
+    def sign_in_with_github_id(id,password) 
+        sign_in_with_github_btn.click
         wait_for_page_with_title(5, "sign in · github") # it works
-        gh_username.send_keys(user_github_id[:username])
-        gh_password.send_keys(user_github_id[:password])
-        gh_sign_in.click
+        git_id_textinput.send_keys(id)
+        git_password_textinput.send_keys(password)
+        git_sign_in_btn.click
     end
 
     def open_forgot_my_password

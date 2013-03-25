@@ -1,6 +1,6 @@
-require 'json'
-require "../tools/new_app_dialog"
-require "../data/base_env"
+require 'yaml'
+require_relative "../tools/new_app_dialog"
+require_relative "../data/base_env"
 
 class NewAppPage
     include NewAppDialog
@@ -9,8 +9,8 @@ class NewAppPage
     def initialize(driver)
         @driver = driver
         @base_url = "https://build.phonegap.com"
-        @data = YAML::load(File.read("../data/data_xpath.yaml"))
-        @app_data = YAML::load(File.read("../data/data_app.yaml"))
+        @data = YAML::load(File.read(File.expand_path("../data/data_xpath.yaml",__FILE)))
+        @app_data = YAML::load(File.read(File.expand_path("../data/data_app.yaml",__FILE)))
     end
 
     def new_app_with_zip
