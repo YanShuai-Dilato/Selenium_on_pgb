@@ -1,4 +1,4 @@
-require 'json'
+require 'yaml'
 require "../tools/home_dialog"
 
 class HomePage

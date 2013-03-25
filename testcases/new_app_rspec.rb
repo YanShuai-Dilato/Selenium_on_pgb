@@ -4,10 +4,10 @@ require 'selenium-webdriver'
 
 # $:.unshift File.join(File.dirname(__FILE__),"..")
 
-require "../action/sign_in_page"
-require "../action/new_app_page"
-require "../tools/new_app_dialog"
-require "../data/base_env"
+require_relative "../action/sign_in_page"
+require_relative "../action/new_app_page"
+require_relative "../tools/new_app_dialog"
+require_relative "../data/base_env"
 
 describe "Create an app " do
     include NewAppDialog

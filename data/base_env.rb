@@ -5,15 +5,18 @@ module BaseEnv
     def base_url()
     	"https://build.phonegap.com"     
     end
-    def browser()       
-    	Selenium::WebDriver.for :chrome
+    def browser()
+         # puts "dsadasdasdasdasdad"+ENV("OS")
+         # if(ENV("OS") == 'firefox')     
+    	   Selenium::WebDriver.for :firefox
+         # end   
     end  
-    def user_adobe_id()
-        {:username => "shuai.yan@dilatoit.com", :password => "yanshuai110"}
-    end
-    def user_github_id() 
-        {:username => "shuai.yan@dilatoit.com", :password => "yanshuai110"}
-    end
+    # def user_adobe_id()
+    #     {:username => "shuai.yan@dilatoit.com", :password => "yanshuai110"}
+    # end
+    # def user_github_id() 
+    #     {:username => "shuai.yan@dilatoit.com", :password => "yanshuai110"}
+    # end
 
     def wait_for_element_present(how_long=5, how, what) 
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)

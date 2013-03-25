@@ -23,7 +23,8 @@
     :btn_sign_in_with_github:  //*[@id='github-btn']
     :register_a_new_account: 
     :i_forgot_my_password: "//*[@id='sign-in-page']/fieldset[2]/a[2]"
-    :didnt_rec_conf_instru: 
+    :didnt_rec_conf_instru:
+    :error_message: //html/body/p[@class='alert'] 
 :sign_in_github_page: 
     :username_or_email: //*[@id='login_field']
     :password: //*[@id='password']
