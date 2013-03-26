@@ -11,14 +11,14 @@
         :id: "liclu@Adobe.com"
         :password: "123456"
     :invalid_user_id: 
-        :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
+        :id: "fjkdlsahg@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format: 
         :id: "ĊęĮĿōŘťſЊ"
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format_blank: 
         :id: ""
-        :password: "ÇÐäÿ×÷Ċ"			
+        :password: "ÇÐäÿ×÷Ċ"
 :fr_fr: 
 :ja_jp: 
 

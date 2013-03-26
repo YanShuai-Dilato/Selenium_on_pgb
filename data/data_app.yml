@@ -2,7 +2,7 @@
 :new_app: 
     :by_zip:  ../assets/application/anotherあ你äōҾӲ.zip
     :by_html: ../assets/application/index.html
-    :by_repo: https://github.com/YanShuai-Dilato/phonegap-start.git\n
+    :by_repo: "https://github.com/YanShuai-Dilato/phonegap-start.git\n"
 :signing_key: 
     :for_ios: 
         :cert:   ../assets/signing_key/ios/LichuanIQEKey.p12

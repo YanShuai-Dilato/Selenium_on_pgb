@@ -8,7 +8,7 @@ module BaseEnv
     def browser()
          # puts "dsadasdasdasdasdad"+ENV("OS")
          # if(ENV("OS") == 'firefox')     
-    	   Selenium::WebDriver.for :firefox
+    	   Selenium::WebDriver.for :chrome
          # end   
     end  
     # def user_adobe_id()
@@ -20,7 +20,8 @@ module BaseEnv
 
     def wait_for_element_present(how_long=5, how, what) 
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
-        wait_for_it.until { @driver.find_element(how, what) } 
+        # browser.manage.timeouts.implicit_wait = 10
+        wait_for_it.until { @driver.find_element(how, what).display? }
     end
 
     def wait_for_page_open(how_long=5, url)

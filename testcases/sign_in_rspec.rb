@@ -7,8 +7,6 @@ require 'yaml'
 require_relative "../action/sign_in_page"
 require_relative "../data/base_env"
 
-
-
 describe "Sign in" do
     include BaseEnv
     include SignInDialog
@@ -20,7 +18,6 @@ describe "Sign in" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
-
     end
 
     before(:each) do
@@ -32,8 +29,7 @@ describe "Sign in" do
     after(:each) do 
         @sign_in_page.close_current_browser
     end
-
-    
+  
     context "with GitHub ID" do
         it "sign in successfully" do 
             @sign_in_page.sign_in_with_github_id(@data_user[:en_us][:free_github][:id],@data_user[:en_us][:free_github][:password])
@@ -47,7 +43,6 @@ describe "Sign in" do
             @sign_in_page.sign_in_with_adobe_id(@data_user[:en_us][:free_adobeid][:id],@data_user[:en_us][:free_adobeid][:password])
             @driver.current_url.should == @data_url[:sign_in_successfully]
         end
-
 
         it "invalid email or password" do
             @sign_in_page.sign_in_with_adobe_id(@data_user[:en_us][:invalid_user_id][:id],@data_user[:en_us][:invalid_user_id][:password])

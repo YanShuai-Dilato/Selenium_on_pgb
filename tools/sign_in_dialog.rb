@@ -5,7 +5,7 @@ module SignInDialog
         @home_singin_data ||= @data_xpath[:sign_in_page]
     end
 
-    def id_textinput()     
+    def id_textinput()
         @id_textinput ||= @driver.find_element(:xpath => home_signin_data[:adobe_id]) end
     def password_textinput()   
         @password_textinput ||= @driver.find_element(:xpath => home_signin_data[:password]) end
