@@ -31,18 +31,37 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	$ cd Selenium_on_pgb/
 
 2, Manage testing task in Rakefile
-	
 
-2, Run the test 
+   example:
+	
+    RSpec::Core::RakeTask.new(:spec,:osconfig) do |t|
+      t.pattern = "./testcases/sign_in_rspec.rb"  
+      #output to html file with timeframe
+      t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
+      
+	  #init config
+      ENV['BROWSER'] = 'chrome'
+      ENV['LANG'] = 'en_US'
+    end
+    
+    ------
+    * Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at 
+    http://docs.seleniumhq.org/docs/03_webdriver.jsp
+    * Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
+    * Manage the running testcases for 't.pattern'.
+    
+3, Run the test 
 	
 	$ rake
+	* Run default task
+	$ rake :taskname
+	* Run specific task
 	
-3, Then you will find some related information in the terminal telling you the `position` and the `name` of the output result, like
 
-	scott@:Selenium_on_pgb$ rake
-	/usr/bin/ruby -S rspec ./testcases/sign_in_rspec.rb --format h > ./result_html/result_20130327110429.html 
 	
-4, You then can open it with your default browser
+3, You then can open it with your default browser
 	
-	scott@:Selenium_on_pgb$ open ./result_html/result_20130327110429.html
+	scott@:Selenium_on_pgb$ open ./result_html/result_<the timeframe>.html
+	
+	
 
