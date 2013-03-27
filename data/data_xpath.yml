@@ -47,6 +47,11 @@
     :ready_to_build: /html/body/section/div/div/section[3]/article/footer/a
     :delete: /html/body/section/div/div/section[3]/article/footer/form/a
     :the_new_app: /html/body/section/div/div/section[3]/article/section/a/h1
+:new_app_detail:
+    :title: 
+    :description:
+    :version: 
+    :source: /html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a
 :app_detail_page: 
     :builds: 
         :update_code: 
