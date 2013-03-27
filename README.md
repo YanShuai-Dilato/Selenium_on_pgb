@@ -45,18 +45,3 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 	scott@:Selenium_on_pgb$ open ./result_html/result_20130327110429.html
 
-### Output html
-$ rspec ~/folderA/file.rb --format h > ./result.html
-
-
-### Update details:
-
-Folder "action" includes the logic actions
-
-Folder "tools" includes the helper actions, such as "click". 
-
-Folder "testcase" includes the test cases 
-
-Folder "data" includes the util tools that read data and provide data ref
-
-Folder "assets" includes all the data that the test cases need.
