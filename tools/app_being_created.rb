@@ -5,7 +5,7 @@
 #     version
 #     source
 
-module AppDetailVerify 
+module AppBeingCreated 
   
   # verify whether the app's title equals to the designated string. 
   def title_of_app_by_zip 
