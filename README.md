@@ -22,15 +22,16 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 
 	$ gem install rake
 
-### Demo 
+### Deploy manually 
 
 1, Clone the repo to your local machine
-
-	$ cd /Users/yourname/
 	
 	$ git clone https://github.com/YanShuai-Dilato/Selenium_on_pgb.git
 	
 	$ cd Selenium_on_pgb/
+
+2, Manage testing task in Rakefile
+	
 
 2, Run the test 
 	
