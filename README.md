@@ -65,3 +65,4 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 	
 
+### Code structure
