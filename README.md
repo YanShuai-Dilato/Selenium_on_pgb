@@ -1,25 +1,35 @@
 Testing_on_Phonegap_Build
 ===============
+The project automates the I18N testing on PhonegapBuild website, using rspec, with Selenium::Webdriver(http://rubygems.org/gems/selenium-webdriver) 
 
-### Purpose:
+### Requirement:
 
-To test website: http://build.phonegap.com/ using selenium and RSpec in Ruby
+- git
+- ruby
+- rspec
+- selenium-webdriver
+- rake
 
-### Reference: 
+### Setup
 
-1,  http://17test.info/
+1, Install ruby environement on your Operating System. 
 
-2,  http://www.infoq.com/cn/articles/domain-web-testing
+2, Install RSpec and Selenium-WebDriver package with gem
 
-3,  http://fijiaaron.wordpress.com/2010/09/29/writing-page-based-tests-with-selenium-in-ruby/
+	gem install rspec
 
-4,  http://stackoverflow.com/questions/14700123/selenium-webdriver-ruby-how-to-wait-for-images-to-be-fully-loaded-after-clic
+	gem install selenium-webdriver
 
-5,  http://selenium.googlecode.com/svn/trunk/docs/api/rb/Selenium/WebDriver/Driver.html
+	gem install rake
+3, Clone the repo to your local machine
 
-6,  http://rubydoc.info/github/rspec/rspec-core/frames 
+	cd /Users/yourname/
+	
+	git clone https://github.com/YanShuai-Dilato/Selenium_on_pgb.git
+	
+	
+### Demo 
 
-7,  http://testdrivenwebsites.com/2011/08/17/different-ways-of-code-reuse-in-rspec/
 
 ### Output html
 $ rspec ~/folderA/file.rb --format h > ./result.html
