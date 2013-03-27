@@ -5,14 +5,14 @@ require 'selenium-webdriver'
 require_relative "../action/sign_in_page"
 require_relative "../action/new_app_page"
 require_relative "../tools/new_app_dialog"
-require_relative "../tools/app_being_created"
+require_relative "../tools/app_bried_dialog"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
 
 describe "Create an app " do
     include NewAppDialog
     include BaseEnv
-    include AppBeingCreated
+    include AppBriefDialog
     include ConfigParam
 
     before(:all) do
@@ -53,6 +53,10 @@ describe "Create an app " do
 =end
     # Pass
     describe "-> by git repo " do 
+        it "the article tag should be +1"
+            
+        end
+
         it "should work successfully" do 
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[:en_us][:free_adobeid][:id],@data_user[:en_us][:free_adobeid][:password])
             sleep 5

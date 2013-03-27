@@ -8,8 +8,8 @@ if defined? RSpec
     desc "Run the demo testcases of sign_in_rspec"
     
     RSpec::Core::RakeTask.new(:spec,:osconfig) do |t|
-      # t.pattern = "./testcases/sign_in_rspec.rb"  
-      t.pattern = "./testcases/new_app_rspec.rb"
+      t.pattern = "./testcases/sign_in_rspec.rb"  
+      # t.pattern = "./testcases/new_app_rspec.rb"
       #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
