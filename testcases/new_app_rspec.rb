@@ -5,7 +5,7 @@ require 'selenium-webdriver'
 require_relative "../action/sign_in_page"
 require_relative "../action/new_app_page"
 require_relative "../tools/new_app_dialog"
-require_relative "../tools/app_bried_dialog"
+require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
 
@@ -53,15 +53,17 @@ describe "Create an app " do
 =end
     # Pass
     describe "-> by git repo " do 
-        it "the article tag should be +1"
-            
-        end
 
         it "should work successfully" do 
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[:en_us][:free_adobeid][:id],@data_user[:en_us][:free_adobeid][:password])
             sleep 5
+            @num_article_before = @driver.find_elements(:tag_name => "article").count
             @new_app_page.new_app_with_pub_repo
+            sleep 10
+            @num_article_after = @driver.find_elements(:tag_name => "article").count
+
             source_of_app_by_repo.should == @app_data[:new_app][:by_repo]
+            @num_article_after.should == @num_article_before + 1
         end
     end
 
