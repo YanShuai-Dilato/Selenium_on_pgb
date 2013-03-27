@@ -1,18 +1,31 @@
 require 'rake'
 require 'rspec/core/rake_task'
 
-# $global_os = ENV['OS']
-# $global_lang = ENV['lang']
-#@datafile = ENV["datafile"]
+
 @t = Time.now.strftime "%Y%m%d%H%M%S"
 
 if defined? RSpec
-    desc "Run the selenium testcases in <root>/testcases"
+    desc "Run the demo testcases of sign_in_rspec"
+    
     RSpec::Core::RakeTask.new(:spec,:osconfig) do |t|
-      t.pattern = "./testcases/sign_in_rspec.rb"
+      t.pattern = "./testcases/sign_in_rspec.rb"  
+      #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
-      #t.rspec_opts << "datafile"
-      #t.rspec_opts << "mylang=EN"
+      
+	  #init config
+      ENV['BROWSER'] = 'chrome'
+   	  ENV['LANG'] = 'en_US'
+    end
+
+    desc "Run all testcases"
+   
+    RSpec::Core::RakeTask.new(:allspecs,:osconfig) do |t|
+      t.pattern = "./testcases/*_rspec.rb"
+      #output to html file with timeframe
+      t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
+      #init config
+      ENV['BROWSER'] = 'chrome'
+      ENV['LANG'] = 'en_US'
     end
 end
 
