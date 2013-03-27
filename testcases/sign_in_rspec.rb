@@ -10,8 +10,6 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 
 
-
-
 describe "Sign in" do
     include BaseEnv
     include SignInDialog
@@ -48,7 +46,6 @@ describe "Sign in" do
             @sign_in_page.sign_in_with_github_id(@data_user[:en_us][:free_github][:id],@data_user[:en_us][:free_github][:password])
             @driver.current_url.should == @data_url[:sign_in_successfully]
         end
-
     end
 
     context "with Adobe ID " do
@@ -68,18 +65,4 @@ describe "Sign in" do
         end
     end
 
-=begin
-    describe "-> register a new account" do
-        it "" do 
-
-        end
-    end
-
-    describe "-> I forgot my password" do 
-    it "should open the 'Forgot Your Password?' page"
-        puts 
-        #@click_element.open_forgot_my_password
-        #@driver.current_url.should == @exp_url[:forgot_your_password] # here
-    end
-=end
 end
