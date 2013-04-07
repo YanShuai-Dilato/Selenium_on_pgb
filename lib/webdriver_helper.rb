@@ -1,5 +1,5 @@
 #helper method for waiting in selenium
-module WebdriverWait
+module WebdriverHelper
 
 	def wait_for_element_present(how_long=5, how, what) 
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)

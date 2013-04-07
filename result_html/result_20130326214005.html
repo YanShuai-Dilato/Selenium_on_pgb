@@ -284,41 +284,27 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">At build.phonegap.com </dt>
+  <dt id="example_group_1" class="passed">Sign in</dt>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">-&gt; with GitHub ID</dt>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should sign in successfully</span><span class='duration'>92.56178s</span></dd>
+  <dt id="example_group_2" class="passed">with GitHub ID</dt>
+    <script type="text/javascript">moveProgressBar('33.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>41.81719s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">-&gt; with Adobe ID </dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
+  <dt id="example_group_3" class="passed">with Adobe ID </dt>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should sign in successfully</span><span class='duration'>24.15383s</span></dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should sign in successfully</span>
-      <span class="duration">66.43994s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>Timeout::Error</pre></div>
-        <div class="backtrace"><pre>./testcases/sign_in_rspec.rb:23:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">21</span>        @driver = browser # have to start a new instance each time to clean the cache.
-<span class="linenum">22</span>        @click_element = SignInPage.new(@driver)
-<span class="offending"><span class="linenum">23</span>        @driver.get @base_url + "/people/sign_in"</span>
-<span class="linenum">24</span>    end
-<span class="linenum">25</span>
-<span class="linenum">26</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">invalid email or password</span><span class='duration'>19.82399s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>159.44665 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "2 examples, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>85.85461 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 0 failures";</script>
 </div>
 </div>
 </body>

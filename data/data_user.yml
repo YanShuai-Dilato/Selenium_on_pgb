@@ -1,24 +1,28 @@
 :global_str: "!>[~12AFdz¡¼«¶ÇÐäÿ×÷ĊęĮĿōŘťſЊџЛяѨ҉ҝҾӲӼͲϟϺ͵ͺͼ;΄Όήϋϗϯϲϳ϶ϸϼϾἇἿώ῀ῼ中国漢語日本ひらがなカタカナ한국어조선말"
 
-:en_us: 
+:en_US: &id001 
     :free_adobeid: 
+        :id: "shuai.yan@dilatoit.com"
+        :password: "yanshuai110"
+    :free_adobeid_01:
         :id: "pgbtesting.001@gmail.com"
-        :password: "asdfjklgh"
-    :free_github: 
-        :id: "pgbtesting.001@gmail.com"	
         :password: "pgbtesting001"
+    :free_github: 
+        :id: "shuai.yan@dilatoit.com"	
+        :password: "yanshuai110"
     :paid_user: 
         :id: "liclu@Adobe.com"
         :password: "123456"
-    :invalid_user_id: 
-        :id: "fjkdlsahg@adobe.com"
+    :invalid_user: 
+        :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format: 
         :id: "ĊęĮĿōŘťſЊ"
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format_blank: 
         :id: ""
-        :password: "ÇÐäÿ×÷Ċ"
-:fr_fr: 
-:ja_jp: 
+        :password: "ÇÐäÿ×÷Ċ"		
+:fr_FR: *id001
+
+:ja_JP: *id001
 

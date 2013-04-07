@@ -1,16 +1,11 @@
-#!/bin/env ruby
-#
-# This exists because options have to be passed to rspec as
-# environment variables, which I find clunky.
-#
-# yaml/runtest.yaml is its config file
-
 require 'rubygems'
 require 'getoptlong'
 require 'yaml'
+require_relative '../data/base_env'
 
 module ConfigParam
-
+  include BaseEnv
+  #used for initialize the global variable 
   def init
     $browser = ENV['BROWSER'].to_sym
     $lang = ENV['LANG'].to_sym
@@ -95,4 +90,15 @@ module ConfigParam
     #   exec( "rspec", "#{$0}/../wrapper.rb" )
     # end
   end 
+
+  #Path formattor with locale
+  def path_format_locale (path)
+    base_url+path+"?locale="+$lang.to_s
+  end 
+  
+  
 end  
+
+
+
+

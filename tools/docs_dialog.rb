@@ -1,6 +1,4 @@
 
 module DocsDialog
-	def documentation() 
-		@documentation ||= @data[:docs][:documentation]	
-	end
+	def documentation() @data[:docs][:documentation]	end
 end

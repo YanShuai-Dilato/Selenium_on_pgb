@@ -1,23 +1,23 @@
-# helper method for verify the new-created app's details
-# the details include: 
-#     title
-#     description
-#     version
-#     source
+
 
 module AppBriefDialog 
   
-  # verify whether the app's title equals to the designated string. 
-  def title_of_app_by_zip 
-    # Hello Worldéèàù
+  def article_tags_on_page 
+    @article_tags ||= @driver.find_elements(:tag_name => "article")
   end
   
-  # verify whether the app's source equals to the app's github repo address. 
-  def source_of_app_by_repo
-    @actual_text = @driver.find_element(:xpath => @data_xpath[:new_app_detail][:source]).text + "\n"
+  def id_of_app
+     @driver.find_element(:xpath => @data_xpath[:app_brief_detail][:app_id])
   end
   
-  #
-  # will add more test cases to verify the other properties.
-  #
+  def title_of_app 
+  end
+  
+  def desc_of_app
+  end
+  
+  def source_of_app
+    @source_of_app_by_repo ||= @driver.find_element(:xpath => @data_xpath[:new_app_detail][:source])
+  end
+  
 end

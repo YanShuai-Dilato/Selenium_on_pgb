@@ -12,7 +12,7 @@ class HomePage
     def click_sign_in()      sign_in_link.click     end
     def click_register()     register_link.click    end
     def click_docs_link()    docs_link.click        end
-    def click_blog_link()     blog_link.click        end
+    def click_blog_link()     blog_link.click       end
     def click_support_link() support_link.click     end
     def click_get_started()  get_started_link.click end
 

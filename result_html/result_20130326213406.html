@@ -291,36 +291,36 @@ a {
   <dl style="margin-left: 15px;">
   <dt id="example_group_2" class="passed">with GitHub ID</dt>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>19.37533s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>32.61892s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_3" class="passed">with Adobe ID </dt>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should sign in successfully</span><span class='duration'>15.07523s</span></dd>
     <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_3');</script>
     <script type="text/javascript">makeRed('example_group_3');</script>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
-      <span class="failed_spec_name">should sign in successfully</span>
-      <span class="duration">9.36629s</span>
+      <span class="failed_spec_name">invalid email or password</span>
+      <span class="duration">12.55812s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>expected not: == &quot;https://buildstage.phonegap.com/apps&quot;
-         got:    &quot;https://buildstage.phonegap.com/apps&quot;</pre></div>
-        <div class="backtrace"><pre>./testcases/sign_in_rspec.rb:56:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">54</span>            #change to should_not for demo
-<span class="linenum">55</span>
-<span class="offending"><span class="linenum">56</span>            @driver.current_url.should_not == @data_url[:sign_in_successfully]</span>
-<span class="linenum">57</span>        end
-<span class="linenum">58</span>
-<span class="linenum">59</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="message"><pre>The element could not be found</pre></div>
+        <div class="backtrace"><pre>./tools/sign_in_dialog.rb:20:in `error_message_box'
+./testcases/sign_in_rspec.rb:65:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">18</span>    end
+<span class="linenum">19</span>    def error_message_box
+<span class="offending"><span class="linenum">20</span>        @error_message_box = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:error_message]) </span>
+<span class="linenum">21</span>    end
+<span class="linenum">22</span>    def close_browser()         @driver.quit end
+<span class="linenum">23</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">invalid email or password</span><span class='duration'>10.57024s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>39.35279 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>60.29872 seconds</strong>";</script>
 <script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 1 failure";</script>
 </div>
 </div>

@@ -16,7 +16,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 
 2, Install RSpec, Selenium-WebDriver, and rake packages with gem
 
-	$ gem install rspec
+  $ gem install rspec
 
 	$ gem install selenium-webdriver
 
@@ -61,8 +61,9 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 3, You then can open it with your default browser
 	
-	scott@:Selenium_on_pgb$ open ./result_html/result_<the timeframe>.html
+	user@:Selenium_on_pgb$ open ./result_html/result_<the timeframe>.html
 	
 	
 
 ### Code structure
+<root>/selenium_Logical_view_Draft.png

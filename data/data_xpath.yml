@@ -22,9 +22,17 @@
     :btn_sign_in: //*[@id='new_person']/footer/input
     :btn_sign_in_with_github:  //*[@id='github-btn']
     :register_a_new_account: 
-    :i_forgot_my_password: "//*[@id='sign-in-page']/fieldset[2]/a[2]"
-    :didnt_rec_conf_instru:
-    :error_message: /html/body/p
+    :i_forgot_my_password_link: "//*[@id='sign-in-page']/fieldset[2]/a[2]"
+    :didnt_rec_conf_instru_link: "//*[@id='sign-in-page']/fieldset[2]/a[3]"
+    :error_message: //html/body/p[@class='alert']
+    :forgot_password_email: //*[@id='person_email']
+    :forgot_password_reset_btn: /html/body/section/div/div/form/p[2]/input
+    :resend_confirm_instru_email: "//*[@id='person_email']"
+    :resend_confirm_instru_btn: "//*[@id='new_person']/p[2]/input"
+    :email_not_found: /html/body/p
+    :you_will_receive_an_email: /html/body/p
+    :email_not_found: /html/body/p
+    :email_already_confirmed: /html/body/p
 :sign_in_github_page: 
     :username_or_email: //*[@id='login_field']
     :password: //*[@id='password']
@@ -33,6 +41,25 @@
     :free_plan: //*[@id='plans-table']/tbody/tr[4]/td[1]/a/small
     :paid_plan: //*[@id='plans-table']/tbody/tr[4]/td[2]/a
     :contact_us: //*[@id='plans-table']/tbody/tr[5]/td/a
+    :adobe_id_btn: //*[@id="adobeId-btn"]
+    :github_btn: //*[@id="github-btn"]
+    :adobe_id_input: //*[@id="username"]
+    :password_input: //*[@id="password"]
+    :stay_sign_in_checkbox: //*[@id="remember_me"]
+    :create_adobe_id_btn: //*[@id="create_account"]
+    :sign_in_btn: //*[@id="sign_in"]
+    :warning_message: /html/body/div[2]/form/header/p
+    :email_address: //*[@id="email_address"]
+    :password: //*[@id="password"]
+    :retype_password: //*[@id="retype_password"]
+    :first_name: //*[@id="first_name"]
+    :last_name: //*[@id="last_name"]
+    :country_region: //*[@id="country"]
+    :stay_informed: //*[@id="consent"]
+    :back_btn: //*[@id="back"]
+    :create_btn: //*[@id="create_account"]
+    :accept_the_term: //*[@id="consent"]
+    :accept_btn: //*[@id="confirm"]
 :sign_in_succ_page: 
     :new_app_btn: //*[@id='new-app-btn']
     :opensource_repo: //*[@id='new-app']/form/div[1]/a[1]
@@ -47,11 +74,12 @@
     :ready_to_build: /html/body/section/div/div/section[3]/article/footer/a
     :delete: /html/body/section/div/div/section[3]/article/footer/form/a
     :the_new_app: /html/body/section/div/div/section[3]/article/section/a/h1
-:new_app_detail:
-    :title: 
-    :description:
-    :version: 
-    :source: /html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a
+:app_brief_detail:
+    :app_title:
+    :app_description:
+    :app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
+    :app_version: 
+    :app_source: 
 :app_detail_page: 
     :builds: 
         :update_code: 
@@ -74,15 +102,15 @@
             :enable_hydration: 
             :only_approved_colla_can_dnld: 
         :configuration: 
-            :select_file: 
-            :app_title: 
-            :package: 
-            :version: 
-            :configuration: 
-            :desc: 
-            :save: 
+            :select_file: //*[@id='app_icon_file']
+            :title: //*[@id="app_title"]
+            :package: //*[@id="app_package"]
+            :version: //*[@id="app_version"]
+            :configuration: //*[@id="app_phonegap_version"]
+            :description: //*[@id="app_desc"]
+            :save: /html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input
         :danger_zone: 
-            :delete_this_app: 
+            :delete_this_app: //*[@id="delete-app"]
 :docs_page: 
     :header_home: //*[@id='main-nav']/a[2]
     :header_docs: //*[@id='main-nav']/a[3]

@@ -4,13 +4,13 @@ require 'yaml'
 require_relative "../tools/sign_in_dialog"
 require_relative "../tools/sign_in_github_dialog"
 require_relative "../data/base_env"
-require_relative "../lib/webdriver_wait"
+require_relative "../lib/webdriver_helper"
 
 class SignInPage
     include SignInDialog
     include SignInGithubDialog
     include BaseEnv
-    include WebdriverWait
+    include WebdriverHelper
 
     def initialize(driver)
         @driver = driver
@@ -29,6 +29,37 @@ class SignInPage
         git_id_textinput.send_keys(id)
         git_password_textinput.send_keys(password)
         git_sign_in_btn.click
+    end
+
+    def forget_password_with_valid_email(a_valid_email)
+        forgot_my_password_link.click
+        forgot_password_email_input.send_keys(a_valid_email)
+        forgot_password_reset_btn.click
+        begin
+            sleep 5
+        end until @driver.current_url == base_url + "/people/sign_in"
+        @tips_on_receiving_an_email = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:you_will_receive_an_email]).text
+    end
+
+    def forget_password_with_invalid_email(a_invalid_email)
+        forgot_my_password_link.click
+        forgot_password_email_input.send_keys(a_invalid_email)
+        forgot_password_reset_btn.click
+        @warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_not_found]).text
+    end
+
+    def confirmation_instru_with_valid_email(a_valid_email)
+        didnt_receive_confirmation_link.click
+        resend_confirm_instru_email_input.send_keys(a_valid_email)
+        resend_confirm_instru_btn.click
+        @tips_already_confirmed = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_already_confirmed])
+    end
+
+    def confirmation_instru_with_invalid_email(a_invalid_email) 
+        didnt_receive_confirmation_link.click
+        resend_confirm_instru_email_input.send_keys(a_valid_email)
+        resend_confirm_instru_btn.click
+        @error_email_not_found = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_not_found])
     end
 
     def open_forgot_my_password

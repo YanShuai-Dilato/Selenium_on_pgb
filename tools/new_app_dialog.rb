@@ -2,9 +2,9 @@
 
 module NewAppDialog
     def home_newapp()                  
-        @the_home_page = @data[:sign_in_succ_page]    
+        @the_home_page = @data_xpath[:sign_in_succ_page]    
     end
-    	
+        
     def new_app_btn()           
         @new_app_btn ||= @driver.find_element(:xpath => home_newapp[:new_app_btn])    
     end
@@ -20,7 +20,7 @@ module NewAppDialog
     def paste_git_repo()        
         @paste_git_repo ||= @driver.find_element(:xpath => home_newapp[:paste_git_repo])    
     end
-    def find_existing_repo()	
+    def find_existing_repo()    
         @find_existing_repo ||= @driver.find_element(:xpath => home_newapp[:paste_git_repo]) 
     end
     def upload_a_zip()          
@@ -30,3 +30,4 @@ module NewAppDialog
         @driver.quit    
     end
 end
+

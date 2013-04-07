@@ -17,10 +17,7 @@ module BaseEnv
             Selenium::WebDriver.for :firefox , :profile => profile
         else
             Selenium::WebDriver.for $browser 
-    
         end
     end  
-   
-
  
 end
