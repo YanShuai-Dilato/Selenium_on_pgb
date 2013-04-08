@@ -75,11 +75,11 @@
     :delete: /html/body/section/div/div/section[3]/article/footer/form/a
     :the_new_app: /html/body/section/div/div/section[3]/article/section/a/h1
 :app_brief_detail:
-    :app_title:
-    :app_description:
+    :app_title: /html/body/section/div/div/section[3]/article/section/div/h1
+    :app_description: /html/body/section/div/div/section[3]/article/section/div[2]
     :app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
-    :app_version: 
-    :app_source: 
+    :app_version: /html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd
+    :app_source: /html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a
 :app_detail_page: 
     :builds: 
         :update_code: 
