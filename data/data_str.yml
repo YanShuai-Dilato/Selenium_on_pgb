@@ -1,14 +1,15 @@
 :en_US:
     :not_found_in_database: "Invalid email or password."
-    :email_not_found: "1 error: Email not found"
-    :email_already_confirmed: "1 error: Email was already confirmed"
-    :invalid_email: "Enter a valid email address."
-    :retyped_password_unmatched: "There is one error below. Fill in the required field."
-    :first_name_invalid: "First name contains invalid characters."
-    :last_name_invalid: "Last name contains invalid characters."
-    :you_must_select_a_country: "You must select a country"
+    :PGB_email_not_found: "1 error: Email not found"
+    :PGB_email_already_confirmed: "1 error: Email was already confirmed"
+    :PGB_enter_a_valid_email: "Enter a valid email address."
+    :PGB_retyped_password_unmatched: "There is one error below. Fill in the required field."
+    :PGB_first_name_invalid: "First name contains invalid characters."
+    :PGB_last_name_invalid: "Last name contains invalid characters."
+    :PGB_alert_you_must_select_a_country: "You must select a country"
     :you_mush_agree_to_the_terms_of_service: "You must agree to the terms of service."
-    :receive_an_email_on_recovering: "You will receive an email with instructions on recovering your PhoneGap Build account in a few minutes."
+    :passwords_send_instructions: "You will receive an email with instructions on recovering your PhoneGap Build account in a few minutes."
+    :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
 :ja_JP:

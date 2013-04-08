@@ -64,24 +64,24 @@ describe "Sign in" do
     context "-> I forgot my password" do 
         it "with valid email address" do
             @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:free_adobeid][:id])
-            @tips.should eql @data_str[$lang][:receive_an_email_on_recovering]
+            @tips.should eql @data_str[$lang][:passwords_send_instructions]
         end
 
         it "with invalid email address" do 
             @warnings = @sign_in_page.forget_password_with_invalid_email(@data_user[$lang][:invalid_user][:id])
-            @warnings.should eql @data_str[$lang][:email_not_found]
+            @warnings.should eql @data_str[$lang][:PGB_email_not_found]
         end
     end
 
     context "didn't receive confirmation" do 
         it "with valid email address" do 
             @tips = @sign_in_page.confirmation_instru_with_valid_email(@data_user[$lang][:free_adobeid][:id])
-            @tips.should eql @data_str[$lang][:email_already_confirmed]
+            @tips.should eql @data_str[$lang][:confirmations_send_instructions]
         end
 
         it "with invalid email address" do 
             @errors = @sign_in_page.confirmation_instru_with_invalid_email(@data_user[$lang][:invalid_user][:id])
-            @errors.should eql @data_str[$lang][:email_not_found]
+            @errors.should eql @data_str[$lang][:PGB_email_not_found]
         end
     end
 
