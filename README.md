@@ -61,7 +61,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 3, You then can open it with your default browser
 	
-	user@:Selenium_on_pgb$ open ./result_html/result_<the timeframe>.html
+	$ open ./result_html/result_<the timeframe>.html
 	
 	
 
