@@ -68,7 +68,7 @@ describe "New an app " do
             # puts "Changed num of article was " + @num_article_after.to_s
             # count should be add one after creation
             # @num_article_after.should == @num_article_before + 1
-            @new_app_page.new_created_app_info.should == @new_app_page.expected_app_info_by_file
+            @new_app_page.new_created_app_info.should == @new_app_page.expected_app_info_by_zip
             #@driver.find_elements(:tag_name => "article").each do |option|
             #    puts option
               # option.text == value
@@ -133,8 +133,8 @@ describe "New an app " do
         it "upload and create the second private repo should fail <- using free account" do 
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:free_adobeid_02][:id],@data_user[$lang][:free_adobeid_02][:password])
             sleep 5
-            @warning = @new_app_page.new_private_app_with_repo
-            @warning.should eql "false"
+            @status = @new_app_page.new_private_app_with_repo
+            @status.should eql "false"
         end
 
         it "upload and create successfully <- using paid account" do 

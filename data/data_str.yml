@@ -12,5 +12,15 @@
     :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
+    :PGB_email_not_found: 
+    :PGB_email_already_confirmed: 
+    :PGB_enter_a_valid_email: 
+    :PGB_retyped_password_unmatched: 
+    :PGB_first_name_invalid: 
+    :PGB_last_name_invalid: 
+    :PGB_alert_you_must_select_a_country: 
+    :you_mush_agree_to_the_terms_of_service:
+    :passwords_send_instructions: "Dans quelques minutes, vous allez recevoir un message électronique contenant des instructions pour récupérer votre compte PhoneGap Build." 
+    :confirmations_send_instructions: "Dans quelques minutes, vous allez recevoir un message électronique contenant des instructions pour confirmer votre compte."
 :ja_JP:
     :not_found_in_database: "test"
