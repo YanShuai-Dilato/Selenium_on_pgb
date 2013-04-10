@@ -1,6 +1,7 @@
 :en_US:
     :not_found_in_database: "Invalid email or password."
     :PGB_email_not_found: "1 error: Email not found"
+    :PGB_Adobe_id_and_password_not_match: "The Adobe ID and password do not match. Please try again."
     :PGB_email_already_confirmed: "1 error: Email was already confirmed"
     :PGB_enter_a_valid_email: "Enter a valid email address."
     :PGB_retyped_password_unmatched: "There is one error below. Fill in the required field."
