@@ -66,7 +66,7 @@
     :private_repo: //*[@id='new-app']/form/div[1]/a[2]
     :paste_git_repo: //*[@id='new-app']/form/div[2]/div[1]/div/input
     :upload_a_zip: //*[@id='app_archive']
-    :connect_to_github_account: 
+    :connect_to_github_account: //*[@id="new-app"]/form/div[2]/a
     :upgrade_now: 
     :close: //*[@id='new-app']/form/div[1]/a[3]
     :enable_debug: /html/body/section/div/div/section[3]/article/footer/label

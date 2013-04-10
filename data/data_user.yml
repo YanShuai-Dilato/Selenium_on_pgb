@@ -7,7 +7,7 @@
     :free_adobeid_01:
         :id: "pgbtesting.001@gmail.com"
         :password: "pgbtesting001"
-    :free_adobeid_02:
+    :free_adobeid_not_connected_github:
         :id: "pgbtesting.002@gmail.com"
         :password: "pgbtesting001"
     :free_github: 

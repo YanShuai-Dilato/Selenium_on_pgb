@@ -1,6 +1,10 @@
 :en_US:
     :not_found_in_database: "Invalid email or password."
     :PGB_email_not_found: "1 error: Email not found"
+    :PGB_paste_git_repo: "paste .git repo"
+    :PGB_connect_your_github_account: "Connect your Github account"
+    :PGB_not_a_valid_github_account: "Not a valid Github URL"
+    
     :PGB_Adobe_id_and_password_not_match: "The Adobe ID and password do not match. Please try again."
     :PGB_email_already_confirmed: "1 error: Email was already confirmed"
     :PGB_enter_a_valid_email: "Enter a valid email address."

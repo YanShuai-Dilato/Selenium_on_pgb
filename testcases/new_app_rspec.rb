@@ -56,7 +56,8 @@ describe "New an app " do
         #     2, The newly created app's details be the same as described in the config.xml file of the .zip file.
         #
         it "upload and create successfully using paid account" do
-            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:paid_user][:id],@data_user[$lang][:paid_user][:password])
+            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:free_adobeid_not_connected_github][:id],
+                                                          @data_user[$lang][:free_adobeid_not_connected_github][:password])
             sleep 5
             # @num_article_before = @driver.find_elements(:tag_name => "article").count
             # puts "Original num of article was " + @num_article.to_s

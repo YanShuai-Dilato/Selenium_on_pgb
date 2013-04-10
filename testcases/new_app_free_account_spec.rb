@@ -32,26 +32,22 @@ describe "New an app with free account" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
 
-    before(:each) do
-        @dest_url = path_format_locale("/people/sign_in")
-        @driver.get @dest_url
-    end
-
-    after(:each) do
-        @new_app_page.close_current_browser
-    end
-
     context "Account not connected to github" do 
-    	it "does not have a dropdown app-list" do 
+        before(:all) do 
+            @driver.get path_format_locale("/people/sign_in")
+            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:free_user][:id],@data_user[$lang][:free_user][:password])
+        end
 
-    	end
+        before(:each) do 
+            @driver.navigate.refresh
+        end
 
     	it "#Tip: paste .git repo" do 
-
+            placeholder_paste_git_repo.text.should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
-    	it "#Tip: Connect your Github accoutn" do 
-
+    	it "#Tip: Connect your Github account" do 
+            link_connect_your_github_account.text.should eql = @data_str[$lang][:PGB_connect_your_github_account]
     	end
 
     	it "#errors when pasting a invalid .git address" do 
@@ -69,8 +65,6 @@ describe "New an app with free account" do
     	it "can not create another private app"  do 
 
     	end
-
-
     end
 
     context "Account connected to github" do 
