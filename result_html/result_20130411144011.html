@@ -284,44 +284,78 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Sign in</dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with GitHub ID</dt>
+  <dt id="example_group_2" class="passed">Adobe ID - free account</dt>
+before all inside
++btn-new-app count: 1
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: paste .git repo</span><span class='duration'>0.52072s</span></dd>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>37.70053s</span></dd>
-  </dl>
-</div>
-<div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">with Adobe ID </dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: Connect your Github account</span><span class='duration'>0.01773s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.07712s</span></dd>
++app_count_before: 1
++first_app_id_before: 1829
++btn-new-app count: 1
++app_count_after: 2
++first_app_id_after: 1830
     <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">create an opensource app by pasting a .git</span><span class='duration'>36.00821s</span></dd>
++app_count_before: 2
++first_app_id_before: 1830
++btn-new-app count: 1
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_2');</script>
+    <script type="text/javascript">makeRed('example_group_2');</script>
+    <script type="text/javascript">moveProgressBar('83.3');</script>
     <dd class="example failed">
-      <span class="failed_spec_name">should sign in successfully</span>
-      <span class="duration">23.52647s</span>
+      <span class="failed_spec_name">create the first private app by uploading a .zip file</span>
+      <span class="duration">10.29672s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>expected not: == &quot;https://build.phonegap.com/apps&quot;
-         got:    &quot;https://build.phonegap.com/apps&quot;</pre></div>
-        <div class="backtrace"><pre>./testcases/sign_in_rspec.rb:59:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">57</span>            #change to should_not for demo
-<span class="linenum">58</span>
-<span class="offending"><span class="linenum">59</span>            @driver.current_url.should_not == @data_url[:sign_in_successfully]</span>
-<span class="linenum">60</span>        end
-<span class="linenum">61</span>
-<span class="linenum">62</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="message"><pre>Element not found in the cache - perhaps the page has changed since it was looked up</pre></div>
+        <div class="backtrace"><pre>[remote server] resource://fxdriver/modules/web_element_cache.js:7234:in `fxdriver.cache.getElementAt'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:6839:in `Utils.getElementAt'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:7565:in `fxdriver.preconditions.visible'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10256:in `DelayedCommand.prototype.checkPreconditions_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10275:in `DelayedCommand.prototype.executeInternal_/h'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10280:in `DelayedCommand.prototype.executeInternal_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10220:in `DelayedCommand.prototype.execute/<'
+./action/new_app_page.rb:35:in `new_app_with_zip'
+./testcases/new_app_free_account_rspec.rb:97:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">7232</span><span class="comment"># Couldn't get snippet for [remote server] resource://fxdriver/modules/web_element_cache.js</span></code></pre>
       </div>
     </dd>
++app_count_before: 2
++first_app_id_before: 1830
++btn-new-app count: 1
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">invalid email or password</span><span class='duration'>19.37326s</span></dd>
+    <dd class="example failed">
+      <span class="failed_spec_name">can not create another private app</span>
+      <span class="duration">0.06022s</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>Element not found in the cache - perhaps the page has changed since it was looked up</pre></div>
+        <div class="backtrace"><pre>[remote server] resource://fxdriver/modules/web_element_cache.js:7234:in `fxdriver.cache.getElementAt'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:6839:in `Utils.getElementAt'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:7565:in `fxdriver.preconditions.visible'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10256:in `DelayedCommand.prototype.checkPreconditions_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10275:in `DelayedCommand.prototype.executeInternal_/h'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10280:in `DelayedCommand.prototype.executeInternal_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130411-3998-x85oil/extensions/fxdriver@googlecode.com/components/command_processor.js:10220:in `DelayedCommand.prototype.execute/<'
+./action/new_app_page.rb:35:in `new_app_with_zip'
+./testcases/new_app_free_account_rspec.rb:117:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">7232</span><span class="comment"># Couldn't get snippet for [remote server] resource://fxdriver/modules/web_element_cache.js</span></code></pre>
+      </div>
+    </dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>80.65501 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>70.19564 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 2 failures";</script>
 </div>
 </div>
 </body>

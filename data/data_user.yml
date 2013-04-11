@@ -1,21 +1,21 @@
 :global_str: "!>[~12AFdz¡¼«¶ÇÐäÿ×÷ĊęĮĿōŘťſЊџЛяѨ҉ҝҾӲӼͲϟϺ͵ͺͼ;΄Όήϋϗϯϲϳ϶ϸϼϾἇἿώ῀ῼ中国漢語日本ひらがなカタカナ한국어조선말"
 
 :en_US: &id001 
-    :free_adobeid: 
-        :id: "shuai.yan@dilatoit.com"
-        :password: "yanshuai110"
-    :free_adobeid_01:
-        :id: "pgbtesting.001@gmail.com"
-        :password: "pgbtesting001"
-    :free_adobeid_not_connected_github:
+    :adobe_id_free_001:
         :id: "pgbtesting.002@gmail.com"
         :password: "pgbtesting001"
-    :free_github: 
-        :id: "shuai.yan@dilatoit.com"	
-        :password: "yanshuai110"
-    :paid_user: 
-        :id: "liclu@Adobe.com"
-        :password: "123456"
+    :adobe_id_free_002:
+        :id: "pgbtesting.004@gmail.com"
+        :password: "pgbtesting001"
+    :adobe_id_free_connected_github_001: 
+        :id: "pgbtesting.005@gmail.com"
+        :password: "pgbtesting001"
+    :adobe_id_free_conntected_github_002: 
+        :id: ""
+        :password: ""
+    :adobe_id_paid:
+        :id: ""
+        :password: ""
     :invalid_user: 
         :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"

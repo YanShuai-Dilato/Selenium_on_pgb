@@ -4,6 +4,23 @@
 
 
 
+textbox_paste_a_git_repo.attribute('placeholder')
+
+
+###
+
+
+country_select = driver.find_element(:id=> "address_country")
+options = country_select.find_elements(:tag_name=>"option")
+options.each do |el|
+    if (el.value == "USA") 
+        el.select()
+        break
+    end
+end
+
+
+
 
 #
 # Iterates every .rb file inside a folder and require it.

@@ -284,27 +284,44 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Sign in</dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with GitHub ID</dt>
+  <dt id="example_group_2" class="passed">Adobe ID - free account</dt>
+before all inside
++btn-new-app count: 1
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: paste .git repo</span><span class='duration'>0.52039s</span></dd>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>41.81719s</span></dd>
-  </dl>
-</div>
-<div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">with Adobe ID </dt>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: Connect your Github account</span><span class='duration'>0.01722s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.09947s</span></dd>
++app_count_before: 2
++first_app_id_before: 1834
++app_count_after: 3
++first_app_id_after: 1836
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should sign in successfully</span><span class='duration'>24.15383s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">create an opensource app by pasting a .git</span><span class='duration'>25.18082s</span></dd>
++app_count_before: 3
++first_app_id_before: 1836
++app_count_after: 4
++first_app_id_after: 1837
+    <script type="text/javascript">moveProgressBar('83.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">create the first private app by uploading a .zip file</span><span class='duration'>33.12482s</span></dd>
++app_count_before: 4
++first_app_id_before: 1837
++app_count_after: 4
++first_app_id_after: 1837
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">invalid email or password</span><span class='duration'>19.82399s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">can not create another private app</span><span class='duration'>1.31010s</span></dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>85.85461 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 0 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>82.57296 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 0 failures";</script>
 </div>
 </div>
 </body>

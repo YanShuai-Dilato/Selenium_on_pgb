@@ -284,36 +284,40 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">New an app </dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with git repo </dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_2');</script>
-    <script type="text/javascript">makeRed('example_group_2');</script>
+  <dt id="example_group_2" class="passed">Adobe ID - free account</dt>
+before all inside
+before each
+btn-new-app count: 1
+after each
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: paste .git repo</span><span class='duration'>0.50303s</span></dd>
+before each
+Connect your Github account
+after each
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: Connect your Github account</span><span class='duration'>0.04233s</span></dd>
+before each
+after each
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.08309s</span></dd>
+before each
+app_count_before: 3
+btn-new-app count: 1
+app_count_after: 4
+after each
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">upload and create successfully using free account</span>
-      <span class="duration">18.00373s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd&quot;}</pre></div>
-        <div class="backtrace"><pre>[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/driver_component.js:8284:in `FirefoxDriver.prototype.findElementInternal_'
-[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/driver_component.js:8293:in `FirefoxDriver.prototype.findElement'
-[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/command_processor.js:10275:in `DelayedCommand.prototype.executeInternal_/h'
-[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/command_processor.js:10280:in `DelayedCommand.prototype.executeInternal_'
-[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/command_processor.js:10220:in `DelayedCommand.prototype.execute/<'
-./tools/app_brief_dialog.rb:10:in `id_of_app'
-./testcases/new_app_rspec.rb:96:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">8282</span># Couldn't get snippet for [remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130408-4459-otwufe/extensions/fxdriver@googlecode.com/components/driver_component.js
-<span class="linenum">8283</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">create an opensource app by pasting a .git</span><span class='duration'>25.26687s</span></dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>20.06013 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "1 example, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>47.92773 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 0 failures";</script>
 </div>
 </div>
 </body>

@@ -284,44 +284,47 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Sign in</dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with GitHub ID</dt>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>32.61892s</span></dd>
-  </dl>
-</div>
-<div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">with Adobe ID </dt>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should sign in successfully</span><span class='duration'>15.07523s</span></dd>
+  <dt id="example_group_2" class="passed">Adobe ID - free account</dt>
+before all inside
+before each
+app_count_before: 5
+first_app_id_before: 1826
+btn-new-app count: 1
+app_count_after: 5
+first_app_id_after: 1826
+after each
     <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
+    <script type="text/javascript">makeRed('div_group_2');</script>
+    <script type="text/javascript">makeRed('example_group_2');</script>
     <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
-      <span class="failed_spec_name">invalid email or password</span>
-      <span class="duration">12.55812s</span>
+      <span class="failed_spec_name">can not create another private app</span>
+      <span class="duration">0.69722s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>The element could not be found</pre></div>
-        <div class="backtrace"><pre>./tools/sign_in_dialog.rb:20:in `error_message_box'
-./testcases/sign_in_rspec.rb:65:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">18</span>    end
-<span class="linenum">19</span>    def error_message_box
-<span class="offending"><span class="linenum">20</span>        @error_message_box = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:error_message]) </span>
-<span class="linenum">21</span>    end
-<span class="linenum">22</span>    def close_browser()         @driver.quit end
-<span class="linenum">23</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="message"><pre>
+expected: &quot;false&quot;
+     got: false
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/new_app_free_account_rspec.rb:132:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">130</span>            <span class="keyword">end</span>
+<span class="linenum">131</span>
+<span class="offending"><span class="linenum">132</span>            <span class="attribute">@return_value</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="punct">&quot;</span><span class="string">false</span><span class="punct">&quot;</span></span>
+<span class="linenum">133</span>    	<span class="keyword">end</span></code></pre>
       </div>
     </dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>60.29872 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>22.31915 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "1 example, 1 failure";</script>
 </div>
 </div>
 </body>

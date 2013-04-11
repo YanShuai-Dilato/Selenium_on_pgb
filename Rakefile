@@ -13,18 +13,18 @@ if defined? RSpec
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
 	  #init config
-      ENV['BROWSER'] = 'chrome'
+      ENV['BROWSER'] = 'firefox'
    	  ENV['LANG'] = 'en_US'
     end
 
     desc "Run the demo testcases of new_app_rspec"
     RSpec::Core::RakeTask.new(:newappspec) do |t|
-      t.pattern = "./testcases/new_app_rspec.rb"  
+      t.pattern = "./testcases/new_app_free_account_rspec.rb"  
       #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
     #init config
-      ENV['BROWSER'] = 'chrome'
+      ENV['BROWSER'] = 'firefox'
       ENV['LANG'] = 'en_US'
     end
 
@@ -40,4 +40,4 @@ if defined? RSpec
 
 end
 
-task :default => :sign_in_rspec
+task :default => :newappspec

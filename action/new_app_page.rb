@@ -15,33 +15,46 @@ class NewAppPage
         @app_data = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
     end
 
+    def get_existing_app_num
+        @driver.find_elements(:tag_name => "article").count
+    end
+
+    def get_first_app_id
+        first_app_id.text
+    end
+    
+    def new_btn_exists?
+#        @new_btn_ctrl = @driver.find_elements(:xpath => @data_xpath[:sign_in_succ_page][:new_app_btn])
+        @new_btn_ctrl = @driver.find_elements(:id => "new-app-btn")
+        @new_btn_ctrl_count = @new_btn_ctrl.count
+        puts "+btn-new-app count: #{@new_btn_ctrl_count}"
+        @exists_or_not = @new_btn_ctrl_count > 0
+    end
+
     def new_app_with_zip
-        new_app_btn.click
+        new_app_btn.click 
         private_tab.click
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip)
 
-        if upload_a_zip 
-            upload_a_zip.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-        else
+        @disabled_or_not =  upload_a_zip.attribute('disabled') # true/false
+        if @disabled_or_not 
             return false
         end
+        upload_a_zip.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
+        return true   
         # wait_for_element_present(5, :xpath, @data[:sign_in_succ_page][:ready_to_build])
     end
 
     def new_public_app_with_repo
-        if new_app_btn 
-            new_app_btn.click
-        end
+        new_app_btn.click 
         opensource_tab.click
-        paste_git_repo.send_keys @app_data[:new_app][:by_repo]
+        textbox_paste_a_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
         # wait_for_element_present(5, :xpath, @data_xpath[:sign_in_succ_page][:ready_to_build])
     end
 
     def new_private_app_with_repo
-        if new_app_btn
-            new_app_btn.click
-        end
+        new_app_btn.click 
         private_tab.click
         if paste_git_repo 
             paste_git_repo.send_keys @app_data[:new_app][:by_repo]
@@ -50,34 +63,9 @@ class NewAppPage
         end
     end
 
-    def new_created_app_info
-        @hash_the_actual_app_info = {
-            "title" => @driver.find_element(:xpath => @data_xpath[:app_brief_detail][:app_title]).text,
-            "description" => @driver.find_element(:xpath => @data_xpath[:app_brief_detail][:app_description]).text,
-            "version" => @driver.find_element(:xpath => @data_xpath[:app_brief_detail][:app_version]).text,
-            "source" => @driver.find_element(:xpath => @data_xpath[:app_brief_detail][:app_source]).text
-        }
-        @hash_the_actual_app_info.to_a
-    end
-
-    def expected_app_info_by_repo
-        @hash_the_expected_app_info = {
-            "title" => @app_data[:expected_app_by_repo][:title],
-            "description" => @app_data[:expected_app_by_repo][:description],
-            "version" => @app_data[:expected_app_by_repo][:version],
-            "source" => @app_data[:expected_app_by_repo][:source]
-        }
-        @hash_the_expected_app_info.to_a
-    end
-
-    def expected_app_info_by_zip
-        @hash_the_expected_app_info = {
-            "title" => @app_data[:expected_app_by_zip][:title],
-            "description" => @app_data[:expected_app_by_zip][:description],
-            "version" => @app_data[:expected_app_by_zip][:version],
-            "source" => @app_data[:expected_app_by_zip][:source]
-        }
-        @hash_the_expected_app_info.to_a
+    def paste_a_git_repo(repo_address)
+        textbox_paste_a_git_repo.send_keys(repo_address + "\n")
+        return error_not_a_valid_address.text
     end
 
     def close_current_browser

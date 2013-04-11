@@ -284,44 +284,28 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Sign in</dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with GitHub ID</dt>
+  <dt id="example_group_2" class="passed">Adobe ID - free account - connected github</dt>
+before all inside
++btn-new-app count: 1
++new_btn_exists
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">sign in successfully</span><span class='duration'>39.70841s</span></dd>
-  </dl>
-</div>
-<div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">with Adobe ID </dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: find existing repo / paste .git repo</span><span class='duration'>0.03909s</span></dd>
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should sign in successfully</span>
-      <span class="duration">21.56162s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>expected not: == &quot;https://build.phonegap.com/apps&quot;
-         got:    &quot;https://build.phonegap.com/apps&quot;</pre></div>
-        <div class="backtrace"><pre>./testcases/sign_in_rspec.rb:57:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">55</span>        it "should sign in successfully" do 
-<span class="linenum">56</span>            @sign_in_page.sign_in_with_adobe_id(@data_user[:en_us][:free_adobeid][:id],@data_user[:en_us][:free_adobeid][:password])
-<span class="offending"><span class="linenum">57</span>            @driver.current_url.should_not == @data_url[:sign_in_successfully]</span>
-<span class="linenum">58</span>        end
-<span class="linenum">59</span>
-<span class="linenum">60</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.15524s</span></dd>
+The first matched item: pgbtesting005/PhoneGap-Build-Sample
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">invalid email or password</span><span class='duration'>19.42833s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">match some apps in the list if enter some letters</span><span class='duration'>5.07527s</span></dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>80.79018 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 1 failure";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>25.63401 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 0 failures";</script>
 </div>
 </div>
 </body>

@@ -284,81 +284,44 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Sign in</dt>
+  <dt id="example_group_1" class="passed">New an app with free account</dt>
+before all outer
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">with GitHub ID</dt>
+  <dt id="example_group_2" class="passed">Adobe ID - free account - connected github</dt>
+before all inside
+HERE->
+<-HERE
     <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_2');</script>
     <script type="text/javascript">makeRed('example_group_2');</script>
     <script type="text/javascript">moveProgressBar('33.3');</script>
     <dd class="example failed">
-      <span class="failed_spec_name">sign in successfully</span>
-      <span class="duration">10.06563s</span>
+      <span class="failed_spec_name">#Dropdown list of existing repo</span>
+      <span class="duration">0.03408s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>getTitle execution failed;
- The window could not be found</pre></div>
-        <div class="backtrace"><pre>./lib/webdriver_wait.rb:16:in `block in wait_for_page_with_title'
-./lib/webdriver_wait.rb:16:in `wait_for_page_with_title'
-./action/sign_in_page.rb:28:in `sign_in_with_github_id'
-./testcases/sign_in_rspec.rb:48:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">14</span>    def wait_for_page_with_title(how_long=5, title)
-<span class="linenum">15</span>        wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
-<span class="offending"><span class="linenum">16</span>        wait_for_it.until { @driver.title.downcase == title.downcase}</span>
-<span class="linenum">17</span>    end
-<span class="linenum">18</span>    
-<span class="linenum">19</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="message"><pre>ReferenceError: style is not defined</pre></div>
+        <div class="backtrace"><pre>./testcases/new_app_free_account_rspec.rb:144:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">142</span>
+<span class="linenum">143</span>            <span class="attribute">@ul</span> <span class="punct">=</span> <span class="attribute">@driver</span><span class="punct">.</span><span class="ident">find_element</span><span class="punct">(</span><span class="symbol">:xpath</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">/html/body/section/div/div/div/form/div[2]/div/div</span><span class="punct">&quot;).</span><span class="ident">find_element</span><span class="punct">(</span><span class="symbol">:tag_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">ul</span><span class="punct">&quot;)</span>
+<span class="offending"><span class="linenum">144</span>            <span class="attribute">@driver</span><span class="punct">.</span><span class="ident">execute_script</span><span class="punct">(&quot;</span><span class="string">style.display = 'block'</span><span class="punct">&quot;,</span><span class="attribute">@ul</span><span class="punct">)</span></span>
+<span class="linenum">145</span>
+<span class="linenum">146</span>            <span class="ident">sleep</span> <span class="number">5</span></code></pre>
       </div>
     </dd>
-  </dl>
-</div>
-<div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">with Adobe ID </dt>
-    <script type="text/javascript">makeRed('div_group_3');</script>
-    <script type="text/javascript">makeRed('example_group_3');</script>
++btn-new-app count: 1
++new_btn_exists
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should sign in successfully</span>
-      <span class="duration">3.72251s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>findElement execution failed;
- The window could not be found</pre></div>
-        <div class="backtrace"><pre>./tools/sign_in_dialog.rb:9:in `id_textinput'
-./action/sign_in_page.rb:21:in `sign_in_with_adobe_id'
-./testcases/sign_in_rspec.rb:56:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">7</span>
-<span class="linenum">8</span>    def id_textinput()     
-<span class="offending"><span class="linenum">9</span>        @id_textinput ||= @driver.find_element(:xpath => home_signin_data[:adobe_id]) end</span>
-<span class="linenum">10</span>    def password_textinput()   
-<span class="linenum">11</span>        @password_textinput ||= @driver.find_element(:xpath => home_signin_data[:password]) end
-<span class="linenum">12</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: find existing repo / paste .git repo</span><span class='duration'>0.02525s</span></dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">invalid email or password</span>
-      <span class="duration">2.76200s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>findElement execution failed;
- The window could not be found</pre></div>
-        <div class="backtrace"><pre>./tools/sign_in_dialog.rb:9:in `id_textinput'
-./action/sign_in_page.rb:21:in `sign_in_with_adobe_id'
-./testcases/sign_in_rspec.rb:64:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">7</span>
-<span class="linenum">8</span>    def id_textinput()     
-<span class="offending"><span class="linenum">9</span>        @id_textinput ||= @driver.find_element(:xpath => home_signin_data[:adobe_id]) end</span>
-<span class="linenum">10</span>    def password_textinput()   
-<span class="linenum">11</span>        @password_textinput ||= @driver.find_element(:xpath => home_signin_data[:password]) end
-<span class="linenum">12</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.14809s</span></dd>
+after all outer
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>16.60165 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 3 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>24.78287 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 1 failure";</script>
 </div>
 </div>
 </body>

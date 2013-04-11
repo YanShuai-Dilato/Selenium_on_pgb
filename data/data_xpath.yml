@@ -61,12 +61,15 @@
     :accept_the_term: //*[@id="consent"]
     :accept_btn: //*[@id="confirm"]
 :sign_in_succ_page: 
+    :first_app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']
     :opensource_repo: //*[@id='new-app']/form/div[1]/a[1]
     :private_repo: //*[@id='new-app']/form/div[1]/a[2]
     :paste_git_repo: //*[@id='new-app']/form/div[2]/div[1]/div/input
+    :ui_select: /html/body/section/div/div/div/form/div[2]/div/div/span[2]
+    :not_a_valid_github_url: /html/body/section/div/div/div/form/div[2]/div/div/span
     :upload_a_zip: //*[@id='app_archive']
-    :connect_to_github_account: //*[@id="new-app"]/form/div[2]/a
+    :connect_your_github_account: /html/body/section/div/div/div/form/div[2]/a
     :upgrade_now: 
     :close: //*[@id='new-app']/form/div[1]/a[3]
     :enable_debug: /html/body/section/div/div/section[3]/article/footer/label
