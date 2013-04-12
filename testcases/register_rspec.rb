@@ -63,37 +63,6 @@ describe "Register" do
 
                 end
             end
-            
-            context " create an new adobe id" do
-                it " with invalid email address" do
-                    @user = {
-                        :name => "",
-                        :password => "",
-                        :first_name => "",
-                        :last_name => "",
-                        :region => ""
-                    }
-
-                    @warning_msg = @register_page.create_an_adobe_id_with_invalid_email_address
-                    @warning_msg.should eql @data_str[$lang][:invalid_email]
-                end
-
-                it " with unmatched password" do
-
-                end
-
-                it " with invalid first name" do
-
-                end
-
-                it " with invalid last name" do
-
-                end
-
-                it " with valid user account" do
-
-                end
-            end
         end
 
         context " with GitHub ID" do
