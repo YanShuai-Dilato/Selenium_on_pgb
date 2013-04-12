@@ -18,42 +18,20 @@ class RegisterPage
 		end
 	end
 
-	def create_an_adobe_id_with_valid_account(user)
-		enter_register_information(user)
-		create
-		sleep 5
-		accept_terms
-		accept_and_go_on
-		sleep 5
+	def enter_register_information(user) # user[:email_address]
+		enter_email(user[:email_address])
+		enter_password(user[:password])
+		enter_retype_password(user[:retype_pass])
+		enter_first_name(user[:first_name])
+		enter_last_name(user[:last_name])
+		# enter_country_region(user[:country_region])
+		# create_btn.click
 	end
 
-	def create_an_adobe_id_with_invalid_email_address(user)
-		enter_register_information(user)
-		create
-		sleep 5
-		get_warning_message
-    end
-
-    def create_an_abode_id_with_not_matched_password(user)
-        enter_register_information(user)
-        create
-        sleep 5
-        get_warning_message
-    end
-
-    def create_an_adobe_id_with_invalid_first_name(user)
-        enter_register_information(user)
-        create
-        sleep 5
-        get_warning_message
-    end
-
-    def create_an_adobe_id_with_invalid_last_name(user)
-        enter_register_information(user)
-        create
-        sleep 5
-        get_warning_message
-    end
+	def have_read_and_agree
+		checkbox_read_and_agree.click
+		btn_accept.click
+	end
 
     def close_current_page
         @driver.quit

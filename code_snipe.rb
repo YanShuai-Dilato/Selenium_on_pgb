@@ -31,9 +31,6 @@ Dir[File.dirname(__FILE__) + '/dish/*.rb'].each do |file|
     require file
 end
 
-# If only we can use an unique and distinguishable name for each control. 
-
-
 
 =begin
 # http://snipplr.com/view/27992/

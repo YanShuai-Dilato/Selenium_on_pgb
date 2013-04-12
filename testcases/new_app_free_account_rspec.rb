@@ -24,27 +24,33 @@ describe "New an app with free account" do
     before(:all) do
         puts "before all outer"
         init
-        @base_url = base_url
-        @driver = browser
-        @new_app_page = NewAppPage.new(@driver)
+        @new_app_page = nil
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
-
+=begin
     after(:all) do 
         puts "after all outer"
         @new_app_page.close_current_browser
     end
-=begin   # this context need at least one public app to start with. 
+=end    
+   # this context need at least one public app to start with. 
     context "Adobe ID - free account" do 
         before(:all) do 
             puts "before all inside"
+            @base_url = base_url
+            @driver = browser
+            @new_app_page = NewAppPage.new(@driver)
             @driver.get path_format_locale("/people/sign_in")
-            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github_001][:id],
-                                                          @data_user[$lang][:adobe_id_free_connected_github_001][:password])
+            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
+                                                          @data_user[$lang][:adobe_id_free_002][:password])
             sleep 5
+        end
+
+        after(:all) do 
+            @new_app_page.close_current_browser
         end
 
     	it "#Tip: paste .git repo" do 
@@ -125,32 +131,36 @@ describe "New an app with free account" do
             @return_value.should eql false
     	end
     end
-=end
+
     context "Adobe ID - free account - connected github" do 
         before(:all) do 
             puts "before all inside"
+            @base_url = base_url
+            @driver = browser
+            @new_app_page = NewAppPage.new(@driver)
             @driver.get path_format_locale("/people/sign_in")
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github_001][:id],
                                                           @data_user[$lang][:adobe_id_free_connected_github_001][:password])
             sleep 5
         end
-=begin
-        it "#Dropdown list of existing repo" do 
-            # @driver.find_element(:xpath => "//*[@id=\"new-app\"]/form/div[2]/div[1]/div/span[2]").click
-            puts "HERE->"
-            # puts @driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/ul/li").text
-            @ul = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul")
-            puts @ul.attribute("style") 
-            puts @ul.text
-            puts "<-HERE"
 
-            @xpath_count = @driver.get_xpath_count("//ui[@style='display: block;']//li")
-
-            puts @xpath_count.to_s
-
-            sleep 5
+        after(:all) do 
+            @new_app_page.close_current_browser
         end
-=end
+
+        it "#Dropdown list of existing repo" do 
+            if @new_app_page.new_btn_exists? 
+                new_app_btn.click 
+            end 
+            @driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/span[2]").click
+            sleep 3
+            @li = @driver.find_elements(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
+            @li_count = @li.count
+            puts "+li count: #{@li_count}"
+
+            @li_count.should_not eql 0    
+        end
+
         it "#Tip: find existing repo / paste .git repo" do 
             if @new_app_page.new_btn_exists? 
                 puts "+new_btn_exists"
@@ -200,20 +210,6 @@ describe "New an app with free account" do
             puts "+first_app_id_after: #{@first_app_id_after}"
 
         end
-=begin
-        it "Select a repo from the existing repo list to create an app" do 
-            @driver.navigate.refresh
-            sleep 5 
-            country_select = driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/ul")
-            options = country_select.find_elements(:tag_name => "li")
-            options.each do |el|
-                if (el.value == "USA") 
-                    el.select()
-                    break
-                end
-            end
-        end
-=end
 
     end
 

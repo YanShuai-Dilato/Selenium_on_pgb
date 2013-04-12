@@ -290,24 +290,65 @@ before all outer
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">Adobe ID - free account - connected github</dt>
+  <dt id="example_group_2" class="passed">Adobe ID - free account</dt>
 before all inside
-HERE->
-
-<-HERE
++btn-new-app count: 1
+    <script type="text/javascript">moveProgressBar('8.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: paste .git repo</span><span class='duration'>0.53676s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: Connect your Github account</span><span class='duration'>0.02750s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.08284s</span></dd>
++app_count_before: 1
++first_app_id_before: 1829
++app_count_after: 2
++first_app_id_after: 1862
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">#Dropdown list of existing repo</span><span class='duration'>5.02763s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">create an opensource app by pasting a .git</span><span class='duration'>34.92206s</span></dd>
++app_count_before: 2
++first_app_id_before: 1862
++app_count_after: 3
++first_app_id_after: 1863
+    <script type="text/javascript">moveProgressBar('41.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">create the first private app by uploading a .zip file</span><span class='duration'>36.45754s</span></dd>
++app_count_before: 3
++first_app_id_before: 1863
++app_count_after: 3
++first_app_id_after: 1863
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">can not create another private app</span><span class='duration'>1.40921s</span></dd>
+  </dl>
+</div>
+<div id="div_group_3" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_3" class="passed">Adobe ID - free account - connected github</dt>
+before all inside
++btn-new-app count: 1
++li count: 2
+    <script type="text/javascript">moveProgressBar('58.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">#Dropdown list of existing repo</span><span class='duration'>3.59058s</span></dd>
 +btn-new-app count: 1
 +new_btn_exists
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">#Tip: find existing repo / paste .git repo</span><span class='duration'>0.03601s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">#Tip: find existing repo / paste .git repo</span><span class='duration'>0.02979s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.14487s</span></dd>
+The first matched item: pgbtesting005/PhoneGap-Build-Sample
+    <script type="text/javascript">moveProgressBar('83.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">match some apps in the list if enter some letters</span><span class='duration'>5.13348s</span></dd>
+The first item: [missing "en_US.new-app/no-match" translation]
+    <script type="text/javascript">moveProgressBar('91.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">match no apps in the list if enter some specific letters</span><span class='duration'>0.13524s</span></dd>
++app_count_before: 1
++first_app_id_before: 1858
++app_count_after: 2
++first_app_id_after: 1864
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">#errors when pasting a invalid .git address</span><span class='duration'>0.14765s</span></dd>
-after all outer
+    <dd class="example passed"><span class="passed_spec_name">Select a repo from the matched items to create an app</span><span class='duration'>18.49779s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>37.31626 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "3 examples, 0 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>148.75248 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "12 examples, 0 failures";</script>
 </div>
 </div>
 </body>
