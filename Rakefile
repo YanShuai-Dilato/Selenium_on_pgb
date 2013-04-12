@@ -40,4 +40,4 @@ if defined? RSpec
 
 end
 
-task :default => :newappspec
+task :default => :sign_in_rspec

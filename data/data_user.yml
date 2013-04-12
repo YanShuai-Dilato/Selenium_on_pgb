@@ -13,6 +13,9 @@
     :adobe_id_free_conntected_github_002: 
         :id: ""
         :password: ""
+    :github_id:
+        :id: "pgbtesting.005@gmail.com"
+        :password: "pgbtesting001"
     :adobe_id_paid:
         :id: ""
         :password: ""

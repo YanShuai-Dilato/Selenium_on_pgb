@@ -23,7 +23,7 @@ module SignInDialog
         @driver.find_element(:xpath => @data_xpath[:sign_in_page][:forgot_password_reset_btn])
     end
     def didnt_receive_confirmation_link
-        @driver.find_element(:xpath => @data_xpath[:sign_in_page][:didnt_rec_conf_instru])
+        @driver.find_element(:xpath => @data_xpath[:sign_in_page][:didnt_rec_conf_instru_link])
     end
     def resend_confirm_instru_email_input
         @driver.find_element(:xpath => @data_xpath[:sign_in_page][:resend_confirm_instru_email])

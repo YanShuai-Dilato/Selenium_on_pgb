@@ -18,7 +18,6 @@ describe "Sign in" do
         #mixin init function in ConfigParam
         init
         @base_url = base_url
-        @sign_in_page = nil
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
@@ -28,7 +27,7 @@ describe "Sign in" do
     before(:each) do
         @driver = browser # have to start a new instance each time to clean the cache.
         @sign_in_page = SignInPage.new(@driver)
-        @driver.get path_format_locale("/people/sign_in")
+        # @driver.get path_format_locale("/people/sign_in")
     end
 
     after(:each) do 
@@ -40,7 +39,9 @@ describe "Sign in" do
 
     context "with GitHub ID" do
         it "sign in successfully" do 
-            @sign_in_page.sign_in_with_github_id(@data_user[$lang][:free_github][:id],@data_user[$lang][:free_github][:password])
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id][:id],@data_user[$lang][:github_id][:password])
+            sleep 5
             #url should redirect to app page
             @driver.current_url.should == @data_url[:sign_in_successfully]
         end
@@ -48,26 +49,30 @@ describe "Sign in" do
 
     context "with Adobe ID " do
         it "should sign in successfully" do 
-            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:free_adobeid][:id],@data_user[$lang][:free_adobeid][:password])
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],@data_user[$lang][:adobe_id_free_001][:password])
             #url should redirect to app page
             @driver.current_url.should == @data_url[:sign_in_successfully]
         end
 
         it "invalid email or password" do
-            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user_id][:id],@data_user[$lang][:invalid_user_id][:password])
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user][:id],@data_user[$lang][:invalid_user][:password])
             sleep 5
             #error message should match the expecation
             error_message_box.text.should == @data_str[$lang][:not_found_in_database]
         end
     end
 
-    context "-> I forgot my password" do 
+    context "I forgot my password" do 
         it "with valid email address" do
-            @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:free_adobeid][:id])
+            @driver.get path_format_locale("/people/sign_in")
+            @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:adobe_id_free_001][:id])
             @tips.should eql @data_str[$lang][:passwords_send_instructions]
         end
 
         it "with invalid email address" do 
+            @driver.get path_format_locale("/people/sign_in")
             @warnings = @sign_in_page.forget_password_with_invalid_email(@data_user[$lang][:invalid_user][:id])
             @warnings.should eql @data_str[$lang][:PGB_email_not_found]
         end
@@ -75,14 +80,17 @@ describe "Sign in" do
 
     context "didn't receive confirmation" do 
         it "with valid email address" do 
-            @tips = @sign_in_page.confirmation_instru_with_valid_email(@data_user[$lang][:free_adobeid][:id])
-            @tips.should eql @data_str[$lang][:confirmations_send_instructions]
+            @driver.get path_format_locale("/people/sign_in")
+            @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
+            @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
         end
 
         it "with invalid email address" do 
-            @errors = @sign_in_page.confirmation_instru_with_invalid_email(@data_user[$lang][:invalid_user][:id])
+            @driver.get path_format_locale("/people/sign_in")
+            @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
             @errors.should eql @data_str[$lang][:PGB_email_not_found]
         end
+
     end
 
 end

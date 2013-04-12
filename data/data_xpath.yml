@@ -20,19 +20,16 @@
     :adobe_id: //*[@id='person_email']
     :password: //*[@id='person_password']
     :btn_sign_in: //*[@id='new_person']/footer/input
-    :btn_sign_in_with_github:  //*[@id='github-btn']
+    :btn_sign_in_with_github: //*[@id='github-btn']
     :register_a_new_account: 
     :i_forgot_my_password_link: "//*[@id='sign-in-page']/fieldset[2]/a[2]"
-    :didnt_rec_conf_instru_link: "//*[@id='sign-in-page']/fieldset[2]/a[3]"
+    :didnt_rec_conf_instru_link: "/html/body/section/div/section/fieldset[2]/a[3]" 
     :error_message: //html/body/p[@class='alert']
     :forgot_password_email: //*[@id='person_email']
     :forgot_password_reset_btn: /html/body/section/div/div/form/p[2]/input
     :resend_confirm_instru_email: "//*[@id='person_email']"
     :resend_confirm_instru_btn: "//*[@id='new_person']/p[2]/input"
-    :email_not_found: /html/body/p
-    :you_will_receive_an_email: /html/body/p
-    :email_not_found: /html/body/p
-    :email_already_confirmed: /html/body/p
+    :tips_or_warnings: /html/body/p
 :sign_in_github_page: 
     :username_or_email: //*[@id='login_field']
     :password: //*[@id='password']

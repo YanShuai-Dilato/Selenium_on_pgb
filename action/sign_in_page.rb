@@ -25,7 +25,7 @@ class SignInPage
 
     def sign_in_with_github_id(id,password) 
         sign_in_with_github_btn.click
-        wait_for_page_with_title(5, "sign in · github") # it works
+        # wait_for_page_with_title(5, "sign in · github") # it works
         git_id_textinput.send_keys(id)
         git_password_textinput.send_keys(password)
         git_sign_in_btn.click
@@ -45,21 +45,14 @@ class SignInPage
         forgot_my_password_link.click
         forgot_password_email_input.send_keys(a_invalid_email)
         forgot_password_reset_btn.click
-        @warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_not_found]).text
+        @warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:tips_or_warnings]).text
     end
 
-    def confirmation_instru_with_valid_email(a_valid_email)
+    def resend_confirmation_instructions(email_address)
         didnt_receive_confirmation_link.click
-        resend_confirm_instru_email_input.send_keys(a_valid_email)
+        resend_confirm_instru_email_input.send_keys(email_address)
         resend_confirm_instru_btn.click
-        @tips_already_confirmed = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_already_confirmed])
-    end
-
-    def confirmation_instru_with_invalid_email(a_invalid_email) 
-        didnt_receive_confirmation_link.click
-        resend_confirm_instru_email_input.send_keys(a_valid_email)
-        resend_confirm_instru_btn.click
-        @error_email_not_found = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:email_not_found])
+        @tips_or_warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:tips_or_warnings]).text
     end
 
     def open_forgot_my_password
