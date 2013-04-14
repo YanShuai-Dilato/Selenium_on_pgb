@@ -24,8 +24,8 @@ class RegisterPage
 		enter_retype_password(user[:retype_pass])
 		enter_first_name(user[:first_name])
 		enter_last_name(user[:last_name])
-		# enter_country_region(user[:country_region])
-		# create_btn.click
+		select_country_region(user[:country_region])
+		create_btn.click
 	end
 
 	def have_read_and_agree

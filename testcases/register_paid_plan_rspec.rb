@@ -26,6 +26,10 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+
+        @driver.get path_format_locale("/plans/free-adobeid") 
+        @driver.switch_to.frame(0)
     end
+
 
 end

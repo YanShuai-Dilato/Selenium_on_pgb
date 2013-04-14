@@ -46,6 +46,7 @@
     :create_adobe_id_btn: //*[@id="create_account"]
     :sign_in_btn: //*[@id="sign_in"]
     :warning_message: /html/body/div[2]/form/header/p
+    :do_not_match_warning: //*[@id="login"]/header/p[1]
     :email_address: //*[@id="email_address"]
     :password: //*[@id="password"]
     :retype_password: //*[@id="retype_password"]
@@ -57,6 +58,9 @@
     :create_btn: //*[@id="create_account"]
     :accept_the_term: //*[@id="consent"]
     :accept_btn: //*[@id="confirm"]
+    :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
+    :I_agree_to_the_terms_above: //*[@id="accept-terms"]
+    :payment_information_error: //*[@id="checkout"]/div/p
 :sign_in_succ_page: 
     :first_app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']

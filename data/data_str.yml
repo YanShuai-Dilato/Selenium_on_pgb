@@ -16,6 +16,7 @@
     :PGB_last_name_invalid: "Last name contains invalid characters."
     :PGB_alert_you_must_select_a_country: "You must select a country"
     :PGB_the_Adobe_ID_password_not_match: "The Adobe ID and password do not match. Please try again."
+    :payment_information_error: "Our payment services our experiencing technical difficulty. Please try refreshing the page. If problems continue, please try again later. We apologize for the inconvenience."
     :you_mush_agree_to_the_terms_of_service: "You must agree to the terms of service."
     :passwords_send_instructions: "You will receive an email with instructions on recovering your PhoneGap Build account in a few minutes."
     :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."

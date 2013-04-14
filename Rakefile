@@ -52,4 +52,4 @@ if defined? RSpec
 
 end
 
-task :default => :newappspec
+task :default => :register_create_adobe_id

@@ -26,31 +26,34 @@ describe "Register -> sign in" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+
+        @driver.get path_format_locale("/plans/free-adobeid") 
+        @driver.switch_to.frame(0)
+    end
+
+    after(:all) do 
+        @register_page.close_current_page
     end
 
     it "With invalid Adobe ID (Email Address)" do 
-    	@driver.get path_format_locale("/plans/free-adobeid") 
-    	enter_email()
-    	enter_password()
+    	enter_email(@data_user[$lang][:invalid_user][:id])
+    	enter_password(@data_user[$lang][:invalid_user][:password])
     	sign_in_btn.click
-    	xxx.should eql @data_str[$lang][:PGB_the_Adobe_ID_password_not_match]
+    	do_not_match_waring.should eql @data_str[$lang][:PGB_the_Adobe_ID_password_not_match]
     end
 
     it "With wrong password" do 
-    	@driver.get path_format_locale("/plans/free-adobeid") 
-    	enter_email()
-    	enter_password()
+    	enter_email(@data_user[$lang][:invalid_user][:id])
+        enter_password(@data_user[$lang][:invalid_user][:password])
     	sign_in_btn.click
-    	xxx.should eql @data_str[$lang][:PGB_the_Adobe_ID_password_not_match]
+    	do_not_match_waring.should eql @data_str[$lang][:PGB_the_Adobe_ID_password_not_match]
     end
 
     it "sign in successfully" do 
-    	@driver.get path_format_locale("/plans/free-adobeid") 
-    	enter_email()
-    	enter_password()
+    	enter_email(@data_user[$lang][:adobe_id_free_001][:id])
+    	enter_password(@data_user[$lang][:adobe_id_free_001][:password])
     	sign_in_btn.click
     	sleep 5
-    	read_accept_terms_checkbox.click
     	@driver.current_url.should eql @data_url[:sign_in_successfully]
     end
 end
