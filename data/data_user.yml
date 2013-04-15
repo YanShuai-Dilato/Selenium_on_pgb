@@ -13,7 +13,13 @@
     :adobe_id_free_conntected_github_002: 
         :id: ""
         :password: ""
-    :github_id:
+    :github_id_only:
+        :id: "pgbtesting.008@gmail.com"
+        :password: "pgbtesting001"
+    :github_id_already_connected:
+        :id: ""
+        :password: ""
+    :github_id_already_disconnected:
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
     :adobe_id_paid:

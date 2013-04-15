@@ -30,14 +30,9 @@ describe "New an app with free account" do
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
-=begin
-    after(:all) do 
-        puts "after all outer"
-        @new_app_page.close_current_browser
-    end
-=end    
+   
    # this context need at least one public app to start with. 
-    context "Adobe ID - free account" do 
+    context "- with Adobe ID - free account" do 
         before(:all) do 
             puts "before all inside"
             @base_url = base_url
@@ -79,7 +74,7 @@ describe "New an app with free account" do
 
             @new_app_page.new_public_app_with_repo
             sleep 5
-            
+            # walk round
             @driver.navigate.refresh
             sleep 5 
             
@@ -87,7 +82,8 @@ describe "New an app with free account" do
             @first_app_id_after = @new_app_page.get_first_app_id
             puts "+app_count_after: #{@app_count_after}"
             puts "+first_app_id_after: #{@first_app_id_after}"
-
+ 
+            @first_app_id_after.should_not eql @first_app_id_before
             @app_count_after.should_not eql @app_count_before 
     	end
 
@@ -119,7 +115,7 @@ describe "New an app with free account" do
             puts "+app_count_before: #{@app_count_before}"
             puts "+first_app_id_before: #{@first_app_id_before}"
 
-            @return_value = @new_app_page.new_app_with_zip
+            @return_value = @new_app_page.new_app_with_zip # button & select disabled. 
            
             if (!@return_value) 
                 @app_count_after = @new_app_page.get_existing_app_num
@@ -132,7 +128,7 @@ describe "New an app with free account" do
     	end
     end
 
-    context "Adobe ID - free account - connected github" do 
+    context "- with Adobe ID - free account - connected github" do 
         before(:all) do 
             puts "before all inside"
             @base_url = base_url
@@ -157,7 +153,6 @@ describe "New an app with free account" do
             @li = @driver.find_elements(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
             @li_count = @li.count
             puts "+li count: #{@li_count}"
-
             @li_count.should_not eql 0    
         end
 
@@ -180,6 +175,7 @@ describe "New an app with free account" do
             puts "The first matched item: #{@the_first_item.text}"
             @the_first_item.text.should eql @data_str[$lang][:PGB_the_first_matched_item] 
             sleep 5
+            # count the number
         end
 
         it "match no apps in the list if enter some specific letters" do 

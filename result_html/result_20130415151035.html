@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RSpec results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-size: 80%;
+  }
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+
+function addClass(element_id, classname) {
+  document.getElementById(element_id).className += (" " + classname);
+}
+
+function removeClass(element_id, classname) {
+  var elem = document.getElementById(element_id);
+  var classlist = elem.className.replace(classname,'');
+  elem.className = classlist;
+}
+
+function moveProgressBar(percentDone) {
+  document.getElementById("rspec-header").style.width = percentDone +"%";
+}
+
+function makeRed(element_id) {
+  removeClass(element_id, 'passed');
+  removeClass(element_id, 'not_implemented');
+  addClass(element_id,'failed');
+}
+
+function makeYellow(element_id) {
+  var elem = document.getElementById(element_id);
+  if (elem.className.indexOf("failed") == -1) {  // class doesn't includes failed
+    if (elem.className.indexOf("not_implemented") == -1) { // class doesn't include not_implemented
+      removeClass(element_id, 'passed');
+      addClass(element_id,'not_implemented');
+    }
+  }
+}
+
+function apply_filters() {
+  var passed_filter = document.getElementById('passed_checkbox').checked;
+  var failed_filter = document.getElementById('failed_checkbox').checked;
+  var pending_filter = document.getElementById('pending_checkbox').checked;
+
+  assign_display_style("example passed", passed_filter);
+  assign_display_style("example failed", failed_filter);
+  assign_display_style("example not_implemented", pending_filter);
+
+  assign_display_style_for_group("example_group passed", passed_filter);
+  assign_display_style_for_group("example_group not_implemented", pending_filter, pending_filter || passed_filter);
+  assign_display_style_for_group("example_group failed", failed_filter, failed_filter || pending_filter || passed_filter);
+}
+
+function get_display_style(display_flag) {
+  var style_mode = 'none';
+  if (display_flag == true) {
+    style_mode = 'block';
+  }
+  return style_mode;
+}
+
+function assign_display_style(classname, display_flag) {
+  var style_mode = get_display_style(display_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    elems[i].style.display = style_mode;
+  }
+}
+
+function assign_display_style_for_group(classname, display_flag, subgroup_flag) {
+  var display_style_mode = get_display_style(display_flag);
+  var subgroup_style_mode = get_display_style(subgroup_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    var style_mode = display_style_mode;
+    if ((display_flag != subgroup_flag) && (elems[i].getElementsByTagName('dt')[0].innerHTML.indexOf(", ") != -1)) {
+      elems[i].style.display = subgroup_style_mode;
+    } else {
+      elems[i].style.display = display_style_mode;
+    }
+  }
+}
+
+    // ]]>
+  </script>
+  <style type="text/css">
+#rspec-header {
+  background: #65C400; color: #fff; height: 4em;
+}
+
+.rspec-report h1 {
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  font-size: 1.8em;
+  position: absolute;
+}
+
+#label {
+  float:left;
+}
+
+#display-filters {
+  float:left;
+  padding: 28px 0 0 40%;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+}
+
+#summary {
+  float:right;
+  padding: 5px 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  text-align: right;
+}
+
+#summary p {
+  margin: 0 0 0 2px;
+}
+
+#summary #totals {
+  font-size: 1.2em;
+}
+
+.example_group {
+  margin: 0 10px 5px;
+  background: #fff;
+}
+
+dl {
+  margin: 0; padding: 0 0 5px;
+  font: normal 11px "Lucida Grande", Helvetica, sans-serif;
+}
+
+dt {
+  padding: 3px;
+  background: #65C400;
+  color: #fff;
+  font-weight: bold;
+}
+
+dd {
+  margin: 5px 0 5px 5px;
+  padding: 3px 3px 3px 18px;
+}
+
+dd .duration {
+  padding-left: 5px;
+  text-align: right;
+  right: 0px;
+  float:right;
+}
+
+dd.example.passed {
+  border-left: 5px solid #65C400;
+  border-bottom: 1px solid #65C400;
+  background: #DBFFB4; color: #3D7700;
+}
+
+dd.example.not_implemented {
+  border-left: 5px solid #FAF834;
+  border-bottom: 1px solid #FAF834;
+  background: #FCFB98; color: #131313;
+}
+
+dd.example.pending_fixed {
+  border-left: 5px solid #0000C2;
+  border-bottom: 1px solid #0000C2;
+  color: #0000C2; background: #D3FBFF;
+}
+
+dd.example.failed {
+  border-left: 5px solid #C20000;
+  border-bottom: 1px solid #C20000;
+  color: #C20000; background: #FFFBD3;
+}
+
+
+dt.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+dt.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+dt.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+#rspec-header.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+#rspec-header.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+#rspec-header.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+.backtrace {
+  color: #000;
+  font-size: 12px;
+}
+
+a {
+  color: #BE5C00;
+}
+
+/* Ruby code, style similar to vibrant ink */
+.ruby {
+  font-size: 12px;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 0.1em 0 0.2em 0;
+}
+
+.ruby .keyword { color: #FF6600; }
+.ruby .constant { color: #339999; }
+.ruby .attribute { color: white; }
+.ruby .global { color: white; }
+.ruby .module { color: white; }
+.ruby .class { color: white; }
+.ruby .string { color: #66FF00; }
+.ruby .ident { color: white; }
+.ruby .method { color: #FFCC00; }
+.ruby .number { color: white; }
+.ruby .char { color: white; }
+.ruby .comment { color: #9933CC; }
+.ruby .symbol { color: white; }
+.ruby .regex { color: #44B4CC; }
+.ruby .punct { color: white; }
+.ruby .escape { color: white; }
+.ruby .interp { color: white; }
+.ruby .expr { color: white; }
+
+.ruby .offending { background-color: gray; }
+.ruby .linenum {
+  width: 75px;
+  padding: 0.1em 1em 0.2em 0;
+  color: #000000;
+  background-color: #FFFBD3;
+}
+
+  </style>
+</head>
+<body>
+<div class="rspec-report">
+
+<div id="rspec-header">
+  <div id="label">
+    <h1>RSpec Code Examples</h1>
+  </div>
+
+  <div id="display-filters">
+    <input id="passed_checkbox" name="passed_checkbox" type="checkbox" checked onchange="apply_filters()" value="1"> <label for="passed_checkbox">Passed</label>
+    <input id="failed_checkbox" name="failed_checkbox" type="checkbox" checked onchange="apply_filters()" value="2"> <label for="failed_checkbox">Failed</label>
+    <input id="pending_checkbox" name="pending_checkbox" type="checkbox" checked onchange="apply_filters()" value="3"> <label for="pending_checkbox">Pending</label>
+  </div>
+
+  <div id="summary">
+    <p id="totals">&nbsp;</p>
+    <p id="duration">&nbsp;</p>
+  </div>
+</div>
+
+
+<div class="results">
+<div id="div_group_1" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_1" class="passed">Register -&gt; create an Adobe ID with provided email</dt>
+>>>>
+#<Selenium::WebDriver::Element:0x007fe6f8b4ad70>
+#<Selenium::WebDriver::Element:0x007fe6f8b4acf8>
+#<Selenium::WebDriver::Element:0x007fe6f8b4ac80>
+#<Selenium::WebDriver::Element:0x007fe6f8b4ac08>
+#<Selenium::WebDriver::Element:0x007fe6f8b4ab18>
+#<Selenium::WebDriver::Element:0x007fe6f8b4aa50>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a9b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a910>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a870>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a7d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a758>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a668>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a5f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a578>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a460>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a3e8>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a370>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a258>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a190>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a0f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a078>
+#<Selenium::WebDriver::Element:0x007fe6f8b4a000>
+#<Selenium::WebDriver::Element:0x007fe6f8b49f88>
+#<Selenium::WebDriver::Element:0x007fe6f8b49f10>
+#<Selenium::WebDriver::Element:0x007fe6f8b49e98>
+#<Selenium::WebDriver::Element:0x007fe6f8b49e20>
+#<Selenium::WebDriver::Element:0x007fe6f8b49da8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49d30>
+#<Selenium::WebDriver::Element:0x007fe6f8b49cb8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49c40>
+#<Selenium::WebDriver::Element:0x007fe6f8b49bc8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49b50>
+#<Selenium::WebDriver::Element:0x007fe6f8b49ad8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49a60>
+#<Selenium::WebDriver::Element:0x007fe6f8b499e8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49970>
+#<Selenium::WebDriver::Element:0x007fe6f8b498f8>
+#<Selenium::WebDriver::Element:0x007fe6f8b49880>
+#<Selenium::WebDriver::Element:0x007fe6f8b49808>
+#<Selenium::WebDriver::Element:0x007fe6f8b49790>
+#<Selenium::WebDriver::Element:0x007fe6f8b49718>
+#<Selenium::WebDriver::Element:0x007fe6f8b496a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49628>
+#<Selenium::WebDriver::Element:0x007fe6f8b495b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49538>
+#<Selenium::WebDriver::Element:0x007fe6f8b494c0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49448>
+#<Selenium::WebDriver::Element:0x007fe6f8b493d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49358>
+#<Selenium::WebDriver::Element:0x007fe6f8b492e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49268>
+#<Selenium::WebDriver::Element:0x007fe6f8b491f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b49178>
+#<Selenium::WebDriver::Element:0x007fe6f8b49100>
+#<Selenium::WebDriver::Element:0x007fe6f8b49088>
+#<Selenium::WebDriver::Element:0x007fe6f8b49010>
+#<Selenium::WebDriver::Element:0x007fe6f8b48f98>
+#<Selenium::WebDriver::Element:0x007fe6f8b48f20>
+#<Selenium::WebDriver::Element:0x007fe6f8b48ea8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48e30>
+#<Selenium::WebDriver::Element:0x007fe6f8b48db8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48d40>
+#<Selenium::WebDriver::Element:0x007fe6f8b48cc8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48c50>
+#<Selenium::WebDriver::Element:0x007fe6f8b48bd8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48b60>
+#<Selenium::WebDriver::Element:0x007fe6f8b48ae8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48a70>
+#<Selenium::WebDriver::Element:0x007fe6f8b489f8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48980>
+#<Selenium::WebDriver::Element:0x007fe6f8b48908>
+#<Selenium::WebDriver::Element:0x007fe6f8b48890>
+#<Selenium::WebDriver::Element:0x007fe6f8b487c8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48750>
+#<Selenium::WebDriver::Element:0x007fe6f8b486b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b48610>
+#<Selenium::WebDriver::Element:0x007fe6f8b48598>
+#<Selenium::WebDriver::Element:0x007fe6f8b484f8>
+#<Selenium::WebDriver::Element:0x007fe6f8b48480>
+#<Selenium::WebDriver::Element:0x007fe6f8b483e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b48368>
+#<Selenium::WebDriver::Element:0x007fe6f8b48250>
+#<Selenium::WebDriver::Element:0x007fe6f8b48160>
+#<Selenium::WebDriver::Element:0x007fe6f8b48070>
+#<Selenium::WebDriver::Element:0x007fe6f8b47ff8>
+#<Selenium::WebDriver::Element:0x007fe6f8b47e68>
+#<Selenium::WebDriver::Element:0x007fe6f8b5d330>
+#<Selenium::WebDriver::Element:0x007fe6f8b5d218>
+#<Selenium::WebDriver::Element:0x007fe6f8b5d100>
+#<Selenium::WebDriver::Element:0x007fe6f8b5d088>
+#<Selenium::WebDriver::Element:0x007fe6f8b5d010>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cf98>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cef8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ce58>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cde0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cd68>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ccf0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cc78>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cc00>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cb88>
+#<Selenium::WebDriver::Element:0x007fe6f8b5cb10>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ca98>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ca20>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c9a8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c930>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c890>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c818>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c7a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c728>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c6b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c638>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c5c0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c548>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c4d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c458>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c3e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c368>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c2f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c278>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c200>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c188>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c110>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c098>
+#<Selenium::WebDriver::Element:0x007fe6f8b5c020>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bfa8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bf30>
+#<Selenium::WebDriver::Element:0x007fe6f8b5beb8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5be40>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bdc8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bd50>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bcd8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bc60>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bbe8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5bb70>
+#<Selenium::WebDriver::Element:0x007fe6f8b5baf8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ba80>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ba08>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b990>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b918>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b8a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b828>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b7b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b738>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b6c0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b648>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b5d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b558>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b4e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b468>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b3f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b378>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b300>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b288>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b210>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b198>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b120>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b0a8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5b030>
+#<Selenium::WebDriver::Element:0x007fe6f8b5afb8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5af40>
+#<Selenium::WebDriver::Element:0x007fe6f8b5aea0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ae28>
+#<Selenium::WebDriver::Element:0x007fe6f8b5adb0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ad38>
+#<Selenium::WebDriver::Element:0x007fe6f8b5acc0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ac48>
+#<Selenium::WebDriver::Element:0x007fe6f8b5aba8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5ab30>
+#<Selenium::WebDriver::Element:0x007fe6f8b5aa90>
+#<Selenium::WebDriver::Element:0x007fe6f8b5aa18>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a9a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a928>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a8b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a838>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a7c0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a748>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a6d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a658>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a5e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a568>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a4f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a478>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a400>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a388>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a310>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a298>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a220>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a1a8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a130>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a0b8>
+#<Selenium::WebDriver::Element:0x007fe6f8b5a040>
+#<Selenium::WebDriver::Element:0x007fe6f8b59fc8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59f50>
+#<Selenium::WebDriver::Element:0x007fe6f8b59eb0>
+#<Selenium::WebDriver::Element:0x007fe6f8b59e38>
+#<Selenium::WebDriver::Element:0x007fe6f8b59d98>
+#<Selenium::WebDriver::Element:0x007fe6f8b59d20>
+#<Selenium::WebDriver::Element:0x007fe6f8b59ca8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59c30>
+#<Selenium::WebDriver::Element:0x007fe6f8b59bb8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59b40>
+#<Selenium::WebDriver::Element:0x007fe6f8b59ac8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59a50>
+#<Selenium::WebDriver::Element:0x007fe6f8b599d8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59960>
+#<Selenium::WebDriver::Element:0x007fe6f8b598e8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59870>
+#<Selenium::WebDriver::Element:0x007fe6f8b597f8>
+#<Selenium::WebDriver::Element:0x007fe6f8b59780>
+#<Selenium::WebDriver::Element:0x007fe6f8b59708>
+#<Selenium::WebDriver::Element:0x007fe6f8b59690>
+#<Selenium::WebDriver::Element:0x007fe6f8b59618>
+#<Selenium::WebDriver::Element:0x007fe6f8b595a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b59528>
+#<Selenium::WebDriver::Element:0x007fe6f8b594b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b59438>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a7a0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a728>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a6b0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a638>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a5c0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a548>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a4d0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a458>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a3e0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a368>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a2f0>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a278>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a200>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a188>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a110>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a098>
+#<Selenium::WebDriver::Element:0x007fe6f8b7a020>
+<<<<
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_1');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>

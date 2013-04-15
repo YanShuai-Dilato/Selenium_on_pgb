@@ -24,8 +24,6 @@ describe "New an app with paid account" do
     before(:all) do
         init
         @base_url = base_url
-        @driver = browser
-        @new_app_page = NewAppPage.new(@driver)
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
@@ -33,8 +31,9 @@ describe "New an app with paid account" do
     end
 
     before(:each) do
-        @dest_url = path_format_locale("/people/sign_in")
-        @driver.get @dest_url
+        @driver = browser
+        @new_app_page = NewAppPage.new(@driver)
+        @driver.get path_format_locale("/people/sign_in")
     end
 
     after(:each) do

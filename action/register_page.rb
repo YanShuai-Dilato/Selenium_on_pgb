@@ -11,13 +11,6 @@ class RegisterPage
 		@driver = driver
 	end
 
-	def reset_page_content
-		@fields = get_all_fields
-		@fields.each do |field|
-			field.clear
-		end
-	end
-
 	def enter_register_information(user) # user[:email_address]
 		enter_email(user[:email_address])
 		enter_password(user[:password])
@@ -26,6 +19,7 @@ class RegisterPage
 		enter_last_name(user[:last_name])
 		select_country_region(user[:country_region])
 		create_btn.click
+		warning_message.text
 	end
 
 	def have_read_and_agree

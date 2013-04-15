@@ -29,6 +29,13 @@ describe "Register -> create an Adobe ID with provided email" do
 
         @driver.get path_format_locale("/plans/free-adobeid") 
         @driver.switch_to.frame(0)
+        enter_email(@data_user[$lang][:adobe_id_free_001][:id])
+    	enter_password(@data_user[$lang][:adobe_id_free_001][:password])
+    	sign_in_btn.click
+    end
+
+    after(:all) do 
+        @register_page.close_current_page
     end
 
 

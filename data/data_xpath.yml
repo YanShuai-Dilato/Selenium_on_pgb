@@ -61,6 +61,10 @@
     :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
     :I_agree_to_the_terms_above: //*[@id="accept-terms"]
     :payment_information_error: //*[@id="checkout"]/div/p
+    :github_select_a_country: //*[@id="country"]
+    :github_accept_the_adobe_terms: //*[@id="accept_terms"]
+    :github_warning_message: ""
+    :github_complete_my_registration: /html/body/section/div/form/footer/input
 :sign_in_succ_page: 
     :first_app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']

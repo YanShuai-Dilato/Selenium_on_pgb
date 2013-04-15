@@ -288,73 +288,76 @@ a {
     <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_1');</script>
     <script type="text/javascript">makeRed('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <script type="text/javascript">moveProgressBar('20.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">With invalid Adobe ID (Email Address)</span>
-      <span class="duration">0.00040s</span>
+      <span class="duration">4.61979s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:54:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">52</span>
-<span class="linenum">53</span>	<span class="ident">it</span> <span class="punct">&quot;</span><span class="string">With invalid Adobe ID (Email Address)</span><span class="punct">&quot;</span> <span class="keyword">do</span> 
-<span class="offending"><span class="linenum">54</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:email_address</span><span class="punct">]</span> <span class="punct">=</span> <span class="attribute">@data_user</span><span class="punct">[</span><span class="symbol">:invalid_user</span><span class="punct">][</span><span class="symbol">:id</span><span class="punct">]</span></span>
-<span class="linenum">55</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
-<span class="linenum">56</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_enter_a_valid_email</span><span class="punct">]</span></code></pre>
+        <div class="message"><pre>
+expected: &quot;Enter a valid email address.&quot;
+     got: &quot;There is one error below. Fill in the required field.&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:53:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">51</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:email_address</span><span class="punct">]</span> <span class="punct">=</span> <span class="attribute">@data_user</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:invalid_user</span><span class="punct">][</span><span class="symbol">:id</span><span class="punct">]</span>
+<span class="linenum">52</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">53</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_enter_a_valid_email</span><span class="punct">]</span></span>
+<span class="linenum">54</span>	<span class="keyword">end</span></code></pre>
       </div>
     </dd>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <script type="text/javascript">moveProgressBar('40.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">With unmatched password</span>
-      <span class="duration">0.00027s</span>
+      <span class="duration">4.56160s</span>
       <div class="failure" id="failure_2">
-        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./tools/register_dialog.rb:26:in `enter_email'
-./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:61:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">24</span>
-<span class="linenum">25</span>	<span class="keyword">def </span><span class="method">enter_email</span><span class="punct">(</span><span class="ident">email</span><span class="punct">)</span>
-<span class="offending"><span class="linenum">26</span>		<span class="attribute">@field</span> <span class="punct">=</span> <span class="attribute">@driver</span><span class="punct">.</span><span class="ident">find_element</span><span class="punct">(</span><span class="symbol">:xpath</span> <span class="punct">=&gt;</span> <span class="attribute">@data_xpath</span><span class="punct">[</span><span class="symbol">:register_page</span><span class="punct">][</span><span class="symbol">:email_address</span><span class="punct">])</span></span>
-<span class="linenum">27</span>		<span class="ident">clear_and_type</span><span class="punct">(</span><span class="attribute">@field</span><span class="punct">,</span> <span class="ident">email</span><span class="punct">)</span>
-<span class="linenum">28</span>	<span class="keyword">end</span></code></pre>
+        <div class="message"><pre>
+expected: &quot;There is one error below. Fill in the required field.&quot;
+     got: &quot;There are multiple errors below. Fill in required fields.&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:59:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">57</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:retype_pass</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">something_not_the_original_password</span><span class="punct">&quot;</span>
+<span class="linenum">58</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">59</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_retyped_password_unmatched</span><span class="punct">]</span></span>
+<span class="linenum">60</span>	<span class="keyword">end</span></code></pre>
       </div>
     </dd>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <script type="text/javascript">moveProgressBar('60.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">With invalid First Name</span>
-      <span class="duration">0.00020s</span>
+      <span class="duration">4.72222s</span>
       <div class="failure" id="failure_3">
-        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./tools/register_dialog.rb:26:in `enter_email'
-./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:67:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">24</span>
-<span class="linenum">25</span>	<span class="keyword">def </span><span class="method">enter_email</span><span class="punct">(</span><span class="ident">email</span><span class="punct">)</span>
-<span class="offending"><span class="linenum">26</span>		<span class="attribute">@field</span> <span class="punct">=</span> <span class="attribute">@driver</span><span class="punct">.</span><span class="ident">find_element</span><span class="punct">(</span><span class="symbol">:xpath</span> <span class="punct">=&gt;</span> <span class="attribute">@data_xpath</span><span class="punct">[</span><span class="symbol">:register_page</span><span class="punct">][</span><span class="symbol">:email_address</span><span class="punct">])</span></span>
-<span class="linenum">27</span>		<span class="ident">clear_and_type</span><span class="punct">(</span><span class="attribute">@field</span><span class="punct">,</span> <span class="ident">email</span><span class="punct">)</span>
-<span class="linenum">28</span>	<span class="keyword">end</span></code></pre>
+        <div class="message"><pre>
+expected: &quot;First name contains invalid characters.&quot;
+     got: &quot;There are multiple errors below. Fill in required fields.&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:65:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">63</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:first_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">64</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">65</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_first_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">66</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('80.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid Last Name</span>
+      <span class="duration">4.71956s</span>
+      <div class="failure" id="failure_4">
+        <div class="message"><pre>
+expected: &quot;Last name contains invalid characters.&quot;
+     got: &quot;There are multiple errors below. Fill in required fields.&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:71:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">69</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:last_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">70</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">71</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_last_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">72</span>	<span class="keyword">end</span></code></pre>
       </div>
     </dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">With invalid Last Name</span>
-      <span class="duration">0.00020s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./tools/register_dialog.rb:26:in `enter_email'
-./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:73:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">24</span>
-<span class="linenum">25</span>	<span class="keyword">def </span><span class="method">enter_email</span><span class="punct">(</span><span class="ident">email</span><span class="punct">)</span>
-<span class="offending"><span class="linenum">26</span>		<span class="attribute">@field</span> <span class="punct">=</span> <span class="attribute">@driver</span><span class="punct">.</span><span class="ident">find_element</span><span class="punct">(</span><span class="symbol">:xpath</span> <span class="punct">=&gt;</span> <span class="attribute">@data_xpath</span><span class="punct">[</span><span class="symbol">:register_page</span><span class="punct">][</span><span class="symbol">:email_address</span><span class="punct">])</span></span>
-<span class="linenum">27</span>		<span class="ident">clear_and_type</span><span class="punct">(</span><span class="attribute">@field</span><span class="punct">,</span> <span class="ident">email</span><span class="punct">)</span>
-<span class="linenum">28</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-  </dl>
-</div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>20.41680 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 4 failures";</script>
-</div>
-</div>
-</body>
-</html>

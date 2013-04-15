@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RSpec results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-size: 80%;
+  }
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+
+function addClass(element_id, classname) {
+  document.getElementById(element_id).className += (" " + classname);
+}
+
+function removeClass(element_id, classname) {
+  var elem = document.getElementById(element_id);
+  var classlist = elem.className.replace(classname,'');
+  elem.className = classlist;
+}
+
+function moveProgressBar(percentDone) {
+  document.getElementById("rspec-header").style.width = percentDone +"%";
+}
+
+function makeRed(element_id) {
+  removeClass(element_id, 'passed');
+  removeClass(element_id, 'not_implemented');
+  addClass(element_id,'failed');
+}
+
+function makeYellow(element_id) {
+  var elem = document.getElementById(element_id);
+  if (elem.className.indexOf("failed") == -1) {  // class doesn't includes failed
+    if (elem.className.indexOf("not_implemented") == -1) { // class doesn't include not_implemented
+      removeClass(element_id, 'passed');
+      addClass(element_id,'not_implemented');
+    }
+  }
+}
+
+function apply_filters() {
+  var passed_filter = document.getElementById('passed_checkbox').checked;
+  var failed_filter = document.getElementById('failed_checkbox').checked;
+  var pending_filter = document.getElementById('pending_checkbox').checked;
+
+  assign_display_style("example passed", passed_filter);
+  assign_display_style("example failed", failed_filter);
+  assign_display_style("example not_implemented", pending_filter);
+
+  assign_display_style_for_group("example_group passed", passed_filter);
+  assign_display_style_for_group("example_group not_implemented", pending_filter, pending_filter || passed_filter);
+  assign_display_style_for_group("example_group failed", failed_filter, failed_filter || pending_filter || passed_filter);
+}
+
+function get_display_style(display_flag) {
+  var style_mode = 'none';
+  if (display_flag == true) {
+    style_mode = 'block';
+  }
+  return style_mode;
+}
+
+function assign_display_style(classname, display_flag) {
+  var style_mode = get_display_style(display_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    elems[i].style.display = style_mode;
+  }
+}
+
+function assign_display_style_for_group(classname, display_flag, subgroup_flag) {
+  var display_style_mode = get_display_style(display_flag);
+  var subgroup_style_mode = get_display_style(subgroup_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    var style_mode = display_style_mode;
+    if ((display_flag != subgroup_flag) && (elems[i].getElementsByTagName('dt')[0].innerHTML.indexOf(", ") != -1)) {
+      elems[i].style.display = subgroup_style_mode;
+    } else {
+      elems[i].style.display = display_style_mode;
+    }
+  }
+}
+
+    // ]]>
+  </script>
+  <style type="text/css">
+#rspec-header {
+  background: #65C400; color: #fff; height: 4em;
+}
+
+.rspec-report h1 {
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  font-size: 1.8em;
+  position: absolute;
+}
+
+#label {
+  float:left;
+}
+
+#display-filters {
+  float:left;
+  padding: 28px 0 0 40%;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+}
+
+#summary {
+  float:right;
+  padding: 5px 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  text-align: right;
+}
+
+#summary p {
+  margin: 0 0 0 2px;
+}
+
+#summary #totals {
+  font-size: 1.2em;
+}
+
+.example_group {
+  margin: 0 10px 5px;
+  background: #fff;
+}
+
+dl {
+  margin: 0; padding: 0 0 5px;
+  font: normal 11px "Lucida Grande", Helvetica, sans-serif;
+}
+
+dt {
+  padding: 3px;
+  background: #65C400;
+  color: #fff;
+  font-weight: bold;
+}
+
+dd {
+  margin: 5px 0 5px 5px;
+  padding: 3px 3px 3px 18px;
+}
+
+dd .duration {
+  padding-left: 5px;
+  text-align: right;
+  right: 0px;
+  float:right;
+}
+
+dd.example.passed {
+  border-left: 5px solid #65C400;
+  border-bottom: 1px solid #65C400;
+  background: #DBFFB4; color: #3D7700;
+}
+
+dd.example.not_implemented {
+  border-left: 5px solid #FAF834;
+  border-bottom: 1px solid #FAF834;
+  background: #FCFB98; color: #131313;
+}
+
+dd.example.pending_fixed {
+  border-left: 5px solid #0000C2;
+  border-bottom: 1px solid #0000C2;
+  color: #0000C2; background: #D3FBFF;
+}
+
+dd.example.failed {
+  border-left: 5px solid #C20000;
+  border-bottom: 1px solid #C20000;
+  color: #C20000; background: #FFFBD3;
+}
+
+
+dt.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+dt.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+dt.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+#rspec-header.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+#rspec-header.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+#rspec-header.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+.backtrace {
+  color: #000;
+  font-size: 12px;
+}
+
+a {
+  color: #BE5C00;
+}
+
+/* Ruby code, style similar to vibrant ink */
+.ruby {
+  font-size: 12px;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 0.1em 0 0.2em 0;
+}
+
+.ruby .keyword { color: #FF6600; }
+.ruby .constant { color: #339999; }
+.ruby .attribute { color: white; }
+.ruby .global { color: white; }
+.ruby .module { color: white; }
+.ruby .class { color: white; }
+.ruby .string { color: #66FF00; }
+.ruby .ident { color: white; }
+.ruby .method { color: #FFCC00; }
+.ruby .number { color: white; }
+.ruby .char { color: white; }
+.ruby .comment { color: #9933CC; }
+.ruby .symbol { color: white; }
+.ruby .regex { color: #44B4CC; }
+.ruby .punct { color: white; }
+.ruby .escape { color: white; }
+.ruby .interp { color: white; }
+.ruby .expr { color: white; }
+
+.ruby .offending { background-color: gray; }
+.ruby .linenum {
+  width: 75px;
+  padding: 0.1em 1em 0.2em 0;
+  color: #000000;
+  background-color: #FFFBD3;
+}
+
+  </style>
+</head>
+<body>
+<div class="rspec-report">
+
+<div id="rspec-header">
+  <div id="label">
+    <h1>RSpec Code Examples</h1>
+  </div>
+
+  <div id="display-filters">
+    <input id="passed_checkbox" name="passed_checkbox" type="checkbox" checked onchange="apply_filters()" value="1"> <label for="passed_checkbox">Passed</label>
+    <input id="failed_checkbox" name="failed_checkbox" type="checkbox" checked onchange="apply_filters()" value="2"> <label for="failed_checkbox">Failed</label>
+    <input id="pending_checkbox" name="pending_checkbox" type="checkbox" checked onchange="apply_filters()" value="3"> <label for="pending_checkbox">Pending</label>
+  </div>
+
+  <div id="summary">
+    <p id="totals">&nbsp;</p>
+    <p id="duration">&nbsp;</p>
+  </div>
+</div>
+
+
+<div class="results">
+<div id="div_group_1" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_1" class="passed">Register -&gt; create an Adobe ID with provided email</dt>
+>>>>>
+{:home_page=>{:home=>"//*[@id='main-nav']/a[2]", :docs=>"//*[@id='main-nav']/a[3]", :blog=>"//*[@id='main-nav']/a[4]", :support=>"//*[@id='main-nav']/a[5]", :help=>"//*[@id='footer-navigation']/nav/a[4]", :sign_in=>"//*[@id='account-nav']/a[1]", :register=>"//*[@id='account-nav']/a[2]", :get_started=>"//*[@id='get-started']", :check_our_faq=>"//*[@id='faq-link']/a", :free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :learn_more=>"//*[@id='what-is-phonegap']/section/p[3]/a", :find_out_more=>"//*[@id='pg-logo']", :terms_of_user=>"//*[@id='terms-and-conditions']/p[3]/a[1]", :p_p_c=>"//*[@id='terms-and-conditions']/p[3]/a[2]"}, :sign_in_page=>{:adobe_id=>"//*[@id='person_email']", :password=>"//*[@id='person_password']", :btn_sign_in=>"//*[@id='new_person']/footer/input", :btn_sign_in_with_github=>"//*[@id='github-btn']", :register_a_new_account=>nil, :i_forgot_my_password_link=>"//*[@id='sign-in-page']/fieldset[2]/a[2]", :didnt_rec_conf_instru_link=>"/html/body/section/div/section/fieldset[2]/a[3]", :error_message=>"//html/body/p[@class='alert']", :forgot_password_email=>"//*[@id='person_email']", :forgot_password_reset_btn=>"/html/body/section/div/div/form/p[2]/input", :resend_confirm_instru_email=>"//*[@id='person_email']", :resend_confirm_instru_btn=>"//*[@id='new_person']/p[2]/input", :tips_or_warnings=>"/html/body/p"}, :sign_in_github_page=>{:username_or_email=>"//*[@id='login_field']", :password=>"//*[@id='password']", :sign_in=>"//*[@id='login']/form/div[3]/input[4]"}, :register_page=>{:free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :adobe_id_btn=>"//*[@id=\"adobeId-btn\"]", :github_btn=>"//*[@id=\"github-btn\"]", :adobe_id_input=>"//*[@id=\"username\"]", :password_input=>"//*[@id=\"password\"]", :stay_sign_in_checkbox=>"//*[@id=\"remember_me\"]", :create_adobe_id_btn=>"//*[@id=\"create_account\"]", :sign_in_btn=>"//*[@id=\"sign_in\"]", :warning_message=>"/html/body/div[2]/form/header/p", :do_not_match_warning=>"//*[@id=\"login\"]/header/p[1]", :email_address=>"//*[@id=\"email_address\"]", :password=>"//*[@id=\"password\"]", :retype_password=>"//*[@id=\"retype_password\"]", :first_name=>"//*[@id=\"first_name\"]", :last_name=>"//*[@id=\"last_name\"]", :country_region=>"//*[@id=\"country\"]", :stay_informed=>"//*[@id=\"consent\"]", :back_btn=>"//*[@id=\"back\"]", :create_btn=>"//*[@id=\"create_account\"]", :accept_the_term=>"//*[@id=\"consent\"]", :accept_btn=>"//*[@id=\"confirm\"]", :choose_pay_plan_9_99=>"//*[@id=\"monthly-plan-btn\"]", :I_agree_to_the_terms_above=>"//*[@id=\"accept-terms\"]", :payment_information_error=>"//*[@id=\"checkout\"]/div/p", :github_select_a_country=>"//*[@id=\"country\"]", :github_accept_the_adobe_terms=>"//*[@id=\"accept_terms\"]", :github_warning_message=>"", :github_complete_my_registration=>"/html/body/section/div/form/footer/input"}, :sign_in_succ_page=>{:first_app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :new_app_btn=>"//*[@id='new-app-btn']", :opensource_repo=>"//*[@id='new-app']/form/div[1]/a[1]", :private_repo=>"//*[@id='new-app']/form/div[1]/a[2]", :paste_git_repo=>"//*[@id='new-app']/form/div[2]/div[1]/div/input", :ui_select=>"/html/body/section/div/div/div/form/div[2]/div/div/span[2]", :not_a_valid_github_url=>"/html/body/section/div/div/div/form/div[2]/div/div/span", :upload_a_zip=>"//*[@id='app_archive']", :connect_your_github_account=>"/html/body/section/div/div/div/form/div[2]/a", :upgrade_now=>nil, :close=>"//*[@id='new-app']/form/div[1]/a[3]", :enable_debug=>"/html/body/section/div/div/section[3]/article/footer/label", :enable_hydration=>"/html/body/section/div/div/section[3]/article/footer/label[2]", :ready_to_build=>"/html/body/section/div/div/section[3]/article/footer/a", :delete=>"/html/body/section/div/div/section[3]/article/footer/form/a", :the_new_app=>"/html/body/section/div/div/section[3]/article/section/a/h1"}, :app_brief_detail=>{:app_title=>"/html/body/section/div/div/section[3]/article/section/div/h1", :app_description=>"/html/body/section/div/div/section[3]/article/section/div[2]", :app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :app_version=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd", :app_source=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a"}, :app_detail_page=>{:builds=>{:update_code=>nil, :rebuild_all=>nil}, :collaborators=>{:add_collaborator=>nil, :email_address=>nil, :role_tester=>nil, :role_dev=>nil, :cancel=>nil, :add=>nil, :edit=>nil, :delete=>nil, :save=>nil}, :settings=>{:basic=>{:select_file=>nil, :upload=>nil, :enable_debug=>nil, :enable_hydration=>nil, :only_approved_colla_can_dnld=>nil}, :configuration=>{:select_file=>"//*[@id='app_icon_file']", :title=>"//*[@id=\"app_title\"]", :package=>"//*[@id=\"app_package\"]", :version=>"//*[@id=\"app_version\"]", :configuration=>"//*[@id=\"app_phonegap_version\"]", :description=>"//*[@id=\"app_desc\"]", :save=>"/html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input"}, :danger_zone=>{:delete_this_app=>"//*[@id=\"delete-app\"]"}}}, :docs_page=>{:header_home=>"//*[@id='main-nav']/a[2]", :header_docs=>"//*[@id='main-nav']/a[3]", :header_blog=>"//*[@id='main-nav']/a[4]", :header_support=>"//*[@id='main-nav']/a[5]", :documentation=>"//*[@id='page-content']/div/article/header/h1", :preparing_your_application=>"//*[@id='docs-menu']/a[1]"}, :blog_page=>{:recent_blog_posts=>"//*[@id='page-content']/div/article/header/h1", :read_the_rest=>nil}}
+<<<<<
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_1');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
+    <script type="text/javascript">moveProgressBar('20.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid Adobe ID (Email Address)</span>
+      <span class="duration">4.61695s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>
+expected: &quot;Enter a valid email address.&quot;
+     got: &quot;ok&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:53:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">51</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:email_address</span><span class="punct">]</span> <span class="punct">=</span> <span class="attribute">@data_user</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:invalid_user</span><span class="punct">][</span><span class="symbol">:id</span><span class="punct">]</span>
+<span class="linenum">52</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">53</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_enter_a_valid_email</span><span class="punct">]</span></span>
+<span class="linenum">54</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+>>>>>
+{:home_page=>{:home=>"//*[@id='main-nav']/a[2]", :docs=>"//*[@id='main-nav']/a[3]", :blog=>"//*[@id='main-nav']/a[4]", :support=>"//*[@id='main-nav']/a[5]", :help=>"//*[@id='footer-navigation']/nav/a[4]", :sign_in=>"//*[@id='account-nav']/a[1]", :register=>"//*[@id='account-nav']/a[2]", :get_started=>"//*[@id='get-started']", :check_our_faq=>"//*[@id='faq-link']/a", :free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :learn_more=>"//*[@id='what-is-phonegap']/section/p[3]/a", :find_out_more=>"//*[@id='pg-logo']", :terms_of_user=>"//*[@id='terms-and-conditions']/p[3]/a[1]", :p_p_c=>"//*[@id='terms-and-conditions']/p[3]/a[2]"}, :sign_in_page=>{:adobe_id=>"//*[@id='person_email']", :password=>"//*[@id='person_password']", :btn_sign_in=>"//*[@id='new_person']/footer/input", :btn_sign_in_with_github=>"//*[@id='github-btn']", :register_a_new_account=>nil, :i_forgot_my_password_link=>"//*[@id='sign-in-page']/fieldset[2]/a[2]", :didnt_rec_conf_instru_link=>"/html/body/section/div/section/fieldset[2]/a[3]", :error_message=>"//html/body/p[@class='alert']", :forgot_password_email=>"//*[@id='person_email']", :forgot_password_reset_btn=>"/html/body/section/div/div/form/p[2]/input", :resend_confirm_instru_email=>"//*[@id='person_email']", :resend_confirm_instru_btn=>"//*[@id='new_person']/p[2]/input", :tips_or_warnings=>"/html/body/p"}, :sign_in_github_page=>{:username_or_email=>"//*[@id='login_field']", :password=>"//*[@id='password']", :sign_in=>"//*[@id='login']/form/div[3]/input[4]"}, :register_page=>{:free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :adobe_id_btn=>"//*[@id=\"adobeId-btn\"]", :github_btn=>"//*[@id=\"github-btn\"]", :adobe_id_input=>"//*[@id=\"username\"]", :password_input=>"//*[@id=\"password\"]", :stay_sign_in_checkbox=>"//*[@id=\"remember_me\"]", :create_adobe_id_btn=>"//*[@id=\"create_account\"]", :sign_in_btn=>"//*[@id=\"sign_in\"]", :warning_message=>"/html/body/div[2]/form/header/p", :do_not_match_warning=>"//*[@id=\"login\"]/header/p[1]", :email_address=>"//*[@id=\"email_address\"]", :password=>"//*[@id=\"password\"]", :retype_password=>"//*[@id=\"retype_password\"]", :first_name=>"//*[@id=\"first_name\"]", :last_name=>"//*[@id=\"last_name\"]", :country_region=>"//*[@id=\"country\"]", :stay_informed=>"//*[@id=\"consent\"]", :back_btn=>"//*[@id=\"back\"]", :create_btn=>"//*[@id=\"create_account\"]", :accept_the_term=>"//*[@id=\"consent\"]", :accept_btn=>"//*[@id=\"confirm\"]", :choose_pay_plan_9_99=>"//*[@id=\"monthly-plan-btn\"]", :I_agree_to_the_terms_above=>"//*[@id=\"accept-terms\"]", :payment_information_error=>"//*[@id=\"checkout\"]/div/p", :github_select_a_country=>"//*[@id=\"country\"]", :github_accept_the_adobe_terms=>"//*[@id=\"accept_terms\"]", :github_warning_message=>"", :github_complete_my_registration=>"/html/body/section/div/form/footer/input"}, :sign_in_succ_page=>{:first_app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :new_app_btn=>"//*[@id='new-app-btn']", :opensource_repo=>"//*[@id='new-app']/form/div[1]/a[1]", :private_repo=>"//*[@id='new-app']/form/div[1]/a[2]", :paste_git_repo=>"//*[@id='new-app']/form/div[2]/div[1]/div/input", :ui_select=>"/html/body/section/div/div/div/form/div[2]/div/div/span[2]", :not_a_valid_github_url=>"/html/body/section/div/div/div/form/div[2]/div/div/span", :upload_a_zip=>"//*[@id='app_archive']", :connect_your_github_account=>"/html/body/section/div/div/div/form/div[2]/a", :upgrade_now=>nil, :close=>"//*[@id='new-app']/form/div[1]/a[3]", :enable_debug=>"/html/body/section/div/div/section[3]/article/footer/label", :enable_hydration=>"/html/body/section/div/div/section[3]/article/footer/label[2]", :ready_to_build=>"/html/body/section/div/div/section[3]/article/footer/a", :delete=>"/html/body/section/div/div/section[3]/article/footer/form/a", :the_new_app=>"/html/body/section/div/div/section[3]/article/section/a/h1"}, :app_brief_detail=>{:app_title=>"/html/body/section/div/div/section[3]/article/section/div/h1", :app_description=>"/html/body/section/div/div/section[3]/article/section/div[2]", :app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :app_version=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd", :app_source=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a"}, :app_detail_page=>{:builds=>{:update_code=>nil, :rebuild_all=>nil}, :collaborators=>{:add_collaborator=>nil, :email_address=>nil, :role_tester=>nil, :role_dev=>nil, :cancel=>nil, :add=>nil, :edit=>nil, :delete=>nil, :save=>nil}, :settings=>{:basic=>{:select_file=>nil, :upload=>nil, :enable_debug=>nil, :enable_hydration=>nil, :only_approved_colla_can_dnld=>nil}, :configuration=>{:select_file=>"//*[@id='app_icon_file']", :title=>"//*[@id=\"app_title\"]", :package=>"//*[@id=\"app_package\"]", :version=>"//*[@id=\"app_version\"]", :configuration=>"//*[@id=\"app_phonegap_version\"]", :description=>"//*[@id=\"app_desc\"]", :save=>"/html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input"}, :danger_zone=>{:delete_this_app=>"//*[@id=\"delete-app\"]"}}}, :docs_page=>{:header_home=>"//*[@id='main-nav']/a[2]", :header_docs=>"//*[@id='main-nav']/a[3]", :header_blog=>"//*[@id='main-nav']/a[4]", :header_support=>"//*[@id='main-nav']/a[5]", :documentation=>"//*[@id='page-content']/div/article/header/h1", :preparing_your_application=>"//*[@id='docs-menu']/a[1]"}, :blog_page=>{:recent_blog_posts=>"//*[@id='page-content']/div/article/header/h1", :read_the_rest=>nil}}
+<<<<<
+    <script type="text/javascript">moveProgressBar('40.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With unmatched password</span>
+      <span class="duration">3.67331s</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:59:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">57</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:retype_pass</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">something_not_the_original_password</span><span class="punct">&quot;</span>
+<span class="linenum">58</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">59</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_retyped_password_unmatched</span><span class="punct">]</span></span>
+<span class="linenum">60</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+>>>>>
+{:home_page=>{:home=>"//*[@id='main-nav']/a[2]", :docs=>"//*[@id='main-nav']/a[3]", :blog=>"//*[@id='main-nav']/a[4]", :support=>"//*[@id='main-nav']/a[5]", :help=>"//*[@id='footer-navigation']/nav/a[4]", :sign_in=>"//*[@id='account-nav']/a[1]", :register=>"//*[@id='account-nav']/a[2]", :get_started=>"//*[@id='get-started']", :check_our_faq=>"//*[@id='faq-link']/a", :free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :learn_more=>"//*[@id='what-is-phonegap']/section/p[3]/a", :find_out_more=>"//*[@id='pg-logo']", :terms_of_user=>"//*[@id='terms-and-conditions']/p[3]/a[1]", :p_p_c=>"//*[@id='terms-and-conditions']/p[3]/a[2]"}, :sign_in_page=>{:adobe_id=>"//*[@id='person_email']", :password=>"//*[@id='person_password']", :btn_sign_in=>"//*[@id='new_person']/footer/input", :btn_sign_in_with_github=>"//*[@id='github-btn']", :register_a_new_account=>nil, :i_forgot_my_password_link=>"//*[@id='sign-in-page']/fieldset[2]/a[2]", :didnt_rec_conf_instru_link=>"/html/body/section/div/section/fieldset[2]/a[3]", :error_message=>"//html/body/p[@class='alert']", :forgot_password_email=>"//*[@id='person_email']", :forgot_password_reset_btn=>"/html/body/section/div/div/form/p[2]/input", :resend_confirm_instru_email=>"//*[@id='person_email']", :resend_confirm_instru_btn=>"//*[@id='new_person']/p[2]/input", :tips_or_warnings=>"/html/body/p"}, :sign_in_github_page=>{:username_or_email=>"//*[@id='login_field']", :password=>"//*[@id='password']", :sign_in=>"//*[@id='login']/form/div[3]/input[4]"}, :register_page=>{:free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :adobe_id_btn=>"//*[@id=\"adobeId-btn\"]", :github_btn=>"//*[@id=\"github-btn\"]", :adobe_id_input=>"//*[@id=\"username\"]", :password_input=>"//*[@id=\"password\"]", :stay_sign_in_checkbox=>"//*[@id=\"remember_me\"]", :create_adobe_id_btn=>"//*[@id=\"create_account\"]", :sign_in_btn=>"//*[@id=\"sign_in\"]", :warning_message=>"/html/body/div[2]/form/header/p", :do_not_match_warning=>"//*[@id=\"login\"]/header/p[1]", :email_address=>"//*[@id=\"email_address\"]", :password=>"//*[@id=\"password\"]", :retype_password=>"//*[@id=\"retype_password\"]", :first_name=>"//*[@id=\"first_name\"]", :last_name=>"//*[@id=\"last_name\"]", :country_region=>"//*[@id=\"country\"]", :stay_informed=>"//*[@id=\"consent\"]", :back_btn=>"//*[@id=\"back\"]", :create_btn=>"//*[@id=\"create_account\"]", :accept_the_term=>"//*[@id=\"consent\"]", :accept_btn=>"//*[@id=\"confirm\"]", :choose_pay_plan_9_99=>"//*[@id=\"monthly-plan-btn\"]", :I_agree_to_the_terms_above=>"//*[@id=\"accept-terms\"]", :payment_information_error=>"//*[@id=\"checkout\"]/div/p", :github_select_a_country=>"//*[@id=\"country\"]", :github_accept_the_adobe_terms=>"//*[@id=\"accept_terms\"]", :github_warning_message=>"", :github_complete_my_registration=>"/html/body/section/div/form/footer/input"}, :sign_in_succ_page=>{:first_app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :new_app_btn=>"//*[@id='new-app-btn']", :opensource_repo=>"//*[@id='new-app']/form/div[1]/a[1]", :private_repo=>"//*[@id='new-app']/form/div[1]/a[2]", :paste_git_repo=>"//*[@id='new-app']/form/div[2]/div[1]/div/input", :ui_select=>"/html/body/section/div/div/div/form/div[2]/div/div/span[2]", :not_a_valid_github_url=>"/html/body/section/div/div/div/form/div[2]/div/div/span", :upload_a_zip=>"//*[@id='app_archive']", :connect_your_github_account=>"/html/body/section/div/div/div/form/div[2]/a", :upgrade_now=>nil, :close=>"//*[@id='new-app']/form/div[1]/a[3]", :enable_debug=>"/html/body/section/div/div/section[3]/article/footer/label", :enable_hydration=>"/html/body/section/div/div/section[3]/article/footer/label[2]", :ready_to_build=>"/html/body/section/div/div/section[3]/article/footer/a", :delete=>"/html/body/section/div/div/section[3]/article/footer/form/a", :the_new_app=>"/html/body/section/div/div/section[3]/article/section/a/h1"}, :app_brief_detail=>{:app_title=>"/html/body/section/div/div/section[3]/article/section/div/h1", :app_description=>"/html/body/section/div/div/section[3]/article/section/div[2]", :app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :app_version=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd", :app_source=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a"}, :app_detail_page=>{:builds=>{:update_code=>nil, :rebuild_all=>nil}, :collaborators=>{:add_collaborator=>nil, :email_address=>nil, :role_tester=>nil, :role_dev=>nil, :cancel=>nil, :add=>nil, :edit=>nil, :delete=>nil, :save=>nil}, :settings=>{:basic=>{:select_file=>nil, :upload=>nil, :enable_debug=>nil, :enable_hydration=>nil, :only_approved_colla_can_dnld=>nil}, :configuration=>{:select_file=>"//*[@id='app_icon_file']", :title=>"//*[@id=\"app_title\"]", :package=>"//*[@id=\"app_package\"]", :version=>"//*[@id=\"app_version\"]", :configuration=>"//*[@id=\"app_phonegap_version\"]", :description=>"//*[@id=\"app_desc\"]", :save=>"/html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input"}, :danger_zone=>{:delete_this_app=>"//*[@id=\"delete-app\"]"}}}, :docs_page=>{:header_home=>"//*[@id='main-nav']/a[2]", :header_docs=>"//*[@id='main-nav']/a[3]", :header_blog=>"//*[@id='main-nav']/a[4]", :header_support=>"//*[@id='main-nav']/a[5]", :documentation=>"//*[@id='page-content']/div/article/header/h1", :preparing_your_application=>"//*[@id='docs-menu']/a[1]"}, :blog_page=>{:recent_blog_posts=>"//*[@id='page-content']/div/article/header/h1", :read_the_rest=>nil}}
+<<<<<
+    <script type="text/javascript">moveProgressBar('60.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid First Name</span>
+      <span class="duration">3.79057s</span>
+      <div class="failure" id="failure_3">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:65:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">63</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:first_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">64</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">65</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_first_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">66</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+>>>>>
+{:home_page=>{:home=>"//*[@id='main-nav']/a[2]", :docs=>"//*[@id='main-nav']/a[3]", :blog=>"//*[@id='main-nav']/a[4]", :support=>"//*[@id='main-nav']/a[5]", :help=>"//*[@id='footer-navigation']/nav/a[4]", :sign_in=>"//*[@id='account-nav']/a[1]", :register=>"//*[@id='account-nav']/a[2]", :get_started=>"//*[@id='get-started']", :check_our_faq=>"//*[@id='faq-link']/a", :free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :learn_more=>"//*[@id='what-is-phonegap']/section/p[3]/a", :find_out_more=>"//*[@id='pg-logo']", :terms_of_user=>"//*[@id='terms-and-conditions']/p[3]/a[1]", :p_p_c=>"//*[@id='terms-and-conditions']/p[3]/a[2]"}, :sign_in_page=>{:adobe_id=>"//*[@id='person_email']", :password=>"//*[@id='person_password']", :btn_sign_in=>"//*[@id='new_person']/footer/input", :btn_sign_in_with_github=>"//*[@id='github-btn']", :register_a_new_account=>nil, :i_forgot_my_password_link=>"//*[@id='sign-in-page']/fieldset[2]/a[2]", :didnt_rec_conf_instru_link=>"/html/body/section/div/section/fieldset[2]/a[3]", :error_message=>"//html/body/p[@class='alert']", :forgot_password_email=>"//*[@id='person_email']", :forgot_password_reset_btn=>"/html/body/section/div/div/form/p[2]/input", :resend_confirm_instru_email=>"//*[@id='person_email']", :resend_confirm_instru_btn=>"//*[@id='new_person']/p[2]/input", :tips_or_warnings=>"/html/body/p"}, :sign_in_github_page=>{:username_or_email=>"//*[@id='login_field']", :password=>"//*[@id='password']", :sign_in=>"//*[@id='login']/form/div[3]/input[4]"}, :register_page=>{:free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :adobe_id_btn=>"//*[@id=\"adobeId-btn\"]", :github_btn=>"//*[@id=\"github-btn\"]", :adobe_id_input=>"//*[@id=\"username\"]", :password_input=>"//*[@id=\"password\"]", :stay_sign_in_checkbox=>"//*[@id=\"remember_me\"]", :create_adobe_id_btn=>"//*[@id=\"create_account\"]", :sign_in_btn=>"//*[@id=\"sign_in\"]", :warning_message=>"/html/body/div[2]/form/header/p", :do_not_match_warning=>"//*[@id=\"login\"]/header/p[1]", :email_address=>"//*[@id=\"email_address\"]", :password=>"//*[@id=\"password\"]", :retype_password=>"//*[@id=\"retype_password\"]", :first_name=>"//*[@id=\"first_name\"]", :last_name=>"//*[@id=\"last_name\"]", :country_region=>"//*[@id=\"country\"]", :stay_informed=>"//*[@id=\"consent\"]", :back_btn=>"//*[@id=\"back\"]", :create_btn=>"//*[@id=\"create_account\"]", :accept_the_term=>"//*[@id=\"consent\"]", :accept_btn=>"//*[@id=\"confirm\"]", :choose_pay_plan_9_99=>"//*[@id=\"monthly-plan-btn\"]", :I_agree_to_the_terms_above=>"//*[@id=\"accept-terms\"]", :payment_information_error=>"//*[@id=\"checkout\"]/div/p", :github_select_a_country=>"//*[@id=\"country\"]", :github_accept_the_adobe_terms=>"//*[@id=\"accept_terms\"]", :github_warning_message=>"", :github_complete_my_registration=>"/html/body/section/div/form/footer/input"}, :sign_in_succ_page=>{:first_app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :new_app_btn=>"//*[@id='new-app-btn']", :opensource_repo=>"//*[@id='new-app']/form/div[1]/a[1]", :private_repo=>"//*[@id='new-app']/form/div[1]/a[2]", :paste_git_repo=>"//*[@id='new-app']/form/div[2]/div[1]/div/input", :ui_select=>"/html/body/section/div/div/div/form/div[2]/div/div/span[2]", :not_a_valid_github_url=>"/html/body/section/div/div/div/form/div[2]/div/div/span", :upload_a_zip=>"//*[@id='app_archive']", :connect_your_github_account=>"/html/body/section/div/div/div/form/div[2]/a", :upgrade_now=>nil, :close=>"//*[@id='new-app']/form/div[1]/a[3]", :enable_debug=>"/html/body/section/div/div/section[3]/article/footer/label", :enable_hydration=>"/html/body/section/div/div/section[3]/article/footer/label[2]", :ready_to_build=>"/html/body/section/div/div/section[3]/article/footer/a", :delete=>"/html/body/section/div/div/section[3]/article/footer/form/a", :the_new_app=>"/html/body/section/div/div/section[3]/article/section/a/h1"}, :app_brief_detail=>{:app_title=>"/html/body/section/div/div/section[3]/article/section/div/h1", :app_description=>"/html/body/section/div/div/section[3]/article/section/div[2]", :app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :app_version=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd", :app_source=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a"}, :app_detail_page=>{:builds=>{:update_code=>nil, :rebuild_all=>nil}, :collaborators=>{:add_collaborator=>nil, :email_address=>nil, :role_tester=>nil, :role_dev=>nil, :cancel=>nil, :add=>nil, :edit=>nil, :delete=>nil, :save=>nil}, :settings=>{:basic=>{:select_file=>nil, :upload=>nil, :enable_debug=>nil, :enable_hydration=>nil, :only_approved_colla_can_dnld=>nil}, :configuration=>{:select_file=>"//*[@id='app_icon_file']", :title=>"//*[@id=\"app_title\"]", :package=>"//*[@id=\"app_package\"]", :version=>"//*[@id=\"app_version\"]", :configuration=>"//*[@id=\"app_phonegap_version\"]", :description=>"//*[@id=\"app_desc\"]", :save=>"/html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input"}, :danger_zone=>{:delete_this_app=>"//*[@id=\"delete-app\"]"}}}, :docs_page=>{:header_home=>"//*[@id='main-nav']/a[2]", :header_docs=>"//*[@id='main-nav']/a[3]", :header_blog=>"//*[@id='main-nav']/a[4]", :header_support=>"//*[@id='main-nav']/a[5]", :documentation=>"//*[@id='page-content']/div/article/header/h1", :preparing_your_application=>"//*[@id='docs-menu']/a[1]"}, :blog_page=>{:recent_blog_posts=>"//*[@id='page-content']/div/article/header/h1", :read_the_rest=>nil}}
+<<<<<
+    <script type="text/javascript">moveProgressBar('80.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid Last Name</span>
+      <span class="duration">3.86060s</span>
+      <div class="failure" id="failure_4">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:71:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">69</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:last_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">70</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">71</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_last_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">72</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+>>>>>
+{:home_page=>{:home=>"//*[@id='main-nav']/a[2]", :docs=>"//*[@id='main-nav']/a[3]", :blog=>"//*[@id='main-nav']/a[4]", :support=>"//*[@id='main-nav']/a[5]", :help=>"//*[@id='footer-navigation']/nav/a[4]", :sign_in=>"//*[@id='account-nav']/a[1]", :register=>"//*[@id='account-nav']/a[2]", :get_started=>"//*[@id='get-started']", :check_our_faq=>"//*[@id='faq-link']/a", :free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :learn_more=>"//*[@id='what-is-phonegap']/section/p[3]/a", :find_out_more=>"//*[@id='pg-logo']", :terms_of_user=>"//*[@id='terms-and-conditions']/p[3]/a[1]", :p_p_c=>"//*[@id='terms-and-conditions']/p[3]/a[2]"}, :sign_in_page=>{:adobe_id=>"//*[@id='person_email']", :password=>"//*[@id='person_password']", :btn_sign_in=>"//*[@id='new_person']/footer/input", :btn_sign_in_with_github=>"//*[@id='github-btn']", :register_a_new_account=>nil, :i_forgot_my_password_link=>"//*[@id='sign-in-page']/fieldset[2]/a[2]", :didnt_rec_conf_instru_link=>"/html/body/section/div/section/fieldset[2]/a[3]", :error_message=>"//html/body/p[@class='alert']", :forgot_password_email=>"//*[@id='person_email']", :forgot_password_reset_btn=>"/html/body/section/div/div/form/p[2]/input", :resend_confirm_instru_email=>"//*[@id='person_email']", :resend_confirm_instru_btn=>"//*[@id='new_person']/p[2]/input", :tips_or_warnings=>"/html/body/p"}, :sign_in_github_page=>{:username_or_email=>"//*[@id='login_field']", :password=>"//*[@id='password']", :sign_in=>"//*[@id='login']/form/div[3]/input[4]"}, :register_page=>{:free_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[1]/a/small", :paid_plan=>"//*[@id='plans-table']/tbody/tr[4]/td[2]/a", :contact_us=>"//*[@id='plans-table']/tbody/tr[5]/td/a", :adobe_id_btn=>"//*[@id=\"adobeId-btn\"]", :github_btn=>"//*[@id=\"github-btn\"]", :adobe_id_input=>"//*[@id=\"username\"]", :password_input=>"//*[@id=\"password\"]", :stay_sign_in_checkbox=>"//*[@id=\"remember_me\"]", :create_adobe_id_btn=>"//*[@id=\"create_account\"]", :sign_in_btn=>"//*[@id=\"sign_in\"]", :warning_message=>"/html/body/div[2]/form/header/p", :do_not_match_warning=>"//*[@id=\"login\"]/header/p[1]", :email_address=>"//*[@id=\"email_address\"]", :password=>"//*[@id=\"password\"]", :retype_password=>"//*[@id=\"retype_password\"]", :first_name=>"//*[@id=\"first_name\"]", :last_name=>"//*[@id=\"last_name\"]", :country_region=>"//*[@id=\"country\"]", :stay_informed=>"//*[@id=\"consent\"]", :back_btn=>"//*[@id=\"back\"]", :create_btn=>"//*[@id=\"create_account\"]", :accept_the_term=>"//*[@id=\"consent\"]", :accept_btn=>"//*[@id=\"confirm\"]", :choose_pay_plan_9_99=>"//*[@id=\"monthly-plan-btn\"]", :I_agree_to_the_terms_above=>"//*[@id=\"accept-terms\"]", :payment_information_error=>"//*[@id=\"checkout\"]/div/p", :github_select_a_country=>"//*[@id=\"country\"]", :github_accept_the_adobe_terms=>"//*[@id=\"accept_terms\"]", :github_warning_message=>"", :github_complete_my_registration=>"/html/body/section/div/form/footer/input"}, :sign_in_succ_page=>{:first_app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :new_app_btn=>"//*[@id='new-app-btn']", :opensource_repo=>"//*[@id='new-app']/form/div[1]/a[1]", :private_repo=>"//*[@id='new-app']/form/div[1]/a[2]", :paste_git_repo=>"//*[@id='new-app']/form/div[2]/div[1]/div/input", :ui_select=>"/html/body/section/div/div/div/form/div[2]/div/div/span[2]", :not_a_valid_github_url=>"/html/body/section/div/div/div/form/div[2]/div/div/span", :upload_a_zip=>"//*[@id='app_archive']", :connect_your_github_account=>"/html/body/section/div/div/div/form/div[2]/a", :upgrade_now=>nil, :close=>"//*[@id='new-app']/form/div[1]/a[3]", :enable_debug=>"/html/body/section/div/div/section[3]/article/footer/label", :enable_hydration=>"/html/body/section/div/div/section[3]/article/footer/label[2]", :ready_to_build=>"/html/body/section/div/div/section[3]/article/footer/a", :delete=>"/html/body/section/div/div/section[3]/article/footer/form/a", :the_new_app=>"/html/body/section/div/div/section[3]/article/section/a/h1"}, :app_brief_detail=>{:app_title=>"/html/body/section/div/div/section[3]/article/section/div/h1", :app_description=>"/html/body/section/div/div/section[3]/article/section/div[2]", :app_id=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl/dd", :app_version=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd", :app_source=>"/html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a"}, :app_detail_page=>{:builds=>{:update_code=>nil, :rebuild_all=>nil}, :collaborators=>{:add_collaborator=>nil, :email_address=>nil, :role_tester=>nil, :role_dev=>nil, :cancel=>nil, :add=>nil, :edit=>nil, :delete=>nil, :save=>nil}, :settings=>{:basic=>{:select_file=>nil, :upload=>nil, :enable_debug=>nil, :enable_hydration=>nil, :only_approved_colla_can_dnld=>nil}, :configuration=>{:select_file=>"//*[@id='app_icon_file']", :title=>"//*[@id=\"app_title\"]", :package=>"//*[@id=\"app_package\"]", :version=>"//*[@id=\"app_version\"]", :configuration=>"//*[@id=\"app_phonegap_version\"]", :description=>"//*[@id=\"app_desc\"]", :save=>"/html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input"}, :danger_zone=>{:delete_this_app=>"//*[@id=\"delete-app\"]"}}}, :docs_page=>{:header_home=>"//*[@id='main-nav']/a[2]", :header_docs=>"//*[@id='main-nav']/a[3]", :header_blog=>"//*[@id='main-nav']/a[4]", :header_support=>"//*[@id='main-nav']/a[5]", :documentation=>"//*[@id='page-content']/div/article/header/h1", :preparing_your_application=>"//*[@id='docs-menu']/a[1]"}, :blog_page=>{:recent_blog_posts=>"//*[@id='page-content']/div/article/header/h1", :read_the_rest=>nil}}
+<<<<<
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <script type="text/javascript">moveProgressBar('120.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid Adobe ID (Email Address)</span>
+      <span class="duration">0.00008s</span>
+      <div class="failure" id="failure_6">
+        <div class="message"><pre>
+expected: &quot;Enter a valid email address.&quot;
+     got: &quot;ok&quot;
+
+(compared using eql?)
+</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:53:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">51</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:email_address</span><span class="punct">]</span> <span class="punct">=</span> <span class="attribute">@data_user</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:invalid_user</span><span class="punct">][</span><span class="symbol">:id</span><span class="punct">]</span>
+<span class="linenum">52</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">53</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$lang</span><span class="punct">][</span><span class="symbol">:PGB_enter_a_valid_email</span><span class="punct">]</span></span>
+<span class="linenum">54</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('140.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With unmatched password</span>
+      <span class="duration">0.00006s</span>
+      <div class="failure" id="failure_7">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:59:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">57</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:retype_pass</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">something_not_the_original_password</span><span class="punct">&quot;</span>
+<span class="linenum">58</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">59</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_retyped_password_unmatched</span><span class="punct">]</span></span>
+<span class="linenum">60</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('160.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid First Name</span>
+      <span class="duration">0.00004s</span>
+      <div class="failure" id="failure_8">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:65:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">63</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:first_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">64</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">65</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_first_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">66</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('180.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">With invalid Last Name</span>
+      <span class="duration">0.00005s</span>
+      <div class="failure" id="failure_9">
+        <div class="message"><pre>undefined method `[]' for nil:NilClass</pre></div>
+        <div class="backtrace"><pre>./testcases/register_create_adobe_id_rspec.rb:71:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">69</span>		<span class="attribute">@user_info</span><span class="punct">[</span><span class="symbol">:last_name</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">ſЊџЛяѨ҉ҝҾ</span><span class="punct">&quot;</span>
+<span class="linenum">70</span>		<span class="attribute">@warnings</span> <span class="punct">=</span> <span class="attribute">@register_page</span><span class="punct">.</span><span class="ident">enter_register_information</span><span class="punct">(</span><span class="attribute">@user_info</span><span class="punct">)</span>
+<span class="offending"><span class="linenum">71</span>		<span class="attribute">@warnings</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">eql</span> <span class="attribute">@data_str</span><span class="punct">[</span><span class="global">$leng</span><span class="punct">][</span><span class="symbol">:PGB_last_name_invalid</span><span class="punct">]</span></span>
+<span class="linenum">72</span>	<span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('200.0');</script>
