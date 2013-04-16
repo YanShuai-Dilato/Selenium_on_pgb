@@ -82,22 +82,3 @@ describe "New an app with paid account" do
     end    
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
