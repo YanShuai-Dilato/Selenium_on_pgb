@@ -40,7 +40,20 @@ describe "Register -> change plan (Free -> Paid)" do
 		@sign_in_page.close_current_browser
 	end
 
-	
+	it "upgrade" do 
+		new_btn.click
+		private_tab.click
+		upgrade_link.click
+		starting_at_9_99.click
+		@driver.switch_to.frame(0)
+# sign in again, bug ?
+		adobe_id.send_keys()
+		adobe_id_password.send_keys()
+		sign_in_btn.click
+		
+# error, no redirect to other page
+
+	end
 
 
 end
