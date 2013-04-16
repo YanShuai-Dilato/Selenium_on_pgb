@@ -2,11 +2,11 @@
 
 :en_US: &id001 
     :adobe_id_free_001:
-        :id: "pgbtesting.002@gmail.com"
-        :password: "pgbtesting001"
+        :id: "dil45216+test_free_001@adobetest.com"
+        :password: "password"
     :adobe_id_free_002:
-        :id: "pgbtesting.004@gmail.com"
-        :password: "pgbtesting001"
+        :id: "dil45216+test_free_002@adobetest.com"
+        :password: "password"
     :adobe_id_free_connected_github_001: 
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
@@ -14,17 +14,20 @@
         :id: ""
         :password: ""
     :github_id_only:
-        :id: "pgbtesting.008@gmail.com"
-        :password: "pgbtesting001"
+        :id: "dil45216+test_free_003@adobetest.com"
+        :password: "abcd1234"
     :github_id_already_connected:
         :id: ""
         :password: ""
     :github_id_already_disconnected:
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
-    :adobe_id_free_paid:
-        :id: ""
-        :password: ""
+    :adobe_id_for_upgrade_purpose_support_area: # Japan, with one private app within it. 
+        :id: "dil45216+test_paid_003@adobetest.com"
+        :password: "password"
+    :adobe_id_for_upgrade_purpose_unsupport_area: # Singapore, with one private app within it. 
+        :id: "dil45216+test_paid_001@adobetest.com"
+        :password: "password"
     :adobe_id_paid:
         :id: ""
         :password: ""

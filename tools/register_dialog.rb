@@ -15,6 +15,19 @@ module RegisterDialog
 	def adobe_id_btn()	@data_xpath[:register_page][:adobe_id_btn]	end
 	def github_btn() @data_xpath[:register_page][:github_btn] end
 
+	def start_at_9_99_btn 
+		@driver.find_element(:xpath => @data_xpath[:register_page][:start_at_9_99])
+	end
+	def choose_payplan_9_99_link
+		@driver.find_element(:xpath => @data_xpath[:register_page][:choose_pay_plan_9_99])
+	end
+	def payment_continue_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:payment_continue_btn])
+	end
+	def i_agree_to_the_terms_above
+		@driver.find_element(:xpath => @data_xpath[:register_page][:I_agree_to_the_terms_above])
+	end
+
 	def github_login_field_username
 		@driver.find_element(:xpath => "//*[@id='login_field']")
 	end

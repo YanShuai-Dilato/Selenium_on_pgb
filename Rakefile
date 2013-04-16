@@ -7,8 +7,8 @@ require 'rspec/core/rake_task'
 if defined? RSpec
 
     desc "Run the demo testcases of new_app_rspec"
-    RSpec::Core::RakeTask.new(:register_create_adobe_id) do |t|
-      t.pattern = "./testcases/register_create_adobe_id_rspec.rb"  
+    RSpec::Core::RakeTask.new(:register_upgrade_plan_rspec) do |t|
+      t.pattern = "./testcases/register_upgrade_plan_rspec.rb"  
       #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
@@ -52,4 +52,4 @@ if defined? RSpec
 
 end
 
-task :default => :register_create_adobe_id
+task :default => :register_upgrade_plan_rspec

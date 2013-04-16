@@ -17,7 +17,7 @@ module NewAppDialog
     def private_tab()           
         @private_tab = @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:private_repo])    
     end
-    def textbox_paste_a_git_repo()        
+    def paste_git_repo()        
         @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:paste_git_repo])    
     end
     def ui_select
@@ -35,7 +35,7 @@ module NewAppDialog
     def upload_a_zip()          
         @upload_a_zip = @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:upload_a_zip])    
     end
-    def upgrade_now_link
+    def upgrade_link
         @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:upgrade_now])
     end
     def close_browser()         

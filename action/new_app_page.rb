@@ -31,15 +31,24 @@ class NewAppPage
         @exists_or_not = @new_btn_ctrl_count > 0
     end
 
+    def private_app_no?
+        new_app_btn.click 
+        private_tab.click
+        @disabled_or_not_upload =  upload_a_zip.attribute('disabled') # true/false
+        @disabled_or_not_paste = paste_git_repo.attribute('disabled') # true/false
+        if @disabled_or_not_paste && @disabled_or_not_upload
+            return true
+        end
+        return false
+    end
+
     def new_app_with_zip
         new_app_btn.click 
         private_tab.click
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip)
-
-        @disabled_or_not_upload =  upload_a_zip.attribute('disabled') # true/false
-        @disabled_or_not_paste = paste_git_repo.attribute('disabled') # true/false
-        if @disabled_or_not_upload && disabled_or_not_paste
+        
+        if private_app_no?
             return false
         end
         upload_a_zip.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))

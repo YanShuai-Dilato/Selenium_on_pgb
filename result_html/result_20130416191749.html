@@ -284,17 +284,33 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Register -&gt; create an Adobe ID with provided email</dt>
-{:email_address=>"pgbtesting.007@g990mail.com", :password=>"pgbtesting001", :retype_pass=>"pgbtesting001", :first_name=>"\u017F\u040A\u045F\u041B^&*!@#", :last_name=>"testing", :country_region=>"US"}
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">With invalid First Name</span><span class='duration'>2.10028s</span></dd>
-{:email_address=>"pgbtesting.007@g990mail.com", :password=>"pgbtesting001", :retype_pass=>"pgbtesting001", :first_name=>"pgb", :last_name=>"\u017F\u040A\u045F\u041B^&*!@#", :country_region=>"US"}
+  <dt id="example_group_1" class="passed">Register -&gt; upgrade plan (Free -&gt; Paid)</dt>
+current_url -> http://loc.build.phonegap.com/apps
+data_url[:sign_in_successfully] -> http://loc.build.phonegap.com/apps
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_1');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">With invalid Last Name</span><span class='duration'>7.11334s</span></dd>
+    <dd class="example failed">
+      <span class="failed_spec_name">with supported area Adobe ID</span>
+      <span class="duration">74.78019s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=\&quot;CardHolder\&quot;]&quot;}</pre></div>
+        <div class="backtrace"><pre>[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/driver_component.js:8284:in `FirefoxDriver.prototype.findElementInternal_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/driver_component.js:8293:in `FirefoxDriver.prototype.findElement'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/command_processor.js:10275:in `DelayedCommand.prototype.executeInternal_/h'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/command_processor.js:10280:in `DelayedCommand.prototype.executeInternal_'
+[remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/command_processor.js:10220:in `DelayedCommand.prototype.execute/<'
+./tools/anywareContainer.rb:48:in `enter_CardHolder'
+./tools/anywareContainer.rb:13:in `fill_Payment_Card'
+./testcases/register_upgrade_plan_rspec.rb:80:in `block (2 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">8282</span><span class="comment"># Couldn't get snippet for [remote server] file:///var/folders/js/3ctff3wj0rs4w1qwd7d4g3gc0000gn/T/webdriver-profile20130416-2058-139ne4o/extensions/fxdriver@googlecode.com/components/driver_component.js</span></code></pre>
+      </div>
+    </dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>34.35858 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "2 examples, 0 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>74.82169 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "1 example, 1 failure";</script>
 </div>
 </div>
 </body>

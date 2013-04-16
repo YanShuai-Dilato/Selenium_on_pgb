@@ -19,5 +19,14 @@ module BaseEnv
             Selenium::WebDriver.for $browser 
         end
     end  
+
+    def isElementPreset?(type, selector)
+        begin
+            @driver.find_element(type, selector)
+            true
+        rescue Selenium::WebDriver::Error::NoSuchElementError
+            false
+        end
+    end
  
 end

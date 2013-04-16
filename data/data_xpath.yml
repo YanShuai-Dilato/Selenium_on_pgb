@@ -47,7 +47,7 @@
     :sign_in_btn: //*[@id="sign_in"]
     :warning_message: /html/body/div[2]/form/header/p
     :do_not_match_warning: //*[@id="login"]/header/p[1]
-    :email_address: //*[@id="email_address"]
+    :email_address: //*[@id="username"]
     :password: //*[@id="password"]
     :retype_password: //*[@id="retype_password"]
     :first_name: //*[@id="first_name"]
@@ -59,12 +59,35 @@
     :accept_the_term: //*[@id="consent"]
     :accept_btn: //*[@id="confirm"]
     :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
+    :start_at_9_99: //*[@id="plans-table"]/tbody/tr[4]/td[2]/a
+    :payment_continue_btn: //*[@id="validate-btn"]
     :I_agree_to_the_terms_above: //*[@id="accept-terms"]
     :payment_information_error: //*[@id="checkout"]/div/p
     :github_select_a_country: //*[@id="country"]
     :github_accept_the_adobe_terms: //*[@id="accept_terms"]
     :github_warning_message: ""
     :github_complete_my_registration: /html/body/section/div/form/footer/input
+:anywareContainer:
+    :CardHolder: //*[@id="CardHolder"]
+    :CardNumber1: //*[@id="CardNumber1"]
+    :CardNumber2: //*[@id="CardNumber2"]
+    :ExpirationDateMonth: //*[@id="ExpirationDateMonth"]
+    :ExpirationDateYear: //*[@id="ExpirationDateYear"]
+    :BillingLastName: //*[@id="BillingLastName"]
+    :BillingFirstName: //*[@id="BillingFirstName"]
+    :BillingLastNamePronounce: //*[@id="BillingLastNamePronounce"]
+    :BillingFirstNamePronounce: //*[@id="BillingFirstNamePronounce"]
+    :BillingCompany: //*[@id="BillingCompany"]
+    :BillingCompanyPronounce: //*[@id="BillingCompanyPronounce"]
+    :BillingDepartment: //*[@id="BillingDepartment"]
+    :BillingZip1: //*[@id="BillingZip1"]
+    :BillingZip2: //*[@id="BillingZip2"]
+    :BillingState: //*[@id="BillingState"]
+    :BillingCity: //*[@id="BillingCity"]
+    :BillingAddressFour: //*[@id="BillingAddressFour"]
+    :BillingAddressOne: //*[@id="BillingAddressOne"]
+    :BillingAddressTwo: //*[@id="BillingAddressTwo"]
+    :BillingPhone: //*[@id="BillingPhone"]
 :sign_in_succ_page: 
     :first_app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']
@@ -82,6 +105,9 @@
     :ready_to_build: /html/body/section/div/div/section[3]/article/footer/a
     :delete: /html/body/section/div/div/section[3]/article/footer/form/a
     :the_new_app: /html/body/section/div/div/section[3]/article/section/a/h1
+:edit_account_page:
+    :delete_my_account: //*[@id="delete-account-btn"]
+    :yes_delete_my_account: //*[@id="delete-account-btn"]
 :app_brief_detail:
     :app_title: /html/body/section/div/div/section[3]/article/section/div/h1
     :app_description: /html/body/section/div/div/section[3]/article/section/div[2]

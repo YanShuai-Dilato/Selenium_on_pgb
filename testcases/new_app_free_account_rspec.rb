@@ -24,6 +24,7 @@ describe "New an app with free account" do
     before(:all) do
         puts "before all outer"
         init
+        @base_url = base_url
         @new_app_page = nil
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
