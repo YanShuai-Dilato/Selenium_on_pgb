@@ -100,7 +100,6 @@ module RegisterDialog
 		countries.each do |el| 
 		    if(el.attribute("value") == region)
 		        el.click
-		        puts el.text
 		        break
 		    end
 		end

@@ -28,21 +28,58 @@ describe "New an app with paid account" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
-    end
 
-    before(:each) do
         @driver = browser
         @new_app_page = NewAppPage.new(@driver)
         @driver.get path_format_locale("/people/sign_in")
+        SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
+                                                      @data_user[$lang][:adobe_id_free_002][:password])
+        sleep 5
     end
 
-    after(:each) do
+    after(:all) do
         @new_app_page.close_current_browser
     end
 
-    context "" do 
+    it "create the first private app by uploading a .zip file" do 
+        @driver.navigate.refresh
+        sleep 5
+        @app_count_before = @new_app_page.get_existing_app_num
+        @first_app_id_before = @new_app_page.get_first_app_id
+        puts "+app_count_before: #{@app_count_before}"
+        puts "+first_app_id_before: #{@first_app_id_before}"
 
+        @new_app_page.new_app_with_zip
+
+        @driver.navigate.refresh
+        sleep 5 
+            
+        @app_count_after = @new_app_page.get_existing_app_num
+        @first_app_id_after = @new_app_page.get_first_app_id
+        puts "+app_count_after: #{@app_count_after}"
+        puts "+first_app_id_after: #{@first_app_id_after}"
+
+        @app_count_after.should_not eql @app_count_before 
+        @first_app_id_after.should_not eql @first_app_id_before
     end
+
+    it "create the second private app successfully"  do 
+        @app_count_before = @new_app_page.get_existing_app_num
+        @first_app_id_before = @new_app_page.get_first_app_id
+        puts "+app_count_before: #{@app_count_before}"
+        puts "+first_app_id_before: #{@first_app_id_before}"
+
+        @return_value = @new_app_page.new_app_with_zip # button & select disabled. 
+           
+        if (!@return_value) 
+            @app_count_after = @new_app_page.get_existing_app_num
+            @first_app_id_after = @new_app_page.get_first_app_id
+            puts "+app_count_after: #{@app_count_after}"
+            puts "+first_app_id_after: #{@first_app_id_after}"
+        end
+
+        @first_app_id_after.should_not eql @first_app_id_before
+    end    
 
 end
 

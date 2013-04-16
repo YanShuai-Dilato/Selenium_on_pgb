@@ -28,7 +28,7 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @user_info = {
-			email_address:  "pgbtesting.007@gmail.com",
+			email_address:  "pgbtesting.009@g990mail.com",
 			password:		"pgbtesting001",
 			retype_pass:    "pgbtesting001",
 			first_name:		"pgb",
@@ -46,34 +46,45 @@ describe "Register -> create an Adobe ID with provided email" do
 	after(:all) do 
 		@register_page.close_current_page
 	end
-=begin
+
 	it "With invalid Adobe ID (Email Address)" do 
-		@user_info[:email_address] = @data_user[$lang][:invalid_user][:id]
-		@warnings = @register_page.enter_register_information(@user_info)
+	    @user = @user_info.clone
+		@user[:email_address] = @data_user[$lang][:invalid_user][:id]
+		@warnings = @register_page.enter_register_information(@user)
+		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_enter_a_valid_email]
 	end
 
 	it "With unmatched password" do 
-		@user_info[:retype_pass] = "something_not_the_original_password"
-		@warnings = @register_page.enter_register_information(@user_info)
+	    @user = @user_info.clone
+		@user[:retype_pass] = "something_not_the_original_password"
+		@warnings = @register_page.enter_register_information(@user)
+		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_retyped_password_unmatched]
 	end
 
 	it "With invalid First Name" do 
-		@user_info[:first_name] = "ſЊџЛ^&*!@#яѨ҉ҝҾ"
-		@warnings = @register_page.enter_register_information(@user_info)
+	    @user = @user_info.clone
+		@user[:first_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
+		puts @user
+		@warnings = @register_page.enter_register_information(@user)
 		@warnings.should eql @data_str[$lang][:PGB_first_name_invalid]
 	end
 
 	it "With invalid Last Name" do 
-		@user_info[:last_name] = "ſЊџЛя&*&*^Ѩ҉ҝҾ"
-		@warnings = @register_page.enter_register_information(@user_info)
+	    @user = @user_info.clone
+		@user[:last_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
+		puts @user
+		@warnings = @register_page.enter_register_information(@user)
+		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_last_name_invalid]
 	end
-=end
+
 	it "Without a country selected" do 
-		@user_info[:country_region] ="US"
-		@warnings = @register_page.enter_register_information(@user_info)
+	    @user = @user_info.clone
+		@user[:country_region] =""
+		@warnings = @register_page.enter_register_information(@user)
+		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
 	end
 =begin

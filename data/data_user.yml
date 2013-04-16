@@ -22,11 +22,14 @@
     :github_id_already_disconnected:
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
+    :adobe_id_free_paid:
+        :id: ""
+        :password: ""
     :adobe_id_paid:
         :id: ""
         :password: ""
     :invalid_user: 
-        :id: "ſЊџЛяѨ҉ҝҾ@ado&*$%#be.com"
+        :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format: 
         :id: "ĊęĮĿōŘťſЊ"

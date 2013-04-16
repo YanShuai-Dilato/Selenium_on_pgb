@@ -1,7 +1,3 @@
-# Sign in with a free account
-# upgrade plan through the link below new-private tab
-# than select the paid plan 
-
 #encoding: utf-8
 
 require 'rubygems'
@@ -15,7 +11,7 @@ require_relative "../action/register_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
 
-describe "Register -> create an Adobe ID with provided email" do 
+describe "Register -> change plan (Free -> Paid)" do 
 	include RegisterDialog
     include SignInGithubDialog
 	include BaseEnv
@@ -31,7 +27,20 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
+        @base_url = base_url
+        @driver = browser
+        @new_app_page = NewAppPage.new(@driver)
+        @driver.get path_format_locale("/people/sign_in")
+        SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_paid][:id],
+                                                      @data_user[$lang][:adobe_id_free_paid][:password])
+        sleep 5
 	end
+
+	after(:all) do 
+		@sign_in_page.close_current_browser
+	end
+
+	
 
 
 end

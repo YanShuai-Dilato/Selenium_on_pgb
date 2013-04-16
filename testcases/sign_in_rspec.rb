@@ -58,7 +58,8 @@ describe "Sign in" do
 
         it "invalid email or password" do
             @driver.get path_format_locale("/people/sign_in")
-            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user][:id],@data_user[$lang][:invalid_user][:password])
+            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user][:id],
+                                                @data_user[$lang][:invalid_user][:password])
             sleep 5
             #error message should match the expecation
             error_message_box.text.should == @data_str[$lang][:not_found_in_database]

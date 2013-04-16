@@ -35,6 +35,9 @@ module NewAppDialog
     def upload_a_zip()          
         @upload_a_zip = @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:upload_a_zip])    
     end
+    def upgrade_now_link
+        @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:upgrade_now])
+    end
     def close_browser()         
         @driver.quit    
     end

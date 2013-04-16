@@ -15,21 +15,32 @@
     :PGB_first_name_invalid: "First name contains invalid characters."
     :PGB_last_name_invalid: "Last name contains invalid characters."
     :PGB_alert_you_must_select_a_country: "You must select a country"
-    :PGB_the_Adobe_ID_password_not_match: "The Adobe ID and password do not match. Please try again."
+    :PGB_existing_registration_found: "Existing Registration Found"
     :payment_information_error: "Our payment services our experiencing technical difficulty. Please try refreshing the page. If problems continue, please try again later. We apologize for the inconvenience."
     :PGB_you_mush_agree_to_the_terms_of_service: "You must agree to the terms of service."
     :passwords_send_instructions: "You will receive an email with instructions on recovering your PhoneGap Build account in a few minutes."
     :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
-    :PGB_email_not_found: 
-    :PGB_email_already_confirmed: 
-    :PGB_enter_a_valid_email: 
-    :PGB_retyped_password_unmatched: 
-    :PGB_first_name_invalid: 
-    :PGB_last_name_invalid: 
-    :PGB_alert_you_must_select_a_country: 
-    :you_mush_agree_to_the_terms_of_service:
+    :PGB_email_not_found: "1 erreur : Email introuvable"
+    :PGB_paste_git_repo: "coller le référentiel .git"
+    :PGB_find_existing_repo_or_paste_git_repo: "rechercher un référentiel existant / coller le référentiel .git"
+    :PGB_the_first_matched_item: "pgbtesting005/PhoneGap-Build-Sample"
+    :PGB_no_match_item: "[missing 'fr_FR.new-app/no-match' translation]"
+    :PGB_connect_your_github_account: "Connectez votre compte Github"
+    :PGB_not_a_valid_github_url: "Pas une URL Github valide"
+    :PGB_Adobe_id_and_password_not_match: ""
+    :PGB_email_not_found: "1 erreur : Email introuvable"
+    :PGB_email_already_confirmed: "1 erreur : Email n'a pas été confirmé"
+    :PGB_enter_a_valid_email: "Entrez une adresse électronique valide."
+    :PGB_retyped_password_unmatched: "L’erreur ci-dessous a été détectée. Remplissez le champ obligatoire."
+    :PGB_without_selecting_country: "L’erreur ci-dessous a été détectée. Remplissez le champ obligatoire."
+    :PGB_first_name_invalid: "Le prénom contient des caractères non valides."
+    :PGB_last_name_invalid: "Le nom contient des caractères non valides."
+    :PGB_alert_you_must_select_a_country: " "
+    :PGB_existing_registration_found: "Enregistrement existant trouvé"
+    :payment_information_error: " "
+    :PGB_you_mush_agree_to_the_terms_of_service: "Vous devez accepter les conditions d'utilisation "
     :passwords_send_instructions: "Dans quelques minutes, vous allez recevoir un message électronique contenant des instructions pour récupérer votre compte PhoneGap Build." 
     :confirmations_send_instructions: "Dans quelques minutes, vous allez recevoir un message électronique contenant des instructions pour confirmer votre compte."
 :ja_JP:

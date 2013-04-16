@@ -10,7 +10,7 @@ if defined? RSpec
     RSpec::Core::RakeTask.new(:register_create_adobe_id) do |t|
       t.pattern = "./testcases/register_create_adobe_id_rspec.rb"  
       #output to html file with timeframe
-      # t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
+      t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
     #init config
       ENV['BROWSER'] = 'firefox'

@@ -285,83 +285,12 @@ a {
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">Register -&gt; create an Adobe ID with provided email</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_1');</script>
-    <script type="text/javascript">makeRed('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('20.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">With invalid Adobe ID (Email Address)</span>
-      <span class="duration">4.50085s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>undefined method `text' for &quot;/html/body/div[2]/form/header/p&quot;:String</pre></div>
-        <div class="backtrace"><pre>./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:52:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">20</span>		<span class="ident">select_country_region</span><span class="punct">(</span><span class="ident">user</span><span class="punct">[</span><span class="symbol">:country_region</span><span class="punct">])</span>
-<span class="linenum">21</span>		<span class="ident">create_btn</span><span class="punct">.</span><span class="ident">click</span>
-<span class="offending"><span class="linenum">22</span>		<span class="ident">warning_message</span><span class="punct">.</span><span class="ident">text</span></span>
-<span class="linenum">23</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('40.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">With unmatched password</span>
-      <span class="duration">4.43388s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>undefined method `text' for &quot;/html/body/div[2]/form/header/p&quot;:String</pre></div>
-        <div class="backtrace"><pre>./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:58:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">20</span>		<span class="ident">select_country_region</span><span class="punct">(</span><span class="ident">user</span><span class="punct">[</span><span class="symbol">:country_region</span><span class="punct">])</span>
-<span class="linenum">21</span>		<span class="ident">create_btn</span><span class="punct">.</span><span class="ident">click</span>
-<span class="offending"><span class="linenum">22</span>		<span class="ident">warning_message</span><span class="punct">.</span><span class="ident">text</span></span>
-<span class="linenum">23</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('60.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">With invalid First Name</span>
-      <span class="duration">4.53971s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>undefined method `text' for &quot;/html/body/div[2]/form/header/p&quot;:String</pre></div>
-        <div class="backtrace"><pre>./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:64:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">20</span>		<span class="ident">select_country_region</span><span class="punct">(</span><span class="ident">user</span><span class="punct">[</span><span class="symbol">:country_region</span><span class="punct">])</span>
-<span class="linenum">21</span>		<span class="ident">create_btn</span><span class="punct">.</span><span class="ident">click</span>
-<span class="offending"><span class="linenum">22</span>		<span class="ident">warning_message</span><span class="punct">.</span><span class="ident">text</span></span>
-<span class="linenum">23</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('80.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">With invalid Last Name</span>
-      <span class="duration">4.38943s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>undefined method `text' for &quot;/html/body/div[2]/form/header/p&quot;:String</pre></div>
-        <div class="backtrace"><pre>./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:70:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">20</span>		<span class="ident">select_country_region</span><span class="punct">(</span><span class="ident">user</span><span class="punct">[</span><span class="symbol">:country_region</span><span class="punct">])</span>
-<span class="linenum">21</span>		<span class="ident">create_btn</span><span class="punct">.</span><span class="ident">click</span>
-<span class="offending"><span class="linenum">22</span>		<span class="ident">warning_message</span><span class="punct">.</span><span class="ident">text</span></span>
-<span class="linenum">23</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">Without a country selected</span>
-      <span class="duration">4.45085s</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>undefined method `text' for &quot;/html/body/div[2]/form/header/p&quot;:String</pre></div>
-        <div class="backtrace"><pre>./action/register_page.rb:22:in `enter_register_information'
-./testcases/register_create_adobe_id_rspec.rb:76:in `block (2 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">20</span>		<span class="ident">select_country_region</span><span class="punct">(</span><span class="ident">user</span><span class="punct">[</span><span class="symbol">:country_region</span><span class="punct">])</span>
-<span class="linenum">21</span>		<span class="ident">create_btn</span><span class="punct">.</span><span class="ident">click</span>
-<span class="offending"><span class="linenum">22</span>		<span class="ident">warning_message</span><span class="punct">.</span><span class="ident">text</span></span>
-<span class="linenum">23</span>	<span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">Without a country selected</span><span class='duration'>5.65678s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>60.03710 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "5 examples, 5 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>39.16873 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "1 example, 0 failures";</script>
 </div>
 </div>
 </body>
