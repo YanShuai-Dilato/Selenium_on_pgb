@@ -52,4 +52,4 @@ if defined? RSpec
 
 end
 
-task :default => :register_upgrade_plan_rspec
+task :default => :allspecs

@@ -80,7 +80,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_last_name_invalid]
 	end
 
-	it "Without a country selected" do 
+	it "Without a country selected" do
 	    @user = @user_info.clone
 		@user[:country_region] =""
 		@warnings = @register_page.enter_register_information(@user)

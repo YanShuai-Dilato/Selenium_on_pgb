@@ -24,6 +24,9 @@ module RegisterDialog
 	def payment_continue_btn
 		@driver.find_element(:xpath => @data_xpath[:register_page][:payment_continue_btn])
 	end
+	def payment_confirm_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:payment_confirm_btn])
+	end
 	def i_agree_to_the_terms_above
 		@driver.find_element(:xpath => @data_xpath[:register_page][:I_agree_to_the_terms_above])
 	end

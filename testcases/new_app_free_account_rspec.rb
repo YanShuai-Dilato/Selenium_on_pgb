@@ -13,7 +13,6 @@ require_relative "../tools/new_app_dialog"
 require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
-
 describe "New an app with free account" do
     include NewAppDialog
     include AppBriefDialog

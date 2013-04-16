@@ -40,8 +40,8 @@ describe "Sign in" do
     context "with GitHub ID" do
         it "sign in successfully" do 
             @driver.get path_format_locale("/people/sign_in")
-            @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id][:id],
-                                                 @data_user[$lang][:github_id][:password])
+            @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id_only][:id],
+                                                 @data_user[$lang][:github_id_only][:password])
             sleep 5
             #url should redirect to app page
             @driver.current_url.should == @data_url[:sign_in_successfully]

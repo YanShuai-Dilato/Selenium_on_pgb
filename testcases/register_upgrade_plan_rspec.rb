@@ -1,5 +1,10 @@
 #encoding: utf-8
 
+# Please ignore this one. 
+# For there are some account-related issues we are still working on. 
+# It will be ok later. 
+
+
 require 'rubygems'
 require 'rspec'
 require 'selenium-webdriver'
@@ -35,10 +40,12 @@ describe "Register -> upgrade plan (Free -> Paid)" do
 	before(:each) do 
 		@driver = browser
 		@sign_in_page = SignInPage.new @driver
+	    @new_app_page = NewAppPage.new @driver
 		@driver.get path_format_locale("/people/sign_in")
 	end
 
 	after(:each) do 
+		@new_app_page.close_current_browser
 		@sign_in_page.close_current_browser
 	end
 
@@ -51,8 +58,6 @@ describe "Register -> upgrade plan (Free -> Paid)" do
         end until @driver.current_url == @base_url + @data_url[:sign_in_successfully]
         puts "current_url -> #{@driver.current_url}"
         puts "data_url[:sign_in_successfully] -> #{@base_url}#{@data_url[:sign_in_successfully]}"
-
-        @new_app_page = NewAppPage.new @driver
 
         if !@new_app_page.private_app_no?
         	@new_app_page.new_app_with_zip
@@ -77,11 +82,21 @@ describe "Register -> upgrade plan (Free -> Paid)" do
 		i_agree_to_the_terms_above.click	
 		sleep 30
 
-		fill_Payment_Card	
+		fill_Payment_Card
 		fill_Billing_Address
 		payment_continue_btn.click
-		sleep 35
+		sleep 5
 
+		payment_confirm_btn.click
+		sleep 5
+
+		begin
+            sleep 5
+        end until @driver.current_url == @base_url + @data_url[:sign_in_successfully]
+
+        @can_create_more_private_app = @new_app_page.private_app_no?
+        @can_create_more_private_app.should eql false
+        	
 	end
 
 end

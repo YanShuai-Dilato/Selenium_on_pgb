@@ -14,7 +14,7 @@ require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
 
-describe "New an app with paid account" do
+describe "New apps with paid account" do
     include NewAppDialog
     include AppBriefDialog
     include BaseEnv
@@ -32,8 +32,8 @@ describe "New an app with paid account" do
         @driver = browser
         @new_app_page = NewAppPage.new(@driver)
         @driver.get path_format_locale("/people/sign_in")
-        SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
-                                                      @data_user[$lang][:adobe_id_free_002][:password])
+        SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_paid_001][:id],
+                                                      @data_user[$lang][:adobe_id_paid_001][:password])
         sleep 5
     end
 
@@ -58,9 +58,9 @@ describe "New an app with paid account" do
         @first_app_id_after = @new_app_page.get_first_app_id
         puts "+app_count_after: #{@app_count_after}"
         puts "+first_app_id_after: #{@first_app_id_after}"
-
-        @app_count_after.should_not eql @app_count_before 
+ 
         @first_app_id_after.should_not eql @first_app_id_before
+        @app_count_after.should_not eql @app_count_before
     end
 
     it "create the second private app successfully"  do 

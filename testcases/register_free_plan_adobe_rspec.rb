@@ -26,6 +26,9 @@ describe "Register -> sign in" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+
+        @driver.get path_format_locale("/plans/free-adobeid") 
+        @driver.switch_to.frame(0)
     end
 
     after(:all) do 
@@ -34,8 +37,6 @@ describe "Register -> sign in" do
 
     context "Adobe ID" do 
         it "With invalid Adobe ID (Email Address)" do 
-            @driver.get path_format_locale("/plans/free-adobeid") 
-            @driver.switch_to.frame(0)
         	enter_email(@data_user[$lang][:invalid_user][:id])
         	enter_password(@data_user[$lang][:invalid_user][:password])
         	sign_in_btn.click
@@ -43,8 +44,6 @@ describe "Register -> sign in" do
         end
 
         it "With wrong password" do 
-            @driver.get path_format_locale("/plans/free-adobeid") 
-            @driver.switch_to.frame(0)
         	enter_email(@data_user[$lang][:invalid_user][:id])
             enter_password(@data_user[$lang][:invalid_user][:password])
         	sign_in_btn.click
@@ -52,8 +51,6 @@ describe "Register -> sign in" do
         end
 
         it "sign in successfully" do 
-            @driver.get path_format_locale("/plans/free-adobeid") 
-            @driver.switch_to.frame(0)
         	enter_email(@data_user[$lang][:adobe_id_free_001][:id])
         	enter_password(@data_user[$lang][:adobe_id_free_001][:password])
         	sign_in_btn.click

@@ -10,7 +10,6 @@ class NewAppPage
 
     def initialize(driver)
         @driver = driver
-        @base_url = "https://build.phonegap.com"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @app_data = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
     end

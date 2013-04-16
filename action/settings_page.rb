@@ -53,11 +53,6 @@ module SettingsPage
        @driver.find_element(:xpath => @data_xpath[:app_detail_page][:settings][:configuration][:save]).click
        EditIssue.new(@driver)
     end
-# TODO: 
-    def delete_my_account
-        @driver.get @base_url + "/people/edit"
-
-    end
 
     # If only we can get the ID of the new-created app
     # then we can after sign-in head directly to the settings page.

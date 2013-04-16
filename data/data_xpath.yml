@@ -46,6 +46,7 @@
     :create_adobe_id_btn: //*[@id="create_account"]
     :sign_in_btn: //*[@id="sign_in"]
     :warning_message: /html/body/div[2]/form/header/p
+    :warning_existing_registration_found: /html/body/section/div/section/header/h1
     :do_not_match_warning: //*[@id="login"]/header/p[1]
     :email_address: //*[@id="username"]
     :password: //*[@id="password"]
@@ -61,33 +62,35 @@
     :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
     :start_at_9_99: //*[@id="plans-table"]/tbody/tr[4]/td[2]/a
     :payment_continue_btn: //*[@id="validate-btn"]
+    :payment_confirm_btn: //*[@id="confirm-btn"]
     :I_agree_to_the_terms_above: //*[@id="accept-terms"]
     :payment_information_error: //*[@id="checkout"]/div/p
     :github_select_a_country: //*[@id="country"]
     :github_accept_the_adobe_terms: //*[@id="accept_terms"]
     :github_warning_message: ""
     :github_complete_my_registration: /html/body/section/div/form/footer/input
+    :github_authorize_app: /html/body/div/div[2]/div/div/form/div[3]/button
 :anywareContainer:
-    :CardHolder: //*[@id="CardHolder"]
-    :CardNumber1: //*[@id="CardNumber1"]
-    :CardNumber2: //*[@id="CardNumber2"]
-    :ExpirationDateMonth: //*[@id="ExpirationDateMonth"]
-    :ExpirationDateYear: //*[@id="ExpirationDateYear"]
-    :BillingLastName: //*[@id="BillingLastName"]
-    :BillingFirstName: //*[@id="BillingFirstName"]
-    :BillingLastNamePronounce: //*[@id="BillingLastNamePronounce"]
-    :BillingFirstNamePronounce: //*[@id="BillingFirstNamePronounce"]
-    :BillingCompany: //*[@id="BillingCompany"]
-    :BillingCompanyPronounce: //*[@id="BillingCompanyPronounce"]
-    :BillingDepartment: //*[@id="BillingDepartment"]
-    :BillingZip1: //*[@id="BillingZip1"]
-    :BillingZip2: //*[@id="BillingZip2"]
-    :BillingState: //*[@id="BillingState"]
-    :BillingCity: //*[@id="BillingCity"]
-    :BillingAddressFour: //*[@id="BillingAddressFour"]
-    :BillingAddressOne: //*[@id="BillingAddressOne"]
-    :BillingAddressTwo: //*[@id="BillingAddressTwo"]
-    :BillingPhone: //*[@id="BillingPhone"]
+    :CardHolder: //*[@id='CardHolder']
+    :CardNumber1: //*[@id='CardNumber1']
+    :CardNumber2: //*[@id='CardNumber2']
+    :ExpirationDateMonth: //*[@id='ExpirationDateMonth']
+    :ExpirationDateYear: //*[@id='ExpirationDateYear']
+    :BillingLastName: //*[@id='BillingLastName']
+    :BillingFirstName: //*[@id='BillingFirstName']
+    :BillingLastNamePronounce: //*[@id='BillingLastNamePronounce']
+    :BillingFirstNamePronounce: //*[@id='BillingFirstNamePronounce']
+    :BillingCompany: //*[@id='BillingCompany']
+    :BillingCompanyPronounce: //*[@id='BillingCompanyPronounce']
+    :BillingDepartment: //*[@id='BillingDepartment']
+    :BillingZip1: //*[@id='BillingZip1']
+    :BillingZip2: //*[@id='BillingZip2']
+    :BillingState: //*[@id='BillingState']
+    :BillingCity: //*[@id='BillingCity']
+    :BillingAddressFour: //*[@id='BillingAddressFour']
+    :BillingAddressOne: //*[@id='BillingAddressOne']
+    :BillingAddressTwo: //*[@id='BillingAddressTwo']
+    :BillingPhone: //*[@id='BillingPhone']
 :sign_in_succ_page: 
     :first_app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']
