@@ -6,18 +6,6 @@ require 'rspec/core/rake_task'
 
 if defined? RSpec
 
-    desc "Run the demo testcases of new_app_rspec"
-    RSpec::Core::RakeTask.new(:register_upgrade_plan_rspec) do |t|
-      t.pattern = "./testcases/register_upgrade_plan_rspec.rb"  
-      #output to html file with timeframe
-      t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
-      
-    #init config
-      ENV['BROWSER'] = 'firefox'
-      ENV['LANG'] = 'en_US'
-    end
-
-
     desc "Run the demo testcases of sign_in_rspec"    
     RSpec::Core::RakeTask.new(:sign_in_rspec) do |t|
       t.pattern = "./testcases/sign_in_rspec.rb"  

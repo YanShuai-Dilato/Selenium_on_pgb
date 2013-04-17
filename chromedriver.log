@@ -1,0 +1,27 @@
+[0417/100515:INFO:chromedriver_server.cc(76)] Handling request: /session {"desiredCapabilities":{"browserName":"chrome","version":"","platform":"ANY","javascriptEnabled":true,"cssSelectorsEnabled":true,"takesScreenshot":false,"nativeEvents":false,"rotatable":false,"chromeOptions":{"detach":true},"chrome.detach":true}}
+[0417/100515:INFO:chrome_desktop_impl.cc(49)] Using chrome from /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+[0417/100515:INFO:chromedriver_server.cc(81)] Done handling request: 303 
+[0417/100515:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2 
+[0417/100515:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":{"acceptSslCerts":true,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","cssSelectorsEnabled":true,"databaseEnabled":true,"driverVersion":"0.6","handlesAlerts":true,"javascriptEnabled":true,"locationContextEnabled":true,"nativeEvents":true,"platform":"Mac OS X","rotatable":false,"takesScreenshot":true,"version":"26.0.1410.65","webStorageEnabled":true}}
+[0417/100515:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/url {"url":"https://buildstage.phonegap.com/people/sign_in?locale=en_US"}
+[0417/100526:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":null}
+[0417/100526:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element {"using":"xpath","value":"/html/body/section/div/section/fieldset[2]/a[3]"}
+[0417/100526:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":{"ELEMENT":"1"}}
+[0417/100526:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element/1/click {}
+[0417/100527:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":null}
+[0417/100527:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element {"using":"xpath","value":"//*[@id='person_email']"}
+[0417/100527:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":{"ELEMENT":"1"}}
+[0417/100527:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element/1/value {"value":["ſЊџЛяѨ҉ҝҾ@adobe.com"]}
+[0417/100527:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":null}
+[0417/100527:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element {"using":"xpath","value":"//*[@id='new_person']/p[2]/input"}
+[0417/100527:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":{"ELEMENT":"2"}}
+[0417/100527:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element/2/click {}
+[0417/100528:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":null}
+[0417/100528:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element {"using":"xpath","value":"/html/body/p"}
+[0417/100528:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":{"ELEMENT":"1"}}
+[0417/100528:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2/element/1/text 
+[0417/100528:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":"1 error: Email not found"}
+[0417/100528:INFO:chromedriver_server.cc(76)] Handling request: /session/1586c546d9549f135497b5e1fd140be2 
+[0417/100528:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"1586c546d9549f135497b5e1fd140be2","status":0,"value":null}
+[0417/100528:INFO:chromedriver_server.cc(76)] Handling request: /shutdown 
+[0417/100528:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":null}

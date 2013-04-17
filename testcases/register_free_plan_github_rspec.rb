@@ -29,7 +29,7 @@ describe "Register -> sign in" do
 
     after(:all) do 
         EditAccountPage.new(browser).delete_my_account(
-            @data_user[$lang][:adobe_id_free_final_step][:id], password
+            @data_user[$lang][:adobe_id_free_final_step][:id],
             @data_user[$lang][:adobe_id_free_final_step][:password])
     end
 
@@ -103,5 +103,5 @@ describe "Register -> sign in" do
             github_login_field_complete_my_registration.click
             @driver.current_url.should eql @data_url[:sign_in_successfully]
         end
-
+    end
 end
