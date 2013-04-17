@@ -17,6 +17,9 @@ module RegisterDialog
 	def do_not_match_waring 
 		@driver.find_element(:xpath => @data_xpath[:register_page][:do_not_match_warning]).text
 	end
+	def warning_existing_registration_found
+		@driver.find_element(:xpath => @data_xpath[:register_page][:warning_existing_registration_found])
+	end
 
 	def adobe_id_btn()	
 		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_btn])	
@@ -63,7 +66,7 @@ module RegisterDialog
 		@driver.find_element(:xpath => @data_xpath[:register_page][:github_warning_message])
 	end
 	def github_login_field_complete_my_registration
-		@driver.find_element(:xpath => @data_xpath[:register_page][:complete_my_registration])
+		@driver.find_element(:xpath => @data_xpath[:register_page][:github_complete_my_registration])
 	end
 
 	def sign_in_btn
@@ -82,8 +85,8 @@ module RegisterDialog
 	end
 
 	def enter_email(email)
-		# @field = @driver.find_element(:xpath => @data_xpath[:register_page][:email_address])
-		@field = @driver.find_element(:id => "email_address")
+		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:email_address])
+		# @field = @driver.find_element(:id => "email_address")
 		clear_and_type(@field, email)
 	end
 

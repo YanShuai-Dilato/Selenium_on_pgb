@@ -30,6 +30,7 @@
     :resend_confirm_instru_email: "//*[@id='person_email']"
     :resend_confirm_instru_btn: "//*[@id='new_person']/p[2]/input"
     :tips_or_warnings: /html/body/p
+    :you_will_receive_an_email: /html/body/p
 :sign_in_github_page: 
     :username_or_email: //*[@id='login_field']
     :password: //*[@id='password']
@@ -67,7 +68,7 @@
     :payment_information_error: //*[@id="checkout"]/div/p
     :github_select_a_country: //*[@id="country"]
     :github_accept_the_adobe_terms: //*[@id="accept_terms"]
-    :github_warning_message: ""
+    :github_warning_message: /html/body/p
     :github_complete_my_registration: /html/body/section/div/form/footer/input
     :github_authorize_app: /html/body/div/div[2]/div/div/form/div[3]/button
 :anywareContainer:

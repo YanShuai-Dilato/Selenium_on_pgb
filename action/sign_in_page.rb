@@ -38,9 +38,7 @@ class SignInPage
         forgot_my_password_link.click
         forgot_password_email_input.send_keys(a_valid_email)
         forgot_password_reset_btn.click
-        begin
-            sleep 5
-        end until @driver.current_url == @base_url + "/people/sign_in"
+        sleep 5
         @tips_on_receiving_an_email = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:you_will_receive_an_email]).text
     end
 

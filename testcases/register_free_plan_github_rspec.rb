@@ -45,15 +45,14 @@ describe "Register -> sign in" do
     end
 
     context "with " do 
+
         it "github id connected pgb, sign in successfully" do 
             github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
             github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
             github_login_field_submit.click
             sleep 5
-            if isElementPreset?(github_login_field_authorize_app)
-                github_login_field_authorize_app.click
-            end
-            @driver.current_url.should eql @data_url[:sign_in_successfully]
+            
+            @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
 
         it "the email, Existing Registration Found " do # the email can both login pgb and github, 
@@ -69,7 +68,9 @@ describe "Register -> sign in" do
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
             github_login_field_submit.click
             sleep 5
+            github_login_field_agree_to_the_adobe_terms.click
             github_login_field_complete_my_registration.click
+            sleep 3
             github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_alert_you_must_select_a_country]
         end
 
@@ -79,15 +80,18 @@ describe "Register -> sign in" do
             github_login_field_submit.click
             sleep 5
             github_login_field_select_a_country.find_elements(:tag_name => "option").each do |country| 
-                if(country.text == "English") 
+                if(country.text == "Japan") 
                     country.click
+                    puts country.text
+                    puts country.attribute("value")
                     break
                 end
             end
             github_login_field_complete_my_registration.click
+            sleep 3
             github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_you_mush_agree_to_the_terms_of_service]
         end
-
+=begin
         it "github id - sign in successfully" do 
             github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
@@ -103,5 +107,6 @@ describe "Register -> sign in" do
             github_login_field_complete_my_registration.click
             @driver.current_url.should eql @data_url[:sign_in_successfully]
         end
+=end        
     end
 end
