@@ -93,7 +93,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@user[:email_address] ="dil45216+test_free_006@adobetest.com"
 		@user[:password] = "password"
 		@user[:retype_pass] = "password"
-		@register_page.enter_register_informater(@user_info)
+		@register_page.enter_register_information(@user_info)
 		sleep 5
 		@register_page.have_read_and_agree
 		sleep 5

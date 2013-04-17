@@ -17,7 +17,7 @@ module NewAppDialog
     def private_tab()           
         @private_tab = @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:private_repo])    
     end
-    def paste_git_repo()        
+    def txtbox_paste_git_repo()        
         @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:paste_git_repo])    
     end
     def ui_select

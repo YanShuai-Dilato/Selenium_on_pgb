@@ -20,7 +20,7 @@ module BaseEnv
         end
     end  
 
-    def isElementPreset?(type, selector)
+    def isElementPresent?(type, selector)
         begin
             @driver.find_element(type, selector)
             true

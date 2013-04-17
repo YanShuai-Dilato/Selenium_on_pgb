@@ -15,6 +15,9 @@ class SignInPage
     def initialize(driver)
         @driver = driver
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
+        @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
+        @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
 
     def sign_in_with_adobe_id(id,password)

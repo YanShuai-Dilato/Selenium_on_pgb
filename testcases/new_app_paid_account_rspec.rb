@@ -44,10 +44,12 @@ describe "New apps with paid account" do
     it "create the first private app by uploading a .zip file" do 
         @driver.navigate.refresh
         sleep 5
-        @app_count_before = @new_app_page.get_existing_app_num
-        @first_app_id_before = @new_app_page.get_first_app_id
-        puts "+app_count_before: #{@app_count_before}"
-        puts "+first_app_id_before: #{@first_app_id_before}"
+        if @new_app_page.new_btn_exists? # if the new-app-btn is present by default, then there should be one app existed.
+            @app_count_before = @new_app_page.get_existing_app_num
+            @first_app_id_before = @new_app_page.get_first_app_id
+            puts "+app_count_before: #{@app_count_before}"
+            puts "+first_app_id_before: #{@first_app_id_before}"
+        end
 
         @new_app_page.new_app_with_zip
 
@@ -64,6 +66,7 @@ describe "New apps with paid account" do
     end
 
     it "create the second private app successfully"  do 
+        sleep 5
         @app_count_before = @new_app_page.get_existing_app_num
         @first_app_id_before = @new_app_page.get_first_app_id
         puts "+app_count_before: #{@app_count_before}"

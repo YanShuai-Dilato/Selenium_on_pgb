@@ -23,18 +23,14 @@ class NewAppPage
     end
     
     def new_btn_exists?
-#        @new_btn_ctrl = @driver.find_elements(:xpath => @data_xpath[:sign_in_succ_page][:new_app_btn])
-        @new_btn_ctrl = @driver.find_elements(:id => "new-app-btn")
-        @new_btn_ctrl_count = @new_btn_ctrl.count
-        puts "+btn-new-app count: #{@new_btn_ctrl_count}"
-        @exists_or_not = @new_btn_ctrl_count > 0
+        return isElementPresent?(:id, "new-app-btn")
     end
 
     def private_app_no?
         new_app_btn.click 
         private_tab.click
         @disabled_or_not_upload =  upload_a_zip.attribute('disabled') # true/false
-        @disabled_or_not_paste = paste_git_repo.attribute('disabled') # true/false
+        @disabled_or_not_paste = txtbox_paste_git_repo.attribute('disabled') # true/false
         if @disabled_or_not_paste && @disabled_or_not_upload
             return true
         end
@@ -42,7 +38,9 @@ class NewAppPage
     end
 
     def new_app_with_zip
-        new_app_btn.click 
+        if isElementPreset?(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
+            new_app_btn.click
+        end
         private_tab.click
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip)
@@ -58,7 +56,7 @@ class NewAppPage
     def new_public_app_with_repo
         new_app_btn.click 
         opensource_tab.click
-        textbox_paste_a_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
+        txtbox_paste_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
         # wait_for_element_present(5, :xpath, @data_xpath[:sign_in_succ_page][:ready_to_build])
     end
 
@@ -73,7 +71,7 @@ class NewAppPage
     end
 
     def paste_a_git_repo(repo_address)
-        textbox_paste_a_git_repo.send_keys(repo_address + "\n")
+        txtbox_paste_git_repo.send_keys(repo_address + "\n")
         return error_not_a_valid_address.text
     end
 

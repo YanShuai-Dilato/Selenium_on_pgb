@@ -34,7 +34,7 @@ if defined? RSpec
       #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       #init config
-      ENV['BROWSER'] = 'chrome'
+      ENV['BROWSER'] = 'firefox'
       ENV['LANG'] = 'en_US'
     end
 

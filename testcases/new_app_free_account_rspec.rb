@@ -65,11 +65,11 @@ describe "New an app with free account" do
         end
 
     	it "#Tip: paste .git repo" do 
-            textbox_paste_a_git_repo.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_paste_git_repo]
+            txtbox_paste_git_repo.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
     	it "#Tip: Connect your Github account" do 
-            link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account] # why waiting that much time
+            link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account] 89
     	end
 
     	it "#errors when pasting a invalid .git address" do 
