@@ -8,6 +8,7 @@ require 'yaml'
 require_relative "../tools/register_dialog"
 require_relative "../tools/sign_in_github_dialog"
 require_relative "../action/register_page"
+require_relative "../action/edit_account_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
 
@@ -24,6 +25,12 @@ describe "Register -> sign in" do
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+    end
+
+    after(:all) do 
+        EditAccountPage.new(browser).delete_my_account(
+            @data_user[$lang][:adobe_id_free_final_step][:id], password
+            @data_user[$lang][:adobe_id_free_final_step][:password])
     end
 
     before(:each) do 

@@ -8,6 +8,7 @@
 :sign_in: "/people/sign_in"
 :register_page: "/plans"
 :create_your_account_page: "/plans/free"
+:edit_account: "/people/edit"
 :free_plan: ""
 :paid_plan: ""
 :sign_in_with_github: ""

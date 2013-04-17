@@ -4,6 +4,8 @@ require 'rspec'
 require 'rubygems'
 require 'selenium-webdriver'
 require 'yaml'
+require 'rest_client'
+require 'json'
 
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
@@ -30,6 +32,20 @@ describe "New an app with free account" do
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
+
+    after(:all) do 
+        # delete all apps
+        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+        response = private_resource.get :accept => :json
+        json =  JSON.parse(response)
+        json['apps'].each do |i|
+            #puts i['link']
+            url = @base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+            response = private_resource.delete 
+            # puts response.to_str
+        end
+    end
    
    # this context need at least one public app to start with. 
     context "- with Adobe ID - free account" do 
@@ -49,9 +65,6 @@ describe "New an app with free account" do
         end
 
     	it "#Tip: paste .git repo" do 
-            if @new_app_page.new_btn_exists? 
-                new_app_btn.click 
-            end 
             textbox_paste_a_git_repo.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
@@ -67,11 +80,7 @@ describe "New an app with free account" do
     	it "create an opensource app by pasting a .git" do 
             @driver.navigate.refresh
             sleep 5
-            @app_count_before = @new_app_page.get_existing_app_num
-            @first_app_id_before = @new_app_page.get_first_app_id
-            puts "+app_count_before: #{@app_count_before}"
-            puts "+first_app_id_before: #{@first_app_id_before}"
-
+            
             @new_app_page.new_public_app_with_repo
             sleep 5
             # walk round
