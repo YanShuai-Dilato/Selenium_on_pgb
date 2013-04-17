@@ -19,10 +19,10 @@
     :github_id_disconnected_github:
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
-    :adobe_id_for_upgrade_purpose_support_area: # Japan, with one private app within it. 
+    :adobe_id_for_upgrade_purpose_support_area: 
         :id: "dil45216+test_paid_003@adobetest.com"
         :password: "password"
-    :adobe_id_for_upgrade_purpose_unsupport_area: # Singapore, with one private app within it. 
+    :adobe_id_for_upgrade_purpose_unsupport_area: 
         :id: "dil45216+test_paid_001@adobetest.com"
         :password: "password"
     :adobe_id_paid_001:

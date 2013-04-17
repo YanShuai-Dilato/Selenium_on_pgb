@@ -28,7 +28,7 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @user_info = {
-			email_address:  "pgbtesting.009@g990mail.com",
+			email_address:  "pgbtestiing.009@g990mail.com",
 			password:		"pgbtesting001",
 			retype_pass:    "pgbtesting001",
 			first_name:		"pgb",
@@ -87,13 +87,17 @@ describe "Register -> create an Adobe ID with provided email" do
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
 	end
-=begin
+
 	it "create Adobe ID successfully" do 
+		@user = @user_info.clone
+		@user[:email_address] ="dil45216+test_free_006@adobetest.com"
+		@user[:password] = "password"
+		@user[:retype_pass] = "password"
 		@register_page.enter_register_informater(@user_info)
 		sleep 5
 		@register_page.have_read_and_agree
 		sleep 5
 		@driver.current_url.should eql @data_url[:sign_in_successfully]
 	end
-=end
+
 end

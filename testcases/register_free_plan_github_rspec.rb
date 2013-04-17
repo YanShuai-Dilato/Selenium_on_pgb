@@ -45,7 +45,7 @@ describe "Register -> sign in" do
     end
 
     context "with " do 
-        it "github id connected pgb, sign in successfully" do # need to authorize app from github
+        it "github id connected pgb, sign in successfully" do 
             github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
             github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
             github_login_field_submit.click
