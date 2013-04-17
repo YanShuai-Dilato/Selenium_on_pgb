@@ -6,6 +6,17 @@ require 'rspec/core/rake_task'
 
 if defined? RSpec
 
+    desc "New App Free Account RSpec"
+    RSpec::Core::RakeTask.new(:new_app_paid_account_rspec) do |t|
+      t.pattern = "./testcases/new_app_paid_account_rspec.rb"  
+      #output to html file with timeframe
+      t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
+      
+    #init config
+      ENV['BROWSER'] = 'firefox'
+      ENV['LANG'] = 'en_US'
+    end
+
     desc "Run the demo testcases of sign_in_rspec"    
     RSpec::Core::RakeTask.new(:sign_in_rspec) do |t|
       t.pattern = "./testcases/sign_in_rspec.rb"  
@@ -40,4 +51,4 @@ if defined? RSpec
 
 end
 
-task :default => :allspecs
+task :default => :new_app_paid_account_rspec

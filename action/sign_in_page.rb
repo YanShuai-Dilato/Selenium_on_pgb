@@ -40,7 +40,7 @@ class SignInPage
         forgot_password_reset_btn.click
         begin
             sleep 5
-        end until @driver.current_url == base_url + "/people/sign_in"
+        end until @driver.current_url == @base_url + "/people/sign_in"
         @tips_on_receiving_an_email = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:you_will_receive_an_email]).text
     end
 

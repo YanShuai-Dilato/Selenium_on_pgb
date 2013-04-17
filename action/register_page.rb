@@ -9,6 +9,7 @@ class RegisterPage
 
 	def initialize(driver)
 		@driver = driver
+		@data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
 	end
 
 	def enter_register_information(user) # user[:email_address]

@@ -44,7 +44,7 @@ describe "Sign in" do
                                                  @data_user[$lang][:github_id_only][:password])
             sleep 5
             #url should redirect to app page
-            @driver.current_url.should == @data_url[:sign_in_successfully]
+            @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
         end
     end
 
@@ -53,7 +53,7 @@ describe "Sign in" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],@data_user[$lang][:adobe_id_free_001][:password])
             #url should redirect to app page
-            @driver.current_url.should == @data_url[:sign_in_successfully]
+            @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
         end
 
         it "invalid email or password" do
@@ -62,7 +62,7 @@ describe "Sign in" do
                                                 @data_user[$lang][:invalid_user][:password])
             sleep 5
             #error message should match the expecation
-            error_message_box.text.should == @data_str[$lang][:not_found_in_database]
+            error_message_box.text.should eql @data_str[$lang][:not_found_in_database]
         end
     end
 

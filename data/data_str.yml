@@ -3,7 +3,7 @@
     :PGB_email_not_found: "1 error: Email not found"
     :PGB_paste_git_repo: "paste .git repo"
     :PGB_find_existing_repo_or_paste_git_repo: "find existing repo / paste .git repo"
-    :PGB_the_first_matched_item: "pgbtesting005/PhoneGap-Build-Sample"
+    :PGB_the_first_matched_item: "dil45216-free005/PhoneGap-Build-Sample"
     :PGB_no_match_item: '[missing "en_US.new-app/no-match" translation]'
     :PGB_connect_your_github_account: "Connect your Github account"
     :PGB_not_a_valid_github_url: "Not a valid Github URL"

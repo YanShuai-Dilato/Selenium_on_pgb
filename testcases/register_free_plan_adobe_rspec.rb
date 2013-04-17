@@ -55,7 +55,7 @@ describe "Register -> sign in" do
         	enter_password(@data_user[$lang][:adobe_id_free_001][:password])
         	sign_in_btn.click
         	sleep 5
-        	@driver.current_url.should eql @data_url[:sign_in_successfully]
+        	@driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
     end
 end

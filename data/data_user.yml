@@ -7,6 +7,9 @@
     :adobe_id_free_002:
         :id: "dil45216+test_free_002@adobetest.com"
         :password: "password"
+    :adobe_id_free_connected_github:
+        :id: "dil45216+test_free_005@adobetest.com"
+        :password: "password"
     :email_that_login_both: 
         :id: "pgbtesting.005@gmail.com"
         :password: "pgbtesting001"
@@ -27,7 +30,7 @@
         :password: "password"
     :adobe_id_paid_001:
         :id: "dil45216+test_paid_004@adobetest.com"
-        :password: "password"
+        :password: "abcd1234"
     :invalid_user: 
         :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"
