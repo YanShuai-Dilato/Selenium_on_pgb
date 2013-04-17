@@ -7,8 +7,8 @@ require 'rspec/core/rake_task'
 if defined? RSpec
 
     desc "New App Free Account RSpec"
-    RSpec::Core::RakeTask.new(:new_app_paid_account_rspec) do |t|
-      t.pattern = "./testcases/new_app_paid_account_rspec.rb"  
+    RSpec::Core::RakeTask.new(:register_free_plan_adobe_rspec) do |t|
+      t.pattern = "./testcases/register_free_plan_adobe_rspec.rb"
       #output to html file with timeframe
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
@@ -51,4 +51,4 @@ if defined? RSpec
 
 end
 
-task :default => :new_app_paid_account_rspec
+task :default => :register_free_plan_adobe_rspec

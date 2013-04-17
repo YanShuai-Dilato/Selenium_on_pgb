@@ -29,6 +29,7 @@ describe "Register -> sign in" do
 
         @driver.get path_format_locale("/plans/free-adobeid") 
         @driver.switch_to.frame(0)
+        sleep 5
     end
 
     after(:all) do 

@@ -28,12 +28,12 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @user_info = {
-			email_address:  "pgbtestiing.009@g990mail.com",
+			email_address:  "pgbtesttiing.009@g990mail.com",
 			password:		"pgbtesting001",
 			retype_pass:    "pgbtesting001",
 			first_name:		"pgb",
 			last_name:		"testing",
-			country_region:	"US"
+			country_region:	"JP"
 		}	
 
         @driver.get path_format_locale("/plans/free-adobeid") 
@@ -47,7 +47,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@register_page.close_current_page
 	end
 
-	it "With invalid Adobe ID (Email Address)" do 
+	it "With invalid Adobe ID (Email Address)" do
 	    @user = @user_info.clone
 		@user[:email_address] = @data_user[$lang][:invalid_user][:id]
 		@warnings = @register_page.enter_register_information(@user)
@@ -87,7 +87,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
 	end
-
+=begin
 	it "create Adobe ID successfully" do 
 		@user = @user_info.clone
 		@user[:email_address] ="dil45216+test_free_006@adobetest.com"
@@ -99,5 +99,5 @@ describe "Register -> create an Adobe ID with provided email" do
 		sleep 5
 		@driver.current_url.should eql @data_url[:sign_in_successfully]
 	end
-
+=end
 end

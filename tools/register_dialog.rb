@@ -82,7 +82,8 @@ module RegisterDialog
 	end
 
 	def enter_email(email)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:email_address])
+		# @field = @driver.find_element(:xpath => @data_xpath[:register_page][:email_address])
+		@field = @driver.find_element(:id => "email_address")
 		clear_and_type(@field, email)
 	end
 
