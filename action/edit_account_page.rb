@@ -1,5 +1,4 @@
 
-
 # operations at page /people/edit
 
 require 'yaml'
@@ -19,16 +18,19 @@ class EditAccountPage
 		@base_url = base_url
 		@driver = driver
 		@data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @app_data = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
+        @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
+        @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 	end
 
 	def delete_my_account(id, password)
+		@driver.get path_format_locale @data_url[:sign_in]
 		SignInPage.new(@driver).sign_in_with_adobe_id(id, password)
-		@driver.get path_format_locale("/people/edit")
+		@driver.get path_format_locale @data_url[:edit_account]
 		delete_my_account_btn.click
 		yes_delete_my_account_btn.click
 		a = @driver.switch_to.alert
-		# puts a.text #--> hello
-		a.accept
+		puts a.text #--> hello
+		# a.accept
 	end
 end

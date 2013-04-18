@@ -70,3 +70,21 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 
 ### Code structure
 <root>/selenium_Logical_view_Draft.png
+
+
+### Test cases 
+
+
+new_app_free_account_rspec.rb
+
+new_app_paid_account_rspec.rb
+
+register_create_adobe_id_rspec.rb
+
+register_free_plan_adobe_rspec.rb
+
+register_free_plan_github_rspec.rb
+
+register_upgrade_plan_spec.rb
+
+sign_in_rspec.rb
