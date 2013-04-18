@@ -22,8 +22,12 @@ class NewAppPage
         first_app_id.text
     end
     
-    def new_btn_exists?
-        return isElementPresent?(:id, "new-app-btn")
+    def new_app_btn_display?
+        @style = @driver.find_element(:id, "new-app-btn").attribute("style")
+        if @style.chomp == "display: none;".chomp
+            return false
+        end
+        return true
     end
 
     def private_app_no?
@@ -36,7 +40,7 @@ class NewAppPage
     end
 
     def new_app_with_zip
-        if isElementPresent?(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
+        if new_app_btn_display?
             new_app_btn.click
         end
         private_tab.click
@@ -53,13 +57,18 @@ class NewAppPage
 
     def new_public_app_with_repo
         puts "new_public_app_with_repo in new_app_page.rb"
+
+        if new_app_btn_display?
+            new_app_btn.click
+        end
         opensource_tab.click
+        txtbox_paste_git_repo.clear
         txtbox_paste_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
         # wait_for_element_present(5, :xpath, @data_xpath[:sign_in_succ_page][:ready_to_build])
     end
 
     def new_private_app_with_repo
-        if isElementPresent?(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
+        if new_app_btn_display?
             new_app_btn.click
         end
         private_tab.click

@@ -43,13 +43,13 @@ describe "New an app with free account" do
             response = private_resource.delete 
         end
 
-        private_resource2 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
-        response2 = private_resource2.get :accept => :json
-        json2 =  JSON.parse(response2)
-        json2['apps'].each do |i|
+        private_resource_2 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
+        response_2 = private_resource_2.get :accept => :json
+        json_2 =  JSON.parse(response2)
+        json_2['apps'].each do |i|
             url = @base_url + i['link']
-            private_resource2 = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
-            response2 = private_resource.delete 
+            private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
+            response_2 = private_resource_2.delete 
         end
     end
 
@@ -63,6 +63,7 @@ describe "New an app with free account" do
             @driver.get path_format_locale("/people/sign_in")
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                                           @data_user[$lang][:adobe_id_free_002][:password])
+            # wait_for_page_load(20, @base_url + @data_url[:sign_in_successfully])
             sleep 5
         end
 
@@ -71,7 +72,7 @@ describe "New an app with free account" do
         end
 
     	it "#Tip: paste .git repo" do 
-            txtbox_paste_git_repo.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_paste_git_repo]
+            txtbox_paste_git_repo.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
     	it "#Tip: Connect your Github account" do 
@@ -83,14 +84,18 @@ describe "New an app with free account" do
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
     	end
 
-    	it "create an opensource app by pasting a .git" do 
-            @driver.navigate.refresh
-            sleep 5
-            
-            puts "-> Before new_public_app_with_repo"
+    	it "create an opensource app by pasting a .git" do  
+
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+
+            puts "before @new_app_page.new_public_app_with_repo"
             @new_app_page.new_public_app_with_repo
-            puts "-> After new_public_app_with_repo"
             sleep 5
+
+            puts "@driver.navigate.refresh"
             # walk round
             @driver.navigate.refresh
             sleep 5 
@@ -100,8 +105,8 @@ describe "New an app with free account" do
             puts "+app_count_after: #{@app_count_after}"
             puts "+first_app_id_after: #{@first_app_id_after}"
  
-            @first_app_id_after.should_not eql @first_app_id_before
-            @app_count_after.should_not eql @app_count_before 
+            @app_count_after.should_not eql 0 
+
     	end
 
     	it "create the first private app by uploading a .zip file" do 
@@ -145,6 +150,7 @@ describe "New an app with free account" do
 
             @return_value.should eql false
     	end
+
     end
 
     context "- with Adobe ID - free account - connected github" do 
@@ -164,6 +170,10 @@ describe "New an app with free account" do
         end
 
         it "#Dropdown list of existing repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             @driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/span[2]").click
             sleep 3
             @li = @driver.find_elements(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
@@ -173,15 +183,27 @@ describe "New an app with free account" do
         end
 
         it "#Tip: find existing repo / paste .git repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             txtbox_paste_git_repo.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_find_existing_repo_or_paste_git_repo]
         end
 
         it "#errors when pasting a invalid .git address" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             @warning = @new_app_page.paste_a_git_repo("亜印gっをげwにwpw声wんw儀栄wペイ儀絵印rgる")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
         end
 
         it "match some apps in the list if enter some letters" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             txtbox_paste_git_repo.send_keys("sa")
             @the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
             puts "The first matched item: #{@the_first_item.text}"
@@ -191,6 +213,10 @@ describe "New an app with free account" do
         end
 
         it "match no apps in the list if enter some specific letters" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             txtbox_paste_git_repo.clear
             txtbox_paste_git_repo.send_keys("sss")
             @the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
@@ -198,7 +224,11 @@ describe "New an app with free account" do
             @the_first_item.text.should eql @data_str[$lang][:PGB_no_match_item]
         end
 
-        it "Select a repo from the matched items to create an app" do          
+        it "Select a repo from the matched items to create an app" do  
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end        
             txtbox_paste_git_repo.clear
             txtbox_paste_git_repo.send_keys("start")
             @the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")

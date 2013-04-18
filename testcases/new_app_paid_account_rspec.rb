@@ -63,14 +63,15 @@ describe "New apps with paid account" do
         puts "+first_app_id_before: #{@first_app_id_before}"
 
         @return_value = @new_app_page.new_app_with_zip  
-           
-        if (!@return_value) 
-            @app_count_after = @new_app_page.get_existing_app_num
-            @first_app_id_after = @new_app_page.get_first_app_id
-            puts "+app_count_after: #{@app_count_after}"
-            puts "+first_app_id_after: #{@first_app_id_after}"
-        end
+        
+        @driver.navigate.refresh
+        sleep 5 
 
+        @app_count_after = @new_app_page.get_existing_app_num
+        @first_app_id_after = @new_app_page.get_first_app_id
+        puts "+app_count_after: #{@app_count_after}"
+        puts "+first_app_id_after: #{@first_app_id_after}"
+        
         @first_app_id_after.should_not eql @first_app_id_before
     end    
 

@@ -85,33 +85,32 @@ module RegisterDialog
 	end
 
 	def enter_email(email)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:email_address])
-		# @field = @driver.find_element(:id => "email_address")
+		@field = @driver.find_element(:id => "email_address")
 		clear_and_type(@field, email)
 	end
 
 	def enter_password(password)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:password])
+		@field = @driver.find_element(:id => "password")
 		clear_and_type(@field, password)
 	end
 
 	def enter_retype_password(password)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:retype_password])
+		@field = @driver.find_element(:id => "retype_password")
 		clear_and_type(@field, password)
 	end
 
 	def enter_first_name(first_name)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:first_name])
+		@field = @driver.find_element(:id => "first_name")
 		clear_and_type(@field, first_name)
 	end
 
 	def enter_last_name(last_name)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:last_name])
+		@field = @driver.find_element(:id => "last_name")
 		clear_and_type(@field, last_name)
 	end
 
 	def select_country_region(region)
-		@country_select = @driver.find_element(:xpath => @data_xpath[:register_page][:country_region])
+		@country_select = @driver.find_element(:id => "country")
 		countries = @country_select.find_elements(:tag_name => "option")
 		countries.each do |el| 
 		    if(el.attribute("value") == region)

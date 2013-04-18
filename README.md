@@ -9,6 +9,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 - rspec
 - selenium-webdriver
 - rake
+- rest-client
 
 ### Setup
 

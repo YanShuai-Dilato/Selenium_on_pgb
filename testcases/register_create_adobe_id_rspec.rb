@@ -38,7 +38,8 @@ describe "Register -> create an Adobe ID with provided email" do
 
         @driver.get path_format_locale("/plans/free-adobeid") 
         sleep 5
-        @driver.switch_to.frame(0)
+        @driver.switch_to.frame "adobe-id-frame"
+        sleep 5
 		click_create_an_adobe_id_btn
 		sleep 5
 	end
@@ -50,8 +51,8 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "With invalid Adobe ID (Email Address)" do
 	    @user = @user_info.clone
 		@user[:email_address] = @data_user[$lang][:invalid_user][:id]
-		@warnings = @register_page.enter_register_information(@user)
 		sleep 5
+		@warnings = @register_page.enter_register_information(@user)
 		@warnings.should eql @data_str[$lang][:PGB_enter_a_valid_email]
 	end
 
