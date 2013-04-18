@@ -25,12 +25,25 @@ class EditAccountPage
 
 	def delete_my_account(id, password)
 		@driver.get path_format_locale @data_url[:sign_in]
-		SignInPage.new(@driver).sign_in_with_adobe_id(id, password)
+		SignInPage.new(@driver).sign_in_with_github_id(id, password)
 		@driver.get path_format_locale @data_url[:edit_account]
-		delete_my_account_btn.click
-		yes_delete_my_account_btn.click
+
+		@driver.execute_script("document.getElementById('delete-account').style['display'] = 'block'")
+		puts "after executing script"
+		sleep 3
+		
+		#@driver.find_element(:xpath => "//*[@id='delete-account-btn']/a[0]").click
+		#puts "after a[0]"
+		#sleep 5
+		@driver.find_element(:xpath => "//*[@id='delete-account-btn'][2]").click 
+		puts "after a[2]"
+
 		a = @driver.switch_to.alert
+		puts "###"
 		puts a.text #--> hello
+		puts "###"
 		# a.accept
+		sleep 5
+		@driver.quit
 	end
 end

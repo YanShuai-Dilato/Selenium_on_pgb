@@ -34,6 +34,7 @@ describe "New an app with free account" do
 
     after(:all) do 
         # delete all apps
+=begin
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
@@ -51,6 +52,7 @@ describe "New an app with free account" do
             private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
             response_2 = private_resource_2.delete 
         end
+=end
     end
 
    # this context need at least one public app to start with. 
@@ -64,7 +66,7 @@ describe "New an app with free account" do
             SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                                           @data_user[$lang][:adobe_id_free_002][:password])
             # wait_for_page_load(20, @base_url + @data_url[:sign_in_successfully])
-            sleep 5
+            sleep 10
         end
 
         after(:all) do 
@@ -72,14 +74,18 @@ describe "New an app with free account" do
         end
 
     	it "#Tip: paste .git repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
             txtbox_paste_git_repo.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
-    	it "#Tip: Connect your Github account" do 
+    	it "#Tip: Connect your Github account" do   
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
     	end
 
-    	it "#errors when pasting a invalid .git address" do 
+    	it "#errors when pasting a invalid .git address" do    
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
     	end
@@ -93,22 +99,31 @@ describe "New an app with free account" do
 
             puts "before @new_app_page.new_public_app_with_repo"
             @new_app_page.new_public_app_with_repo
-            sleep 5
+            sleep 10
 
             puts "@driver.navigate.refresh"
             # walk round
-            @driver.navigate.refresh
-            sleep 5 
-            
-            @app_count_after = @new_app_page.get_existing_app_num
-            @first_app_id_after = @new_app_page.get_first_app_id
-            puts "+app_count_after: #{@app_count_after}"
-            puts "+first_app_id_after: #{@first_app_id_after}"
+            #@driver.navigate.refresh
+            #sleep 5 
+
+            sleep 5
+            puts @driver.find_element(:xpath => "/html/body/section/div/div/section[@id='apps-list']").to_s + '\n'
+
+            sleep 5
+            puts @driver.find_element(:xpath => "/html/body/section/div/div/section[@id='apps-list']/article").to_s + '\n'
+
+
+            app_count_after = @new_app_page.get_existing_app_num
+            sleep 5
+            first_app_id_after = @new_app_page.get_first_app_id
+            sleep 5
+            puts "+app_count_after: #{app_count_after}"
+            puts "+first_app_id_after: #{first_app_id_after}"
  
-            @app_count_after.should_not eql 0 
+            app_count_after.should_not eql 0 
 
     	end
-
+=begin
     	it "create the first private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 5
@@ -150,9 +165,9 @@ describe "New an app with free account" do
 
             @return_value.should eql false
     	end
-
+=end
     end
-
+=begin
     context "- with Adobe ID - free account - connected github" do 
         before(:all) do 
             puts "before all inside"
@@ -248,5 +263,5 @@ describe "New an app with free account" do
         end
 
     end
-
+=end
 end
