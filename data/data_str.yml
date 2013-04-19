@@ -37,7 +37,7 @@
     :PGB_without_selecting_country: "L’erreur ci-dessous a été détectée. Remplissez le champ obligatoire."
     :PGB_first_name_invalid: "Le prénom contient des caractères non valides."
     :PGB_last_name_invalid: "Le nom contient des caractères non valides."
-    :PGB_alert_you_must_select_a_country: "You must select a country"
+    :PGB_alert_you_must_select_a_country: ""
     :PGB_existing_registration_found: "Enregistrement existant trouvé"
     :payment_information_error: "Nos services de paiement éprouvent actuellement des difficultés techniques. Actualisez la page. Si le problème persiste, réessayez ultérieurement. Veuillez nous excuser pour le désagrément occasionné."
     :PGB_you_mush_agree_to_the_terms_of_service: "Vous devez accepter les conditions d'utilisation"
