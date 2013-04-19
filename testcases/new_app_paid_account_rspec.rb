@@ -13,7 +13,6 @@ require_relative "../tools/new_app_dialog"
 require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
-
 describe "New apps with paid account" do
     include NewAppDialog
     include AppBriefDialog
@@ -23,6 +22,7 @@ describe "New apps with paid account" do
 
     before(:all) do
         init
+        @num_private_app = 0
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -39,12 +39,24 @@ describe "New apps with paid account" do
 
     after(:all) do
         @new_app_page.close_current_browser
+        if @num_private_app >= 10  # then delete all apps, as is know that the max number is 24 for 9.99/m account
+            puts "Current number of private app was #{@num_private_app}"
+            private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+            response = private_resource.get :accept => :json
+            json =  JSON.parse(response)
+            json['apps'].each do |i|
+                url = @base_url + i['link']
+                private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+                response = private_resource.delete 
+                puts response.to_str
+            end
+        end
     end
 
     it "create the first private app by uploading a .zip file" do 
         @new_app_page.new_app_with_zip
 
-        @driver.navigate.refresh
+        # @driver.navigate.refresh
         sleep 5 
             
         @app_count_after = @new_app_page.get_existing_app_num
@@ -64,10 +76,11 @@ describe "New apps with paid account" do
 
         @return_value = @new_app_page.new_app_with_zip  
         
-        @driver.navigate.refresh
+        # @driver.navigate.refresh
         sleep 5 
 
         @app_count_after = @new_app_page.get_existing_app_num
+        @num_private_app = @app_count_after
         @first_app_id_after = @new_app_page.get_first_app_id
         puts "+app_count_after: #{@app_count_after}"
         puts "+first_app_id_after: #{@first_app_id_after}"

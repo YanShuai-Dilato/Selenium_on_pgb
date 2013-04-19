@@ -84,6 +84,16 @@ module RegisterDialog
 		@driver.find_element(:xpath => @data_xpath[:register_page][:create_adobe_id_btn]).click
 	end
 
+	def enter_sign_in_email(email)
+		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_input])
+		clear_and_type(@field, email)
+	end
+
+	def enter_sign_in_password(password)
+		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:password])
+		clear_and_type(@field, password)
+	end
+
 	def enter_email(email)
 		@field = @driver.find_element(:id => "email_address")
 		clear_and_type(@field, email)

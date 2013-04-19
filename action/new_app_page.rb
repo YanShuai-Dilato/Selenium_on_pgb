@@ -40,23 +40,29 @@ class NewAppPage
     end
 
     def new_app_with_zip
+        puts "+ new_app_with_zip in new_app_page.rb"
         if new_app_btn_display?
             new_app_btn.click
         end
+        puts "+ after new_app_btn.click"
         private_tab.click
+        puts "+ after private_tab.click"
         if private_app_no?
             return false
         end
+        puts "before executing scripts"
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip)
-        
+        puts "after executing scripts"
+
         upload_a_zip.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
+
+        wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         return true
-        # wait_for_element_present(5, :xpath, @data[:sign_in_succ_page][:ready_to_build])
     end
 
     def new_public_app_with_repo
-        puts "new_public_app_with_repo in new_app_page.rb"
+        puts "+ new_public_app_with_repo in new_app_page.rb"
 
         if new_app_btn_display?
             new_app_btn.click
@@ -64,10 +70,11 @@ class NewAppPage
         opensource_tab.click
         txtbox_paste_git_repo.clear
         txtbox_paste_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
-        # wait_for_element_present(5, :xpath, @data_xpath[:sign_in_succ_page][:ready_to_build])
+        wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
     end
 
     def new_private_app_with_repo
+        puts "+ new_private_app_with_repo in new_app_page.rb"
         if new_app_btn_display?
             new_app_btn.click
         end
@@ -80,6 +87,9 @@ class NewAppPage
     end
 
     def paste_a_git_repo(repo_address)
+        if new_app_btn_display?
+            new_app_btn.click
+        end
         txtbox_paste_git_repo.send_keys(repo_address + "\n")
         return error_not_a_valid_address.text
     end

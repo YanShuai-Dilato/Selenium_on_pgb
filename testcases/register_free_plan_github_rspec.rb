@@ -34,23 +34,18 @@ describe "Register -> sign in" do
     end
 
     before(:each) do 
-        #@driver = browser
-        #@register_page = RegisterPage.new @driver
-        #@driver.get path_format_locale("/plans/free")
-        #github_btn.click
+        @driver = browser
+        @register_page = RegisterPage.new @driver
+        @driver.get path_format_locale("/plans/free")
+        github_btn.click
     end
 
     after(:each) do 
-        #@register_page.close_current_page
+        @register_page.close_current_page
     end
 
     context "with " do 
-        it "Just to delete connected account" do 
-            "abc".should_not eql "abc"
-        end
 
-
-=begin
         it "github id connected pgb, sign in successfully" do 
             github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
             github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
@@ -114,6 +109,6 @@ describe "Register -> sign in" do
             sleep 15
             @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
-=end    
+  
     end
 end

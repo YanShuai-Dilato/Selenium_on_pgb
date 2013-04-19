@@ -17,10 +17,10 @@ class EditAccountPage
 		init
 		@base_url = base_url
 		@driver = driver
-		@data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
-        @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
-        @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+		@data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
+        @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
+        @data_user ||= YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 	end
 
 	def delete_my_account(id, password)
@@ -29,20 +29,17 @@ class EditAccountPage
 		@driver.get path_format_locale @data_url[:edit_account]
 
 		@driver.execute_script("document.getElementById('delete-account').style['display'] = 'block'")
-		puts "after executing script"
+		puts "+ after executing script"
 		sleep 3
 		
-		#@driver.find_element(:xpath => "//*[@id='delete-account-btn']/a[0]").click
-		#puts "after a[0]"
-		#sleep 5
-		@driver.find_element(:xpath => "//*[@id='delete-account-btn'][2]").click 
-		puts "after a[2]"
+		@driver.find_element(:xpath => "//*[@id='delete-account']/section/fieldset/a").click  
 
 		a = @driver.switch_to.alert
-		puts "###"
-		puts a.text #--> hello
-		puts "###"
-		# a.accept
+		puts "+ before puts alert.text"
+		puts a.text 
+		puts "+ after puts alert.text"
+		a.accept
+		# a.dismiss
 		sleep 5
 		@driver.quit
 	end

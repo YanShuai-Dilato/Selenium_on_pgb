@@ -10,12 +10,14 @@ require_relative "../tools/sign_in_github_dialog"
 require_relative "../action/register_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
+require_relative "../lib/webdriver_helper"
 
 describe "Register -> sign in" do 
 	include RegisterDialog
     include SignInGithubDialog
 	include BaseEnv
 	include ConfigParam
+    include WebdriverHelper
 
 	before(:all) do 
 		init
@@ -29,7 +31,7 @@ describe "Register -> sign in" do
 
         @driver.get path_format_locale("/plans/free-adobeid") 
         @driver.switch_to.frame(0)
-        sleep 5
+        puts "after driver.switch_to.frame(0)"
     end
 
     after(:all) do 
@@ -38,24 +40,24 @@ describe "Register -> sign in" do
 
     context "Adobe ID" do 
         it "With invalid Adobe ID (Email Address)" do 
-        	enter_email(@data_user[$lang][:invalid_user][:id])
-        	enter_password(@data_user[$lang][:invalid_user][:password])
+        	enter_sign_in_email(@data_user[$lang][:invalid_user][:id])
+        	enter_sign_in_password(@data_user[$lang][:invalid_user][:password])
         	sign_in_btn.click
         	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "With wrong password" do 
-        	enter_email(@data_user[$lang][:invalid_user][:id])
-            enter_password(@data_user[$lang][:invalid_user][:password])
+        	enter_sign_in_email(@data_user[$lang][:invalid_user][:id])
+            enter_sign_in_password(@data_user[$lang][:invalid_user][:password])
         	sign_in_btn.click
         	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "sign in successfully" do 
-        	enter_email(@data_user[$lang][:adobe_id_free_001][:id])
-        	enter_password(@data_user[$lang][:adobe_id_free_001][:password])
+        	enter_sign_in_email(@data_user[$lang][:adobe_id_free_001][:id])
+        	enter_sign_in_password(@data_user[$lang][:adobe_id_free_001][:password])
         	sign_in_btn.click
-        	sleep 5
+        	wait_for_page_load(60, @base_url + @data_url[:sign_in_successfully])
         	@driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
     end
