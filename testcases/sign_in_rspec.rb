@@ -64,6 +64,7 @@ describe "Sign in" do
             # error message should match the expecation
             # error_message_box.text.should eql @data_str[$lang][:not_found_in_database]
             "abc".should_not eql "abc"
+
         end
     end
 

@@ -37,6 +37,11 @@ class SignInPage
             " oldObject.parentNode.replaceChild(newObject,oldObject); "       
         )
 
+        # highlight 
+        highlight(:id, "person_email")
+
+        sleep 30
+
         puts "+ after execute_script"
         puts "+ id_textinput's type: "
         puts "+ #{@driver.find_element(:id => 'person_email').attribute('type')}"
