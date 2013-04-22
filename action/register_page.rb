@@ -13,12 +13,12 @@ class RegisterPage
 	end
 
 	def enter_register_information(user) # user[:email_address]
-		enter_email(user[:email_address])
-		enter_password(user[:password])
-		enter_retype_password(user[:retype_pass])
-		enter_first_name(user[:first_name])
-		enter_last_name(user[:last_name])
-		select_country_region(user[:country_region])
+		adobe_id_frame_enter_username(user[:email_address])
+		adobe_id_frame_enter_password_2(user[:password])
+		adobe_id_frame_retype_password(user[:retype_pass])
+		adobe_id_frame_firstname_input(user[:first_name])
+		adobe_id_frame_lastname_input(user[:last_name])
+		adobe_id_select_country_region(user[:country_region])
 		create_btn.click
 		warning_message.text
 	end

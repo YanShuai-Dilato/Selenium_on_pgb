@@ -31,7 +31,7 @@ describe "Register -> sign in" do
 
         @driver.get path_format_locale("/plans/free-adobeid") 
         @driver.switch_to.frame(0)
-        puts "after driver.switch_to.frame(0)"
+        puts "+ after driver.switch_to.frame(0)"
     end
 
     after(:all) do 
@@ -40,23 +40,23 @@ describe "Register -> sign in" do
 
     context "Adobe ID" do 
         it "With invalid Adobe ID (Email Address)" do 
-        	enter_sign_in_email(@data_user[$lang][:invalid_user][:id])
-        	enter_sign_in_password(@data_user[$lang][:invalid_user][:password])
-        	sign_in_btn.click
+        	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
+        	adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
+        	adobe_id_frame_sign_in_btn.click
         	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "With wrong password" do 
-        	enter_sign_in_email(@data_user[$lang][:invalid_user][:id])
-            enter_sign_in_password(@data_user[$lang][:invalid_user][:password])
-        	sign_in_btn.click
+        	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
+            adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
+        	adobe_id_frame_sign_in_btn.click
         	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "sign in successfully" do 
-        	enter_sign_in_email(@data_user[$lang][:adobe_id_free_001][:id])
-        	enter_sign_in_password(@data_user[$lang][:adobe_id_free_001][:password])
-        	sign_in_btn.click
+        	adobe_id_frame_enter_email(@data_user[$lang][:adobe_id_free_001][:id])
+        	adobe_id_frame_enter_password(@data_user[$lang][:adobe_id_free_001][:password])
+        	adobe_id_frame_sign_in_btn.click
         	wait_for_page_load(60, @base_url + @data_url[:sign_in_successfully])
         	@driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end

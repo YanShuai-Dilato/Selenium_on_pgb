@@ -4,7 +4,6 @@
 # For there are some account-related issues we are still working on. 
 # It will be ok later. 
 
-
 require 'rubygems'
 require 'rspec'
 require 'selenium-webdriver'
@@ -19,6 +18,7 @@ require_relative "../action/new_app_page"
 require_relative "../action/sign_in_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
+require_relative "../lib/webdriver_helper"
 
 describe "Register -> upgrade plan (Free -> Paid)" do 
 	include RegisterDialog
@@ -27,6 +27,7 @@ describe "Register -> upgrade plan (Free -> Paid)" do
     include AnywareContainer
 	include BaseEnv
 	include ConfigParam
+	include WebdriverHelper
 
 	before(:all) do 
 		init
@@ -42,28 +43,64 @@ describe "Register -> upgrade plan (Free -> Paid)" do
 		@sign_in_page = SignInPage.new @driver
 	    @new_app_page = NewAppPage.new @driver
 		@driver.get path_format_locale("/people/sign_in")
-	end
 
-	after(:each) do 
-		@new_app_page.close_current_browser
-		@sign_in_page.close_current_browser
-	end
-
-	it "with supported area Adobe ID" do 
 		@sign_in_page.sign_in_with_adobe_id(
 			@data_user[$lang][:adobe_id_for_upgrade_purpose_support_area][:id],
             @data_user[$lang][:adobe_id_for_upgrade_purpose_support_area][:password])
         begin
             sleep 5
         end until @driver.current_url == @base_url + @data_url[:sign_in_successfully]
-        puts "current_url -> #{@driver.current_url}"
-        puts "data_url[:sign_in_successfully] -> #{@base_url}#{@data_url[:sign_in_successfully]}"
+        puts "+ current_url -> #{@driver.current_url}"
+        puts "+ data_url[:sign_in_successfully] -> #{@base_url}#{@data_url[:sign_in_successfully]}"
+
+        puts "+ new_app_with_zip in new_app_page.rb"
+        sleep 10
+        if @new_app_page.new_app_btn_display?
+            new_app_btn.click
+        end
+        puts "+ after new_app_btn.click"
+
+        private_tab.click
+        puts "+ after private_tab.click"
 
         if !@new_app_page.private_app_no?
         	@new_app_page.new_app_with_zip
         	sleep 5
         end
+	end
 
+	after(:each) do 
+		@driver.quit
+	end
+
+	it "does go to the creative.adobe.com page, when select the 'Creative Cloud Membership' " do 
+		upgrade_link.click
+		begin
+            sleep 5
+        end until @driver.current_url == @base_url + @data_url[:register_page]
+        start_at_9_99_btn.click
+
+        sleep 10
+
+        if isElementPreset?(30, :tag_name, "iframe") 
+			@driver.switch_to.frame(0)
+			puts "+ after @driver.switch_to.frame(0)"
+			sleep 5			
+			adobe_id_frame_enter_email(@data_user[$lang][:adobe_id_for_upgrade_purpose_support_area][:id])
+   			adobe_id_frame_enter_password(@data_user[$lang][:adobe_id_for_upgrade_purpose_support_area][:password])
+         	adobe_id_frame_sign_in_btn.click
+        	sleep 3
+        	@driver.switch_to.default_content
+        	puts "+ after @driver.switch_to.default_content"
+		end
+
+		@driver.find_element(:xpath => "//*[@id='cc-plan-btn']").click
+		sleep 5
+        @driver.current_url.should eql "https://creative.adobe.com/plans"
+	end
+=begin
+	it "does upgrade successfully and then can create more private apps, when select the 9.99/mo and fill valid infomation" do 
+		
 		upgrade_link.click
 		sleep 3
 		start_at_9_99_btn.click
@@ -98,5 +135,5 @@ describe "Register -> upgrade plan (Free -> Paid)" do
         @can_create_more_private_app.should eql false
         	
 	end
-
+=end
 end

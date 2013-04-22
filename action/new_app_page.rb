@@ -31,8 +31,8 @@ class NewAppPage
     end
 
     def private_app_no?
-        @disabled_or_not_upload =  upload_a_zip.attribute('disabled') # true/false
-        @disabled_or_not_paste = txtbox_paste_git_repo.attribute('disabled') # true/false
+        @disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
+        @disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
         if @disabled_or_not_paste && @disabled_or_not_upload
             return true
         end
@@ -50,12 +50,12 @@ class NewAppPage
         if private_app_no?
             return false
         end
-        puts "before executing scripts"
+        puts "+ before executing scripts"
         #excute javascript to show the element in order to magic uploading file
-        @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip)
-        puts "after executing scripts"
+        @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip_btn)
+        puts "+ after executing scripts"
 
-        upload_a_zip.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
+        upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
 
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         return true
@@ -67,9 +67,13 @@ class NewAppPage
         if new_app_btn_display?
             new_app_btn.click
         end
+        puts "+ after new-app-btn.click"
         opensource_tab.click
-        txtbox_paste_git_repo.clear
-        txtbox_paste_git_repo.send_keys @app_data[:new_app][:by_repo] + "\n"
+        puts "+ after opensource_tab.click"
+        paste_git_repo_input.clear
+        puts "+ after paste_git_repo.clear"
+        paste_git_repo_input.send_keys @app_data[:new_app][:by_repo] + "\n"
+        puts "+ after paste_git_repo.send_keys"
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
     end
 
@@ -90,11 +94,8 @@ class NewAppPage
         if new_app_btn_display?
             new_app_btn.click
         end
-        txtbox_paste_git_repo.send_keys(repo_address + "\n")
+        paste_git_repo_input.send_keys(repo_address + "\n")
         return error_not_a_valid_address.text
     end
 
-    def close_current_browser
-        @driver.quit
-    end
 end

@@ -38,7 +38,7 @@ describe "New apps with paid account" do
     end
 
     after(:all) do
-        @new_app_page.close_current_browser
+        @driver.quit
         if @num_private_app >= 10  # then delete all apps, as is know that the max number is 24 for 9.99/m account
             puts "Current number of private app was #{@num_private_app}"
             private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}

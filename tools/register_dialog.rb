@@ -69,6 +69,62 @@ module RegisterDialog
 		@driver.find_element(:xpath => @data_xpath[:register_page][:github_complete_my_registration])
 	end
 
+# -- begin adobe id iframe
+	def adobe_id_frame_enter_email(email)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])
+		clear_and_type(field, email)
+	end
+
+	def adobe_id_frame_enter_password(password)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_password_input])
+		clear_and_type(field, password)
+	end
+
+	def adobe_id_frame_create_an_adobe_id_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_create_adobe_id_btn])
+	end
+
+	def adobe_id_frame_enter_username(username)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_adobe_id_input_2])
+		clear_and_type(field, username)
+	end
+
+	def adobe_id_frame_enter_password_2(password)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_password_input_2])
+		clear_and_type(field, password)
+	end
+
+	def adobe_id_frame_retype_password(retype_password)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_retype_password_input])
+		clear_and_type(field, retype_password)
+	end
+
+	def adobe_id_frame_firstname_input(first_name)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_firstname_input])
+		clear_and_type(field, first_name)
+	end
+
+	def adobe_id_frame_lastname_input(last_name)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_lastname_input])
+		clear_and_type(field, last_name)
+	end
+
+	def adobe_id_select_country_region(region)
+		country_select = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_country_region_select])
+		countries = country_select.find_elements(:tag_name => "option")
+		countries.each do |el| 
+		    if(el.attribute("value") == region)
+		        el.click
+		        break
+		    end
+		end
+	end
+
+	def adobe_id_frame_sign_in_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_sign_in_btn])
+	end
+# -- end adobe id iframe 	
+
 	def sign_in_btn
 		@driver.find_element(:xpath => @data_xpath[:register_page][:sign_in_btn])
 	end
@@ -80,55 +136,8 @@ module RegisterDialog
 		@data_xpath[:register_page][:accept_btn]	
 	end
 
-	def click_create_an_adobe_id_btn
-		@driver.find_element(:xpath => @data_xpath[:register_page][:create_adobe_id_btn]).click
-	end
-
-	def enter_sign_in_email(email)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_input])
-		clear_and_type(@field, email)
-	end
-
-	def enter_sign_in_password(password)
-		@field = @driver.find_element(:xpath => @data_xpath[:register_page][:password])
-		clear_and_type(@field, password)
-	end
-
-	def enter_email(email)
-		@field = @driver.find_element(:id => "email_address")
-		clear_and_type(@field, email)
-	end
-
-	def enter_password(password)
-		@field = @driver.find_element(:id => "password")
-		clear_and_type(@field, password)
-	end
-
-	def enter_retype_password(password)
-		@field = @driver.find_element(:id => "retype_password")
-		clear_and_type(@field, password)
-	end
-
-	def enter_first_name(first_name)
-		@field = @driver.find_element(:id => "first_name")
-		clear_and_type(@field, first_name)
-	end
-
-	def enter_last_name(last_name)
-		@field = @driver.find_element(:id => "last_name")
-		clear_and_type(@field, last_name)
-	end
-
-	def select_country_region(region)
-		@country_select = @driver.find_element(:id => "country")
-		countries = @country_select.find_elements(:tag_name => "option")
-		countries.each do |el| 
-		    if(el.attribute("value") == region)
-		        el.click
-		        break
-		    end
-		end
-		# set_region(region)
+	def create_an_adobe_id_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_create_adobe_id_btn])
 	end
 
 	def create_btn

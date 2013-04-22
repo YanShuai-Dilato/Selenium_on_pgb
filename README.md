@@ -17,7 +17,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 
 2, Install RSpec, Selenium-WebDriver, and rake packages with gem
 
-  $ gem install rspec
+    $ gem install rspec
 
 	$ gem install selenium-webdriver
 
@@ -46,10 +46,8 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
       ENV['BROWSER'] = 'chrome'
       ENV['LANG'] = 'en_US'
     end
-    
     ------
-    * Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at 
-    http://docs.seleniumhq.org/docs/03_webdriver.jsp
+    * Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
     * Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
     * Manage the running testcases for 't.pattern'.
     
@@ -62,7 +60,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 
 	
-3, You then can open it with your default browser
+4, You then can open it with your default browser
 	
 	$ open ./result_html/result_<the timeframe>.html
 	

@@ -61,8 +61,9 @@ describe "Sign in" do
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user][:id],
                                                 @data_user[$lang][:invalid_user][:password])
             sleep 5
-            #error message should match the expecation
-            error_message_box.text.should eql @data_str[$lang][:not_found_in_database]
+            # error message should match the expecation
+            # error_message_box.text.should eql @data_str[$lang][:not_found_in_database]
+            "abc".should_not eql "abc"
         end
     end
 

@@ -35,12 +35,10 @@ class EditAccountPage
 		@driver.find_element(:xpath => "//*[@id='delete-account']/section/fieldset/a").click  
 
 		a = @driver.switch_to.alert
-		puts "+ before puts alert.text"
-		puts a.text 
-		puts "+ after puts alert.text"
 		a.accept
 		# a.dismiss
 		sleep 5
+		puts "+ user account #{id} deleted"
 		@driver.quit
 	end
 end

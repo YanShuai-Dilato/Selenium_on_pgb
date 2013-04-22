@@ -21,6 +21,27 @@ class SignInPage
     end
 
     def sign_in_with_adobe_id(id,password)
+        puts "+ id_textinput's type: "
+        puts "+ #{id_textinput.attribute('type')}"
+        puts "+ end"
+
+        @driver.execute_script(
+            " oldObj = document.findElementById('person_email'); " + 
+            " var newObject = document.createElement('input'); " + 
+            " newObject.type = 'text'; " + 
+            " if(oldObject.size) newObject.size = oldObject.size; " + 
+            " if(oldObject.value) newObject.value = oldObject.value; " + 
+            " if(oldObject.name) newObject.name = oldObject.name; " +
+            " if(oldObject.id) newObject.id = oldObject.id; " + 
+            " if(oldObject.className) newObject.className = oldObject.className; " + 
+            " oldObject.parentNode.replaceChild(newObject,oldObject); "       
+        )
+
+        puts "+ after execute_script"
+        puts "+ id_textinput's type: "
+        puts "+ #{@driver.find_element(:id => 'person_email').attribute('type')}"
+        puts "+ end"
+
         id_textinput.send_keys(id)
         password_textinput.send_keys(password)
         sign_in_btn.click
