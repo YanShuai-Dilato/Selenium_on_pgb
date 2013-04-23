@@ -59,7 +59,8 @@
     :accept_the_term: //*[@id="consent"]
     :accept_btn: //*[@id="confirm"]
     :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
-    :start_at_9_99: //*[@id="plans-table"]/tbody/tr[4]/td[2]/a
+    :start_at_9_99_btn: //*[@id="plans-table"]/tbody/tr[4]/td[2]/a
+    :ccm_29_99_btn: //*[@id="cc-plan-btn"]
     :payment_continue_btn: //*[@id="validate-btn"]
     :payment_confirm_btn: //*[@id="confirm-btn"]
     :I_agree_to_the_terms_above: //*[@id="accept-terms"]

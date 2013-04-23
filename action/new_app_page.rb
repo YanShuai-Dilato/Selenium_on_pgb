@@ -23,17 +23,17 @@ class NewAppPage
     end
     
     def new_app_btn_display?
-        @style = @driver.find_element(:id, "new-app-btn").attribute("style")
-        if @style.chomp == "display: none;".chomp
+        style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
+        if style.chomp == "display: none;".chomp
             return false
         end
         return true
     end
 
     def private_app_no?
-        @disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
-        @disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
-        if @disabled_or_not_paste && @disabled_or_not_upload
+        disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
+        disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
+        if disabled_or_not_paste && disabled_or_not_upload
             return true
         end
         return false
@@ -43,20 +43,23 @@ class NewAppPage
         puts "+ new_app_with_zip in new_app_page.rb"
         if new_app_btn_display?
             new_app_btn.click
+            sleep 2
+            private_tab.click
+            sleep 2
         end
-        puts "+ after new_app_btn.click"
-        private_tab.click
-        puts "+ after private_tab.click"
+        
+        puts private_app_no?.to_s
+        sleep 3
         if private_app_no?
             return false
         end
-        puts "+ before executing scripts"
+
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip_btn)
-        puts "+ after executing scripts"
 
         upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-
+        puts "waiting for uploading file"
+        sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         return true
     end
@@ -67,13 +70,10 @@ class NewAppPage
         if new_app_btn_display?
             new_app_btn.click
         end
-        puts "+ after new-app-btn.click"
         opensource_tab.click
-        puts "+ after opensource_tab.click"
         paste_git_repo_input.clear
-        puts "+ after paste_git_repo.clear"
         paste_git_repo_input.send_keys @app_data[:new_app][:by_repo] + "\n"
-        puts "+ after paste_git_repo.send_keys"
+        sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
     end
 
@@ -83,7 +83,7 @@ class NewAppPage
             new_app_btn.click
         end
         private_tab.click
-        if paste_git_repo 
+        if !private_app_no?
             paste_git_repo.send_keys @app_data[:new_app][:by_repo]
         else
             return false

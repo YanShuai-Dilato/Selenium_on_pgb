@@ -58,97 +58,97 @@ describe "New an app with free account" do
     end
 
    # this context need at least one public app to start with. 
-    # context "- with Adobe ID - free account" do 
-    #     before(:all) do 
-    #         puts "+ before all inside"
-    #         @base_url = base_url
-    #         @driver = browser
-    #         @new_app_page = NewAppPage.new(@driver)
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
-    #                                                       @data_user[$lang][:adobe_id_free_002][:password])
-    #         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
-    #     end
+    context "- with Adobe ID - free account" do 
+        before(:all) do 
+            puts "+ before all inside"
+            @base_url = base_url
+            @driver = browser
+            @new_app_page = NewAppPage.new(@driver)
+            @driver.get path_format_locale("/people/sign_in")
+            SignInPage.new(@driver).sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
+                                                          @data_user[$lang][:adobe_id_free_002][:password])
+            # wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
+            sleep 10
+        end
 
-    #     after(:all) do 
-    #         @driver.quit
-    #     end
+        after(:all) do 
+            @driver.quit
+        end
 
-    # 	it "#Tip: paste .git repo" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
-    # 	end
+    	it "#Tip: paste .git repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "+ new_app_btn.click"
+            end
+            paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
+    	end
 
-    # 	it "#Tip: Connect your Github account" do   
-    #         link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
-    # 	end
+    	it "#Tip: Connect your Github account" do   
+            link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
+    	end
 
-    # 	it "#errors when pasting a invalid .git address" do    
-    #         @warning = @new_app_page.paste_a_git_repo("abcd")
-    #         @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
-    # 	end
+    	it "#errors when pasting a invalid .git address" do    
+            @warning = @new_app_page.paste_a_git_repo("abcd")
+            @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
+    	end
 
-    # 	it "create an opensource app by pasting a .git" do  
+    	it "create an opensource app by pasting a .git" do  
+            puts "+ before @new_app_page.new_public_app_with_repo"
 
-    #         puts "before @new_app_page.new_public_app_with_repo"
+            @new_app_page.new_public_app_with_repo
 
-    #         @new_app_page.new_public_app_with_repo
-
-    #         app_count_after = @new_app_page.get_existing_app_num
-    #         first_app_id_after = @new_app_page.get_first_app_id
-    #         puts "+app_count_after: #{app_count_after}"
-    #         puts "+first_app_id_after: #{first_app_id_after}"
+            app_count_after = @new_app_page.get_existing_app_num
+            first_app_id_after = @new_app_page.get_first_app_id
+            puts "+ app_count_after: #{app_count_after}"
+            puts "+ first_app_id_after: #{first_app_id_after}"
  
-    #         app_count_after.should_not eql 0 
+            app_count_after.should_not eql 0 
 
-    # 	end
+    	end
 
-    # 	it "create the first private app by uploading a .zip file" do 
-    #         @driver.navigate.refresh
-    #         sleep 5
+    	it "create the first private app by uploading a .zip file" do 
+            @driver.navigate.refresh
+            sleep 10
 
-    #         app_count_before = @new_app_page.get_existing_app_num
-    #         first_app_id_before = @new_app_page.get_first_app_id
-    #         puts "+app_count_before: #{app_count_before}"
-    #         puts "+first_app_id_before: #{first_app_id_before}"
+            app_count_before = @new_app_page.get_existing_app_num
+            first_app_id_before = @new_app_page.get_first_app_id
+            puts "+ app_count_before: #{app_count_before}"
+            puts "+ first_app_id_before: #{first_app_id_before}"
 
-    #         @new_app_page.new_app_with_zip
+            @new_app_page.new_app_with_zip
           
-    #         app_count_after = @new_app_page.get_existing_app_num
-    #         first_app_id_after = @new_app_page.get_first_app_id
-    #         puts "+app_count_after: #{app_count_after}"
-    #         puts "+first_app_id_after: #{first_app_id_after}"
+            app_count_after = @new_app_page.get_existing_app_num
+            first_app_id_after = @new_app_page.get_first_app_id
+            puts "+ app_count_after: #{app_count_after}"
+            puts "+ first_app_id_after: #{first_app_id_after}"
 
-    #         app_count_after.should_not eql @app_count_before 
-    #         first_app_id_after.should_not eql @first_app_id_before
-    # 	end
+            app_count_after.should_not eql @app_count_before 
+            first_app_id_after.should_not eql @first_app_id_before
+    	end
 
-    # 	it "can not create another private app"  do 
-    #         # @driver.navigate.refresh
-    #         sleep 5
+    	it "can not create another private app"  do 
+            # @driver.navigate.refresh
+            sleep 10
 
-    #         app_count_before = @new_app_page.get_existing_app_num
-    #         first_app_id_before = @new_app_page.get_first_app_id
-    #         puts "+app_count_before: #{app_count_before}"
-    #         puts "+first_app_id_before: #{first_app_id_before}"
+            app_count_before = @new_app_page.get_existing_app_num
+            first_app_id_before = @new_app_page.get_first_app_id
+            puts "+ app_count_before: #{app_count_before}"
+            puts "+ first_app_id_before: #{first_app_id_before}"
 
-    #         return_value = @new_app_page.new_app_with_zip 
+            return_value = @new_app_page.new_app_with_zip 
            
-    #         if (!return_value) 
-    #             puts "You should not see me"
-    #             app_count_after = @new_app_page.get_existing_app_num
-    #             first_app_id_after = @new_app_page.get_first_app_id
-    #             puts "+app_count_after: #{app_count_after}"
-    #             puts "+first_app_id_after: #{first_app_id_after}"
-    #             puts "You should not see me"
-    #         end
+            if (!return_value) 
+                app_count_after = @new_app_page.get_existing_app_num
+                first_app_id_after = @new_app_page.get_first_app_id
+                puts "+ app_count_after: #{app_count_after}"
+                puts "+ first_app_id_after: #{first_app_id_after}"
+                puts "You will not see me"
+            end
 
-    #         return_value.should eql false
-    # 	end
-    # end
+            return_value.should eql false
+    	end
+
+    end
 
     context "- with Adobe ID - free account - connected github" do 
         before(:all) do 

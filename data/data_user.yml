@@ -31,6 +31,15 @@
     :adobe_id_paid_001:
         :id: "dil45216+test_paid_004@adobetest.com"
         :password: "abcd1234"
+    :ccm_acnt_001:
+        :id: "dil40562+stagedeannual@adobetest.com"
+        :password: "password"
+    :ccm_acnt_002: 
+        :id: "dil40562+teamfra1128@adobetest.com"
+        :password: "password"
+    :ccm_acnt_003:
+        :id: "dil40562+teamfrenuonly1128@adobetest.com"
+        :password: "password"
     :invalid_user: 
         :id: "ſЊџЛяѨ҉ҝҾ@adobe.com"
         :password: "ÇÐäÿ×÷Ċ"

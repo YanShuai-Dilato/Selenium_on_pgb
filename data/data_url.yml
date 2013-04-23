@@ -15,3 +15,4 @@
 :register_a_new_account: ""
 :i_forgot_my_password: ""
 :didnt_rec_conf_instru: ""
+:select_adobe_store: "http://store1.adobe.com/cfusion/store/html/index.cfm?event=displayStoreSelector&keyword=phonegapbuild"

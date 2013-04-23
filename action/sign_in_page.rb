@@ -5,12 +5,14 @@ require_relative "../tools/sign_in_dialog"
 require_relative "../tools/sign_in_github_dialog"
 require_relative "../data/base_env"
 require_relative "../lib/webdriver_helper"
+require_relative "../lib/config_param"
 
 class SignInPage
     include SignInDialog
     include SignInGithubDialog
     include BaseEnv
     include WebdriverHelper
+    include ConfigParam
 
     def initialize(driver)
         @driver = driver
@@ -26,21 +28,19 @@ class SignInPage
         puts "+ end"
 
         @driver.execute_script(
-            " oldObj = document.findElementById('person_email'); " + 
+            " oldObj = document.getElementById('person_email'); " + 
             " var newObject = document.createElement('input'); " + 
             " newObject.type = 'text'; " + 
-            " if(oldObject.size) newObject.size = oldObject.size; " + 
-            " if(oldObject.value) newObject.value = oldObject.value; " + 
-            " if(oldObject.name) newObject.name = oldObject.name; " +
-            " if(oldObject.id) newObject.id = oldObject.id; " + 
-            " if(oldObject.className) newObject.className = oldObject.className; " + 
-            " oldObject.parentNode.replaceChild(newObject,oldObject); "       
+            " if(oldObj.size) newObject.size = oldObj.size; " + 
+            " if(oldObj.value) newObject.value = oldObj.value; " + 
+            " if(oldObj.name) newObject.name = oldObj.name; " +
+            " if(oldObj.id) newObject.id = oldObj.id; " + 
+            " if(oldObj.className) newObject.className = oldObj.className; " + 
+            " oldObj.parentNode.replaceChild(newObject,oldObj); "       
         )
 
         # highlight 
         highlight(:id, "person_email")
-
-        sleep 30
 
         puts "+ after execute_script"
         puts "+ id_textinput's type: "

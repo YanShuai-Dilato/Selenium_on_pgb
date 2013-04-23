@@ -39,24 +39,21 @@ describe "New apps with paid account" do
 
     after(:all) do
         @driver.quit
-        if @num_private_app >= 10  # then delete all apps, as is know that the max number is 24 for 9.99/m account
-            puts "Current number of private app was #{@num_private_app}"
-            private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
-            response = private_resource.get :accept => :json
-            json =  JSON.parse(response)
-            json['apps'].each do |i|
-                url = @base_url + i['link']
-                private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
-                response = private_resource.delete 
-                puts response.to_str
-            end
+        puts "Current number of private app was #{@num_private_app}"
+        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+        response = private_resource.get :accept => :json
+        json =  JSON.parse(response)
+        json['apps'].each do |i|
+            url = @base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+            response = private_resource.delete 
+            puts response.to_str
         end
     end
 
     it "create the first private app by uploading a .zip file" do 
         @new_app_page.new_app_with_zip
 
-        # @driver.navigate.refresh
         sleep 5 
             
         @app_count_after = @new_app_page.get_existing_app_num
@@ -76,7 +73,6 @@ describe "New apps with paid account" do
 
         @return_value = @new_app_page.new_app_with_zip  
         
-        # @driver.navigate.refresh
         sleep 5 
 
         @app_count_after = @new_app_page.get_existing_app_num

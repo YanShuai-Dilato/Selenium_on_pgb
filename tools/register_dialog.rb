@@ -29,7 +29,10 @@ module RegisterDialog
 	end
 
 	def start_at_9_99_btn 
-		@driver.find_element(:xpath => @data_xpath[:register_page][:start_at_9_99])
+		@driver.find_element(:xpath => @data_xpath[:register_page][:start_at_9_99_btn])
+	end
+	def ccm_29_99_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:ccm_29_99_btn])
 	end
 	def choose_payplan_9_99_link
 		@driver.find_element(:xpath => @data_xpath[:register_page][:choose_pay_plan_9_99])
@@ -72,12 +75,25 @@ module RegisterDialog
 # -- begin adobe id iframe
 	def adobe_id_frame_enter_email(email)
 		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])
-		clear_and_type(field, email)
+		puts "+ #{field.attribute('id')}"
+		highlight(:xpath, @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])
+		@driver.execute_script("document.getElementById('username').setAttribute('class', '')")
+		puts "#{field.attribute('class')}"
+
+		field.send_keys("fdsafd")
+
+		sleep 10
+		# clear_and_type(field, email)
+		# @driver.find_element(:id => "username").send_keys(email)
 	end
 
 	def adobe_id_frame_enter_password(password)
 		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_password_input])
-		clear_and_type(field, password)
+		puts "+ #{field.attribute('id')}"
+		field.send_keys("fdsafd")
+		sleep 5
+		# clear_and_type(field, password)
+		# @driver.find_element(:id => "password").send_keys(password)
 	end
 
 	def adobe_id_frame_create_an_adobe_id_btn
@@ -154,6 +170,8 @@ module RegisterDialog
 
 	def clear_and_type(field, text)
 		field.clear
+		puts "+ clear_and_type"
+		puts "+ #{text}"
 		field.send_keys(text)
 	end
 
