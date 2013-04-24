@@ -26,35 +26,35 @@ describe "Sign in" do
 
     before(:each) do
         @driver = browser # have to start a new instance each time to clean the cache.
-        @sign_in_page = SignInPage.new(@driver)
+        @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
         # @driver.get path_format_locale("/people/sign_in")
     end
 
     after(:each) do 
         if example.exception != nil
             @driver.save_screenshot 'screenshot.png'
-        end    
+        end
         @sign_in_page.close_current_browser
     end
 
-    # context "with GitHub ID" do
-    #     it "sign in successfully" do 
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id_only][:id],
-    #                                              @data_user[$lang][:github_id_only][:password])
-    #         sleep 5
-    #         #url should redirect to app page
-    #         @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
-    #     end
-    # end
+    context "with GitHub ID" do
+        it "sign in successfully" do 
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id_only][:id],
+                                                 @data_user[$lang][:github_id_only][:password])
+            sleep 5
+            #url should redirect to app page
+            @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
+        end
+    end
 
     context "with Adobe ID " do
-        # it "should sign in successfully" do 
-        #     @driver.get path_format_locale("/people/sign_in")
-        #     @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],@data_user[$lang][:adobe_id_free_001][:password])
-        #     #url should redirect to app page
-        #     @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
-        # end
+        it "should sign in successfully" do 
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],@data_user[$lang][:adobe_id_free_001][:password])
+            #url should redirect to app page
+            @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
+        end
 
         it "invalid email or password" do
             @driver.get path_format_locale("/people/sign_in")
@@ -66,33 +66,32 @@ describe "Sign in" do
         end
     end
 
-    # context "I forgot my password" do 
-    #     it "with valid email address" do
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:adobe_id_free_001][:id])
-    #         @tips.should eql @data_str[$lang][:passwords_send_instructions]
-    #     end
+    context "I forgot my password" do 
+        it "with valid email address" do
+            @driver.get path_format_locale("/people/sign_in")
+            @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:adobe_id_free_001][:id])
+            @tips.should eql @data_str[$lang][:passwords_send_instructions]
+        end
 
-    #     it "with invalid email address" do 
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @warnings = @sign_in_page.forget_password_with_invalid_email(@data_user[$lang][:invalid_user][:id])
-    #         @warnings.should eql @data_str[$lang][:PGB_email_not_found]
-    #     end
-    # end
+        it "with invalid email address" do 
+            @driver.get path_format_locale("/people/sign_in")
+            @warnings = @sign_in_page.forget_password_with_invalid_email(@data_user[$lang][:invalid_user][:id])
+            @warnings.should eql @data_str[$lang][:PGB_email_not_found]
+        end
+    end
 
-    # context "didn't receive confirmation" do 
-    #     it "with valid email address" do 
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
-    #         @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
-    #     end
+    context "didn't receive confirmation" do 
+        it "with valid email address" do 
+            @driver.get path_format_locale("/people/sign_in")
+            @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
+            @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
+        end
 
-    #     it "with invalid email address" do 
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
-    #         @errors.should eql @data_str[$lang][:PGB_email_not_found]
-    #     end
-
-    # end
+        it "with invalid email address" do 
+            @driver.get path_format_locale("/people/sign_in")
+            @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
+            @errors.should eql @data_str[$lang][:PGB_email_not_found]
+        end
+    end
 
 end
