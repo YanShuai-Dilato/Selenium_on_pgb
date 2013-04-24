@@ -20,7 +20,7 @@ describe "Register -> sign in" do
 
     before(:all) do 
         init
-        @base_url = base_url
+        @base_url = "https://buildstage.phonegap.com"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
