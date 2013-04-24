@@ -15,7 +15,7 @@ class EditAccountPage
 
 	def initialize(driver)
 		init
-		@base_url = base_url
+		@base_url = "https://buildstage.phonegap.com"
 		@driver = driver
 		@data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
