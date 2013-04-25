@@ -20,6 +20,8 @@
     :PGB_you_mush_agree_to_the_terms_of_service: "You must agree to the terms of service."
     :passwords_send_instructions: "You will receive an email with instructions on recovering your PhoneGap Build account in a few minutes."
     :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+    :confirmations_email_confirmed: "1 error: Email was already confirmed"
+    :confirmations_email_not_found: "1 error: Email not found"
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -43,5 +45,7 @@
     :PGB_you_mush_agree_to_the_terms_of_service: "Vous devez accepter les conditions d'utilisation"
     :passwords_send_instructions: "Dans quelques minutes, vous allez recevoir un message électronique contenant des instructions pour récupérer votre compte PhoneGap Build." 
     :confirmations_send_instructions: "1 erreur : Email n'a pas \u00E9t\u00E9 confirm\u00E9"
+    :confirmations_email_confirmed: "1 erreur : Email n'a pas été confirmé"
+    :confirmations_email_not_found: "1 erreur : Email introuvable"
 :ja_JP:
     :not_found_in_database: "test"

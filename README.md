@@ -20,8 +20,6 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
     $ gem install rspec
 
 	$ gem install selenium-webdriver
-
-	$ gem install rake
 	
 	$ gem install rest-client
 
@@ -84,5 +82,7 @@ register_free_plan_adobe_rspec.rb
 register_free_plan_github_rspec.rb
 
 register_upgrade_plan_spec.rb
+
+register_paid_ccm_rspec.rb
 
 sign_in_rspec.rb

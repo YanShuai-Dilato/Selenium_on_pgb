@@ -25,7 +25,8 @@ class EditAccountPage
 
 	def delete_my_account(id, password)
 		@driver.get path_format_locale @data_url[:sign_in]
-		SignInPage.new(@driver).sign_in_with_github_id(id, password)
+		sign_in_page = SignInPage.new @driver, xpath: @data_xpath, user: @data_user, str: @data_str, url: @data_url
+		sign_in_page.sign_in_with_github_id(id, password)
 		@driver.get path_format_locale @data_url[:edit_account]
 
 		@driver.execute_script("document.getElementById('delete-account').style['display'] = 'block'")

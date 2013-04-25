@@ -51,13 +51,13 @@
     :adobe_id_frame_lastname_input: //*[@id="last_name"]
     :adobe_id_frame_country_region_select: //*[@id="country"]
     :adobe_id_frame_sign_in_btn: //*[@id="sign_in"]
-    :warning_message: /html/body/div[2]/form/header/p
+    :adobe_id_frame_read_and_agree_the_term_checkbox: //*[@id="consent"]
+    :adobe_id_frame_accept_btn: //*[@id="confirm"]
+    :adobe_id_frame_warning_message: /html/body/div[2]/form/header/p
     :warning_existing_registration_found: /html/body/section/div/section/header/h1
     :do_not_match_warning: //*[@id="login"]/header/p[1]
     :back_btn: //*[@id="back"]
     :create_btn: //*[@id="create_account"]
-    :accept_the_term: //*[@id="consent"]
-    :accept_btn: //*[@id="confirm"]
     :choose_pay_plan_9_99: //*[@id="monthly-plan-btn"]
     :start_at_9_99_btn: //*[@id="plans-table"]/tbody/tr[4]/td[2]/a
     :ccm_29_99_btn: //*[@id="cc-plan-btn"]

@@ -11,9 +11,6 @@ module RegisterDialog
 		@driver.find_element(:xpath => @data_xpath[:register_page][:contact_us])
 	end
 
-	def warning_message() 
-		@driver.find_element(:xpath => @data_xpath[:register_page][:warning_message] )
-	end
 	def do_not_match_waring 
 		@driver.find_element(:xpath => @data_xpath[:register_page][:do_not_match_warning]).text
 	end
@@ -25,7 +22,10 @@ module RegisterDialog
 		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_btn])	
 	end
 	def github_btn() 
-		@driver.find_element(:xpath => @data_xpath[:register_page][:github_btn])
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:github_btn])
+		highlight(:xpath, @data_xpath[:register_page][:github_btn])
+		sleep 3 # --- remember to delete me. 
+		return field 
 	end
 
 	def start_at_9_99_btn 
@@ -74,26 +74,15 @@ module RegisterDialog
 
 # -- begin adobe id iframe
 	def adobe_id_frame_enter_email(email)
-		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])
-		puts "+ #{field.attribute('id')}"
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])		
 		highlight(:xpath, @data_xpath[:register_page][:adobe_id_frame_adobe_id_input])
-		@driver.execute_script("document.getElementById('username').setAttribute('class', '')")
-		puts "#{field.attribute('class')}"
-
-		field.send_keys("fdsafd")
-
-		sleep 10
-		# clear_and_type(field, email)
-		# @driver.find_element(:id => "username").send_keys(email)
+		sleep 5
+		clear_and_type(field, email)
 	end
 
 	def adobe_id_frame_enter_password(password)
-		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_password_input])
-		puts "+ #{field.attribute('id')}"
-		field.send_keys("fdsafd")
-		sleep 5
-		# clear_and_type(field, password)
-		# @driver.find_element(:id => "password").send_keys(password)
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_password_input])	
+		clear_and_type(field, password)
 	end
 
 	def adobe_id_frame_create_an_adobe_id_btn
@@ -136,8 +125,22 @@ module RegisterDialog
 		end
 	end
 
+	def read_and_agree_the_term_checkbox
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_read_and_agree_the_term_checkbox])
+	end
+
+	def accept_btn
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_accept_btn])
+	end
+
 	def adobe_id_frame_sign_in_btn
-		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_sign_in_btn])
+		field = @driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_sign_in_btn])
+		highlight(:xpath, @data_xpath[:register_page][:adobe_id_frame_sign_in_btn])
+		return field
+	end
+
+	def adobe_id_frame_warning_message() 
+		@driver.find_element(:xpath => @data_xpath[:register_page][:adobe_id_frame_warning_message])
 	end
 # -- end adobe id iframe 	
 
@@ -147,9 +150,6 @@ module RegisterDialog
 
 	def read_accept_terms_checkbox
 		@data_xpath[:register_page][:accept_the_term]  
-	end
-	def accept_btn
-		@data_xpath[:register_page][:accept_btn]	
 	end
 
 	def create_an_adobe_id_btn

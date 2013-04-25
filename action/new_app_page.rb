@@ -84,7 +84,7 @@ class NewAppPage
         end
         private_tab.click
         if !private_app_no?
-            paste_git_repo.send_keys @app_data[:new_app][:by_repo]
+            paste_git_repo_input.send_keys @app_data[:new_app][:by_repo] + "\n"
         else
             return false
         end

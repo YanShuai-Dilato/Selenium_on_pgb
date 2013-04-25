@@ -93,7 +93,7 @@ module ConfigParam
 
     #Path formattor with locale
     def path_format_locale (path)
-        base_url+path+"?locale="+$lang.to_s
+        @base_url+path+"?locale="+$lang.to_s
     end 
 
     # highlight element suggested by https://gist.github.com/marciomazza/3086536
@@ -110,6 +110,31 @@ module ConfigParam
         end
     end
 
+    # for the purpose of unique email address, which was used to create new Adobe ID each time.
+    def unique_number
+        data_number = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
+
+        to_be_used = data_number[:number]
+        result = ""
+        num_of_zero = 0
+
+        if to_be_used < 10 
+            num_of_zero = 2
+        elsif to_be_used < 100
+            num_of_zero = 1
+        end
+
+        num_of_zero.times do 
+            result += "0"
+        end
+
+        result += to_be_used.to_s
+
+        data_number[:number] = to_be_used + 1
+        File.open(File.expand_path("../../data/data_number.yml",__FILE__), 'w') { |f| YAML.dump(data_number, f)}
+
+        return result
+    end
 end  
 
 
