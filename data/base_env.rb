@@ -20,4 +20,14 @@ module BaseEnv
         end
     end  
 
+    class Counter
+        attr_accessor :value
+        def initialize(i = 0)
+            @value = i
+        end
+        def inc
+            @value = @value.succ
+        end
+    end
+
 end

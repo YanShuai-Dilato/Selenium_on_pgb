@@ -23,6 +23,8 @@ describe "New apps with paid account" do
 
     before(:all) do
         init
+        @order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_002_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -48,6 +50,15 @@ describe "New apps with paid account" do
             private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_paid_001][:id] , :password => @data_user[$lang][:adobe_id_paid_001][:password] , :timeout => 30}
             response = private_resource.delete 
             puts response.to_str
+        end
+    end
+
+    after(:each) do 
+        @name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
         end
     end
 

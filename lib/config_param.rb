@@ -7,8 +7,8 @@ module ConfigParam
     include BaseEnv
     #used for initialize the global variable 
     def init
-        $browser = ENV['BROWSER'].to_sym
-        $lang = ENV['LANG'].to_sym
+        $browser = ENV['PGB_BROWSER'].to_sym
+        $lang = ENV['PGB_LANG'].to_sym
 
         # liclu:original function 
         # opts = GetoptLong.new(

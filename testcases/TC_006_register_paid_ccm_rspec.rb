@@ -22,6 +22,8 @@ describe "Register paid CCM account" do
 
 	before(:all) do 
 		init
+		@order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_006_IT_"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
@@ -40,6 +42,13 @@ describe "Register paid CCM account" do
 	end
 
 	after(:each) do
+		@name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+        end
+        
 		@driver.quit
 	end
 

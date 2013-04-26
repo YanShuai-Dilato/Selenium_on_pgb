@@ -20,7 +20,8 @@ describe "Register -> sign in" do
     include WebdriverHelper
 
 	before(:all) do 
-		init
+		init@order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_004_IT_"
 		@driver = browser
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
@@ -36,6 +37,15 @@ describe "Register -> sign in" do
 
     after(:all) do 
         @register_page.close_current_page
+    end
+
+    after(:each) do 
+        @name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+        end
     end
 
     context "Adobe ID" do 

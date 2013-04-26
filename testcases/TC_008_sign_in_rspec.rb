@@ -17,6 +17,8 @@ describe "Sign in" do
     before(:all) do
         #mixin init function in ConfigParam
         init
+        @order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_008_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -31,10 +33,13 @@ describe "Sign in" do
     end
 
     after(:each) do 
+        @name_screenshot += @order_it.inc.to_s
+
         if example.exception != nil
-            @driver.save_screenshot 'screenshot.png'
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
         end
-        @sign_in_page.close_current_browser
+        @driver.quit
     end
 
     context "with GitHub ID" do

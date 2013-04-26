@@ -31,6 +31,8 @@ describe "Register -> upgrade plan (Free -> Paid)" do
 
 	before(:all) do 
 		init
+		@order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_007_IT_"
 		@base_url = base_url
 		@data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -70,6 +72,13 @@ describe "Register -> upgrade plan (Free -> Paid)" do
 	end
 
 	after(:each) do 
+		@name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+        end
+        
 		@driver.quit
 	end
 

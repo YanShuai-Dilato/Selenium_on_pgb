@@ -21,6 +21,8 @@ describe "Register -> create an Adobe ID with provided email" do
 
 	before(:all) do 
 		init
+		@order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_003_IT_"
 		@driver = browser
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
@@ -51,6 +53,15 @@ describe "Register -> create an Adobe ID with provided email" do
 
 	after(:all) do 
 		@driver.quit
+	end
+
+	after(:each) do 
+		@name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+        end
 	end
 
 	it "With invalid Adobe ID (Email Address)" do

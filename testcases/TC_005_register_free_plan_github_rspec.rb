@@ -20,6 +20,8 @@ describe "Register -> sign in" do
 
     before(:all) do 
         init
+        @order_it = BaseEnv::Counter.new
+        @name_screenshot = "TC_005_IT_"
         @base_url = "https://buildstage.phonegap.com"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -41,7 +43,14 @@ describe "Register -> sign in" do
     end
 
     after(:each) do 
-        @register_page.close_current_page
+        @name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+        end
+        
+        @driver.quit
     end
 
     context "with " do 
