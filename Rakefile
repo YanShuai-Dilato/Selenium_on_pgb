@@ -35,7 +35,7 @@ if defined? RSpec
         Dir.mkdir("./auto_results/#{name_2nd_dir}/video") unless Dir.exists?("./auto_results/#{name_2nd_dir}/video")
 
 
-        t.pattern = "./testcases/*_rspecsss.rb"
+        t.pattern = "./testcases/*_rspec.rb"
         #output to html file with timeframe
         t.rspec_opts = "--format h > ./auto_results/index.html "
       
