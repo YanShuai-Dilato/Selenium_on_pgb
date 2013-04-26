@@ -67,7 +67,7 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "With invalid Adobe ID (Email Address)" do
 	    user = @user_info.clone
 		user[:email_address] = @data_user[$lang][:invalid_user][:id]
-		puts "+ #{user}"
+		
 		sleep 15
 		@warnings = @register_page.enter_register_information(user)
 		@warnings.should eql @data_str[$lang][:PGB_enter_a_valid_email]
@@ -76,7 +76,7 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "With unmatched password" do 
 	    user = @user_info.clone
 		user[:retype_pass] = "something_not_the_original_password"
-		puts "+ #{user}"
+		
 		@warnings = @register_page.enter_register_information(user)
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_retyped_password_unmatched]
@@ -85,7 +85,7 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "With invalid First Name" do 
 	    user = @user_info.clone
 		user[:first_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
-		puts "+ #{user}"
+		
 		@warnings = @register_page.enter_register_information(user)
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_first_name_invalid]
@@ -94,7 +94,7 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "With invalid Last Name" do 
 	    user = @user_info.clone
 		user[:last_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
-		puts "+ #{user}"
+		
 		@warnings = @register_page.enter_register_information(user)
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_last_name_invalid]
@@ -103,7 +103,7 @@ describe "Register -> create an Adobe ID with provided email" do
 	it "Without a country selected" do
 	  user = @user_info.clone
 		user[:country_region] =""
-		puts "+ #{user}"
+		
 		@warnings = @register_page.enter_register_information(user)
 		sleep 5
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
@@ -116,7 +116,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@user[:password] = "password"
 		@user[:retype_pass] = "password"
 
-		puts "+ #{@user}"
+		
 		sleep 10
 		@register_page.enter_register_information(@user)
 		sleep 5
