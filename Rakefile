@@ -16,12 +16,25 @@ def get_value_of_env(env, default_value)
     end
 end
 
-# require 'fileutils'
-# FileUtils.mkdir_p 'cool/beans'
-
 if defined? RSpec
 
-    desc "New App Free Account RSpec"
+    desc "All Test Cases "
+    RSpec::Core::RakeTask.new(:All) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/*_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_001_new_app_free_account"
     RSpec::Core::RakeTask.new(:TC_001) do |t|
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
         Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
@@ -32,8 +45,119 @@ if defined? RSpec
         t.rspec_opts = "--format h > ./auto_results/index.html "
       
         #init config
-        puts "ENV[PGB_BROWSER]: #{ENV['PGB_BROWSER']}"
-        puts "ENV[PGB_LANG]: #{ENV['PGB_LANG']}"
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_002_new_app_paid_account"
+    RSpec::Core::RakeTask.new(:TC_002) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_002_new_app_paid_account_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_003_register_create_adobe_id"
+    RSpec::Core::RakeTask.new(:TC_003) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_003_register_create_adobe_id_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_004_register_free_plan_adobe"
+    RSpec::Core::RakeTask.new(:TC_004) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_004_register_free_plan_adobe_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_005_register_free_plan_github"
+    RSpec::Core::RakeTask.new(:TC_005) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_005_register_free_plan_github_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_006_register_paid_ccm_rspec"
+    RSpec::Core::RakeTask.new(:TC_006) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_006_register_paid_ccm_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_007_register_upgrade_plan"
+    RSpec::Core::RakeTask.new(:TC_007) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_007_register_upgrade_plan_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
+        ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
+        ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
+    end
+
+    desc "TC_008_sign_in_rspec"
+    RSpec::Core::RakeTask.new(:TC_008) do |t|
+        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
+        Dir.mkdir("./auto_results/screenshots") unless Dir.exists?("./auto_results/screenshots")
+        Dir.mkdir("./auto_results/video") unless Dir.exists?("./auto_results/video")
+
+        t.pattern = "./testcases/TC_008_sign_in_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format h > ./auto_results/index.html "
+      
+        #init config
+        
         ENV['PGB_BROWSER'] = get_value_of_env(ENV['PGB_BROWSER'],'firefox')
         ENV['PGB_LANG'] = get_value_of_env(ENV['PGB_LANG'], 'en_US')
     end
