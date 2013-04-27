@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # base_env.rb
 
 module BaseEnv

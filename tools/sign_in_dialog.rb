@@ -1,4 +1,4 @@
-# sign_in_dialog.rb
+#encoding: utf-8
 
 module SignInDialog
 

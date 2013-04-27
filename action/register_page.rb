@@ -1,4 +1,4 @@
-# register_page.rb
+#encoding: utf-8
 
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"

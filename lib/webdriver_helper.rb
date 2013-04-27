@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 #helper method for waiting in selenium
 module WebdriverHelper
 

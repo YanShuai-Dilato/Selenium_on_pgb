@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 require 'yaml'
 require_relative "../tools/new_app_dialog"
 require_relative "../data/base_env"

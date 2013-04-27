@@ -1,4 +1,4 @@
-# home_dialog.rb
+#encoding: utf-8
 
 module HomeDialog
     def home_home()              @the_home_page = @data[:home_page]     end

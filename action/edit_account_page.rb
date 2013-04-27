@@ -1,4 +1,4 @@
-
+#encoding: utf-8
 # operations at page /people/edit
 
 require 'yaml'

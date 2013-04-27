@@ -1,3 +1,4 @@
+#encoding: utf-8
 # https://buildstage.phonegap.com/apps/_id/settings
 
 module SettingsDialog

@@ -1,3 +1,4 @@
+#encoding: utf-8
 
 module EditAccountDialog
 	def delete_my_account_btn

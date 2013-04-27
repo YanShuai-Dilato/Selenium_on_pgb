@@ -1,5 +1,4 @@
-# App detail page
-# 
+#encoding: utf-8 
 
 module SettingsPage
 

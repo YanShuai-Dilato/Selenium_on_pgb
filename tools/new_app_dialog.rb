@@ -1,4 +1,4 @@
-# new_app_dialog.rb
+#encoding: utf-8
 
 module NewAppDialog
      
