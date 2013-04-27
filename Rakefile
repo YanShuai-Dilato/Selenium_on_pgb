@@ -8,8 +8,8 @@ if defined? RSpec
     desc "All Test Cases "
     RSpec::Core::RakeTask.new(:all_testcases) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -27,8 +27,8 @@ if defined? RSpec
     desc "TC_001_new_app_free_account"
     RSpec::Core::RakeTask.new(:TC_001) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -44,8 +44,8 @@ if defined? RSpec
     desc "TC_002_new_app_paid_account"
     RSpec::Core::RakeTask.new(:TC_002) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -61,8 +61,8 @@ if defined? RSpec
     desc "TC_003_register_create_adobe_id"
     RSpec::Core::RakeTask.new(:TC_003) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -78,8 +78,8 @@ if defined? RSpec
     desc "TC_004_register_free_plan_adobe"
     RSpec::Core::RakeTask.new(:TC_004) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -95,8 +95,8 @@ if defined? RSpec
     desc "TC_005_register_free_plan_github"
     RSpec::Core::RakeTask.new(:TC_005) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -112,8 +112,8 @@ if defined? RSpec
     desc "TC_006_register_paid_ccm_rspec"
     RSpec::Core::RakeTask.new(:TC_006) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -129,8 +129,8 @@ if defined? RSpec
     desc "TC_007_register_upgrade_plan"
     RSpec::Core::RakeTask.new(:TC_007) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -146,8 +146,8 @@ if defined? RSpec
     desc "TC_008_sign_in_rspec"
     RSpec::Core::RakeTask.new(:TC_008) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
@@ -163,8 +163,8 @@ if defined? RSpec
     desc "Only for debug purpose"
     RSpec::Core::RakeTask.new(:debug_mode) do |t|
         #init config
-        browser = ENV['PGB_BROWSER'] 
-        lang = ENV['PGB_LANG']
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
         name_2nd_dir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
 
         Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
