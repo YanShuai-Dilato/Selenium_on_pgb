@@ -23,7 +23,7 @@ describe "New apps with paid account" do
 
     before(:all) do
         init
-        @order_it = BaseEnv::Counter.new
+        @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_002_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -58,7 +58,7 @@ describe "New apps with paid account" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
     end
 

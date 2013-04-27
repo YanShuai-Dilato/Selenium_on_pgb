@@ -11,16 +11,18 @@ require_relative "../action/register_page"
 require_relative "../action/edit_account_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
+require_relative "../lib/webdriver_helper"
 
 describe "Register -> sign in" do 
     include RegisterDialog
     include SignInGithubDialog
     include BaseEnv
     include ConfigParam
+    include WebdriverHelper
 
     before(:all) do 
         init
-        @order_it = BaseEnv::Counter.new
+        @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_005_IT_"
         @base_url = "https://buildstage.phonegap.com"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -47,7 +49,7 @@ describe "Register -> sign in" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
         
         @driver.quit

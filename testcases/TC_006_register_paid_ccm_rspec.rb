@@ -22,7 +22,7 @@ describe "Register paid CCM account" do
 
 	before(:all) do 
 		init
-		@order_it = BaseEnv::Counter.new
+		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_006_IT_"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -80,7 +80,7 @@ describe "Register paid CCM account" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
         
 		@driver.quit

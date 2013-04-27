@@ -20,7 +20,7 @@ describe "Register -> sign in" do
     include WebdriverHelper
 
 	before(:all) do 
-		init@order_it = BaseEnv::Counter.new
+		init@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_004_IT_"
 		@driver = browser
 		@register_page = RegisterPage.new @driver
@@ -44,7 +44,7 @@ describe "Register -> sign in" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
     end
 

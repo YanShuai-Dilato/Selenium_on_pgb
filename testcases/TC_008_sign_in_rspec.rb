@@ -8,17 +8,19 @@ require 'yaml'
 require_relative "../action/sign_in_page"
 require_relative "../data/base_env"
 require_relative "../lib/config_param"
+require_relative "../lib/webdriver_helper"
 
 describe "Sign in" do
     include BaseEnv
     include SignInDialog
     include SignInGithubDialog
     include ConfigParam
+    include WebdriverHelper
 
     before(:all) do
         #mixin init function in ConfigParam
         init
-        @order_it = BaseEnv::Counter.new
+        @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_008_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -38,7 +40,7 @@ describe "Sign in" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
         @driver.quit
     end

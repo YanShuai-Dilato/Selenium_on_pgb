@@ -21,7 +21,7 @@ describe "Register -> create an Adobe ID with provided email" do
 
 	before(:all) do 
 		init
-		@order_it = BaseEnv::Counter.new
+		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_003_IT_"
 		@driver = browser
 		@register_page = RegisterPage.new @driver
@@ -60,7 +60,7 @@ describe "Register -> create an Adobe ID with provided email" do
 
         if example.exception != nil
             # Failure only code goes here
-            @driver.save_screenshot "./auto_results/screenshots/#{@name_screenshot}.png"
+            take_screenshot_with_name @name_screenshot
         end
 	end
 
