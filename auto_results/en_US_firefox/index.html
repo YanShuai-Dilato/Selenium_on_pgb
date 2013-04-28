@@ -292,86 +292,45 @@ a {
   <dl style="margin-left: 15px;">
   <dt id="example_group_2" class="passed">- with Adobe ID - free account</dt>
 + before all inside
-+ new_app_btn.click
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_2');</script>
-    <script type="text/javascript">makeRed('example_group_2');</script>
     <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">IT_001_#Tip: paste .git repo</span>
-      <span class="duration">0.71758s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>
-expected: &quot;coller le r\u251C\u2310f\u251C\u2310rentiel .git&quot;
-     got: &quot;coller le r\u00E9f\u00E9rentiel .git&quot;
-
-(compared using eql?)
-</pre></div>
-        <div class="backtrace"><pre>./testcases/TC_001_new_app_free_account_rspec.rb:96:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">94</span>                puts "+ new_app_btn.click"
-<span class="linenum">95</span>            end
-<span class="offending"><span class="linenum">96</span>            paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]</span>
-<span class="linenum">97</span>    	end
-<span class="linenum">98</span>
-<span class="linenum">99</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">IT_001_#Tip: paste .git repo</span><span class='duration'>0.07800s</span></dd>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">IT_002_#Tip: Connect your Github account</span><span class='duration'>0.04680s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">IT_002_#Tip: Connect your Github account</span><span class='duration'>0.06240s</span></dd>
     <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">IT_003_#errors when pasting a invalid .git address</span><span class='duration'>0.12480s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">IT_003_#errors when pasting a invalid .git address</span><span class='duration'>0.17159s</span></dd>
 + before @new_app_page.new_public_app_with_repo
 + new_public_app_with_repo in new_app_page.rb
-+ app_count_after: 2
-+ first_app_id_after: 2420
++ app_count_after: 1
++ first_app_id_after: 2428
     <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">IT_004_create an opensource app by pasting a .git</span><span class='duration'>10.48286s</span></dd>
-+ app_count_before: 2
-+ first_app_id_before: 2420
+    <dd class="example passed"><span class="passed_spec_name">IT_004_create an opensource app by pasting a .git</span><span class='duration'>10.43593s</span></dd>
++ app_count_before: 1
++ first_app_id_before: 2428
 + new_app_with_zip in new_app_page.rb
 false
+---------------
+C:/Users/labuser/Desktop/Selenium_on_pgb
+---------------
+waiting for uploading file
++ app_count_after: 2
++ first_app_id_after: 2429
     <script type="text/javascript">moveProgressBar('83.3');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">IT_005_create the first private app by uploading a .zip file</span>
-      <span class="duration">22.15129s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>undefined method `[]&#39; for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./action/new_app_page.rb:63:in `new_app_with_zip'
-./testcases/TC_001_new_app_free_account_rspec.rb:131:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">61</span>
-<span class="linenum">62</span>        # upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-<span class="offending"><span class="linenum">63</span>        upload_a_zip_btn.send_keys (File.expand_path(@data_app[:new_app][:by_zip_demo],__FILE__))</span>
-<span class="linenum">64</span>        puts "waiting for uploading file"
-<span class="linenum">65</span>        sleep 10
-<span class="linenum">66</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">IT_005_create the first private app by uploading a .zip file</span><span class='duration'>32.52321s</span></dd>
 + app_count_before: 2
-+ first_app_id_before: 2420
++ first_app_id_before: 2429
 + new_app_with_zip in new_app_page.rb
-false
+true
++ app_count_after: 2
++ first_app_id_after: 2429
+You will not see me
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">IT_006_can not create another private app</span>
-      <span class="duration">13.27526s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>undefined method `[]&#39; for nil:NilClass</pre></div>
-        <div class="backtrace"><pre>./action/new_app_page.rb:63:in `new_app_with_zip'
-./testcases/TC_001_new_app_free_account_rspec.rb:151:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">61</span>
-<span class="linenum">62</span>        # upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-<span class="offending"><span class="linenum">63</span>        upload_a_zip_btn.send_keys (File.expand_path(@data_app[:new_app][:by_zip_demo],__FILE__))</span>
-<span class="linenum">64</span>        puts "waiting for uploading file"
-<span class="linenum">65</span>        sleep 10
-<span class="linenum">66</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-{"success":"app 2418 deleted"}
-{"success":"app 2420 deleted"}
+    <dd class="example passed"><span class="passed_spec_name">IT_006_can not create another private app</span><span class='duration'>17.47997s</span></dd>
+{"success":"app 2428 deleted"}
+{"success":"app 2429 deleted"}
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>93.91135 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 3 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>116.00709 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "6 examples, 0 failures";</script>
 </div>
 </div>
 </body>
