@@ -60,7 +60,7 @@ class NewAppPage
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip_btn)
 
         # upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-        upload_a_zip_btn.send_keys (File.expand_path("../../assets/www.zip",__FILE__))
+        upload_a_zip_btn.send_keys (File.expand_path(@data_app[:new_app][:by_zip_demo],__FILE__))
         puts "waiting for uploading file"
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
