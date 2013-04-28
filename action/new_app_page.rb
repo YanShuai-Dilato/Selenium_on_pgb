@@ -13,7 +13,7 @@ class NewAppPage
     def initialize(driver)
         @driver = driver
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @app_data = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
+        @data_app = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
     end
 
     def get_existing_app_num
@@ -75,7 +75,7 @@ class NewAppPage
         end
         opensource_tab.click
         paste_git_repo_input.clear
-        paste_git_repo_input.send_keys @app_data[:new_app][:by_repo] + "\n"
+        paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
     end
@@ -87,7 +87,7 @@ class NewAppPage
         end
         private_tab.click
         if !private_app_no?
-            paste_git_repo_input.send_keys @app_data[:new_app][:by_repo] + "\n"
+            paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         else
             return false
         end
