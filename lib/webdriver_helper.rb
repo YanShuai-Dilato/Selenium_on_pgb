@@ -60,7 +60,6 @@ module WebdriverHelper
             dir = "./auto_results/#{lang}_#{browser}/screenshots/#{name}.png"
         else
             puts "We do not support your Operating System right now"
-            break
         end
         @driver.save_screenshot "#{dir}" 
     end
