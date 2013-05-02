@@ -13,7 +13,7 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
-describe "Register paid CCM account" do 
+describe "TC_006: Register paid CCM account" do 
 	include RegisterDialog
     include SignInGithubDialog
 	include BaseEnv
