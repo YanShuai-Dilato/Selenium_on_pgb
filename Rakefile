@@ -4,7 +4,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'fileutils'
 
-require_relative "../lib/config_param"
+require_relative "./lib/config_param"
 
 if defined? RSpec
     include ConfigParam
@@ -139,7 +139,7 @@ if defined? RSpec
     desc "Only for debug purpose"
     RSpec::Core::RakeTask.new(:debug_mode) do |t|
         puts "Hi there!"
-        `ruby ./init.rb`
+       
     end
 
 end

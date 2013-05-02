@@ -38,9 +38,6 @@ class SignInPage
             puts "+ <-- end"
         end
 
-        # highlight 
-        highlight(:id, "person_email")
-
         id_textinput.send_keys(id)
         password_textinput.send_keys(password)
         sign_in_btn.click
