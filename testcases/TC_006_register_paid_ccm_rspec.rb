@@ -66,6 +66,7 @@ describe "Register paid CCM account" do
 
 	before(:each) do
 		@driver = browser
+		@driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
 

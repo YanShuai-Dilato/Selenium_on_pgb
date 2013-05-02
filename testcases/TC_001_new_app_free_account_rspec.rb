@@ -75,6 +75,7 @@ describe "New an app with free account" do
             puts "+ before all inside"
             @base_url = base_url
             @driver = browser
+            @driver.manage.window.maximize
             @new_app_page = NewAppPage.new(@driver)
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user

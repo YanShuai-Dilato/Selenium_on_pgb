@@ -3,10 +3,29 @@
 require 'rubygems'
 require 'getoptlong'
 require 'yaml'
+require 'fileutils'
+require 'rest_client'
+
 require_relative '../data/base_env'
 
 module ConfigParam
     include BaseEnv
+
+    def is_nil_or_empty(str)
+        if str.to_s.strip.length == 0 
+            return true 
+        end
+        return false
+    end
+
+    def get_value_of_env(env, default_value)
+        if is_nil_or_empty(env)   
+            return default_value
+        else 
+            return env 
+        end
+    end
+
     #used for initialize the global variable 
     def init
         $browser = ENV['PGBBROWSER'].to_sym
@@ -93,9 +112,45 @@ module ConfigParam
         # end
     end 
 
-    #Path formattor with locale
+    # Initialization work
+    def initialize_params(name_subdir)
+
+        # Delete the result folder and all subfolders recursively 
+        FileUtils.rm_rf('./auto_results')  
+
+        # Then to create the structure
+        name_sub_dir = name_subdir
+        Dir.mkdir("./auto_results") 
+        Dir.mkdir("./auto_results/#{name_sub_dir}") 
+        Dir.mkdir("./auto_results/#{name_sub_dir}/screenshots") 
+        Dir.mkdir("./auto_results/#{name_sub_dir}/video") 
+
+
+        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+        response = private_resource.get :accept => :json
+        json =  JSON.parse(response)
+        json['apps'].each do |i|
+            url = @base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
+            response = private_resource.delete 
+            puts response.to_str
+        end
+
+        private_resource_2 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
+        response_2 = private_resource_2.get :accept => :json
+        json_2 =  JSON.parse(response_2)
+        json_2['apps'].each do |i|
+            url = @base_url + i['link']
+            private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
+            response_2 = private_resource_2.delete 
+            puts response_2.to_str
+        end
+
+    end
+
+    # Path formattor with locale
     def path_format_locale (path)
-        @base_url+path+"?locale="+$lang.to_s
+        @base_url + path + "?locale=" + $lang.to_s
     end 
 
 end  

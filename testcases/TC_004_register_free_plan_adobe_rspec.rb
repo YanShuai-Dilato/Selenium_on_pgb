@@ -23,6 +23,7 @@ describe "Register -> sign in" do
 		init@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_004_IT_"
 		@driver = browser
+        @driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -53,14 +54,14 @@ describe "Register -> sign in" do
         	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
         	adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
         	adobe_id_frame_sign_in_btn.click
-        	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
+        	do_not_match_waring.text.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "With wrong password" do 
         	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
             adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
         	adobe_id_frame_sign_in_btn.click
-        	do_not_match_waring.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
+        	do_not_match_waring.text.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
         it "sign in successfully" do 

@@ -24,6 +24,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_003_IT_"
 		@driver = browser
+		@driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))

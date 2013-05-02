@@ -1,6 +1,5 @@
 #encoding: utf-8
 
-#helper method for waiting in selenium
 module WebdriverHelper
 
 	def wait_for_element_present(how_long=60, how, what) 
@@ -25,9 +24,8 @@ module WebdriverHelper
         return true
     end
 
-    # highlight element suggested by https://gist.github.com/marciomazza/3086536
-    def highlight(method, locator, ancestors=0)
-        element = @driver.find_element(method, locator)
+    # highlight-element suggested by https://gist.github.com/marciomazza/3086536
+    def highlight(element, ancestors=0)
         @driver.execute_script("hlt = function(c) { c.style.border='solid 1px rgb(255, 16, 16)'; }; return hlt(arguments[0]);", element)
         parents = ""
         red = 255
@@ -37,6 +35,7 @@ module WebdriverHelper
             red -= (12*8 / ancestors)
             @driver.execute_script("hlt = function(c) { c#{parents}.style.border='solid 1px rgb(#{red}, 0, 0)'; }; return hlt(arguments[0]);", element)
         end
+        sleep 1
     end
 
     # detect operating system (win or mac)

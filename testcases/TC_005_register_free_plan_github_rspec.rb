@@ -39,6 +39,7 @@ describe "Register -> sign in" do
 
     before(:each) do 
         @driver = browser
+        @driver.manage.window.maximize
         @register_page = RegisterPage.new @driver
         @driver.get path_format_locale("/plans/free")
         github_btn.click
