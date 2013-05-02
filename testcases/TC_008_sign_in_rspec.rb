@@ -10,7 +10,7 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
-describe "Sign in" do
+describe "TC_008: Sign in" do
     include BaseEnv
     include SignInDialog
     include SignInGithubDialog

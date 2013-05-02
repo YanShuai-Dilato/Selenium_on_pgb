@@ -20,7 +20,7 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
-describe "Register -> upgrade plan (Free -> Paid)" do 
+describe "TC_007: Register -> upgrade plan (Free -> Paid)" do 
 	include RegisterDialog
 	include NewAppDialog
     include SignInGithubDialog

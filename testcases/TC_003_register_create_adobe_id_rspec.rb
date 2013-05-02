@@ -12,7 +12,7 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
-describe "Register -> create an Adobe ID with provided email" do 
+describe "TC_003: Register -> create an Adobe ID with provided email" do 
 	include RegisterDialog
     include SignInGithubDialog
 	include BaseEnv
