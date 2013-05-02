@@ -1,8 +1,0 @@
-[0427/002758:INFO:chromedriver_server.cc(76)] Handling request: /session {"desiredCapabilities":{"browserName":"chrome","version":"","platform":"ANY","javascriptEnabled":true,"cssSelectorsEnabled":true,"takesScreenshot":false,"nativeEvents":false,"rotatable":false,"chromeOptions":{"detach":true},"chrome.detach":true}}
-[0427/002758:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":13,"value":{"message":"unknown error: unrecognized chrome option: detach\n  (Driver info: chromedriver=0.8,platform=Windows NT 6.2 x86)"}}
-[0427/002758:INFO:chromedriver_server.cc(76)] Handling request: /session/url {"url":"http://loc.build.phonegap.com/people/sign_in?locale=en_US"}
-[0427/002758:INFO:chromedriver_server.cc(81)] Done handling request: 404 unknown command: session/url
-[0427/002758:INFO:chromedriver_server.cc(76)] Handling request: /session/ 
-[0427/002758:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":100,"value":{"message":"no such session: \n  (Driver info: chromedriver=0.8,platform=Windows NT 6.2 x86)"}}
-[0427/002758:INFO:chromedriver_server.cc(76)] Handling request: /shutdown 
-[0427/002758:INFO:chromedriver_server.cc(81)] Done handling request: 200 {"sessionId":"","status":0,"value":null}
