@@ -12,6 +12,7 @@ class NewAppPage
 
     def initialize(driver)
         @driver = driver
+        @driver.manage.window.maximize
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_app = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
     end
