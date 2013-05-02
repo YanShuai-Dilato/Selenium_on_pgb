@@ -76,17 +76,17 @@ module RegisterDialog
 
 	def github_login_field_username
 		field = @driver.find_element(:xpath => "//*[@id='login_field']")
-		highlight field 
+		# highlight field 
 		return field 
 	end
 	def github_login_field_password
 		field = @driver.find_element(:xpath => "//*[@id='password']")
-		highlight field 
+		# highlight field 
 		return field 
 	end
 	def github_login_field_submit
 		field = @driver.find_element(:xpath => "/html/body/div/div[2]/div/div/form/div[3]/input[4]")
-		highlight field 
+		# highlight field 
 		return field 
 	end
 	def github_login_field_authorize_app

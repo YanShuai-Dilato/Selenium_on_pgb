@@ -63,6 +63,15 @@ module WebdriverHelper
         @driver.save_screenshot "#{dir}" 
     end
 
+    def unique_number
+        # YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+        data = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
+        value = data[:number]
+        data[:number] = value.to_i + 1
+        File.open(File.expand_path("../../data/data_number.yml",__FILE__), 'w') { |f| YAML.dump(data, f) }
+        return value
+    end
+
     # for the purpose of unique email address, which was used to create new Adobe ID each time.
     class Counter
         attr_accessor :value

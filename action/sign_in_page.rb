@@ -24,18 +24,8 @@ class SignInPage
 
     def sign_in_with_adobe_id(id,password)
 
-        if $browser == :chrome 
-            puts "+ If you use Firefox, you would not see me, --> "
-            puts "+ id_textinput's type: "
-            puts "+ #{id_textinput.attribute('type')}"
-            puts "+ end"
-            
-            change_element_attribute(attribute:"type", id:"person_email", to:"text" )
-            
-            puts "+ after execute_script"
-            puts "+ id_textinput's type: "
-            puts "+ #{@driver.find_element(:id => 'person_email').attribute('type')}"
-            puts "+ <-- end"
+        if $browser == :chrome   
+            change_element_attribute(attribute:"type", id:"person_email", to:"text" ) 
         end
 
         id_textinput.send_keys(id)

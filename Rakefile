@@ -139,6 +139,7 @@ if defined? RSpec
     desc "Only for debug purpose"
     RSpec::Core::RakeTask.new(:debug_mode) do |t|
         puts "Hi there!"
+
        
     end
 

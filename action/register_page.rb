@@ -28,9 +28,6 @@ class RegisterPage
 		sleep 5
 
 		if warning_display? 
-			puts "+ -- warning_message"
-			puts "+ #{adobe_id_frame_warning_message.text}"
-			puts "+ -- warning_message"
 			return adobe_id_frame_warning_message.text
 		end
 

@@ -20,7 +20,8 @@ describe "Register -> sign in" do
     include WebdriverHelper
 
 	before(:all) do 
-		init@order_it = WebdriverHelper::Counter.new
+        init
+		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_004_IT_"
 		@driver = browser
         @driver.manage.window.maximize
