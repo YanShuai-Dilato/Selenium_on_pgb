@@ -41,7 +41,7 @@ module WebdriverHelper
 
     # detect operating system (win or mac)
     def win_or_mac
-        os = RUBY_PALTFORM
+        os = RUBY_PLATFORM
         if os.include? 'darwin'
             return 'mac'
         elsif os.include? 'mingw32'

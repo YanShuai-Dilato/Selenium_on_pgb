@@ -2,14 +2,17 @@
 
 require 'rake'
 require 'rspec/core/rake_task'
+require 'fileutils'
 
 def create_directory_structure lang, browser
-    name_subdir = "#{lang}_#{browser}" # name for the sub-dir of auto_results folder. 
 
-    Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-    Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-    Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-    Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+    FileUtils.rm_rf('./auto_results')  
+
+    name_subdir = "#{lang}_#{browser}" # name for the sub-dir of auto_results folder. 
+    Dir.mkdir("./auto_results") 
+    Dir.mkdir("./auto_results/#{name_subdir}") 
+    Dir.mkdir("./auto_results/#{name_subdir}/screenshots") 
+    Dir.mkdir("./auto_results/#{name_subdir}/video") 
 end
 
 if defined? RSpec
@@ -17,8 +20,9 @@ if defined? RSpec
     desc "All Test Cases "
     RSpec::Core::RakeTask.new(:all_testcases) do |t|
         #init config
-        browser = ENV['PGBBROWSER'] 
+        browser = ENV['PGBBROWSER']
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
 
         create_directory_structure lang, browser
         
@@ -33,6 +37,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -46,6 +51,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -59,6 +65,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -72,6 +79,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -85,6 +93,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -98,6 +107,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -111,6 +121,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -124,6 +135,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 
@@ -137,6 +149,7 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
         
         create_directory_structure lang, browser
 

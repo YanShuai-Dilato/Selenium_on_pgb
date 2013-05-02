@@ -59,19 +59,14 @@ class NewAppPage
         #excute javascript to show the element in order to magic uploading file
         @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip_btn)
 
-        # upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/www.zip",__FILE__))
-
-        puts "---------------"
-        puts "pwd: " + Dir.pwd + "/assets/application/www.zip" # C:/Users/labuser/Desktop/Selenium_on_pgb
-        puts "---------------"
-        # upload_a_zip_btn.send_keys ("assets\/application\/www.zip")
-        
-        # FileUtils.copy_file("./assets/application/anotherあ你äōҾӲ.zip", "C:\\anotherあ你äōҾӲ.zip")
-
-        # upload_a_zip_btn.send_keys "C:\\anotherあ你äōҾӲ.zip"
-        Dir.chdir(Dir.pwd + "/assets/application/")
-        puts "After change dir: " + Dir.pwd
-        upload_a_zip_btn.send_keys "www.zip"
+        os = win_or_mac
+        if os == 'mac' 
+            puts "I am Mac"
+            upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
+        else
+            puts "I am Win"
+            upload_a_zip_btn.send_keys "C:\\anotherあ你äōҾӲ.zip"
+        end
 
         puts "waiting for uploading file"
         sleep 10
