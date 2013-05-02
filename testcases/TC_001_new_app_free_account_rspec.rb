@@ -105,28 +105,28 @@ describe "New an app with free account" do
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
     	end
 
-    	it "IT_004_create an opensource app by pasting a .git" do  
-            puts "+ before @new_app_page.new_public_app_with_repo"
+    	# it "IT_004_create an opensource app by pasting a .git" do  
+     #        puts "+ before @new_app_page.new_public_app_with_repo"
 
-            @new_app_page.new_public_app_with_repo
+     #        @new_app_page.new_public_app_with_repo
 
-            app_count_after = @new_app_page.get_existing_app_num
-            first_app_id_after = @new_app_page.get_first_app_id
-            puts "+ app_count_after: #{app_count_after}"
-            puts "+ first_app_id_after: #{first_app_id_after}"
+     #        app_count_after = @new_app_page.get_existing_app_num
+     #        first_app_id_after = @new_app_page.get_first_app_id
+     #        puts "+ app_count_after: #{app_count_after}"
+     #        puts "+ first_app_id_after: #{first_app_id_after}"
  
-            app_count_after.should_not eql 0 
+     #        app_count_after.should_not eql 0 
 
-    	end
+    	# end
 
     	it "IT_005_create the first private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 10
 
-            app_count_before = @new_app_page.get_existing_app_num
-            first_app_id_before = @new_app_page.get_first_app_id
-            puts "+ app_count_before: #{app_count_before}"
-            puts "+ first_app_id_before: #{first_app_id_before}"
+            # app_count_before = @new_app_page.get_existing_app_num
+            # first_app_id_before = @new_app_page.get_first_app_id
+            # puts "+ app_count_before: #{app_count_before}"
+            # puts "+ first_app_id_before: #{first_app_id_before}"
 
             @new_app_page.new_app_with_zip
           
@@ -135,31 +135,33 @@ describe "New an app with free account" do
             puts "+ app_count_after: #{app_count_after}"
             puts "+ first_app_id_after: #{first_app_id_after}"
 
-            app_count_after.should_not eql @app_count_before 
-            first_app_id_after.should_not eql @first_app_id_before
+            "abc".should eql "abcd"
+
+            # app_count_after.should_not eql @app_count_before 
+            # first_app_id_after.should_not eql @first_app_id_before
     	end
 
-    	it "IT_006_can not create another private app"  do 
-            # @driver.navigate.refresh
-            sleep 10
+    	# it "IT_006_can not create another private app"  do 
+     #        # @driver.navigate.refresh
+     #        sleep 10
 
-            app_count_before = @new_app_page.get_existing_app_num
-            first_app_id_before = @new_app_page.get_first_app_id
-            puts "+ app_count_before: #{app_count_before}"
-            puts "+ first_app_id_before: #{first_app_id_before}"
+     #        app_count_before = @new_app_page.get_existing_app_num
+     #        first_app_id_before = @new_app_page.get_first_app_id
+     #        puts "+ app_count_before: #{app_count_before}"
+     #        puts "+ first_app_id_before: #{first_app_id_before}"
 
-            return_value = @new_app_page.new_app_with_zip 
+     #        return_value = @new_app_page.new_app_with_zip 
            
-            if (!return_value) 
-                app_count_after = @new_app_page.get_existing_app_num
-                first_app_id_after = @new_app_page.get_first_app_id
-                puts "+ app_count_after: #{app_count_after}"
-                puts "+ first_app_id_after: #{first_app_id_after}"
-                puts "You will not see me"
-            end
+     #        if (!return_value) 
+     #            app_count_after = @new_app_page.get_existing_app_num
+     #            first_app_id_after = @new_app_page.get_first_app_id
+     #            puts "+ app_count_after: #{app_count_after}"
+     #            puts "+ first_app_id_after: #{first_app_id_after}"
+     #            puts "You will not see me"
+     #        end
 
-            return_value.should eql false
-    	end
+     #        return_value.should eql false
+    	# end
 
     end
 

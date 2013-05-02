@@ -33,12 +33,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_001_new_app_free_account_rspec.rb"
         #output to html file with timeframe
@@ -50,12 +46,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_002_new_app_paid_account_rspec.rb"
         #output to html file with timeframe
@@ -67,12 +59,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_003_register_create_adobe_id_rspec.rb"
         #output to html file with timeframe
@@ -84,12 +72,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_004_register_free_plan_adobe_rspec.rb"
         #output to html file with timeframe
@@ -101,12 +85,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_005_register_free_plan_github_rspec.rb"
         #output to html file with timeframe
@@ -118,12 +98,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_006_register_paid_ccm_rspec.rb"
         #output to html file with timeframe
@@ -135,12 +111,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_007_register_upgrade_plan_rspec.rb"
         #output to html file with timeframe
@@ -152,12 +124,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_008_sign_in_rspec.rb"
         #output to html file with timeframe
@@ -169,12 +137,8 @@ if defined? RSpec
         #init config
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG']
-        name_subdir = "#{lang}_#{browser}" # for the second sub-dir of auto_results folder. 
-
-        Dir.mkdir("./auto_results") unless Dir.exists?("auto_results")
-        Dir.mkdir("./auto_results/#{name_subdir}") unless Dir.exists?("./auto_results/#{name_subdir}")
-        Dir.mkdir("./auto_results/#{name_subdir}/screenshots") unless Dir.exists?("./auto_results/#{name_subdir}/screenshots")
-        Dir.mkdir("./auto_results/#{name_subdir}/video") unless Dir.exists?("./auto_results/#{name_subdir}/video")
+        
+        create_directory_structure lang, browser
 
         t.pattern = "./testcases/TC_008_sign_in_rspec.rb"
         #output to html file with timeframe
