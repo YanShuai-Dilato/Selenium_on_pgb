@@ -4,7 +4,7 @@
 
 module BaseEnv
 
-    def base_url()
+    def base_url
     	"http://loc.build.phonegap.com"     
     end
     def browser()

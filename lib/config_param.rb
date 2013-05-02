@@ -129,9 +129,10 @@ module ConfigParam
 
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => "dil45216+test_free_002@adobetest.com" , :password => "password" , :timeout => 30}
         response = private_resource.get :accept => :json
+        base_url = "http://loc.build.phonegap.com"
         json =  JSON.parse(response)
         json['apps'].each do |i|
-            url = @base_url + i['link']
+            url = base_url + i['link']
             private_resource = RestClient::Resource.new url , {:user => "dil45216+test_free_002@adobetest.com", :password => "password" , :timeout => 30}
             response = private_resource.delete 
             puts response.to_str
@@ -141,7 +142,7 @@ module ConfigParam
         response_2 = private_resource_2.get :accept => :json
         json_2 =  JSON.parse(response_2)
         json_2['apps'].each do |i|
-            url = @base_url + i['link']
+            url = base_url + i['link']
             private_resource_2 = RestClient::Resource.new url , {:user => "dil45216+test_free_005@adobetest.com" , :password => "password" , :timeout => 30}
             response_2 = private_resource_2.delete 
             puts response_2.to_str
