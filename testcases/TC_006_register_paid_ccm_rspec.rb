@@ -66,6 +66,7 @@ describe "Register paid CCM account" do
 
 	before(:each) do
 		@driver = browser
+		@driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
 
@@ -98,6 +99,7 @@ describe "Register paid CCM account" do
 	        ccm_29_99_btn.click
 	        wait_for_page_load("https://creative.adobe.com/plans")
 	        @driver.get @base_url
+	        new_app_page = NewAppPage.new(@driver)
 	        sleep 40
 	        # try to create 2 private apps 
 	        
@@ -127,6 +129,7 @@ describe "Register paid CCM account" do
 	        ccm_29_99_btn.click
 	        wait_for_page_load("https://creative.adobe.com/plans")
 	        @driver.get @base_url
+	        new_app_page = NewAppPage.new(@driver)
 	        sleep 40
 	        # try to create 2 private apps 
 	        
@@ -156,7 +159,7 @@ describe "Register paid CCM account" do
 	        ccm_29_99_btn.click
 	        wait_for_page_load("https://creative.adobe.com/plans")
 	        @driver.get @base_url
-
+	        new_app_page = NewAppPage.new(@driver)
 	        sleep 40
 	        # try to create 2 private apps 
 	        

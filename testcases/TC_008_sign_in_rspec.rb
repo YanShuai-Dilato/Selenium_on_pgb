@@ -31,6 +31,7 @@ describe "Sign in" do
 
     before(:each) do
         @driver = browser # have to start a new instance each time to clean the cache.
+        @driver.manage.window.maximize
         @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
         # @driver.get path_format_locale("/people/sign_in")
     end

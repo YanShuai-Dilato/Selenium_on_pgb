@@ -24,6 +24,7 @@ describe "Register -> create an Adobe ID with provided email" do
 		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_003_IT_"
 		@driver = browser
+		@driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -32,7 +33,7 @@ describe "Register -> create an Adobe ID with provided email" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @user_info = {
-			email_address:  "pgbtesttiing_" + unique_number + "@g990mail.com",
+			email_address:  "pgbtesttiing_" + unique_number.to_s + "@g990mail.com",
 			password:		"pgbtesting001",
 			retype_pass:    "pgbtesting001",
 			first_name:		"pgb",
@@ -43,12 +44,9 @@ describe "Register -> create an Adobe ID with provided email" do
         @driver.get path_format_locale("/plans/free-adobeid") 
         sleep 5
         @driver.switch_to.frame(0)
-        puts "+ after @driver.switch_to.frame(0)"
         sleep 5
 		create_an_adobe_id_btn.click
-		puts "+ after create_an_adobe_id_btn.click"
 		sleep 5
-		puts "+ after before all"
 	end
 
 	after(:all) do 

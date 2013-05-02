@@ -75,6 +75,7 @@ describe "New an app with free account" do
             puts "+ before all inside"
             @base_url = base_url
             @driver = browser
+            @driver.manage.window.maximize
             @new_app_page = NewAppPage.new(@driver)
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
@@ -163,98 +164,96 @@ describe "New an app with free account" do
 
     end
 
-    # context "- with Adobe ID - free account - connected github" do 
-    #     before(:all) do 
-    #         puts "before all inside"
-    #         @base_url = base_url
-    #         @driver = browser
-    #         @new_app_page = NewAppPage.new(@driver)
-    #         @driver.get path_format_locale("/people/sign_in")
-    #         @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
-    #         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github][:id],
-    #                                                       @data_user[$lang][:adobe_id_free_connected_github][:password])
-    #         sleep 5
-    #     end
+    context "- with Adobe ID - free account - connected github" do 
+        before(:all) do 
+            puts "before all inside"
+            @base_url = base_url
+            @driver = browser
+            @new_app_page = NewAppPage.new(@driver)
+            @driver.get path_format_locale("/people/sign_in")
+            @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
+            @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github][:id],
+                                                          @data_user[$lang][:adobe_id_free_connected_github][:password])
+            sleep 5
+        end
 
-    #     after(:all) do 
-    #         @driver.quit
-    #     end
+        after(:all) do 
+            @driver.quit
+        end
 
-    #     it "IT_007_#Dropdown list of existing repo" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         @driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/span[2]").click
-    #         sleep 3
-    #         li = @driver.find_elements(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
-    #         li_count = li.count
-    #         puts "+li count: #{li_count}"
-    #         li_count.should_not eql 0    
-    #     end
+        it "IT_007_#Dropdown list of existing repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+            @driver.find_element(:xpath => "/html/body/section/div/div/div/form/div[2]/div/div/span[2]").click
+            sleep 3
+            li = @driver.find_elements(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
+            li_count = li.count
+            puts "+li count: #{li_count}"
+            li_count.should_not eql 0    
+        end
 
-    #     it "IT_008_#Tip: find existing repo / paste .git repo" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         paste_git_repo_input.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_find_existing_repo_or_paste_git_repo]
-    #     end
+        it "IT_008_#Tip: find existing repo / paste .git repo" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+            paste_git_repo_input.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_find_existing_repo_or_paste_git_repo]
+        end
 
-    #     it "IT_009_#errors when pasting a invalid .git address" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         warning = @new_app_page.paste_a_git_repo("亜印gっをげwにwpw声wんw儀栄wペイ儀絵印rgる")
-    #         warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
-    #     end
+        it "IT_009_#errors when pasting a invalid .git address" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+            warning = @new_app_page.paste_a_git_repo("亜印gっをげwにwpw声wんw儀栄wペイ儀絵印rgる")
+            warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
+        end
 
-    #     it "IT_010_match some apps in the list if enter some letters" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         paste_git_repo_input.send_keys("sa")
-    #         the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
-    #         puts "The first matched item: #{the_first_item.text}"
-    #         the_first_item.text.should eql @data_str[$lang][:PGB_the_first_matched_item] 
-    #         sleep 5
-    #         # count the number
-    #     end
+        it "IT_010_match some apps in the list if enter some letters" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+            paste_git_repo_input.send_keys("sa")
+            the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
+            puts "The first matched item: #{the_first_item.text}"
+            the_first_item.text.should eql @data_str[$lang][:PGB_the_first_matched_item] 
+        end
 
-    #     it "IT_011_match no apps in the list if enter some specific letters" do 
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end
-    #         paste_git_repo_input.clear
-    #         paste_git_repo_input.send_keys("sss")
-    #         the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
-    #         puts "The first item: #{the_first_item.text}"
-    #         the_first_item.text.should eql @data_str[$lang][:PGB_no_match_item]
-    #     end
+        it "IT_011_match no apps in the list if enter some specific letters" do 
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end
+            paste_git_repo_input.clear
+            paste_git_repo_input.send_keys("sss")
+            the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
+            puts "The first item: #{the_first_item.text}"
+            the_first_item.text.should eql @data_str[$lang][:PGB_no_match_item]
+        end
 
-    #     it "IT_012_Select a repo from the matched items to create an app" do  
-    #         if @new_app_page.new_app_btn_display? 
-    #             new_app_btn.click
-    #             puts "new_app_btn.click"
-    #         end        
-    #         paste_git_repo_input.clear
-    #         paste_git_repo_input.send_keys("start")
-    #         the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
-    #         the_first_item.click
-    #         sleep 5
+        it "IT_012_Select a repo from the matched items to create an app" do  
+            if @new_app_page.new_app_btn_display? 
+                new_app_btn.click
+                puts "new_app_btn.click"
+            end        
+            paste_git_repo_input.clear
+            paste_git_repo_input.send_keys("start")
+            the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")
+            the_first_item.click
+            sleep 5
 
-    #         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+            wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
 
-    #         app_count_after = @new_app_page.get_existing_app_num
-    #         first_app_id_after = @new_app_page.get_first_app_id
-    #         puts "+app_count_after: #{app_count_after}"
-    #         puts "+first_app_id_after: #{first_app_id_after}"
+            app_count_after = @new_app_page.get_existing_app_num
+            first_app_id_after = @new_app_page.get_first_app_id
+            puts "+app_count_after: #{app_count_after}"
+            puts "+first_app_id_after: #{first_app_id_after}"
 
-    #         @app_count_after.should_not eql 0
-    #     end
-    # end
+            @app_count_after.should_not eql 0
+        end
+    end
 
 end
