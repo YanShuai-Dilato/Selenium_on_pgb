@@ -175,7 +175,7 @@ describe "TC_001: New an app with free account" do
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github][:id],
                                                           @data_user[$lang][:adobe_id_free_connected_github][:password])
-            sleep 5
+            sleep 10
         end
 
         after(:all) do 

@@ -121,7 +121,7 @@ module ConfigParam
         puts "+ initialize_params begin"
 
         # Delete the result folder and all subfolders recursively 
-        FileUtils.rm_rf('./auto_results') unless File.directory?('./auto_results')
+        FileUtils.rm_rf('./auto_results') if File.directory?('./auto_results')
         puts "+ ./auto_results/* --- deleted"
 
         # Then to create the structure
@@ -134,7 +134,7 @@ module ConfigParam
         puts "+ ./auto_results/#{name_sub_dir}/screenshots/ --- created"
         Dir.mkdir("./auto_results/#{name_sub_dir}/video") unless File.directory?("./auto_results/#{name_sub_dir}/video")
         puts "+ ./auto_results/#{name_sub_dir}/video/ ---- created"
-
+sleep 60
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => "dil45216+test_free_002@adobetest.com" , :password => "password" , :timeout => 30}
         response = private_resource.get :accept => :json
         base_url = "http://loc.build.phonegap.com"
