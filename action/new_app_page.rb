@@ -13,7 +13,7 @@ class NewAppPage
     def initialize(driver)
         @driver = driver
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @data_app = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
+        @data_app   = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
     end
 
     def get_existing_app_num
@@ -27,8 +27,10 @@ class NewAppPage
     def new_app_btn_display?
         style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
         if style.chomp == "display: none;".chomp
+            sleep 5
             return false
         end
+        sleep 5
         return true
     end
 
@@ -42,7 +44,8 @@ class NewAppPage
     end
 
     def new_app_with_zip
-        puts "+ new_app_with_zip in new_app_page.rb"
+        puts "+ New app with a zip file --- begin "
+        sleep 5
         if new_app_btn_display?
             new_app_btn.click
             sleep 2
@@ -53,6 +56,7 @@ class NewAppPage
         puts private_app_no?.to_s
         sleep 3
         if private_app_no?
+            puts "+ New app with a zip file --- end "
             return false
         end
 
@@ -61,21 +65,19 @@ class NewAppPage
 
         os = win_or_mac
         if os == 'mac' 
-            puts "I am Mac"
             upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
         else
-            puts "I am Win"
             upload_a_zip_btn.send_keys "C:\\anotherあ你äōҾӲ.zip"
         end
 
-        puts "waiting for uploading file"
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+        puts "+ New app with a zip file --- end "
         return true
     end
 
     def new_public_app_with_repo
-        puts "+ new_public_app_with_repo in new_app_page.rb"
+        puts "+ New public app with github repo --- begin"
 
         if new_app_btn_display?
             new_app_btn.click
@@ -85,17 +87,20 @@ class NewAppPage
         paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+        puts "+ New public app with github repo --- end"
     end
 
     def new_private_app_with_repo
-        puts "+ new_private_app_with_repo in new_app_page.rb"
+        puts "+ New a private app with github repo --- begin" 
         if new_app_btn_display?
             new_app_btn.click
         end
         private_tab.click
         if !private_app_no?
+            puts "+ New a private app with github repo --- end" 
             paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         else
+            puts "+ New a private app with github repo --- end" 
             return false
         end
     end

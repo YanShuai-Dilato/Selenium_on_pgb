@@ -10,7 +10,6 @@ module WebdriverHelper
     def wait_for_page_load(how_long=60, url)
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.current_url == url } 
-        puts "wait_for_page_load"
     end
 
     def wait_for_page_with_title(how_long=60, title)
@@ -38,7 +37,7 @@ module WebdriverHelper
         sleep 1
     end
 
-    # detect operating system (win or mac)
+    # detect operating system (win or mac only right now)
     def win_or_mac
         os = RUBY_PLATFORM
         if os.include? 'darwin'
@@ -46,25 +45,26 @@ module WebdriverHelper
         elsif os.include? 'mingw32'
             return 'win'
         else
-            return 'mac'
+            puts "+ Sorry, we do not support your Operating-System right now"
         end
     end
-    # 
+     
     def take_screenshot_with_name name
         browser = ENV['PGBBROWSER'] 
         lang = ENV['PGBLANG'] 
         if win_or_mac == 'win'
-            dir = "#{ENV['USERPROFILE']}\\Desktop\\Selenium_on_pgb\\auto_results\\#{lang}_#{browser}\\screenshots\\#{name}.png"
+            dir = Dir.pwd + "/auto_results/#{lang}_#{browser}/screenshots/#{name}.png"
+            puts "+ save screenshots to #{dir}"
         elsif win_or_mac == 'mac'
             dir = "./auto_results/#{lang}_#{browser}/screenshots/#{name}.png"
+            puts "+ save screenshots to #{dir}"
         else
-            puts "We do not support your Operating System right now"
+            puts "+ Sorry, we do not support your Operating-System right now"
         end
         @driver.save_screenshot "#{dir}" 
     end
 
     def unique_number
-        # YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
         data = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
         value = data[:number]
         data[:number] = value.to_i + 1

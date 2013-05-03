@@ -27,6 +27,9 @@ class SignInPage
         if $browser == :chrome   
             change_element_attribute(attribute:"type", id:"person_email", to:"text" ) 
         end
+        puts "+ Sign In with "
+        puts "+     #{id}"
+        puts "+     #{password}"
 
         id_textinput.send_keys(id)
         password_textinput.send_keys(password)

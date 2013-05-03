@@ -32,6 +32,9 @@ module ConfigParam
         $browser = ENV['PGBBROWSER'].to_sym
         $lang = ENV['PGBLANG'].to_sym
 
+        puts "+ ENV[PGBBROWSER] = #{$browser}"
+        puts "+ ENV[PGBLANG] = #{$lang}"
+
         # liclu:original function 
         # opts = GetoptLong.new(
         #   [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
@@ -115,17 +118,22 @@ module ConfigParam
 
     # Initialization work
     def initialize_params(name_subdir)
+        puts "+ initialize_params begin"
 
         # Delete the result folder and all subfolders recursively 
-        FileUtils.rm_rf('./auto_results')  
+        FileUtils.rm_rf('./auto_results') unless File.directory?('./auto_results')
+        puts "+ ./auto_results/* --- deleted"
 
         # Then to create the structure
         name_sub_dir = name_subdir
-        Dir.mkdir("./auto_results") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}/screenshots") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}/video") 
-
+        Dir.mkdir("./auto_results") unless File.directory?("./auto_results")
+        puts "+ ./auto_results/ --- created"
+        Dir.mkdir("./auto_results/#{name_sub_dir}") unless File.directory?("./auto_results/#{name_sub_dir}")
+        puts "+ ./auto_results/#{name_sub_dir}/ --- created "
+        Dir.mkdir("./auto_results/#{name_sub_dir}/screenshots") unless File.directory?("./auto_results/#{name_sub_dir}/screenshots")
+        puts "+ ./auto_results/#{name_sub_dir}/screenshots/ --- created"
+        Dir.mkdir("./auto_results/#{name_sub_dir}/video") unless File.directory?("./auto_results/#{name_sub_dir}/video")
+        puts "+ ./auto_results/#{name_sub_dir}/video/ ---- created"
 
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => "dil45216+test_free_002@adobetest.com" , :password => "password" , :timeout => 30}
         response = private_resource.get :accept => :json
@@ -148,6 +156,7 @@ module ConfigParam
             puts response_2.to_str
         end
 
+        puts "+ initialize_params end"
     end
 
     # Path formattor with locale

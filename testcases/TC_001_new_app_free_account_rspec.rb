@@ -80,7 +80,7 @@ describe "TC_001: New an app with free account" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
-                                                          @data_user[$lang][:adobe_id_free_002][:password])
+                                                @data_user[$lang][:adobe_id_free_002][:password])
             # wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
             sleep 10
         end
