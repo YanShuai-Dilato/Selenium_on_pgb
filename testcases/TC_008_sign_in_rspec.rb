@@ -47,7 +47,7 @@ describe "TC_008: Sign in" do
     end
 
     context "with GitHub ID" do
-        it "sign in successfully" do 
+        it "IT_001_sign in successfully" do 
             @base_url = "https://buildstage.phonegap.com"
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page.sign_in_with_github_id(@data_user[$lang][:github_id_only][:id],
@@ -59,7 +59,7 @@ describe "TC_008: Sign in" do
     end
 
     context "with Adobe ID " do
-        it "should sign in successfully" do
+        it "IT_002_should sign in successfully" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],
                                                 @data_user[$lang][:adobe_id_free_001][:password])
@@ -67,7 +67,7 @@ describe "TC_008: Sign in" do
             @driver.current_url.should == @base_url + @data_url[:sign_in_successfully]
         end
 
-        it "invalid email or password" do
+        it "IT_003_invalid email or password" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:invalid_user][:id],
                                                 @data_user[$lang][:invalid_user][:password])
@@ -78,13 +78,13 @@ describe "TC_008: Sign in" do
     end
 
     context "I forgot my password" do 
-        it "with valid email address" do
+        it "IT_004_with valid email address" do
             @driver.get path_format_locale("/people/sign_in")
             @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:adobe_id_free_001][:id])
             @tips.should eql @data_str[$lang][:passwords_send_instructions]
         end
 
-        it "with invalid email address" do 
+        it "IT_005_with invalid email address" do 
             @driver.get path_format_locale("/people/sign_in")
             @warnings = @sign_in_page.forget_password_with_invalid_email(@data_user[$lang][:invalid_user][:id])
             @warnings.should eql @data_str[$lang][:PGB_email_not_found]
@@ -92,19 +92,19 @@ describe "TC_008: Sign in" do
     end
 
     context "didn't receive confirmation" do 
-        it "privides tips saying you will receive an email with NOT-comfirmed-email address" do 
+        it "IT_006_privides tips saying you will receive an email with NOT-comfirmed-email address" do 
             @driver.get path_format_locale("/people/sign_in")
             @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
             @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
         end
 
-        it "says the email was already confirmed with an already-confirmed email address" do 
+        it "IT_007_says the email was already confirmed with an already-confirmed email address" do 
             @driver.get path_format_locale("/people/sign_in")
             @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_001][:id])
             @tips_or_warnings.should eql @data_str[$lang][:confirmations_email_confirmed]
         end
 
-        it "says the mail was not found with invalid email address" do 
+        it "IT_008_says the mail was not found with invalid email address" do 
             @driver.get path_format_locale("/people/sign_in")
             @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
             @errors.should eql @data_str[$lang][:PGB_email_not_found]

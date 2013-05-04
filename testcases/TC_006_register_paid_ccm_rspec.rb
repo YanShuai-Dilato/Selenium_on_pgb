@@ -32,10 +32,11 @@ describe "TC_006: Register paid CCM account" do
 
 	after(:all) do 
 		private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:ccm_acnt_001][:id] , :password => @data_user[$lang][:ccm_acnt_001][:password] , :timeout => 30}
+        base_url = "http://loc.build.phonegap.com"
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
         json['apps'].each do |i|
-            url = @base_url + i['link']
+            url = base_url + i['link']
             private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_001][:id] , :password => @data_user[$lang][:ccm_acnt_001][:password] , :timeout => 30}
             response = private_resource.delete 
             puts response.to_str
@@ -45,7 +46,7 @@ describe "TC_006: Register paid CCM account" do
         response_2 = private_resource_2.get :accept => :json
         json_2 =  JSON.parse(response_2)
         json_2['apps'].each do |i|
-            url = @base_url + i['link']
+            url = base_url + i['link']
             private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_002][:id] , :password => @data_user[$lang][:ccm_acnt_002][:password] , :timeout => 30}
             response_2 = private_resource_2.delete 
             puts response_2.to_str
@@ -55,7 +56,7 @@ describe "TC_006: Register paid CCM account" do
         response_3 = private_resource_3.get :accept => :json
         json_3 =  JSON.parse(response_3)
         json_3['apps'].each do |i|
-            url = @base_url + i['link']
+            url = base_url + i['link']
             private_resource_3 = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_003][:id] , :password => @data_user[$lang][:ccm_acnt_003][:password] , :timeout => 30}
             response_3 = private_resource_3.delete 
             puts response_3.to_str
@@ -88,7 +89,7 @@ describe "TC_006: Register paid CCM account" do
 	end
 
 	context "Register Paid CCM account and create 2 private apps, with different account" do 
-		it "with the first paid ccm account: dil40562+stagedeannual@adobetest.com" do 
+		it "IT_001_with the first paid ccm account: dil40562+stagedeannual@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_001][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_001][:password])
@@ -117,7 +118,7 @@ describe "TC_006: Register paid CCM account" do
             app_count_after.should_not eql 0
 		end
 
-		it "with the second paid ccm account: dil40562+teamfra1128@adobetest.com" do 
+		it "IT_002_with the second paid ccm account: dil40562+teamfra1128@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_002][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_002][:password])
@@ -147,7 +148,7 @@ describe "TC_006: Register paid CCM account" do
             app_count_after.should_not eql 0
 		end
 
-		it "with the third paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
+		it "IT_003_with the third paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_003][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_003][:password])

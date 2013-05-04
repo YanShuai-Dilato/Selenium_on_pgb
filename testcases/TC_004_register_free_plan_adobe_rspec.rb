@@ -51,21 +51,21 @@ describe "TC_004: Register -> sign in" do
     end
 
     context "Adobe ID" do 
-        it "With invalid Adobe ID (Email Address)" do 
+        it "IT_001_With invalid Adobe ID (Email Address)" do 
         	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
         	adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
         	adobe_id_frame_sign_in_btn.click
         	do_not_match_waring.text.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
-        it "With wrong password" do 
+        it "IT_002_With wrong password" do 
         	adobe_id_frame_enter_email(@data_user[$lang][:invalid_user][:id])
             adobe_id_frame_enter_password(@data_user[$lang][:invalid_user][:password])
         	adobe_id_frame_sign_in_btn.click
         	do_not_match_waring.text.should eql @data_str[$lang][:PGB_Adobe_id_and_password_not_match]
         end
 
-        it "sign in successfully" do 
+        it "IT_003_sign in successfully" do 
         	adobe_id_frame_enter_email(@data_user[$lang][:adobe_id_free_001][:id])
         	adobe_id_frame_enter_password(@data_user[$lang][:adobe_id_free_001][:password])
         	adobe_id_frame_sign_in_btn.click

@@ -83,7 +83,7 @@ describe "TC_007: Register -> upgrade plan (Free -> Paid)" do
 		@driver.quit
 	end
 
-	it "does go to the creative.adobe.com page, when select the 'Creative Cloud Membership' " do 
+	it "IT_001_does go to the creative.adobe.com page, when select the 'Creative Cloud Membership' " do 
 		upgrade_link.click
 		begin
             sleep 5
