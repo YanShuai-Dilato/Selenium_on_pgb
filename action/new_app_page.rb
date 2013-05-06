@@ -11,19 +11,28 @@ class NewAppPage
     include WebdriverHelper
 
     def initialize(driver)
+        puts "+ initialize NewAppPage -- begin"
         @driver = driver
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_app   = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
+        puts "+ initialize NewAppPage -- end"
     end
 
+    # Get the number of existing apps by counting the number of tag 'article' 
     def get_existing_app_num
         @driver.find_elements(:tag_name => "article").count
     end
 
+    # Get the ID of the top one of all apps
+    # In order to compare it with new-created app's ID to verify if new app was created successfully. 
     def get_first_app_id
         first_app_id.text
     end
     
+    # On the default page after signing in
+    # We can NOT see an btn, which says '+ new app', if there aren't any existing apps.
+    # We can see the '+ new app' btn, if there are existing apps. 
+    # The '+ new app' btn opens the 'creating app' area, which we input information to create apps. 
     def new_app_btn_display?
         style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
         if style.chomp == "display: none;".chomp
@@ -34,6 +43,9 @@ class NewAppPage
         return true
     end
 
+    # Detect whether another private app was able to be created. 
+    # Return true if can not
+    # Return false if can 
     def private_app_no?
         disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
         disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
@@ -43,6 +55,10 @@ class NewAppPage
         return false
     end
 
+    # Create an (private) app by uploading a zip file, 
+    # which contains files like: index.html, config.xml, *.js, *.css, and more related resource files. 
+    # Steps are: 
+    #       "private" tab -> "Upload a .zip file" 
     def new_app_with_zip
         puts "+ New app with a zip file --- begin "
         sleep 5
@@ -76,6 +92,9 @@ class NewAppPage
         return true
     end
 
+    # Create an public app by submitting a github repo address. 
+    # Steps are : 
+    #       'open-source' tab -> "paste .git repo"  
     def new_public_app_with_repo
         puts "+ New public app with github repo --- begin"
 
@@ -90,6 +109,9 @@ class NewAppPage
         puts "+ New public app with github repo --- end"
     end
 
+    # Create an private app by submitting a github repo address. 
+    # Steps are:
+    #       'private' tab -> 'paste .git repo'
     def new_private_app_with_repo
         puts "+ New a private app with github repo --- begin" 
         if new_app_btn_display?
@@ -105,6 +127,7 @@ class NewAppPage
         end
     end
 
+    
     def paste_a_git_repo(repo_address)
         if new_app_btn_display?
             new_app_btn.click

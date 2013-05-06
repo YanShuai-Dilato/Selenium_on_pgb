@@ -15,6 +15,8 @@ require_relative "../tools/new_app_dialog"
 require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
+# This TC describes 
+#   situations when try to create app(s) using free account(Adobe ID & Github-connected Adobe ID)
 describe "TC_001: New an app with free account" do
     include BaseEnv
     include ConfigParam
@@ -34,9 +36,9 @@ describe "TC_001: New an app with free account" do
         @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     end
 
+    # Try to delete all new-created apps 
+    # to make sure it be a clean run the next time. 
     after(:all) do 
-        # delete all apps
-
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
@@ -61,16 +63,15 @@ describe "TC_001: New an app with free account" do
     after(:each) do 
         
         @name_screenshot += @order_it.inc.to_s
-
-        if example.exception != nil
-            # Failure only code goes here
+        if example.exception != nil  # Take screenshot when failure happens. 
             take_screenshot_with_name @name_screenshot
         end
 
     end
 
-   # this context need at least one public app to start with. 
-    context "- with Adobe ID - free account" do 
+    # This context describes that 
+    #   situations trying to create app(s) using Adobe ID(free). 
+    context "--- with Adobe ID - free account" do 
         before(:all) do 
             puts "+ before all inside"
             @base_url = base_url
@@ -89,7 +90,7 @@ describe "TC_001: New an app with free account" do
             @driver.quit
         end
 
-    	it "IT_001_#Tip: paste .git repo" do 
+    	it "IT_001: #Tip: paste .git repo" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "+ new_app_btn.click"
@@ -97,16 +98,16 @@ describe "TC_001: New an app with free account" do
             paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
-    	it "IT_002_#Tip: Connect your Github account" do   
+    	it "IT_002: #Tip: Connect your Github account" do   
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
     	end
 
-    	it "IT_003_#errors when pasting a invalid .git address" do    
+    	it "IT_003: #errors when pasting a invalid .git address" do    
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
     	end
 
-    	it "IT_004_create an opensource app by pasting a .git" do  
+    	it "IT_004: create an opensource app by pasting a .git" do  
             puts "+ before @new_app_page.new_public_app_with_repo"
 
             @new_app_page.new_public_app_with_repo
@@ -116,11 +117,11 @@ describe "TC_001: New an app with free account" do
             puts "+ app_count_after: #{app_count_after}"
             puts "+ first_app_id_after: #{first_app_id_after}"
  
-            app_count_after.should_not eql 0 
+            app_count_after.should eql 1 
 
     	end
 
-    	it "IT_005_create the first private app by uploading a .zip file" do 
+    	it "IT_005: Create the first private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 10
 
@@ -140,7 +141,7 @@ describe "TC_001: New an app with free account" do
             first_app_id_after.should_not eql @first_app_id_before
     	end
 
-    	it "IT_006_can not create another private app"  do 
+    	it "IT_006: Can not create another private app"  do 
             # @driver.navigate.refresh
             sleep 10
 
@@ -156,7 +157,7 @@ describe "TC_001: New an app with free account" do
                 first_app_id_after = @new_app_page.get_first_app_id
                 puts "+ app_count_after: #{app_count_after}"
                 puts "+ first_app_id_after: #{first_app_id_after}"
-                puts "You will not see me"
+                puts "+ You will not see me"
             end
 
             return_value.should eql false
@@ -164,7 +165,9 @@ describe "TC_001: New an app with free account" do
 
     end
 
-    context "- with Adobe ID - free account - connected github" do 
+    # This context describes that 
+    #   situations trying to create app(s) using Adobe ID(free), which is connected Github
+    context "--- with Adobe ID - free account - connected github" do 
         before(:all) do 
             puts "before all inside"
             @base_url = base_url
@@ -174,7 +177,7 @@ describe "TC_001: New an app with free account" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_connected_github][:id],
-                                                          @data_user[$lang][:adobe_id_free_connected_github][:password])
+                                                @data_user[$lang][:adobe_id_free_connected_github][:password])
             sleep 10
         end
 

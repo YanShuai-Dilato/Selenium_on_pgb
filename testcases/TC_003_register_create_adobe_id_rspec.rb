@@ -62,7 +62,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
         end
 	end
 
-	it "IT_001_With invalid Adobe ID (Email Address)" do
+	it "IT_001: Got an error message with invalid Adobe ID (Email Address)" do
 	    user = @user_info.clone
 		user[:email_address] = @data_user[$lang][:invalid_user][:id]
 		
@@ -71,7 +71,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_enter_a_valid_email]
 	end
 
-	it "IT_002_With unmatched password" do 
+	it "IT_002: Got an error message with unmatched password" do 
 	    user = @user_info.clone
 		user[:retype_pass] = "something_not_the_original_password"
 		
@@ -80,7 +80,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_retyped_password_unmatched]
 	end
 
-	it "IT_003_With invalid First Name" do 
+	it "IT_003: Got an error message with invalid First Name" do 
 	    user = @user_info.clone
 		user[:first_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
 		
@@ -89,7 +89,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_first_name_invalid]
 	end
 
-	it "IT_004_With invalid Last Name" do 
+	it "IT_004: Got an error message with invalid Last Name" do 
 	    user = @user_info.clone
 		user[:last_name] = "ſЊџЛ^&*!@##@яѨ҉ҝҾ"
 		
@@ -98,7 +98,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_last_name_invalid]
 	end
 
-	it "IT_005_Without a country selected" do
+	it "IT_005: Got an error message without a country selected" do
 	  user = @user_info.clone
 		user[:country_region] =""
 		
@@ -107,7 +107,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
 	end
 
-	it "IT_006_create Adobe ID successfully" do 
+	it "IT_006: create Adobe ID successfully with valid appropriate email and password" do 
 		@user = @user_info.clone
 		the_number = unique_number
 		@user[:email_address] ="dil45216+test_free2_" + `hostname`.strip[0, 5] + "#{the_number}@adobetest.com"

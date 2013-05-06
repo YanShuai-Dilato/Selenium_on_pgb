@@ -18,9 +18,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 2, Install RSpec, Selenium-WebDriver, and rake packages with gem
 
     $ gem install rspec
-
 	$ gem install selenium-webdriver
-	
 	$ gem install rest-client
 
 ### Deploy manually 
@@ -28,10 +26,12 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 1, Clone the repo to your local machine
 	
 	$ git clone https://github.com/YanShuai-Dilato/Selenium_on_pgb.git
-	
 	$ cd Selenium_on_pgb/
 
-2, Manage testing task in Rakefile
+2, Please copy 'Selenium_on_pgb/assets/application/anotherあ你äōҾӲ.zip' to C:\ , if you're using Windows to run this test. 
+
+
+3, Manage testing task in Rakefile
 
    example:
 	
@@ -49,7 +49,7 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
     * Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
     * Manage the running testcases for 't.pattern'.
     
-3, Run the test 
+4, Run the test 
 	
 	$ rake
 	* Run default task
@@ -58,9 +58,9 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 	
 
 	
-4, You then can open it with your default browser
+5, Then you can find the result file (log.txt) at the following directory. 
 	
-	$ open ./result_html/result_<the timeframe>.html
+	$ open ./auto_results/#{lang}_#{browser}/log.txt
 	
 	
 
@@ -71,18 +71,19 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
 ### Test cases 
 
 
-new_app_free_account_rspec.rb
+TC_001_new_app_free_account_rspec()
 
-new_app_paid_account_rspec.rb
+TC_002_new_app_paid_account_rspec
 
-register_create_adobe_id_rspec.rb
+TC_003_register_create_adobe_id_rspec
 
-register_free_plan_adobe_rspec.rb
+TC_004_register_free_plan_adobe_rspec
 
-register_free_plan_github_rspec.rb
+TC_005_register_free_plan_github_rspec
 
-register_upgrade_plan_spec.rb
+TC_006_register_paid_ccm_rspec
 
-register_paid_ccm_rspec.rb
+TC_007_register_upgrade_plan_rspec
 
-sign_in_rspec.rb
+TC_008_sign_in_rspec
+

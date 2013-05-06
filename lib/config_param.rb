@@ -12,6 +12,7 @@ require_relative '../data/base_env'
 module ConfigParam
     include BaseEnv
 
+    # Return true if the argument 'str' was nil or " "
     def is_nil_or_empty(str)
         if str.to_s.strip.length == 0 
             return true 
@@ -19,6 +20,7 @@ module ConfigParam
         return false
     end
 
+    # Helps to get the Jenkins environment variables' value. 
     def get_value_of_env(env, default_value)
         if is_nil_or_empty(env)   
             return default_value
@@ -27,7 +29,8 @@ module ConfigParam
         end
     end
 
-    #used for initialize the global variable 
+    # Helps to get the global variable value
+    # They are used everywhere later.  
     def init
         $browser = ENV['PGBBROWSER'].to_sym
         $lang = ENV['PGBLANG'].to_sym
@@ -117,6 +120,7 @@ module ConfigParam
     end 
 
     # Initialization work
+    # It is to recreate folders, which will be used to store log file and screenshot files. 
     def initialize_params(name_subdir)
         puts "+ initialize_params begin"
 
@@ -159,7 +163,9 @@ module ConfigParam
         puts "+ initialize_params end"
     end
 
-    # Path formattor with locale
+    # Path formattor with locale 
+    # the result address will be like 
+    #   http://loc.build.phonegap.com/people/sign_in?locale=fr_FR
     def path_format_locale (path)
         @base_url + path + "?locale=" + $lang.to_s
     end 

@@ -14,6 +14,9 @@ class SignInPage
     include WebdriverHelper
     include ConfigParam
     
+    # Initialize an SignInPage instance by providing a driver and the 'options' array. 
+    # How to use: 
+    # @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
     def initialize(driver, options = {})
         @driver = driver
         @data_xpath = options.fetch(:xpath)
@@ -22,8 +25,14 @@ class SignInPage
         @data_url = options.fetch(:url)
     end
 
+    # By receiving user's ID and password, 
+    # this method helps to fill in and submit the user form. 
     def sign_in_with_adobe_id(id,password)
 
+        # Chrome's warning message about invalid information just 
+        # stop us to click the 'Sign in' button. 
+        # So we decide to change its type and just disable the chrome feature 
+        # to continue our steps. 
         if $browser == :chrome   
             change_element_attribute(attribute:"type", id:"person_email", to:"text" ) 
         end
@@ -36,14 +45,17 @@ class SignInPage
         sign_in_btn.click
     end
 
+    # By receiving user's ID and password,
+    # this method helps to fill in and submit the user form. 
     def sign_in_with_github_id(id,password) 
         sign_in_with_github_btn.click
-        # wait_for_page_with_title(5, "sign in · github") # it works
         git_id_textinput.send_keys(id)
         git_password_textinput.send_keys(password)
         git_sign_in_btn.click
     end
 
+    # By receiving valid email address, 
+    # this method tries to get the kind tips about where to get the recover-password private link. 
     def forget_password_with_valid_email(a_valid_email)
         forgot_my_password_link.click
         forgot_password_email_input.send_keys(a_valid_email)
@@ -52,6 +64,8 @@ class SignInPage
         @tips_on_receiving_an_email = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:you_will_receive_an_email]).text
     end
 
+    # By receiving invalid email address
+    # this method helps to return the warning message 
     def forget_password_with_invalid_email(a_invalid_email)
         forgot_my_password_link.click
         forgot_password_email_input.send_keys(a_invalid_email)
@@ -59,6 +73,8 @@ class SignInPage
         @warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:tips_or_warnings]).text
     end
 
+    # By receiving an email address
+    # this method helps to return the related content of tip or warning 
     def resend_confirmation_instructions(email_address)
         didnt_receive_confirmation_link.click
         resend_confirm_instru_email_input.send_keys(email_address)
@@ -70,17 +86,17 @@ class SignInPage
         forgot_my_password_link.click
     end
 
-    def close_current_browser
-        close_browser
-    end
-
-    # Utility tools 
+    # Utility tools by executing javascript to change 
+    #  the options[:attribute] attribute of  
+    #  element whose ID was options[:id]
+    #  to options[:to] type. 
+    # It was called by method: sign_in_with_adobe_id(id,password)
     def change_element_attribute(options = {} )
         id = options.fetch(:id)
         attribute = options.fetch(:attribute)
         to = options.fetch(:to)
 
-        # assert if 'id', 'attribute', and 'to' were nil
+        # make sure 'id', 'attribute', and 'to' were not nil or empty. 
     
         @driver.execute_script(
             " oldObj = document.getElementById('#{id}'); " + 

@@ -64,6 +64,7 @@ module WebdriverHelper
         @driver.save_screenshot "#{dir}" 
     end
 
+    # for the purpose of unique email address, which was used to create new Adobe ID each time.
     def unique_number
         data = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
         value = data[:number]
@@ -72,7 +73,8 @@ module WebdriverHelper
         return value
     end
 
-    # for the purpose of unique email address, which was used to create new Adobe ID each time.
+    # To count the each test case's 'it' block order.
+    # Ultimately it is used to name the screenshot when failure happens 
     class Counter
         attr_accessor :value
         def initialize(i = 0)
