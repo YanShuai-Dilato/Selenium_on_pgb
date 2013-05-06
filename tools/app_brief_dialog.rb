@@ -1,5 +1,7 @@
 #encoding: utf-8
 
+# 
+
 module AppBriefDialog 
   
   def article_tags_on_page 

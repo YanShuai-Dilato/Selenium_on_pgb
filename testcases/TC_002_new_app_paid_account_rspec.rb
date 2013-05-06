@@ -63,7 +63,7 @@ describe "TC_002: New apps with paid account" do
         end
     end
 
-    it "IT_001_create the first private app by uploading a .zip file" do 
+    it "IT_001: Create the first private app by uploading a .zip file" do 
         @new_app_page.new_app_with_zip
 
         sleep 5 
@@ -76,7 +76,7 @@ describe "TC_002: New apps with paid account" do
         @app_count_after.should_not eql 0
     end
 
-    it "IT_002_create the second private app successfully"  do 
+    it "IT_002: Create the second private app successfully"  do 
         sleep 5
         @app_count_before = @new_app_page.get_existing_app_num
         @first_app_id_before = @new_app_page.get_first_app_id

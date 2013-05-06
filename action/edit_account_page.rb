@@ -14,6 +14,7 @@ class EditAccountPage
     include ConfigParam
 
 	def initialize(driver)
+		puts "+ initialize EditAccountPage -- begin"
 		init
 		@base_url = "https://buildstage.phonegap.com"
 		@driver = driver
@@ -21,6 +22,7 @@ class EditAccountPage
         @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user ||= YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+        puts "+ initialize EditAccountPage -- end"
 	end
 
 	def delete_my_account(id, password)

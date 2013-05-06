@@ -12,6 +12,7 @@ require_relative '../data/base_env'
 module ConfigParam
     include BaseEnv
 
+    # Return true if the argument 'str' was nil or " "
     def is_nil_or_empty(str)
         if str.to_s.strip.length == 0 
             return true 
@@ -19,6 +20,7 @@ module ConfigParam
         return false
     end
 
+    # Helps to get the Jenkins environment variables' value. 
     def get_value_of_env(env, default_value)
         if is_nil_or_empty(env)   
             return default_value
@@ -27,10 +29,14 @@ module ConfigParam
         end
     end
 
-    #used for initialize the global variable 
+    # Helps to get the global variable value
+    # They are used everywhere later.  
     def init
         $browser = ENV['PGBBROWSER'].to_sym
         $lang = ENV['PGBLANG'].to_sym
+
+        puts "+ ENV[PGBBROWSER] = #{$browser}"
+        puts "+ ENV[PGBLANG] = #{$lang}"
 
         # liclu:original function 
         # opts = GetoptLong.new(
@@ -114,18 +120,24 @@ module ConfigParam
     end 
 
     # Initialization work
+    # It is to recreate folders, which will be used to store log file and screenshot files. 
     def initialize_params(name_subdir)
+        puts "+ initialize_params begin"
 
         # Delete the result folder and all subfolders recursively 
-        FileUtils.rm_rf('./auto_results')  
+        FileUtils.rm_rf('./auto_results') if File.directory?('./auto_results')
+        puts "+ ./auto_results/* --- deleted"
 
         # Then to create the structure
         name_sub_dir = name_subdir
-        Dir.mkdir("./auto_results") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}/screenshots") 
-        Dir.mkdir("./auto_results/#{name_sub_dir}/video") 
-
+        Dir.mkdir("./auto_results") unless File.directory?("./auto_results")
+        puts "+ ./auto_results/ --- created"
+        Dir.mkdir("./auto_results/#{name_sub_dir}") unless File.directory?("./auto_results/#{name_sub_dir}")
+        puts "+ ./auto_results/#{name_sub_dir}/ --- created "
+        Dir.mkdir("./auto_results/#{name_sub_dir}/screenshots") unless File.directory?("./auto_results/#{name_sub_dir}/screenshots")
+        puts "+ ./auto_results/#{name_sub_dir}/screenshots/ --- created"
+        Dir.mkdir("./auto_results/#{name_sub_dir}/video") unless File.directory?("./auto_results/#{name_sub_dir}/video")
+        puts "+ ./auto_results/#{name_sub_dir}/video/ ---- created"
 
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => "dil45216+test_free_002@adobetest.com" , :password => "password" , :timeout => 30}
         response = private_resource.get :accept => :json
@@ -148,9 +160,12 @@ module ConfigParam
             puts response_2.to_str
         end
 
+        puts "+ initialize_params end"
     end
 
-    # Path formattor with locale
+    # Path formattor with locale 
+    # the result address will be like 
+    #   http://loc.build.phonegap.com/people/sign_in?locale=fr_FR
     def path_format_locale (path)
         @base_url + path + "?locale=" + $lang.to_s
     end 

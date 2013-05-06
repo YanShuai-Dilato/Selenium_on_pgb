@@ -53,9 +53,6 @@ module SettingsPage
        EditIssue.new(@driver)
     end
 
-    # If only we can get the ID of the new-created app
-    # then we can after sign-in head directly to the settings page.
-    # wait. 
     def load
         @driver.get "https://buildstage.phonegap.com/apps/_ID/settings"
     end

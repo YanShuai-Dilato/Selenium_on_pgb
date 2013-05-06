@@ -15,8 +15,10 @@ class RegisterPage
 		@data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
 	end
 
-	def enter_register_information(user) # user[:email_address]
-
+	# Fill in the register form by providing a array which contains 
+	# user-related informations like: email address, password, first name, last name, and coutry-region. 
+	# methods: "adobe_id_frame_*" were defined in register_dialog.rb located in "tools/"
+	def enter_register_information(user) 
 		adobe_id_frame_enter_username(user[:email_address])
 		adobe_id_frame_enter_password_2(user[:password])
 		adobe_id_frame_retype_password(user[:retype_pass])
@@ -33,15 +35,14 @@ class RegisterPage
 
 	end
 
+	# Just help to click the 'Accept' btn. 
 	def have_read_and_agree
 		read_and_agree_the_term_checkbox.click
 		accept_btn.click
 	end
 
-    def close_current_page
-        @driver.quit
-    end
-
+	# There are warnings
+	# This helper tool helps to detect if warning message appears. 
     def warning_display?
         begin
         	@driver.find_element(:xpath, @data_xpath[:register_page][:adobe_id_frame_warning_message])

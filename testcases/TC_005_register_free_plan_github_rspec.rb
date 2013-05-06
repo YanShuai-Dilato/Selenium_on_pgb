@@ -13,6 +13,8 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
+# This TC describes:
+#   situations trying to register github free account to sign in. 
 describe "TC_005: Register -> sign in" do 
     include RegisterDialog
     include SignInGithubDialog
@@ -39,8 +41,8 @@ describe "TC_005: Register -> sign in" do
 
     before(:each) do 
         @driver = browser
-        @driver.manage.window.maximize
         @register_page = RegisterPage.new @driver
+        @driver.manage.window.maximize
         @driver.get path_format_locale("/plans/free")
         github_btn.click
     end
@@ -56,9 +58,7 @@ describe "TC_005: Register -> sign in" do
         @driver.quit
     end
 
-    context "with " do 
-
-        it "github id connected pgb, sign in successfully" do 
+        it "IT_001: direct to '/apps' page when sign in successfully with github id(which is connected to pgb), " do 
             github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
             github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
             github_login_field_submit.click
@@ -67,7 +67,7 @@ describe "TC_005: Register -> sign in" do
             @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
 
-        it "the email, Existing Registration Found " do # the email can both login pgb and github, 
+        it "IT_002: Got an error message('Existing Registration Found') when use account that can log in both. " do  
             github_login_field_username.send_keys(@data_user[$lang][:email_that_login_both][:id])
             github_login_field_password.send_keys(@data_user[$lang][:email_that_login_both][:password])
             github_login_field_submit.click
@@ -75,7 +75,7 @@ describe "TC_005: Register -> sign in" do
             warning_existing_registration_found.text.should eql @data_str[$lang][:PGB_existing_registration_found]
         end
 
-        it "github id - you must select a country" do 
+        it "IT_003: Got an error message when proceed without selecting a country" do 
             github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
             github_login_field_submit.click
@@ -86,7 +86,7 @@ describe "TC_005: Register -> sign in" do
             github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_alert_you_must_select_a_country]
         end
 
-        it "github id - you must agree to the terms of service" do 
+        it "IT_004: Got an error message when proceed without agree to the terms of service" do 
             github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
             github_login_field_submit.click
@@ -102,7 +102,7 @@ describe "TC_005: Register -> sign in" do
             github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_you_mush_agree_to_the_terms_of_service]
         end
 
-        it "github id - sign in successfully" do 
+        it "IT_005: Sign in successfully when using valid appropriate account . " do 
             github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
             github_login_field_submit.click
@@ -119,6 +119,5 @@ describe "TC_005: Register -> sign in" do
             sleep 15
             @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
-        
-    end
+
 end
