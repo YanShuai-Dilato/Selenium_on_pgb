@@ -52,7 +52,7 @@ describe "TC_008: Sign in" do
         @driver.quit
     end
 
-    context "with GitHub ID" do
+    context "--- with GitHub ID" do
         it "IT_001: Sign in successfully when use valid appropriate account" do 
             @base_url = "https://buildstage.phonegap.com"
             @driver.get path_format_locale("/people/sign_in")
@@ -64,7 +64,7 @@ describe "TC_008: Sign in" do
         end
     end
 
-    context "with Adobe ID " do
+    context "--- with Adobe ID " do
         it "IT_002: Sign in successfully when use valid appropriate account" do
             @driver.get path_format_locale("/people/sign_in")
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],
@@ -83,7 +83,7 @@ describe "TC_008: Sign in" do
         end
     end
 
-    context "I forgot my password" do 
+    context "--- I forgot my password" do 
         it "IT_004: Got an tip message about instruments when use valid email address" do
             @driver.get path_format_locale("/people/sign_in")
             @tips = @sign_in_page.forget_password_with_valid_email(@data_user[$lang][:adobe_id_free_001][:id])
@@ -97,7 +97,7 @@ describe "TC_008: Sign in" do
         end
     end
 
-    context "didn't receive confirmation" do 
+    context "--- didn't receive confirmation" do 
         it "IT_006: Got tips saying you will receive an email when use NOT-comfirmed-email address" do 
             @driver.get path_format_locale("/people/sign_in")
             @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])

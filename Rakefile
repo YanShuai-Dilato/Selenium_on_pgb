@@ -20,7 +20,7 @@ if defined? RSpec
         
         t.pattern = "./testcases/*_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
       
     end
 
@@ -35,7 +35,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_001_new_app_free_account_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_002_new_app_paid_account"
@@ -49,7 +49,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_002_new_app_paid_account_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_003_register_create_adobe_id"
@@ -63,7 +63,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_003_register_create_adobe_id_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_004_register_free_plan_adobe"
@@ -77,7 +77,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_004_register_free_plan_adobe_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_005_register_free_plan_github"
@@ -91,7 +91,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_005_register_free_plan_github_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_006_register_paid_ccm_rspec"
@@ -105,7 +105,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_006_register_paid_ccm_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_007_register_upgrade_plan"
@@ -119,7 +119,7 @@ if defined? RSpec
         
         t.pattern = "./testcases/TC_007_register_upgrade_plan_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "TC_008_sign_in_rspec"
@@ -133,7 +133,7 @@ if defined? RSpec
 
         t.pattern = "./testcases/TC_008_sign_in_rspec.rb"
         #output to html file with timeframe
-        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/log.txt "
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
     desc "Only for debug purpose"

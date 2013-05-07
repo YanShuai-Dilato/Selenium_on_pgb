@@ -3,23 +3,31 @@
 module WebdriverHelper
 
 	def wait_for_element_present(how_long=60, how, what) 
+        puts "+ <lib><webdriver_helper> wait_for_element_present --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) } 
+        puts "+ <lib><webdriver_helper> wait_for_element_present --- end"
     end
 
     def wait_for_page_load(how_long=60, url)
+        puts "+ <lib><webdriver_helper> wait_for_page_load --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.current_url == url } 
+        puts "+ <lib><webdriver_helper> wait_for_page_load --- end"
     end
 
     def wait_for_page_with_title(how_long=60, title)
+        puts "+ <lib><webdriver_helper> wait_for_page_with_title --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.title.downcase == title.downcase}
+        puts "+ <lib><webdriver_helper> wait_for_page_with_title --- end"
     end
 
     def isElementPreset?(how_long, how, what)
+        puts "+ <lib><webdriver_helper> isElementPreset? --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) }
+        puts "+ <lib><webdriver_helper> isElementPreset? --- begin"
         return true
     end
 
@@ -41,11 +49,13 @@ module WebdriverHelper
     def win_or_mac
         os = RUBY_PLATFORM
         if os.include? 'darwin'
+            puts "+ <lib><webdriver_helper> OS: Mac OSX"
             return 'mac'
         elsif os.include? 'mingw32'
+            puts "+ <lib><webdriver_helper> OS: Windows"
             return 'win'
         else
-            puts "+ Sorry, we do not support your Operating-System right now"
+            puts "+ <lib><webdriver_helper> Sorry, we do not support your Operating-System right now"
         end
     end
      
@@ -54,22 +64,24 @@ module WebdriverHelper
         lang = ENV['PGBLANG'] 
         if win_or_mac == 'win'
             dir = Dir.pwd + "/auto_results/#{lang}_#{browser}/screenshots/#{name}.png"
-            puts "+ save screenshots to #{dir}"
+            puts "+ <lib><webdriver_helper> save screenshots to #{dir}"
         elsif win_or_mac == 'mac'
             dir = "./auto_results/#{lang}_#{browser}/screenshots/#{name}.png"
-            puts "+ save screenshots to #{dir}"
+            puts "+ <lib><webdriver_helper> save screenshots to #{dir}"
         else
-            puts "+ Sorry, we do not support your Operating-System right now"
+            puts "+ <lib><webdriver_helper> Sorry, we do not support your Operating-System right now"
         end
         @driver.save_screenshot "#{dir}" 
     end
 
     # for the purpose of unique email address, which was used to create new Adobe ID each time.
     def unique_number
+        puts "+ <lib><webdriver_helper> unique_number --- begin"
         data = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
         value = data[:number]
         data[:number] = value.to_i + 1
         File.open(File.expand_path("../../data/data_number.yml",__FILE__), 'w') { |f| YAML.dump(data, f) }
+        puts "+ <lib><webdriver_helper> unique_number --- end"
         return value
     end
 
@@ -85,5 +97,4 @@ module WebdriverHelper
         end
     end
 
-    
 end    

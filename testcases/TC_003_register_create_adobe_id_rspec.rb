@@ -107,7 +107,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@warnings.should eql @data_str[$lang][:PGB_without_selecting_country]
 	end
 
-	it "IT_006: create Adobe ID successfully with valid appropriate email and password" do 
+	it "IT_006: page direct to '/apps' page after successfully new Adobe ID was created with valid appropriate email and password" do 
 		@user = @user_info.clone
 		the_number = unique_number
 		@user[:email_address] ="dil45216+test_free2_" + `hostname`.strip[0, 5] + "#{the_number}@adobetest.com"
