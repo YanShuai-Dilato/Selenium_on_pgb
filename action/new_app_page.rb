@@ -11,16 +11,18 @@ class NewAppPage
     include WebdriverHelper
 
     def initialize(driver)
-        puts "+ initialize NewAppPage -- begin"
+        puts "+ <action> initialize NewAppPage -- begin"
         @driver = driver
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_app   = YAML::load(File.read(File.expand_path("../../data/data_app.yml",__FILE__)))
-        puts "+ initialize NewAppPage -- end"
+        puts "+ <action> initialize NewAppPage -- end"
     end
 
     # Get the number of existing apps by counting the number of tag 'article' 
     def get_existing_app_num
-        @driver.find_elements(:tag_name => "article").count
+        num = @driver.find_elements(:tag_name => "article").count
+        puts "+ <action> existing_app_num: #{num}"
+        return num
     end
 
     # Get the ID of the top one of all apps
@@ -37,9 +39,11 @@ class NewAppPage
         style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
         if style.chomp == "display: none;".chomp
             sleep 5
+            puts "+ <action> new_app_btn_display? NO"
             return false
         end
         sleep 5
+        puts "+ <action> new_app_btn_display? YES"
         return true
     end
 
@@ -50,8 +54,10 @@ class NewAppPage
         disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
         disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
         if disabled_or_not_paste && disabled_or_not_upload
+            puts "+ <action> private_app_no? NO"
             return true
         end
+        puts "+ <action> private_app_no? YES"
         return false
     end
 
@@ -60,7 +66,7 @@ class NewAppPage
     # Steps are: 
     #       "private" tab -> "Upload a .zip file" 
     def new_app_with_zip
-        puts "+ New app with a zip file --- begin "
+        puts "+ <action> New app with a zip file --- begin "
         sleep 5
         if new_app_btn_display?
             new_app_btn.click
@@ -72,7 +78,7 @@ class NewAppPage
         puts private_app_no?.to_s
         sleep 3
         if private_app_no?
-            puts "+ New app with a zip file --- end "
+            puts "+ <action> New app with a zip file --- end "
             return false
         end
 
@@ -88,7 +94,7 @@ class NewAppPage
 
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
-        puts "+ New app with a zip file --- end "
+        puts "+ <action> New app with a zip file --- end "
         return true
     end
 
@@ -96,7 +102,7 @@ class NewAppPage
     # Steps are : 
     #       'open-source' tab -> "paste .git repo"  
     def new_public_app_with_repo
-        puts "+ New public app with github repo --- begin"
+        puts "+ <action> New public app with github repo --- begin"
 
         if new_app_btn_display?
             new_app_btn.click
@@ -106,23 +112,23 @@ class NewAppPage
         paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         sleep 10
         wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
-        puts "+ New public app with github repo --- end"
+        puts "+ <action> New public app with github repo --- end"
     end
 
     # Create an private app by submitting a github repo address. 
     # Steps are:
     #       'private' tab -> 'paste .git repo'
     def new_private_app_with_repo
-        puts "+ New a private app with github repo --- begin" 
+        puts "+ <action> New a private app with github repo --- begin" 
         if new_app_btn_display?
             new_app_btn.click
         end
         private_tab.click
         if !private_app_no?
-            puts "+ New a private app with github repo --- end" 
+            puts "+ <action> New a private app with github repo --- end" 
             paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         else
-            puts "+ New a private app with github repo --- end" 
+            puts "+ <action> New a private app with github repo --- end" 
             return false
         end
     end

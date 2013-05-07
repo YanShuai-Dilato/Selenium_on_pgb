@@ -88,8 +88,7 @@ describe "TC_006: Register paid CCM account" do
 		@driver.quit
 	end
 
-	context "Register Paid CCM account and create 2 private apps, with different account" do 
-		it "IT_001_with the first paid ccm account: dil40562+stagedeannual@adobetest.com" do 
+		it "IT_001: It could create two private apps when using the paid ccm account: dil40562+stagedeannual@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_001][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_001][:password])
@@ -118,7 +117,7 @@ describe "TC_006: Register paid CCM account" do
             app_count_after.should_not eql 0
 		end
 
-		it "IT_002_with the second paid ccm account: dil40562+teamfra1128@adobetest.com" do 
+		it "IT_002: It could create two private apps when using the paid ccm account: dil40562+teamfra1128@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_002][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_002][:password])
@@ -148,7 +147,7 @@ describe "TC_006: Register paid CCM account" do
             app_count_after.should_not eql 0
 		end
 
-		it "IT_003_with the third paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
+		it "IT_003: It could create two private apps when using the paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
 			sleep 5
 			adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_003][:id])
 	        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_003][:password])
@@ -177,5 +176,4 @@ describe "TC_006: Register paid CCM account" do
 
             app_count_after.should_not eql 0
 		end
-	end
 end

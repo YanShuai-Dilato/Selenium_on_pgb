@@ -15,7 +15,7 @@ require_relative "../lib/webdriver_helper"
 
 # This TC describes:
 #   situations trying to register github free account to sign in. 
-describe "TC_005: Register -> sign in" do 
+describe "TC_005: Register an free plan account with Github ID" do 
     include RegisterDialog
     include SignInGithubDialog
     include BaseEnv
@@ -102,7 +102,7 @@ describe "TC_005: Register -> sign in" do
             github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_you_mush_agree_to_the_terms_of_service]
         end
 
-        it "IT_005: Sign in successfully when using valid appropriate account . " do 
+        it "IT_005: page direct to '/apps' after sign in successfully with valid appropriate account . " do 
             github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
             github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
             github_login_field_submit.click

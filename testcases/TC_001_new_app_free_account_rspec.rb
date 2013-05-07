@@ -17,7 +17,7 @@ require_relative "../data/base_env"
 
 # This TC describes 
 #   situations when try to create app(s) using free account(Adobe ID & Github-connected Adobe ID)
-describe "TC_001: New an app with free account" do
+describe "TC_001: New app(s) with free account" do
     include BaseEnv
     include ConfigParam
     include WebdriverHelper
@@ -25,7 +25,7 @@ describe "TC_001: New an app with free account" do
     include AppBriefDialog
 
     before(:all) do
-        puts "+ before all outer"
+        puts "+ <TC_001> before all outer --- begin"
         init
         @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_001_IT_"
@@ -34,11 +34,13 @@ describe "TC_001: New an app with free account" do
         @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
         @data_user ||= YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
         @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+        puts "+ <TC_001> before all outer --- end"
     end
 
     # Try to delete all new-created apps 
     # to make sure it be a clean run the next time. 
     after(:all) do 
+        puts "+ <TC_001> after all outer --- begin"
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
@@ -58,6 +60,7 @@ describe "TC_001: New an app with free account" do
             response_2 = private_resource_2.delete 
             puts response_2.to_str
         end
+        puts "+ <TC_001> after all outer --- end"
     end
 
     after(:each) do 
@@ -73,7 +76,7 @@ describe "TC_001: New an app with free account" do
     #   situations trying to create app(s) using Adobe ID(free). 
     context "--- with Adobe ID - free account" do 
         before(:all) do 
-            puts "+ before all inside"
+            puts "+ <TC_001> before all inside --- begin"
             @base_url = base_url
             @driver = browser
             @driver.manage.window.maximize
@@ -84,13 +87,14 @@ describe "TC_001: New an app with free account" do
                                                 @data_user[$lang][:adobe_id_free_002][:password])
             # wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
             sleep 10
+            puts "+ <TC_001> before all inside --- end"
         end
 
         after(:all) do 
             @driver.quit
         end
 
-    	it "IT_001: #Tip: paste .git repo" do 
+    	it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "+ new_app_btn.click"
@@ -98,16 +102,16 @@ describe "TC_001: New an app with free account" do
             paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
     	end
 
-    	it "IT_002: #Tip: Connect your Github account" do   
+    	it "IT_002: verify the 'Connect your Github account' link exists" do   
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
     	end
 
-    	it "IT_003: #errors when pasting a invalid .git address" do    
+    	it "IT_003: got an warning message when submit an invalid .git address" do    
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
     	end
 
-    	it "IT_004: create an opensource app by pasting a .git" do  
+    	it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
             puts "+ before @new_app_page.new_public_app_with_repo"
 
             @new_app_page.new_public_app_with_repo
@@ -121,7 +125,7 @@ describe "TC_001: New an app with free account" do
 
     	end
 
-    	it "IT_005: Create the first private app by uploading a .zip file" do 
+    	it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 10
 
@@ -141,7 +145,7 @@ describe "TC_001: New an app with free account" do
             first_app_id_after.should_not eql @first_app_id_before
     	end
 
-    	it "IT_006: Can not create another private app"  do 
+    	it "IT_006: trying to new another private app fails when there was already one private app"  do 
             # @driver.navigate.refresh
             sleep 10
 
@@ -185,7 +189,7 @@ describe "TC_001: New an app with free account" do
             @driver.quit
         end
 
-        it "IT_007_#Dropdown list of existing repo" do 
+        it "IT_007: the number of items of the dropdown list did not equal 0" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -198,7 +202,7 @@ describe "TC_001: New an app with free account" do
             li_count.should_not eql 0    
         end
 
-        it "IT_008_#Tip: find existing repo / paste .git repo" do 
+        it "IT_008: check if the placeholder of 'find existing repo / paste .git repo' exists" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -206,7 +210,7 @@ describe "TC_001: New an app with free account" do
             paste_git_repo_input.attribute('placeholder').to_s.should eql @data_str[$lang][:PGB_find_existing_repo_or_paste_git_repo]
         end
 
-        it "IT_009_#errors when pasting a invalid .git address" do 
+        it "IT_009: got an errors when pasting a invalid .git address" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -215,7 +219,7 @@ describe "TC_001: New an app with free account" do
             warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
         end
 
-        it "IT_010_match some apps in the list if enter some letters" do 
+        it "IT_010: there be an matched item from the dropdown list when entering some letters" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -226,7 +230,7 @@ describe "TC_001: New an app with free account" do
             the_first_item.text.should eql @data_str[$lang][:PGB_the_first_matched_item] 
         end
 
-        it "IT_011_match no apps in the list if enter some specific letters" do 
+        it "IT_011: there be not any matched apps in the list when enter some specific letters" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -238,7 +242,7 @@ describe "TC_001: New an app with free account" do
             the_first_item.text.should eql @data_str[$lang][:PGB_no_match_item]
         end
 
-        it "IT_012_Select a repo from the matched items to create an app" do  
+        it "IT_012: the number of apps did not equal to 0 after selecting and clicking one from the matched items" do  
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"

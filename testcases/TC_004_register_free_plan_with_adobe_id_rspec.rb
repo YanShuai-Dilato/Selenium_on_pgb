@@ -14,7 +14,7 @@ require_relative "../lib/webdriver_helper"
 
 # This TC describes 
 #   situations trying to register with Adobe ID to sign in. 
-describe "TC_004: Register -> sign in" do 
+describe "TC_004: Register as free plan with Adobe ID" do 
 	include RegisterDialog
     include SignInGithubDialog
 	include BaseEnv
