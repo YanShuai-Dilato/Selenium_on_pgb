@@ -44,17 +44,17 @@ The project automates the I18N testing on PhonegapBuild website, using rspec, wi
       ENV['BROWSER'] = 'chrome'
       ENV['LANG'] = 'en_US'
     end
-    ------
-    * Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
-    * Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
-    * Manage the running testcases for 't.pattern'.
+    # ------
+    # Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
+    # Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
+    # Manage the running testcases for 't.pattern'.
     
 4, Run the test 
 	
 	$ rake
-	* Run default task
+	# Run default task
 	$ rake :taskname
-	* Run specific task
+	# Run specific task
 	
 
 	
@@ -69,7 +69,6 @@ https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
 
 
 ### Test cases 
-
 
     TC_001_new_app_free_account_rspec.rb
     TC_002_new_app_paid_account_rspec.rb
