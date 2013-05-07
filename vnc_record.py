@@ -17,7 +17,7 @@ else:
 		print env
 		print sys.platform
 		c=Castro(display=1)
-		c=start()
+		c.start()
 		ruby=subprocess.call(['ruby','-S','rake','TC_001'],env=env)
 		c.stop()
 
