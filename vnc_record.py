@@ -30,8 +30,8 @@ else:
 		c=Castro(display=1)
 		c.start()
 		ruby=subprocess.call(['ruby','-S','rake'],env=env)
-		env["PGBLANG"]="en_US"
-		env["PGBBROWSER"]="chrome"
+		env["PGBLANG"]="fr_FR"
+		env["PGBBROWSER"]="firefox"
 		print env
 		print sys.platform
 		ruby=subprocess.call(['ruby','-S','rake'],env=env)
