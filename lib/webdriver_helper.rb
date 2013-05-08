@@ -74,17 +74,6 @@ module WebdriverHelper
         @driver.save_screenshot "#{dir}" 
     end
 
-    # for the purpose of unique email address, which was used to create new Adobe ID each time.
-    def unique_number
-        puts "+ <lib><webdriver_helper> unique_number --- begin"
-        data = YAML::load(File.read(File.expand_path("../../data/data_number.yml",__FILE__)))
-        value = data[:number]
-        data[:number] = value.to_i + 1
-        File.open(File.expand_path("../../data/data_number.yml",__FILE__), 'w') { |f| YAML.dump(data, f) }
-        puts "+ <lib><webdriver_helper> unique_number --- end"
-        return value
-    end
-
     # To count the each test case's 'it' block order.
     # Ultimately it is used to name the screenshot when failure happens 
     class Counter

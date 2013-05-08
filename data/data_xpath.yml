@@ -34,7 +34,7 @@
 :sign_in_github_page: 
     :username_or_email: //*[@id='login_field']
     :password: //*[@id='password']
-    :sign_in: //*[@id='login']/form/div[3]/input[4]
+    :sign_in_btn: //*[@id='login']/form/div[3]/input[4]
 :register_page: 
     :free_plan: //*[@id='plans-table']/tbody/tr[4]/td[1]/a/small
     :paid_plan: //*[@id='plans-table']/tbody/tr[4]/td[2]/a
@@ -103,6 +103,17 @@
     :upgrade_now_link: //*[@id="new-app"]/form/div[2]/p/a
     :close_link: //*[@id='new-app']/form/div[1]/a[3]
 :edit_account_page:
+    :account_details_tab: //*[@id="people-edit-controls"]/nav/a[1]
+    :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
+    :signing_keys_tab: //*[@id="people-edit-controls"]/nav/a[3]
+    :ios_add_key_btn: //*[@id="person-keys"]/table[1]/tfoot/tr/td/a
+    :ios_title_input: //*[@id="key_title"]
+    :ios_choose_cert_file_btn:  //*[@id="key_cert_file"]
+    :ios_choose_prov_file_btn: //*[@id="key_profile_file"]
+    :ios_cacel_btn:    //*[@id="key_new"]/footer/button[1]
+    :ios_submit_btn: //*[@id="key_new"]/footer/button[2]
+    :android_add_key_btn: //*[@id="person-keys"]/table[2]/tfoot/tr/td/a
+    :blackberry_add_key_btn: //*[@id="person-keys"]/table[3]/tfoot/tr/td/a
     :delete_my_account: //*[@id="delete-account-btn"]
     :yes_delete_my_account: //*[@id="delete-account-btn"]
 :app_brief_detail:
