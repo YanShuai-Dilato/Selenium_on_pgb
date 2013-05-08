@@ -56,6 +56,7 @@ class SignInPage
         puts "+ <action> with id: #{id}"
         puts "+ <action> with password: #{password}"
         sign_in_with_github_btn.click
+        sleep 5
         git_id_textinput.send_keys(id)
         git_password_textinput.send_keys(password)
         git_sign_in_btn.click

@@ -51,7 +51,7 @@ describe "TC_008: Sign in" do
         end
         @driver.quit
     end
-
+=begin
     context "--- with GitHub ID" do
         it "IT_001: Sign in successfully when use valid appropriate account" do 
             @base_url = "https://buildstage.phonegap.com"
@@ -96,7 +96,7 @@ describe "TC_008: Sign in" do
             @warnings.should eql @data_str[$lang][:PGB_email_not_found]
         end
     end
-
+=end
     context "--- didn't receive confirmation" do 
         it "IT_006: Got tips saying you will receive an email when use NOT-comfirmed-email address" do 
             @driver.get path_format_locale("/people/sign_in")
