@@ -18,8 +18,6 @@ else:
 	if __name__ == '__main__':
 		print 'launching slave process...'
 		env = os.environ.copy()
-		env["PGBLANG"]="en_US"
-		env["PGBBROWSER"]="chrome"
 		print env
 		print sys.platform
 		
