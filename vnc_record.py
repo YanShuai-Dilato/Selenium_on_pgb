@@ -6,9 +6,15 @@ if sys.platform == "darwin":
 	env = os.environ.copy()
 	print env
 	print sys.platform
-	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth")
+	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth",filename = "TC-001-screencast.swf")
 	c.start()
 	ruby=subprocess.call(['rake','TC_001'],env=env)
+	print ruby
+	c.stop()
+	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth",filename = "TC-002-screencast.swf")
+	c.start()
+	ruby=subprocess.call(['rake','TC_002'],env=env)
+	print ruby
 	c.stop()
 else:
 	if __name__ == '__main__':
