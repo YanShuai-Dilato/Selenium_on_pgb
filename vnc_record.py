@@ -8,7 +8,7 @@ if sys.platform == "darwin":
 	print sys.platform
 	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth")
 	c.start()
-	ruby=subprocess.call(['rake'],env=env)
+	ruby=subprocess.call(['rake','TC_001'],env=env)
 	c.stop()
 else:
 	if __name__ == '__main__':
