@@ -136,11 +136,23 @@ if defined? RSpec
         t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
 
+    desc "TC_009_signing_key_add_unlock_delete_rspec"
+    RSpec::Core::RakeTask.new(:TC_009) do |t|
+        #init config
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
+        
+        initialize_params name_subdir
+
+        t.pattern = "./testcases/TC_009_signing_key_add_signing_key.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
+    end
+
     desc "Only for debug purpose"
     RSpec::Core::RakeTask.new(:debug_mode) do |t|
-        puts "Hi there!"
-
-       
+        puts "Hi there!" 
     end
 
 end
