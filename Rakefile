@@ -75,7 +75,7 @@ if defined? RSpec
         
         initialize_params name_subdir
 
-        t.pattern = "./testcases/TC_004_register_free_plan_adobe_rspec.rb"
+        t.pattern = "./testcases/TC_004_register_free_plan_with_adobe_id_rspec.rb"
         #output to html file with timeframe
         t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end
@@ -89,7 +89,7 @@ if defined? RSpec
         
         initialize_params name_subdir
 
-        t.pattern = "./testcases/TC_005_register_free_plan_github_rspec.rb"
+        t.pattern = "./testcases/TC_005_register_free_plan_with_github_id_rspec.rb"
         #output to html file with timeframe
         t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/selenium_result.txt "
     end

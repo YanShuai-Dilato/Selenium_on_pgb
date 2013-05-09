@@ -230,7 +230,7 @@ describe "TC_001: New app(s) with free account" do
             the_first_item.text.should eql @data_str[$lang][:PGB_the_first_matched_item] 
         end
 
-        it "IT_011: there be not any matched apps in the list when enter some specific letters" do 
+        it "IT_011: there be not any matched apps in the list when enter some specific letters in the placeholder" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -242,7 +242,7 @@ describe "TC_001: New app(s) with free account" do
             the_first_item.text.should eql @data_str[$lang][:PGB_no_match_item]
         end
 
-        it "IT_012: the number of apps did not equal to 0 after selecting and clicking one from the matched items" do  
+        it "IT_012: the number of apps did not equal to 0 after creating app by selecting and clicking one from the matched items" do  
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
