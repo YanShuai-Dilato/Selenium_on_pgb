@@ -64,7 +64,45 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 	
 	$ open ./auto_results/#{lang}_#{browser}/selenium_result.txt
 	
-	
+
+### Schedule your task
+###### For OSX
+We use *crontab* utility to schedule our tasks. 
+
+1, Use the following command to list your active crontab entries, and to remove the current crontab if there is one.  
+
+    $ crontab -l  
+    $ crontab -r    # to remove the current crontab. 
+    
+2, Create crontab file. 
+
+A crontab file has six fields for specifying minute, hour, day of month, month, day of week and the command to be run at that interval. See below:
+
+    *     *     *     *     *  command to be executed
+    -     -     -     -     -
+    |     |     |     |     |
+    |     |     |     |     +----- day of week (0 - 6) (Sunday=0)
+    |     |     |     +------- month (1 - 12)
+    |     |     +--------- day of month (1 - 31)
+    |     +----------- hour (0 - 23)
+    +------------- min (0 - 59)
+    
+As for our situation: 
+
+    $ cat ./crontab.txt
+    $ 30 23 * * * rm path/to/dir/ -rf
+
+3, Specifying a crontab file to use
+
+    $ crontab ./crontab.txt
+    
+    
+
+###### For Windows
+
+We just use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
+
+
 
 ### Code structure
 https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
