@@ -112,7 +112,6 @@
     :ios_choose_prov_file_btn: //*[@id="key_profile_file"]
     :ios_cacel_btn:    //*[@id="key_new"]/footer/button[1]
     :ios_submit_btn: //*[@id="key_new"]/footer/button[2]
-    :ios_
     :android_add_key_btn: //*[@id="person-keys"]/table[2]/tfoot/tr/td/a
     :blackberry_add_key_btn: //*[@id="person-keys"]/table[3]/tfoot/tr/td/a
     :delete_my_account: //*[@id="delete-account-btn"]
