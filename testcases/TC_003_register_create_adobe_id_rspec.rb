@@ -24,6 +24,8 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 		@order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_003_IT_"
 		@driver = browser
+		@time = Time.now
+		@str_name = @time.year.to_s + @time.month.to_s + @time.day.to_s + @time.hour.to_s + @time.min.to_s
 		@driver.manage.window.maximize
 		@register_page = RegisterPage.new @driver
 		@base_url = base_url
@@ -33,7 +35,7 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @user_info = {
-			email_address:  "pgbtesttiing_" + unique_number.to_s + "@g990mail.com",
+			email_address:  "pgbtesttiing_" + @time.year.to_s + @time.month.to_s + @time.day.to_s + "@g990mail.com",
 			password:		"pgbtesting001",
 			retype_pass:    "pgbtesting001",
 			first_name:		"pgb",
@@ -109,9 +111,8 @@ describe "TC_003: Register -> create an Adobe ID with provided email" do
 
 	it "IT_006: page direct to '/apps' page after successfully new Adobe ID was created with valid appropriate email and password" do 
 		@user = @user_info.clone
-		time = Time.now
-		str_name = time.year.to_s + time.month.to_s + time.day.to_s + time.hour.to_s + time.min.to_s
-		@user[:email_address] ="dil45216+test_" + str_name + "@adobetest.com"
+		
+		@user[:email_address] ="dil45216+test_" + @str_name + "@adobetest.com"
 		@user[:password] = "password"
 		@user[:retype_pass] = "password"
 

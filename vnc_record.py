@@ -6,23 +6,24 @@ if sys.platform == "darwin":
 	env = os.environ.copy()
 	print env
 	print sys.platform
-	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth",filename = "TC-001-screencast.swf")
-	c.start()
-	ruby=subprocess.call(['rake','TC_001'],env=env)
-	print ruby
-	c.stop()
-	c=Castro(display=1,passwd="/Users/labuser/.vinevncauth",filename = "TC-002-screencast.swf")
-	c.start()
-	ruby=subprocess.call(['rake','TC_002'],env=env)
-	print ruby
-	c.stop()
+
+	for x in range(1, 8):
+		tc_name = "TC_%03d" % x # TC_001 TC_002 ... TC_008
+		c=Castro(display=1, passwd="/Users/labuser/.vinevncauth", filename= tc_name + "_screencast.swf")
+		c.start()
+		ruby=subprocess.call(['rake',tc_name],env=env)
+		print ruby
+		c.stop()
 else:
 	if __name__ == '__main__':
 		print 'launching slave process...'
 		env = os.environ.copy()
 		print env
 		print sys.platform
-		c=Castro(display=1)
-		c.start()
-		ruby=subprocess.call(['ruby','-S','rake'],env=env)
-		c.stop()
+		for x in range(1, 8):
+			tc_name = "TC_%03d" % x # TC_001 TC_002 ... TC_008
+			c=Castro(display=1, passwd="/Users/labuser/.vinevncauth", filename= tc_name + "_screencast.swf")
+			c.start()
+			ruby=subprocess.call(['rake',tc_name],env=env)
+			print ruby
+			c.stop()
