@@ -42,7 +42,7 @@ describe "TC_009: Signing-Key_Add_Signing_key" do
     end
 
     after(:all) do 
-
+    	@driver.quit
     end
 
 	context "--- add signing-key through 'Edit account' page. " do 
