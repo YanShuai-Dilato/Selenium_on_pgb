@@ -9,7 +9,14 @@
         :cert: 
         :profile: 
 :android: 
-    :keystore: ../../assets/signing_key/android/android-dilato.keystore
+    :valid:
+        :keystore: ../../assets/signing_key/android/android-dilato.keystore
+    :invalid:
+        :keystore: 
 :blackberry: 
-    :db: ../../assets/signing_key/blackberry/barsigner.db
-    :csk: ../../assets/signing_key/blackberry/barsigner.csk
+    :valid:
+        :db: ../../assets/signing_key/blackberry/barsigner.db
+        :csk: ../../assets/signing_key/blackberry/barsigner.csk
+    :invalid:
+        :db: 
+        :csk: 
