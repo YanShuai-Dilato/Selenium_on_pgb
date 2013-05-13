@@ -33,38 +33,43 @@ describe "TC_009: Signing-Key_Add_Signing_key" do
         @driver = browser # have to start a new instance each time to clean the cache.
         @driver.manage.window.maximize
         @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
+        @edit_account_page = EditAccountPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
 
         @driver.get path_format_locale("/people/sign_in")
-        @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_001][:id],
-                                            @data_user[$lang][:adobe_id_free_001][:password])
-        @driver.get path_format_locale("/people/edit")
-        signing_keys_tab.click
+        @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
+                                            @data_user[$lang][:adobe_id_free_002][:password])
     end
 
     after(:all) do 
     	@driver.quit
     end
 
+    after(:each) do 
+        @name_screenshot += @order_it.inc.to_s
+
+        if example.exception != nil
+            # Failure only code goes here
+            take_screenshot_with_name @name_screenshot
+        end
+    end
+
 	context "--- add signing-key through 'Edit account' page. " do 
-		before(:each) do 
+        before(:all) do 
+            @driver.get path_format_locale("/people/edit")
+            signing_keys_tab.click
+        end
 
+		it "IT_001: the new-added signing_key should be locked after adding successfully " do 
+            @edit_account_page.add_ios_signing_key "valid"
+            @edit_account_page.get_status_of_1st_iso_signK.should eql "locked"
 		end
 
+        it "IT_002: the second iOS signing Key was locked after adding successfully" do 
+            @edit_account_page.add_ios_signing_key "valid"
+            @edit_account_page.get_status_of_2nd_iso_signK.should eql "locked"
+        end
 
-		after(:each) do 
-
-		end
-		
-		it "IT_001" do 
-
-		end
+        
 	end
 
-	context "--- Unlock and Lock signing key " do 
-
-	end
-
-	context "--- Delete signing-key" do 
-
-	end
 end

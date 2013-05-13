@@ -1,0 +1,15 @@
+:name:
+    :valid: "xxxVALIDxxx"
+    :invalid: "xxxINVALIDxxx"
+:ios:
+    :valid:
+        :cert: ../../assets/signing_key/ios/LichuanIQEKey.p12
+        :profile: ../../assets/signing_key/ios/Lichuanlu.mobileprovision
+    :invalid: 
+        :cert: 
+        :profile: 
+:android: 
+    :keystore: ../../assets/signing_key/android/android-dilato.keystore
+:blackberry: 
+    :db: ../../assets/signing_key/blackberry/barsigner.db
+    :csk: ../../assets/signing_key/blackberry/barsigner.csk

@@ -112,8 +112,32 @@
     :ios_choose_prov_file_btn: //*[@id="key_profile_file"]
     :ios_cacel_btn:    //*[@id="key_new"]/footer/button[1]
     :ios_submit_btn: //*[@id="key_new"]/footer/button[2]
+    :ios_1st_default_btn: //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[2]/input
+    :ios_1st_lock_btn: //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[3]/a
+    :ios_1st_delete_btn: //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[4]/a
+    :ios_2nd_default_btn: //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[2]/input
+    :ios_2nd_lock_btn: //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[3]/a
+    :ios_2nd_delete_btn: //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[4]/a
     :android_add_key_btn: //*[@id="person-keys"]/table[2]/tfoot/tr/td/a
+    :android_title_input: //*[@id="key_title"]
+    :android_alias_input: //*[@id="key_alias"]
+    :android_choose_keystore_btn: //*[@id="key_key_file"]
+    :android_1st_default_btn: 
+    :android_1st_lock_tn: 
+    :android_1st_delete_btn: 
+    :android_2nd_default_btn: 
+    :android_2nd_lock_btn: 
+    :android_2nd_delete_btn: 
     :blackberry_add_key_btn: //*[@id="person-keys"]/table[3]/tfoot/tr/td/a
+    :blackberry_title_input: //*[@id="key_title"]
+    :blackberry_choose_csk_btn: //*[@id="key_csk_file"]
+    :blackberry_choose_db_btn: //*[@id="key_db_file"]
+    :blackberry_1st_default_btn: 
+    :blackberry_1st_lock_btn: 
+    :blackberry_1st_delete_btn: 
+    :blackberry_2nd_default_btn: 
+    :blackberry_2nd_lock_btn: 
+    :blackberry_2nd_delete_btn: 
     :delete_my_account: //*[@id="delete-account-btn"]
     :yes_delete_my_account: //*[@id="delete-account-btn"]
 :app_brief_detail:

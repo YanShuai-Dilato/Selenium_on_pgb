@@ -40,7 +40,7 @@ describe "TC_004: Register as free plan with Adobe ID" do
     end
 
     after(:all) do 
-        @register_page.close_current_page
+        @driver.quit
     end
 
     after(:each) do 

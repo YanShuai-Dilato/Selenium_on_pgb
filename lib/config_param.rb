@@ -170,8 +170,8 @@ module ConfigParam
     # Path formattor with locale 
     # the result address will be like 
     #   http://loc.build.phonegap.com/people/sign_in?locale=fr_FR
-    def path_format_locale (path)
-        @base_url + path + "?locale=" + $lang.to_s
+    def path_format_locale(base_url = @base_url, path)
+        base_url + path + "?locale=" + $lang.to_s
     end 
 
 end  

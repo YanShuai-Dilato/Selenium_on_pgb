@@ -29,7 +29,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 	$ cd Selenium_on_pgb/
 
 
-2, Please copy 'Selenium_on_pgb/assets/application/anotherあ你äōҾӲ.zip' to C:\ , if you're using Windows to run this test. 
+2, Please copy 'Selenium_on_pgb/assets/application/www.zip' to C:\ , if you're using Windows to run this test. 
 
 
 3, Manage testing task in Rakefile
@@ -101,6 +101,9 @@ As for our situation:
 ###### For Windows
 
 We just use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
+
+1, Launch the "Task Scheduler" and create an Task from the "Actions" block at the right side. 
+
 
 
 
