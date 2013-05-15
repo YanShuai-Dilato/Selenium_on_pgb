@@ -53,6 +53,15 @@ module EditAccountDialog
 	def ios_1st_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_1st_lock_btn])
 	end
+	def ios_1st_cert_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_1st_cert_password_input])
+	end
+	def ios_1st_cert_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_1st_cert_cancel_btn])
+	end
+	def ios_1st_cert_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_1st_cert_submit_btn])
+	end
 	def ios_1st_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_1st_delete_btn])
 	end
@@ -61,6 +70,15 @@ module EditAccountDialog
 	end
 	def ios_2nd_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_2nd_lock_btn])
+	end
+	def ios_2nd_cert_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_2nd_cert_password_input])
+	end
+	def ios_2nd_cert_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_2nd_cert_cancel_btn])
+	end
+	def ios_2nd_cert_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_2nd_cert_submit_btn])
 	end
 	def ios_2nd_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_2nd_delete_btn])
@@ -87,11 +105,32 @@ module EditAccountDialog
 	def android_1st_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_lock_btn])
 	end
+	def android_1st_cert_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_cert_password_input])
+	end
+	def android_1st_keystore_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_keystore_password_input])
+	end
+	def android_1st_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_cancel_btn])
+	end
+	def android_1st_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_submit_btn])
+	end
 	def android_1st_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_1st_delete_btn])
 	end
 	def android_2nd_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_lock_btn])
+	end
+	def android_2nd_keystore_password
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_keystore_password])
+	end
+	def android_2nd_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_cancel_btn])
+	end
+	def android_2nd_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_submit_btn])
 	end
 	def android_2nd_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_delete_btn])
@@ -118,11 +157,29 @@ module EditAccountDialog
 	def blackberry_1st_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_1st_lock_btn])
 	end
+	def blackberry_1st_key_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_1st_key_password_input])
+	end
+	def blackberry_1st_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_1st_cancel_btn])
+	end
+	def blackberry_1st_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_1st_submit_btn])
+	end
 	def blackberry_1st_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_1st_delete_btn])
 	end
 	def blackberry_2nd_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_2nd_lock_btn])
+	end
+	def blackberry_2nd_key_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_2nd_key_password_input])
+	end
+	def blackberry_2nd_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_2nd_cancel_btn])
+	end
+	def blackberry_2nd_submit_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_2nd_submit_btn])
 	end
 	def blackberry_2nd_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:blackberry_2nd_delete_btn])

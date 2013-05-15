@@ -100,8 +100,21 @@
     :not_a_valid_github_url: /html/body/section/div/div/div/form/div[2]/div/div/span
     :upload_a_zip_btn: //*[@id='app_archive']
     :connect_your_github_account_link: //*[@id="new-app"]/form/div[2]/a
-    :upgrade_now_link: //*[@id="new-app"]/form/div[2]/p/a
+    :upgrade_now_link: //*[@id="new-app"]/form/div[2]/p/a 
     :close_link: //*[@id='new-app']/form/div[1]/a[3]
+    :ready_to_build_btn: /html/body/section/div/div/section[4]/article/footer/a
+    :clickable_app_title: /html/body/section/div/div/section[4]/article/section/a/h1
+    :builds_tab: /html/body/section/div/article/div[2]/section/nav/a
+    :collaborators_tab: /html/body/section/div/article/div[2]/section/nav/a[2]
+    :settings_tab: /html/body/section/div/article/div[2]/section/nav/a[3]
+    :ios_signingkey_dropdown:        //*[@id="app-builds"]/div[2]/div[1]/article[1]/div/div/select
+    :android_signingkey_dropdown:    //*[@id="app-builds"]/div[2]/div[1]/article[2]/div/div/select
+    :blackberry_signingkey_dropdown: //*[@id="app-builds"]/div[2]/div[2]/article[2]/div/div/select
+    :blackberry_title_input: //*[@id="key_title"]
+    :blackberry_choose_csk_btn: //*[@id="key_csk_file"]
+    :blackberry_choose_db_btn: //*[@id="key_db_file"]
+    :blackberry_cancel_btn: /html/body/div/form/footer/button
+    :blackberry_submit_btn: /html/body/div/form/footer/button[2]
 :edit_account_page:
     :account_details_tab: //*[@id="people-edit-controls"]/nav/a[1]
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
@@ -114,9 +127,15 @@
     :ios_submit_btn: //*[@id="key_new"]/footer/button[2]
     :ios_1st_default_btn: //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[2]/input
     :ios_1st_lock_btn:    //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[3]/a
+    :ios_1st_cert_password_input: //*[@id="key_password"]
+    :ios_1st_cert_cancel_btn: /html/body/div/form/footer/button[1]
+    :ios_1st_cert_submit_btn: /html/body/div/form/footer/button[2]
     :ios_1st_delete_btn:  //*[@id="person-keys"]/table[1]/tbody/tr[1]/td[4]/a
     :ios_2nd_default_btn: //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[2]/input
     :ios_2nd_lock_btn:    //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[3]/a
+    :ios_2nd_cert_password_input: //*[@id="key_password"]
+    :ios_2nd_cert_cancel_btn: /html/body/div/form/footer/button[1]
+    :ios_2nd_cert_submit_btn: /html/body/div/form/footer/button[2]
     :ios_2nd_delete_btn:  //*[@id="person-keys"]/table[1]/tbody/tr[2]/td[4]/a
     :android_add_key_btn: //*[@id="person-keys"]/table[2]/tfoot/tr/td/a
     :android_title_input: //*[@id="key_title"]
@@ -125,8 +144,16 @@
     :android_cancel_btn: //*[@id="key_new"]/footer/button[1]
     :android_submit_btn: //*[@id="key_new"]/footer/button[2]
     :android_1st_lock_btn:   //*[@id="person-keys"]/table[2]/tbody/tr[1]/td[2]/a
+    :android_1st_cert_password_input: //*[@id="key_key_pw"]
+    :android_1st_keystore_password_input: //*[@id="key_keystore_pw"]
+    :android_1st_cancel_btn: /html/body/div/form/footer/button[1]
+    :android_1st_submit_btn: /html/body/div/form/footer/button[2]
     :android_1st_delete_btn: //*[@id="person-keys"]/table[2]/tbody/tr[1]/td[3]/a
     :android_2nd_lock_btn:   //*[@id="person-keys"]/table[2]/tbody/tr[2]/td[2]/a
+    :android_2nd_cert_password: //*[@id="key_key_pw"]
+    :android_2nd_keystore_password: //*[@id="key_keystore_pw"]
+    :android_2nd_cancel_btn: /html/body/div/form/footer/button[1]
+    :android_2nd_submit_btn: /html/body/div/form/footer/button[2]
     :android_2nd_delete_btn: //*[@id="person-keys"]/table[2]/tbody/tr[2]/td[3]/a
     :blackberry_add_key_btn: //*[@id="person-keys"]/table[3]/tfoot/tr/td/a
     :blackberry_title_input: //*[@id="key_title"]
@@ -135,8 +162,14 @@
     :blackberry_cancel_btn: //*[@id="key_new"]/footer/button[1]
     :blackberry_submit_btn: //*[@id="key_new"]/footer/button[2]
     :blackberry_1st_lock_btn:   //*[@id="person-keys"]/table[3]/tbody/tr[1]/td[2]/a
+    :blackberry_1st_key_password_input: //*[@id="key_password"]
+    :blackberry_1st_cancel_btn: /html/body/div/form/footer/button[1]
+    :blackberry_1st_submit_btn: /html/body/div/form/footer/button[2]
     :blackberry_1st_delete_btn: //*[@id="person-keys"]/table[3]/tbody/tr[1]/td[3]/a
     :blackberry_2nd_lock_btn:   //*[@id="person-keys"]/table[3]/tbody/tr[2]/td[2]/a
+    :blackberry_2nd_key_password_input: //*[@id="key_password"]
+    :blackberry_2nd_cancel_btn: /html/body/div/form/footer/button[1]
+    :blackberry_2nd_submit_btn: /html/body/div/form/footer/button[2]
     :blackberry_2nd_delete_btn: //*[@id="person-keys"]/table[3]/tbody/tr[2]/td[3]/a
     :delete_my_account: //*[@id="delete-account-btn"]
     :yes_delete_my_account: //*[@id="delete-account-btn"]

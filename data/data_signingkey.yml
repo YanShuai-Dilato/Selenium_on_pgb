@@ -2,6 +2,7 @@
     :valid: "xxxVALIDxxx"
     :invalid: "xxxINVALIDxxx"
 :ios:
+    :cert_password: "Blobal1"
     :valid:
         :cert: ../../assets/signing_key/ios/LichuanIQEKey.p12
         :profile: ../../assets/signing_key/ios/Lichuanlu.mobileprovision
@@ -9,11 +10,14 @@
         :cert: 
         :profile: 
 :android: 
+    :cert_password: "d!lat0"
+    :keystore_password: "d!lat0"
     :valid:
         :keystore: ../../assets/signing_key/android/android-dilato.keystore
     :invalid:
         :keystore: 
 :blackberry: 
+    :key_password: "dilat0"
     :valid:
         :db: ../../assets/signing_key/blackberry/barsigner.db
         :csk: ../../assets/signing_key/blackberry/barsigner.csk

@@ -12,7 +12,7 @@ require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 require_relative "../tools/edit_account_dialog"
 
-describe "TC_009: Signing-Key_Add_Signing_key" do 
+describe "TC_009: signing_key_add_and_unlock_rspec" do 
     include BaseEnv
     include SignInDialog
     include SignInGithubDialog
@@ -54,7 +54,7 @@ describe "TC_009: Signing-Key_Add_Signing_key" do
         end
     end
 
-    context "--- add signing-key through 'Edit account' page. " do 
+    context "--- ADD & UNLOCK signing-key through 'Edit account' page. " do 
         before(:all) do 
             @driver.get path_format_locale("/people/edit")
             signing_keys_tab.click
@@ -69,41 +69,40 @@ describe "TC_009: Signing-Key_Add_Signing_key" do
             # puts "ANDROID KEY COUNT: #{android_key_count}"
             # puts "BLACKBERRY KEY COUNT: #{blackberry_key_count}"
 
-            @edit_account_page.delete_ios_signingkeys
-            @edit_account_page.delete_android_signingkeys
-            @edit_account_page.delete_blackberry_signingkeys
+            @edit_account_page.delete_1st_ios_signingkey
+            @edit_account_page.delete_1st_android_signingkey
+            @edit_account_page.delete_1st_blackberry_signingkey
         end
 
         it "IT_001: the new-added iOS signing_key should be locked after adding successfully " do 
             @edit_account_page.add_ios_signing_key "valid"
-            @edit_account_page.get_status_of_1st_iso_signK.should eql "locked"
+            @edit_account_page.get_status_of_1st_ios_signingkey.should eql "locked"
         end
 
-        it "IT_002: the second iOS signing Key was locked after adding successfully" do 
-            @edit_account_page.add_ios_signing_key "valid"
-            @edit_account_page.get_status_of_2nd_iso_signK.should eql "locked"
+        it "IT_002: the above iOS signing Key was unlocked after unlocking it" do 
+            @edit_account_page.to_unlock_1st_ios_signingkey 
+            @edit_account_page.get_status_of_1st_ios_signingkey.should eql "unlocked"
         end
 
         it "IT_003: the new-added Android signing_key should be locked after adding successfully" do 
             @edit_account_page.add_android_signing_key "valid"
-            @edit_account_page.get_status_of_1st_android_signK.should eql "locked"
+            @edit_account_page.get_status_of_1st_android_signingkey.should eql "locked"
         end
 
         it "IT_004: the second Adroid signing_key should be locked after adding successfully" do 
-            @edit_account_page.add_android_signing_key "valid"
-            @edit_account_page.get_status_of_2nd_android_signK.should eql "locked"
+            @edit_account_page.to_unlock_1st_android_signingkey
+            @edit_account_page.get_status_of_1st_android_signingkey.should eql "unlocked"
         end
 
         it "IT_005: the new-added BlackBerry signing_key should be locked after adding successfully" do 
             @edit_account_page.add_blackberry_signing_key "valid"
-            @edit_account_page.get_status_of_1st_blackberry_signK.should eql "locked"
+            @edit_account_page.get_status_of_1st_blackberry_signingkey.should eql "locked"
         end
 
         it "IT_006: the second BlackBerry signing_key should be locked after adding successfully" do 
-            @edit_account_page.add_blackberry_signing_key "valid"
-            @edit_account_page.get_status_of_2nd_blackberry_signK.should eql "locked"
+            @edit_account_page.to_unlock_1st_blackberry_signingkey
+            @edit_account_page.get_status_of_1st_blackberry_signingkey.should eql "unlocked"
         end
-
 
 	end
 

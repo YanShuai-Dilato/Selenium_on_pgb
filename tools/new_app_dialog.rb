@@ -50,6 +50,56 @@ module NewAppDialog
         highlight_and_return field
     end
 
+    def ready_to_build_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:ready_to_build_btn])
+    end
+    def clickable_app_title
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:clickable_app_title])
+    end
+    def builds_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:builds_tab])
+    end
+    def collaborators_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:collaborators_tab])
+    end
+    def settings_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:settings_tab])
+    end
+# --- iOS 
+    def ios_signingkey_dropdown
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:ios_signingkey_dropdown])
+    end
+
+# --- /iOS
+
+# --- ANDROID
+    def android_signingkey_dropdown
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:android_signingkey_dropdown])
+    end
+# --- /ANDROID
+
+# --- BLACKBERRY 
+    def blackberry_signingkey_dropdown
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:android_signingkey_dropdown])
+    end
+    def blackberry_title_input
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:blackberry_title_input])
+    end
+    def blackberry_choose_csk_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:blackberry_choose_csk_btn])
+    end
+    def blackberry_choose_db_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:blackberry_choose_db_btn])
+    end
+    def blackberry_cancel_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:blackberry_cancel_btn])
+    end
+    def blackberry_submit_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:blackberry_submit_btn])
+    end
+
+# --- /BLACKBERRY
+
     def highlight_and_return field
         highlight field
         return field
