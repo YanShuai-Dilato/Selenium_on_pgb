@@ -24,6 +24,8 @@
     :confirmations_email_not_found: "1 error: Email not found"
     :app_builds_no_key_selected: "No key selected"
     :apps_builds_add_a_key: "add a key ..."
+    :apps_signing_key_locked: "locked"
+    :apps_signing_key_unlocked: "unlocked"
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -51,5 +53,7 @@
     :confirmations_email_not_found: "1 erreur : Email introuvable"
     :app_builds_no_key_selected: "Aucune clé sélectionnée"
     :apps_builds_add_a_key: "ajouter une clé..."
+    :apps_signing_key_locked: "verrouillée"
+    :apps_signing_key_unlocked: "déverrouillée"
 :ja_JP:
     :not_found_in_database: "test"

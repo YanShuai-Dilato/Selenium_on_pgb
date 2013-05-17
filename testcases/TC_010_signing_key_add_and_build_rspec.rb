@@ -52,16 +52,8 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
     after(:all) do 
         @driver.quit
-
-        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 10}
-        response = private_resource.get :accept => :json
-        json =  JSON.parse(response)
-        json['apps'].each do |i|
-            url = @base_url + i['link']
-            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 10}
-            response = private_resource.delete 
-            puts response.to_str
-        end
+        webhelper_delete_all_signing_keys(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
+        webhelper_delete_all_apps(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
     end
 
     after(:each) do 
