@@ -21,7 +21,6 @@ module SignInGithubDialog
 	end
 	def git_sign_in_btn
 		field = @driver.find_element(:xpath => @data_xpath[:sign_in_github_page][:sign_in_btn])
-		
 	end
 
 end

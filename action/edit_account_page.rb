@@ -1,5 +1,5 @@
 #encoding: utf-8
-# operations at page /people/edit
+# operations at page "/people/edit" -> Tab "Signing Keys" 
 
 require 'yaml'
 require_relative "../tools/edit_account_dialog"
@@ -23,7 +23,7 @@ class EditAccountPage
         @data_str = options.fetch(:str)
         @data_user = options.fetch(:user)
         @data_url = options.fetch(:url)
-        @data_signingkey = YAML::load(File.read(File.expand_path("../../data/data_signingkey.yml",__FILE__)))
+        @data_signing_key = YAML::load(File.read(File.expand_path("../../data/data_signing_key.yml",__FILE__)))
         puts "+ <action><edit_account_page> initialize EditAccountPage -- end"
 	end
 # Signing Key related --- begin 
@@ -32,66 +32,86 @@ class EditAccountPage
 		puts "+ <action><edit_account_page> add_iOS_signing_key of #{type}  -- begin"
 		if(type == "VALID")
 			ios_add_key_btn.click
-			ios_title_input.send_keys(@data_signingkey[:name][:valid])
-			ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signingkey[:ios][:valid][:cert],__FILE__))
-			ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signingkey[:ios][:valid][:profile],__FILE__))
+			ios_title_input.send_keys(@data_signing_key[:ios][:name_valid])
+			ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:cert],__FILE__))
+			ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:profile],__FILE__))
 			ios_submit_btn.click
+			sleep 5
 		else
 			ios_add_key_btn.click
-			ios_title_input.send_keys(@data_signingkey[:name][:invalid])
-			ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signingkey[:ios][:invalid][:cert],__FILE__))
-			ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signingkey[:ios][:invalid][:profile],__FILE__))
+			ios_title_input.send_keys(@data_signing_key[:ios][:name_invalid])
+			ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:cert],__FILE__))
+			ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:profile],__FILE__))
 			ios_submit_btn.click
+			sleep 5
 		end
 		puts "+ <action><edit_account_page> add_iOS_signing_key of #{type}  -- end"
 	end
 
-	def to_make_1st_signingkey_default
+	def to_make_1st_signing_key_default
 		ios_1st_default_btn.click
 	end
 
-	def to_make_2nd_signingkey_default
+	def to_make_2nd_signing_key_default
 		ios_2nd_default_btn.click
 	end
 	
-	def to_unlock_1st_ios_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signingkey --- begin"
+	def to_unlock_1st_ios_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signing_key --- begin"
 		ios_1st_lock_btn.click
-		ios_1st_cert_password_input.send_keys @data_signingkey[:ios][:cert_password]
+		ios_1st_cert_password_input.send_keys @data_signing_key[:ios][:cert_password]
 		ios_1st_cert_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signing_key --- end"
 	end
 
-	def get_status_of_1st_ios_signingkey
+	def to_unlock_1st_ios_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signing_key with INVALID password  --- begin"
+		ios_1st_lock_btn.click
+		ios_1st_cert_password_input.send_keys "xxxxxxx"
+		ios_1st_cert_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signing_key with INVALID password  --- end"
+	end
+
+	def get_status_of_1st_ios_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { ios_1st_lock_btn } 
 		return ios_1st_lock_btn.attribute("title")
 	end
 
-	def to_unlock_2nd_ios_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signingkey --- begin"
+	def to_unlock_2nd_ios_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signing_key --- begin"
 		ios_2nd_lock_btn.click
-		ios_2nd_cert_password_input.send_keys @data_signingkey[:ios][:cert_password]
+		ios_2nd_cert_password_input.send_keys @data_signing_key[:ios][:cert_password]
 		ios_2nd_cert_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signing_key --- end"
 	end
 
-	def get_status_of_2nd_ios_signingkey
+	def to_unlock_2nd_ios_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signing_key with INVALID password --- begin"
+		ios_2nd_lock_btn.click
+		ios_2nd_cert_password_input.send_keys "xxxxxxx"
+		ios_2nd_cert_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd iOS signing_key with INVALID password --- end"
+	end
+
+	def get_status_of_2nd_ios_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { ios_2nd_lock_btn } 
 		return ios_2nd_lock_btn.attribute("title")
 	end
 
-	def delete_1st_ios_signingkey
+	def delete_1st_ios_signing_key
 		ios_1st_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_1st_iOS_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_1st_iOS_signing_key DONE"
 	end
 
-	def delete_2nd_ios_signingkey
+	def delete_2nd_ios_signing_key
 		ios_2nd_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_2nd_iOS_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_2nd_iOS_signing_key DONE"
 	end
 
 	def add_android_signing_key valideOne_or_invalidOne	
@@ -99,57 +119,82 @@ class EditAccountPage
 		puts "+ <action><edit_account_page> add_Android_signing_key of #{type}  -- begin"
 		if(type == "VALID")
 			android_add_key_btn.click
-			android_title_input.send_keys @data_signingkey[:name][:valid]
-			android_alias_input.send_keys @data_signingkey[:name][:valid]
-			android_choose_keystore_btn.send_keys(File.expand_path(@data_signingkey[:android][:valid][:keystore],__FILE__))
+			android_title_input.send_keys @data_signing_key[:android][:name_valid]
+			android_alias_input.send_keys @data_signing_key[:android][:name_valid]
+			android_choose_keystore_btn.send_keys(File.expand_path(@data_signing_key[:android][:valid][:keystore],__FILE__))
 			android_submit_btn.click
+			sleep 5
 		else
 			android_add_key_btn.click
-			puts "Not Implemented yet, will be back later. "
+			android_title_input.send_keys @data_signing_key[:android][:name_invalid]
+			android_alias_input.send_keys @data_signing_key[:android][:name_invalid]
+			android_choose_keystore_btn.send_keys(File.expand_path(@data_signing_key[:android][:valid][:keystore],__FILE__))
+			android_submit_btn.click
+			sleep 5
 		end
 		puts "+ <action><edit_account_page> add_Android_signing_key of #{type}  -- end"
 	end
 
-	def to_unlock_1st_android_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signingkey --- begin"
+	def to_unlock_1st_android_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signing_key --- begin"
 		android_1st_lock_btn.click
-		android_1st_cert_password_input.send_keys @data_signingkey[:android][:cert_password]
-		android_1st_keystore_password_input.send_keys @data_signingkey[:android][:keystore_password]
+		android_1st_cert_password_input.send_keys @data_signing_key[:android][:cert_password]
+		android_1st_keystore_password_input.send_keys @data_signing_key[:android][:keystore_password]
 		android_1st_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signing_key --- end"
 	end
 
-	def get_status_of_1st_android_signingkey
+	def to_unlock_1st_android_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signing_key with INVALID password --- begin"
+		android_1st_lock_btn.click
+		android_1st_cert_password_input.send_keys "xxxxxxx"
+		android_1st_keystore_password_input.send_keys "xxxxxxx"
+		android_1st_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st ANDROID signing_key with INVALID password --- end"
+	end
+
+	def get_status_of_1st_android_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { android_1st_lock_btn } 
 		return android_1st_lock_btn.attribute("title")
 	end
 
-	def to_unlock_2nd_android_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signingkey --- begin"
+	def to_unlock_2nd_android_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signing_key --- begin"
 		android_2nd_lock_btn.click
-		android_2nd_cert_password_input.send_keys @data_signingkey[:android][:cert_password]
-		android_2nd_keystore_password_input.send_keys @data_signingkey[:android][:keystore_password]
+		android_2nd_cert_password_input.send_keys @data_signing_key[:android][:cert_password]
+		android_2nd_keystore_password_input.send_keys @data_signing_key[:android][:keystore_password]
 		android_2nd_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signing_key --- end"
 	end
 
-	def get_status_of_2nd_android_signingkey
+	def to_unlock_2nd_android_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signing_key with INVALID password --- begin"
+		android_2nd_lock_btn.click
+		android_2nd_cert_password_input.send_keys "xxxxxxx"
+		android_2nd_keystore_password_input.send_keys "xxxxxxx"
+		android_2nd_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd ANDROID signing_key with INVALID password --- end"
+	end
+
+	def get_status_of_2nd_android_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { android_2nd_lock_btn } 
 		return android_2nd_lock_btn.attribute("title")
 	end
 
-	def delete_1st_android_signingkey
+	def delete_1st_android_signing_key
 		android_1st_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_1st_ANDROID_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_1st_ANDROID_signing_key DONE"
 	end
 
-	def delete_2nd_android_signingkey
+	def delete_2nd_android_signing_key
 		android_2nd_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_2nd_ANDROID_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_2nd_ANDROID_signing_key DONE"
 	end
 
 	def add_blackberry_signing_key valideOne_or_invalidOne
@@ -157,55 +202,78 @@ class EditAccountPage
 		puts "+ <action><edit_account_page> add_BlackBerry_signing_key of #{type}  -- begin"
 		if(type == "VALID") 
 			blackberry_add_key_btn.click
-			blackberry_title_input.send_keys @data_signingkey[:name][:valid]
-			blackberry_choose_csk_btn.send_keys File.expand_path(@data_signingkey[:blackberry][:valid][:csk],__FILE__)
-			blackberry_choose_db_btn.send_keys File.expand_path(@data_signingkey[:blackberry][:valid][:db],__FILE__)
+			blackberry_title_input.send_keys @data_signing_key[:blackberry][:name_valid]
+			blackberry_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:csk],__FILE__)
+			blackberry_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:db],__FILE__)
 			blackberry_submit_btn.click
+			sleep 5
 		else
 			blackberry_add_key_btn.click
-			puts "Not Implemented yet, will be back later. BlackBerry"
+			blackberry_title_input.send_keys @data_signing_key[:blackberry][:name_invalid]
+			blackberry_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:csk],__FILE__)
+			blackberry_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:db],__FILE__)
+			blackberry_submit_btn.click
+			sleep 5
 		end
 		puts "+ <action><edit_account_page> add_BlackBerry_signing_key of #{type}  -- end"
 	end
 
-	def to_unlock_1st_blackberry_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signingkey --- begin"
+	def to_unlock_1st_blackberry_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signing_key --- begin"
 		blackberry_1st_lock_btn.click
-		blackberry_1st_key_password_input.send_keys @data_signingkey[:blackberry][:key_password]
+		blackberry_1st_key_password_input.send_keys @data_signing_key[:blackberry][:key_password]
 		blackberry_1st_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signing_key --- end"
 	end
 
-	def get_status_of_1st_blackberry_signingkey
+	def to_unlock_1st_blackberry_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signing_key with INVALID password --- begin"
+		blackberry_1st_lock_btn.click
+		blackberry_1st_key_password_input.send_keys "xxxxxxx"
+		blackberry_1st_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 1st BLACKBERRY signing_key with INVALID password --- end"
+	end
+
+	def get_status_of_1st_blackberry_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { blackberry_1st_lock_btn } 
 		return blackberry_1st_lock_btn.attribute("title")
 	end
 
-	def to_unlock_2nd_blackberry_signingkey
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signingkey --- begin"
+	def to_unlock_2nd_blackberry_signing_key
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signing_key --- begin"
 		blackberry_2nd_lock_btn.click
-		blackberry_2nd_key_password_input.send_keys @data_signingkey[:blackberry][:key_password]
+		blackberry_2nd_key_password_input.send_keys @data_signing_key[:blackberry][:key_password]
 		blackberry_2nd_submit_btn.click
 		sleep 5
-		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signingkey --- end"
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signing_key --- end"
 	end
 
-	def get_status_of_2nd_blackberry_signingkey
+	def to_unlock_2nd_blackberry_signing_key_with_invalid_password
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signing_key with INVALID password --- begin"
+		blackberry_2nd_lock_btn.click
+		blackberry_2nd_key_password_input.send_keys "xxxxxxx"
+		blackberry_2nd_submit_btn.click
+		sleep 5
+		puts "+ <action><edit_account_page> --- to UNLOCK 2nd BLACKBERRY signing_key with INVALID password --- end"
+	end
+
+	def get_status_of_2nd_blackberry_signing_key
 		Selenium::WebDriver::Wait.new(:timeout => 20).until { blackberry_2nd_lock_btn } 
 		return blackberry_2nd_lock_btn.attribute("title")
 	end
 
-	def delete_1st_blackberry_signingkey
+	def delete_1st_blackberry_signing_key
 		blackberry_1st_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_1st_BLACKBERRY_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_1st_BLACKBERRY_signing_key DONE"
 	end
 
-	def delete_2nd_blackberry_signingkey
+	def delete_2nd_blackberry_signing_key
 		blackberry_2nd_delete_btn.click
 		@driver.switch_to.alert.accept
-		puts "+ <action><edit_account_page> --- delete_2nd_BLACKBERRY_signingkey DONE"
+		puts "+ <action><edit_account_page> --- delete_2nd_BLACKBERRY_signing_key DONE"
 	end
 
 # Signing Key related   --- end

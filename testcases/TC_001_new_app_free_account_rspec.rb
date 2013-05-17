@@ -30,10 +30,10 @@ describe "TC_001: New app(s) with free account" do
         @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_001_IT_"
         @base_url = base_url
-        @data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
-        @data_user ||= YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
-        @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+        @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
+        @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
+        @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
         puts "+ <TC_001> before all outer --- end"
     end
 

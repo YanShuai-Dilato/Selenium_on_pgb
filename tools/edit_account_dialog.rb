@@ -4,6 +4,7 @@ require_relative "../lib/webdriver_helper"
 
 module EditAccountDialog
 	include WebdriverHelper
+	@data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
 
 # --- Account Details Tab
 	def account_details_tab
@@ -41,8 +42,8 @@ module EditAccountDialog
 	def ios_choose_prov_file_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_choose_prov_file_btn])
 	end
-	def ios_cacel_btn
-		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_cacel_btn])
+	def ios_cancel_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_cancel_btn])
 	end
 	def ios_submit_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ios_submit_btn])
@@ -123,8 +124,11 @@ module EditAccountDialog
 	def android_2nd_lock_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_lock_btn])
 	end
-	def android_2nd_keystore_password
-		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_keystore_password])
+	def android_2nd_cert_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_cert_password_input])
+	end
+	def android_2nd_keystore_password_input
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_keystore_password_input])
 	end
 	def android_2nd_cancel_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:android_2nd_cancel_btn])

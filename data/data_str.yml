@@ -22,6 +22,8 @@
     :confirmations_send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
     :confirmations_email_confirmed: "1 error: Email was already confirmed"
     :confirmations_email_not_found: "1 error: Email not found"
+    :app_builds_no_key_selected: "No key selected"
+    :apps_builds_add_a_key: "add a key ..."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -47,5 +49,7 @@
     :confirmations_send_instructions: "1 erreur : Email n'a pas \u00E9t\u00E9 confirm\u00E9"
     :confirmations_email_confirmed: "1 erreur : Email n'a pas été confirmé"
     :confirmations_email_not_found: "1 erreur : Email introuvable"
+    :app_builds_no_key_selected: "Aucune clé sélectionnée"
+    :apps_builds_add_a_key: "ajouter une clé..."
 :ja_JP:
     :not_found_in_database: "test"
