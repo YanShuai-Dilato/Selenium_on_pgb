@@ -120,17 +120,17 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         end
 
         it "IT_005: iOS: the signing-key was locked after adding one. " do 
-            Selenium::WebDriver::Wait.new(:timeout => 120).until { ios_signing_key_dropdown_select }
+            Selenium::WebDriver::Wait.new(:timeout => 300).until { ios_signing_key_dropdown_select.attribute("disabled") == nil }
             dropdown = Selenium::WebDriver::Support::Select.new(ios_signing_key_dropdown_select)
             dropdown.select_by(:text, @data_str[$lang][:apps_builds_add_a_key])
             @app_builds_page.ios_add_signing_key
-            @app_builds_page.ios_get_status_of_the_signing_key.should eql "locked"
+            @app_builds_page.ios_get_status_of_the_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
 
         it "IT_006: iOS: got an error message after building with a locked signing_key" do 
             rebuild_all_btn.click
             sleep 10
-            txt = @app_builds_page.ios_get_error_msg_of_the_signing_key
+            txt = @app_builds_page.ios_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> iOS: Error msg with locked key: #{txt}"
             txt.should eql ""
         end
@@ -145,17 +145,17 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         end
 
         it "IT_008: Android: the signing-key was locked after adding one" do 
-            Selenium::WebDriver::Wait.new(:timeout => 120).until { android_signing_key_dropdown_select }
+            Selenium::WebDriver::Wait.new(:timeout => 300).until { android_signing_key_dropdown_select.attribute("disabled") == nil }
             dropdown = Selenium::WebDriver::Support::Select.new(android_signing_key_dropdown_select)
             dropdown.select_by(:text, @data_str[$lang][:apps_builds_add_a_key])
             @app_builds_page.android_add_signing_key
-            @app_builds_page.android_get_status_of_the_signing_key.should eql "locked"
+            @app_builds_page.android_get_status_of_the_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
 
         it "IT_009: Android: got an error message after building with a locked signing-key" do 
             rebuild_all_btn.click
             sleep 10
-            txt = @app_builds_page.android_get_error_msg_of_the_signing_key
+            txt = @app_builds_page.android_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> Android: Error msg with locked key: #{txt}"
             txt.should eql ""
         end
@@ -170,17 +170,17 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         end
 
         it "IT_011: BlackBerry: The signing-key was locked after adding one. " do 
-            Selenium::WebDriver::Wait.new(:timeout => 120).until { blackberry_signing_key_dropdown_select }
+            Selenium::WebDriver::Wait.new(:timeout => 300).until { blackberry_signing_key_dropdown_select.attribute("disabled") == nil }
             dropdown = Selenium::WebDriver::Support::Select.new(blackberry_signing_key_dropdown_select)
             dropdown.select_by(:text, @data_str[$lang][:apps_builds_add_a_key])
             @app_builds_page.blackberry_add_signing_key
-            @app_builds_page.blackberry_get_status_of_the_signing_key.should eql "locked"
+            @app_builds_page.blackberry_get_status_of_the_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
 
         it "IT_012: BlackBerry: Got an error message after building with a locked signing-key " do 
             rebuild_all_btn.click
             sleep 10
-            txt = @app_builds_page.blackberry_get_error_msg_of_the_signing_key
+            txt = @app_builds_page.blackberry_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> BlackBerry: Error msg with locked key: #{txt}"
             txt.should eql ""
         end
