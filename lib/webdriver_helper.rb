@@ -2,7 +2,7 @@
 
 module WebdriverHelper
 
-	def wait_for_element_present(how_long=60, how, what) 
+    def wait_for_element_present(how_long=60, how, what) 
         puts "+ <lib><webdriver_helper> wait_for_element_present --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) } 

@@ -118,6 +118,6 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
             blackberry_key_count.should eql 0
         end
 
-	end
+    end
 
 end

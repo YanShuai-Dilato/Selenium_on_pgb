@@ -16,7 +16,7 @@ require_relative "../tools/edit_account_dialog"
 require_relative "../tools/new_app_dialog"
 
 describe "TC_010: signing_key_add_and_build_rspec" do 
-	include BaseEnv
+    include BaseEnv
     include SignInDialog
     include SignInGithubDialog
     include EditAccountDialog
@@ -66,7 +66,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
     end
 
     context "--- " do 
-    	before(:all) do 
+        before(:all) do 
             @driver.get @base_url + "/people/edit"
             puts "+ Page gets to: #{@base_url}/people/edit -> Tab: Signing-Keys"
             sleep 5
@@ -90,7 +90,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
             @driver.get @base_url + "/apps"
             puts "+ Page gets to: #{@base_url}/apps"
-    		@new_app_page.new_public_app_with_repo
+            @new_app_page.new_public_app_with_repo
             @current_app_id = @new_app_page.get_first_app_id
             current_url = @driver.current_url
             puts "+ current app ID: #{@current_app_id}"
@@ -100,11 +100,11 @@ describe "TC_010: signing_key_add_and_build_rspec" do
             # sleep 10
             @driver.get @base_url + "/apps/" + @current_app_id.to_s + "/builds"
             sleep 10
-    	end
+        end
 
-    	it "IT_001: iOS: The label of iOS signing-key select should be 'No Key selected' by default" do 
+        it "IT_001: iOS: The label of iOS signing-key select should be 'No Key selected' by default" do 
             ios_signing_key_label.text.should eql @data_str[$lang][:app_builds_no_key_selected]
-    	end
+        end
 
         it "IT_002: Android: the label of Android signing-key select should be 'No Key selected' by default " do 
             android_signing_key_label.text.should eql @data_str[$lang][:app_builds_no_key_selected]

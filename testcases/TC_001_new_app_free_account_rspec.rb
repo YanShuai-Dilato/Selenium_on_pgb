@@ -76,24 +76,24 @@ describe "TC_001: New app(s) with free account" do
             @driver.quit
         end
 
-    	it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
+        it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "+ new_app_btn.click"
             end
             paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
-    	end
+        end
 
-    	it "IT_002: verify the 'Connect your Github account' link exists" do   
+        it "IT_002: verify the 'Connect your Github account' link exists" do   
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
-    	end
+        end
 
-    	it "IT_003: got an warning message when submit an invalid .git address" do    
+        it "IT_003: got an warning message when submit an invalid .git address" do    
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
-    	end
+        end
 
-    	it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
+        it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
             puts "+ before @new_app_page.new_public_app_with_repo"
 
             @new_app_page.new_public_app_with_repo
@@ -105,9 +105,9 @@ describe "TC_001: New app(s) with free account" do
  
             app_count_after.should eql 1 
 
-    	end
+        end
 
-    	it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
+        it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 10
 
@@ -125,9 +125,9 @@ describe "TC_001: New app(s) with free account" do
 
             app_count_after.should_not eql @app_count_before 
             first_app_id_after.should_not eql @first_app_id_before
-    	end
+        end
 
-    	it "IT_006: trying to new another private app fails when there was already one private app"  do 
+        it "IT_006: trying to new another private app fails when there was already one private app"  do 
             # @driver.navigate.refresh
             sleep 10
 
@@ -147,7 +147,7 @@ describe "TC_001: New app(s) with free account" do
             end
 
             return_value.should eql false
-    	end
+        end
 
     end
 
