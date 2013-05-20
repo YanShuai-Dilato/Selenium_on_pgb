@@ -34,7 +34,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 =======
 
 
-2, Please copy 'Selenium_on_pgb/assets/application/anotherあ你äōҾӲ.zip' to C:\ , if you're using Windows to run this test. 
+2, Please copy 'Selenium_on_pgb/assets/application/www.zip' to C:\ , if you're using Windows to run this test. 
 
 >>>>>>> 9cc7fcc64424f2bf487d76a5dcebb738c05d3410
 
@@ -115,6 +115,9 @@ As for our situation:
 
 We just use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
 
+1, Launch the "Task Scheduler" and create an Task from the "Actions" block at the right side. 
+
+
 
 
 ### Code structure
@@ -123,6 +126,7 @@ https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
 
 ### Test cases 
 
+<<<<<<< HEAD
     TC_001_new_app_free_account_rspec.rb
     TC_002_new_app_paid_account_rspec.rb
     TC_003_register_create_adobe_id_rspec.rb
@@ -150,4 +154,17 @@ TC_007_register_upgrade_plan_rspec
 
 TC_008_sign_in_rspec
 >>>>>>> 9cc7fcc64424f2bf487d76a5dcebb738c05d3410
+=======
+
+    TC_001_new_app_free_account_rspec.rb
+    TC_002_new_app_paid_account_rspec.rb
+    TC_003_register_create_adobe_id_rspec.rb
+    TC_004_register_free_plan_with_adobe_id_rspec.rb
+    TC_005_register_free_plan_with_github_id_rspec.rb
+    TC_006_register_paid_ccm_rspec.rb
+    TC_007_register_upgrade_plan_rspec.rb
+    TC_008_sign_in_rspec.rb
+    TC_009_signing_key_add_unlock_delete_rspec.rb
+    TC_010_signing_key_add_and_build_rspec.rb
+>>>>>>> d44554a18e124a9cbeaa035e837edce1bb598c09
 

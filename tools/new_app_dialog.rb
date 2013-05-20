@@ -50,6 +50,23 @@ module NewAppDialog
         highlight_and_return field
     end
 
+# ---------
+    def ready_to_build_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:ready_to_build_btn])
+    end
+    def rebuild_all_btn
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][])
+    end
+    def builds_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:builds_tab])
+    end
+    def collaborators_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:collaborators_tab])
+    end
+    def settings_tab
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:settings_tab])
+    end
+
     def highlight_and_return field
         highlight field
         return field

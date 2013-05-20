@@ -145,9 +145,23 @@ if defined? RSpec
         
         initialize_params name_subdir
 
-        t.pattern = "./testcases/TC_009_signing_key_add_signing_key.rb"
+        t.pattern = "./testcases/TC_009_signing_key_add_and_unlock_rspec.rb"
         #output to html file with timeframe
         t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/TC_009_selenium_result.txt "
+    end
+
+    desc "TC_010_signing_key_add_unlock_delete_rspec"
+    RSpec::Core::RakeTask.new(:TC_010) do |t|
+        #init config
+        browser = ENV['PGBBROWSER'] 
+        lang = ENV['PGBLANG']
+        name_subdir = "#{lang}_#{browser}" 
+        
+        initialize_params name_subdir
+
+        t.pattern = "./testcases/TC_010_signing_key_add_and_build_rspec.rb"
+        #output to html file with timeframe
+        t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/TC_010_selenium_result.txt "
     end
 
     desc "Only for debug purpose"

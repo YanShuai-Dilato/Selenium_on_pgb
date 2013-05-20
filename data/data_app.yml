@@ -3,15 +3,6 @@
     :by_zip_demo: .\/anotherあ你äōҾӲ.zip
     :by_html: ../assets/application/index.html
     :by_repo: "https://github.com/YanShuai-Dilato/phonegap-start.git"
-:signing_key: 
-    :for_ios: 
-        :cert:   ../assets/signing_key/ios/LichuanIQEKey.p12
-        :profile: ../assets/signing_key/ios/Lichuanlu.mobileprovision
-    :for_android: 
-        :keystore: ../assets/signing_key/android/android-dilato.keystore
-    :for_blackberry: 
-        :db: ../assets/signing_key/blackberry/barsigner.db
-        :csk: ../assets/signing_key/blackberry/barsigner.csk
 :expected_app_by_zip: 
     :title: "PG Build App"
     :description: "no description"

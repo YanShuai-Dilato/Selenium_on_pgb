@@ -30,10 +30,10 @@ describe "TC_001: New app(s) with free account" do
         @order_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_001_IT_"
         @base_url = base_url
-        @data_xpath ||= YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
-        @data_url ||= YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
-        @data_user ||= YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
-        @data_str ||= YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
+        @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
+        @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
+        @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
         puts "+ <TC_001> before all outer --- end"
     end
 
@@ -41,25 +41,8 @@ describe "TC_001: New app(s) with free account" do
     # to make sure it be a clean run the next time. 
     after(:all) do 
         puts "+ <TC_001> after all outer --- begin"
-        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
-        response = private_resource.get :accept => :json
-        json =  JSON.parse(response)
-        json['apps'].each do |i|
-            url = @base_url + i['link']
-            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 30}
-            response = private_resource.delete 
-            puts response.to_str
-        end
-
-        private_resource_2 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
-        response_2 = private_resource_2.get :accept => :json
-        json_2 =  JSON.parse(response_2)
-        json_2['apps'].each do |i|
-            url = @base_url + i['link']
-            private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:adobe_id_free_connected_github][:id] , :password => @data_user[$lang][:adobe_id_free_connected_github][:password] , :timeout => 30}
-            response_2 = private_resource_2.delete 
-            puts response_2.to_str
-        end
+        webhelper_delete_all_apps @data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password]
+        webhelper_delete_all_apps @data_user[$lang][:adobe_id_free_connected_github][:id], @data_user[$lang][:adobe_id_free_connected_github][:password]
         puts "+ <TC_001> after all outer --- end"
     end
 
@@ -85,7 +68,6 @@ describe "TC_001: New app(s) with free account" do
             @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                                 @data_user[$lang][:adobe_id_free_002][:password])
-            # wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:new_app_btn])
             sleep 10
             puts "+ <TC_001> before all inside --- end"
         end
@@ -94,24 +76,24 @@ describe "TC_001: New app(s) with free account" do
             @driver.quit
         end
 
-    	it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
+        it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "+ new_app_btn.click"
             end
             paste_git_repo_input.attribute('placeholder').should eql @data_str[$lang][:PGB_paste_git_repo]
-    	end
+        end
 
-    	it "IT_002: verify the 'Connect your Github account' link exists" do   
+        it "IT_002: verify the 'Connect your Github account' link exists" do   
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
-    	end
+        end
 
-    	it "IT_003: got an warning message when submit an invalid .git address" do    
+        it "IT_003: got an warning message when submit an invalid .git address" do    
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
-    	end
+        end
 
-    	it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
+        it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
             puts "+ before @new_app_page.new_public_app_with_repo"
 
             @new_app_page.new_public_app_with_repo
@@ -123,9 +105,9 @@ describe "TC_001: New app(s) with free account" do
  
             app_count_after.should eql 1 
 
-    	end
+        end
 
-    	it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
+        it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
             @driver.navigate.refresh
             sleep 10
 
@@ -143,9 +125,9 @@ describe "TC_001: New app(s) with free account" do
 
             app_count_after.should_not eql @app_count_before 
             first_app_id_after.should_not eql @first_app_id_before
-    	end
+        end
 
-    	it "IT_006: trying to new another private app fails when there was already one private app"  do 
+        it "IT_006: trying to new another private app fails when there was already one private app"  do 
             # @driver.navigate.refresh
             sleep 10
 
@@ -165,7 +147,7 @@ describe "TC_001: New app(s) with free account" do
             end
 
             return_value.should eql false
-    	end
+        end
 
     end
 

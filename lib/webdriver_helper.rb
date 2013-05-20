@@ -2,7 +2,7 @@
 
 module WebdriverHelper
 
-	def wait_for_element_present(how_long=60, how, what) 
+    def wait_for_element_present(how_long=60, how, what) 
         puts "+ <lib><webdriver_helper> wait_for_element_present --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) } 
@@ -72,6 +72,54 @@ module WebdriverHelper
             puts "+ <lib><webdriver_helper> Sorry, we do not support your Operating-System right now"
         end
         @driver.save_screenshot "#{dir}" 
+    end
+
+    # Helper Utility
+    # Helps to delete all apps via API
+    def webhelper_delete_all_apps base_url=@base_url, username, password
+        private_resource = RestClient::Resource.new base_url + '/api/v1/apps' , {:user => username , :password => password , :timeout => 10}
+        response = private_resource.get :accept => :json
+        json =  JSON.parse(response)
+        json['apps'].each do |i|
+            url = base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => username , :password => password , :timeout => 10}
+            response = private_resource.delete 
+            puts response.to_str
+        end
+    end
+
+    # Helper Utility
+    # Helps to delete all signing-keys via API. 
+    def webhelper_delete_all_signing_keys base_url=@base_url, username, password
+        private_resource = RestClient::Resource.new base_url + "/api/v1/keys", {:user => username , :password => password , :timeout => 30}
+        response = private_resource.get :accept => :json
+        json =  JSON.parse(response)
+
+        puts ""
+        # delete ios signing_keys
+        puts "+ Delete iOS signing-key: "
+        json['keys']['ios']['all'].each do |i|
+            url = base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => username , :password => password , :timeout => 30}
+            response = private_resource.delete 
+            puts "+   " + response.to_str
+        end
+        # delete android signing_keys
+        puts "+ Delete Android signing-key: "
+        json['keys']['android']['all'].each do |i|
+            url = base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => username , :password => password , :timeout => 30}
+            response = private_resource.delete 
+            puts "+   " + response.to_str
+        end
+        # delete blackberry signing_keys
+        puts "+ Delete BlackBerry signing-key: "
+        json['keys']['blackberry']['all'].each do |i|
+            url = base_url + i['link']
+            private_resource = RestClient::Resource.new url , {:user => username , :password => password , :timeout => 30}
+            response = private_resource.delete 
+            puts "+   " + response.to_str
+        end
     end
 
     # To count the each test case's 'it' block order.
