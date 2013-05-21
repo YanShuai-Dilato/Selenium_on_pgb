@@ -7,7 +7,7 @@ if sys.platform == "darwin":
 	print env
 	print sys.platform
 
-	for x in range(1, 9):
+	for x in range(1, 10):
 		tc_name = "TC_%03d" % x # TC_001 TC_002 ... TC_008
 		c=Castro(display=1, passwd="/Users/labuser/.vinevncauth", filename= tc_name + "_screencast.swf")
 		c.start()
@@ -20,8 +20,9 @@ if sys.platform == "darwin":
    			print Exception,":",ex
 			r.kill()
 			r.wait()
-		finally:
-			c.stop()
+		print "out of Exception"
+		c.stop()
+			
 		
 else:
 	if __name__ == '__main__':
@@ -29,7 +30,7 @@ else:
 		env = os.environ.copy()
 		print env
 		print sys.platform
-		for x in range(1, 9):
+		for x in range(1, 10):
 			tc_name = "TC_%03d" % x # TC_001 TC_002 ... TC_008
 			c=Castro(display=1, filename= tc_name + "_screencast.swf")
 			c.start()
