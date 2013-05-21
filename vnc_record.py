@@ -12,11 +12,12 @@ if sys.platform == "darwin":
 		c=Castro(display=1, passwd="/Users/labuser/.vinevncauth", filename= tc_name + "_screencast.swf")
 		c.start()
 		print "ready to start"
-		r = subprocess.Popen(['rake',tc_name],env=env,shell=True).communicate()
+		r = subprocess.Popen(['rake',tc_name],env=env)
 		try:
 			print "ready to wait"
-			r.wait(timeout=3600)
-		except:
+			r.wait()
+		except Exception,ex:
+   			print Exception,":",ex
 			r.kill()
 			r.wait()
 		finally:
