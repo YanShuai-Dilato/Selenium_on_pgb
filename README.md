@@ -38,26 +38,25 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 	
     RSpec::Core::RakeTask.new(:spec,:osconfig) do |t|
       t.pattern = "./testcases/sign_in_rspec.rb"  
-      # output to html file with timeframe
+      
+      # output as HTML format. for more, please check "$rspec --help"
       t.rspec_opts = "--format h > ./result_html/result_#{@t}.html "
       
 	  # init config
-      ENV['BROWSER'] = 'chrome'
-      ENV['LANG'] = 'en_US'
+      ENV['PGBBROWSER'] = 'chrome'
+      ENV['PGBLANG'] = 'en_US'
     end
     # 
-    # Set testing browser for ENV['BROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
-    # Set the locale for ENV['LANG'].By now , en_US , fr_FR, ja_JP are available.
+    # Set testing browser for ENV['PGBBROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
+    # Set the locale for ENV['PGBLANG'].By now , en_US , fr_FR, ja_JP are available.
     # Manage the running testcases for 't.pattern'.
     #
     
     
 4, Run the test 
 	
-	$ rake
-	* Run default task
-	$ rake :taskname
-	* Run specific task
+	$ rake    	               // Run default task
+	$ rake :taskname           // Run specific task
 	
 	
 5, Then you can find the result file (log.txt) at the following directory. 
@@ -102,7 +101,10 @@ As for our situation:
 
 We just use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
 
-1, Launch the "Task Scheduler" and create an Task from the "Actions" block at the right side. 
+The command was: 
+
+    
+    RMDIR /s /q i_am_the_folder
 
 
 
