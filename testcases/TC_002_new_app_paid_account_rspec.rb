@@ -11,12 +11,10 @@ require_relative "../lib/webdriver_helper"
 require_relative "../action/sign_in_page"
 require_relative "../action/new_app_page"
 require_relative "../tools/new_app_dialog"
-require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
 describe "TC_002: New apps with paid account" do
     include NewAppDialog
-    include AppBriefDialog
     include BaseEnv
     include ConfigParam
     include WebdriverHelper

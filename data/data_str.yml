@@ -26,6 +26,11 @@
     :apps_builds_add_a_key: "add a key ..."
     :apps_signing_key_locked: "locked"
     :apps_signing_key_unlocked: "unlocked"
+    :error_msg_occurred_on_server: "Oh geez. Your build failed.Sorry, but a problem occurred on the build server"
+    :error_msg_ios_build_without_signing_key: "You must provide a signing key, first."
+    :error_msg_ios_build_with_locked_signing_key: Error - Your IOS signing key is locked.
+    :error_msg_android_build_with_locked_signing_key: "Error - Your Android signing key is locked."
+    :error_msg_blackberry_build_with_locked_signing_key: "Error - Your Blackberry signing key is locked."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -55,5 +60,15 @@
     :apps_builds_add_a_key: "ajouter une clé..."
     :apps_signing_key_locked: "verrouillée"
     :apps_signing_key_unlocked: "déverrouillée"
+    :error_msg_occurred_on_server: "Désolé, la génération a échoué.Désolé, mais un problème est survenu sur le serveur de génération"
+    :error_msg_ios_build_without_signing_key: "Vous devez d’abord fournir une clé de signature."
+    :error_msg_ios_build_with_locked_signing_key: ""
+    :error_msg_android_build_with_locked_signing_key: ""
+    :error_msg_blackberry_build_with_locked_signing_key: ""
 :ja_JP:
     :not_found_in_database: "test"
+    :error_msg_occurred_on_server: "ビルドに失敗しました。ビルドサーバーで問題が発生しました"
+    :error_msg_ios_build_without_signing_key: "ビルドする前に署名キーを追加してください。"
+    :error_msg_ios_build_with_locked_signing_key: ""
+    :error_msg_android_build_with_locked_signing_key: ""
+    :error_msg_blackberry_build_with_locked_signing_key: ""

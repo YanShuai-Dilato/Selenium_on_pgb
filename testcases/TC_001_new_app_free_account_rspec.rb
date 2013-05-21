@@ -12,7 +12,7 @@ require_relative "../lib/webdriver_helper"
 require_relative "../action/sign_in_page"
 require_relative "../action/new_app_page"
 require_relative "../tools/new_app_dialog"
-require_relative "../tools/app_brief_dialog"
+# require_relative "../tools/app_brief_dialog"
 require_relative "../data/base_env"
 
 # This TC describes 
@@ -22,7 +22,7 @@ describe "TC_001: New app(s) with free account" do
     include ConfigParam
     include WebdriverHelper
     include NewAppDialog
-    include AppBriefDialog
+    # include AppBriefDialog
 
     before(:all) do
         puts "+ <TC_001> before all outer --- begin"

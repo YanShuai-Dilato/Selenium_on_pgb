@@ -132,7 +132,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
             sleep 10
             txt = @app_builds_page.ios_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> iOS: Error msg with locked key: #{txt}"
-            txt.should eql ""
+            txt.should eql @data_str[$lang][:error_msg_ios_build_with_locked_signing_key]
         end
 
         it "IT_007: iOS: the signing-key used was the signing-key just added after unlocking the key and then building " do 
@@ -157,7 +157,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
             sleep 10
             txt = @app_builds_page.android_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> Android: Error msg with locked key: #{txt}"
-            txt.should eql ""
+            txt.should eql @data_str[$lang][:error_msg_android_build_with_locked_signing_key]
         end
 
         it "IT_010: Android: the signing-key used was the signing-key just added after unlocking the key and then building" do 
@@ -182,7 +182,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
             sleep 10
             txt = @app_builds_page.blackberry_get_error_msg_of_the_signing_key.strip
             puts "+ <testcases><TC_010> BlackBerry: Error msg with locked key: #{txt}"
-            txt.should eql ""
+            txt.should eql @data_str[$lang][:error_msg_blackberry_build_with_locked_signing_key]
         end
 
         it "IT_013: BlackBerry: the signing_key used was the signing_key just added after unlocking the key and building" do 
