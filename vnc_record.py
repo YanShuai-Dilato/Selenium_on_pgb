@@ -12,15 +12,16 @@ if sys.platform == "darwin":
 		c=Castro(display=1, passwd="/Users/labuser/.vinevncauth", filename= tc_name + "_screencast.swf")
 		c.start()
 		print "ready to start"
-		ruby = subprocess.Popen(['rake',tc_name],env=env)
+		r = subprocess.Popen(['rake',tc_name],env=env,shell=True).communicate()
 		try:
 			print "ready to wait"
-			ruby.wait(timeout=3600)
+			r.wait(timeout=3600)
 		except:
-			ruby.kill()
-			ruby.wait()
-
-		c.stop()
+			r.kill()
+			r.wait()
+		finally:
+			c.stop()
+		
 else:
 	if __name__ == '__main__':
 		print 'launching slave process...'
