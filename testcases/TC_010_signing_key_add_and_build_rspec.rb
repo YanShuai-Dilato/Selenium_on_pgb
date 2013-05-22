@@ -90,7 +90,9 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
             @driver.get @base_url + "/apps"
             puts "+ Page gets to: #{@base_url}/apps"
+
             @new_app_page.new_public_app_with_repo
+            
             @current_app_id = @new_app_page.get_first_app_id
             current_url = @driver.current_url
             puts "+ current app ID: #{@current_app_id}"

@@ -99,7 +99,7 @@ As for our situation:
 
 ###### For Windows
 
-We just use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
+We use the "Task Scheduler" tool located in "Control" -> "Administrative Tools"
 
 The command was: 
 
