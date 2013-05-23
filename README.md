@@ -18,8 +18,8 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 2, Install RSpec, Selenium-WebDriver, and rake packages with gem
 
     $ gem install rspec
-	$ gem install selenium-webdriver
-	$ gem install rest-client
+    $ gem install selenium-webdriver
+    $ gem install rest-client
 
 ### Deploy manually 
 
@@ -55,13 +55,13 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     
 4, Run the test 
 	
-	$ rake    	               // Run default task
-	$ rake :taskname           // Run specific task
+    $ rake    	                 # Run default task
+    $ rake :taskname             # Run specific task
 	
 	
 5, Then you can find the result file (log.txt) at the following directory. 
 	
-	$ open ./auto_results/#{lang}_#{browser}/selenium_result.txt
+    $ open ./auto_results/#{lang}_#{browser}/selenium_result.txt
 	
 
 ### Schedule your task
