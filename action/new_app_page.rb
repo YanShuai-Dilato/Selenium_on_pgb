@@ -104,6 +104,8 @@ class NewAppPage
     def new_public_app_with_repo
         puts "+ <action> New public app with github repo --- begin"
 
+        # Selenium::WebDriver::Wait.new(:timeout => 120).until { new_app_btn }
+        sleep 10
         if new_app_btn_display?
             new_app_btn.click
         end

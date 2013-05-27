@@ -6,7 +6,6 @@ require_relative "../data/base_env"
 require_relative "../lib/config_param"
 require_relative "../lib/webdriver_helper"
 
-
 class AppBuildsPage
     include AppBuildsDialog
     include NewAppDialog
@@ -15,12 +14,14 @@ class AppBuildsPage
 
     def initialize(driver, options = {})
         @driver = driver
+        @base_url = base_url
         @data_xpath = options.fetch(:xpath)
         @data_str = options.fetch(:str)
         @data_user = options.fetch(:user)
         @data_url = options.fetch(:url)
         @data_signing_key = YAML::load(File.read(File.expand_path("../../data/data_signing_key.yml",__FILE__)))
     end
+    
 # --- iOS
     def ios_add_signing_key
         ios_signing_key_title_input.send_keys "abc" + @data_signing_key[:ios][:name_valid]
@@ -47,19 +48,24 @@ class AppBuildsPage
         ios_signing_key_unlock_submit_btn.click
     end
 
-    def ios_get_signing_key_name_of_id id
+    def ios_get_signing_key_name_of_id(id)
         puts "+ <action><app_builds_page> iOS: Trying to get name of signing-key{id: #{id}} "
-        sleep 10
-        private_resource = 
-            RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
+        puts "+ @base_url = #{@base_url}"
+        private_resource = RestClient::Resource.new(
+            "#{@base_url}/api/v1/apps/#{id}", 
+            :user => @data_user[$lang][:adobe_id_free_002][:id] , 
+            :password => @data_user[$lang][:adobe_id_free_002][:password], 
+            :timeout => 60)
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
+
         keys = json['keys']['ios']
         if keys == nil 
             return "" 
         else
             return keys['title']
         end
+        
     end
 # --- /iOS
 
@@ -89,10 +95,15 @@ class AppBuildsPage
         android_signing_key_unlock_submit_btn.click
     end
 
-    def android_get_signing_key_name_of id
+    def android_get_signing_key_name_of(id)
         puts "+ <action><app_builds_page> Android: Trying to get name of signing-key{id: #{id}} "
+        puts "+ @base_url = #{@base_url}"
         sleep 10
-        private_resource = RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
+        private_resource = RestClient::Resource.new(
+            "#{@base_url}/api/v1/apps/#{id}", 
+            :user => @data_user[$lang][:adobe_id_free_002][:id] , 
+            :password => @data_user[$lang][:adobe_id_free_002][:password] , 
+            :timeout => 60)
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
         keys = json['keys']['android']
@@ -133,8 +144,13 @@ class AppBuildsPage
 
     def blackberry_get_signing_key_name_of id 
         puts "+ <action><app_builds_page> BlackBerry: Trying to get name of signing-key{id: #{id}} "
+        puts "+ @base_url = #{@base_url}"
         sleep 10
-        private_resource = RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
+        private_resource = RestClient::Resource.new(
+            "#{@base_url}/api/v1/apps/#{id}", 
+            :user => @data_user[$lang][:adobe_id_free_002][:id] , 
+            :password => @data_user[$lang][:adobe_id_free_002][:password] , 
+            :timeout => 60)
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
         keys = json['keys']['blackberry']
