@@ -34,9 +34,10 @@ describe "TC_005: Register an free plan account with Github ID" do
     end
 
     after(:all) do 
-        EditAccountPage.new(browser).delete_my_account(
-            @data_user[$lang][:adobe_id_free_final_step][:id],
-            @data_user[$lang][:adobe_id_free_final_step][:password])
+        EditAccountPage.new(browser, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user)
+            .delete_my_account(
+                @data_user[$lang][:adobe_id_free_final_step][:id],
+                @data_user[$lang][:adobe_id_free_final_step][:password])
     end
 
     before(:each) do 

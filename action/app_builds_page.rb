@@ -48,8 +48,10 @@ class AppBuildsPage
     end
 
     def ios_get_signing_key_name_of_id id
-        sleep 30
-        private_resource = RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
+        puts "+ <action><app_builds_page> iOS: Trying to get name of signing-key{id: #{id}} "
+        sleep 10
+        private_resource = 
+            RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
         keys = json['keys']['ios']
@@ -88,7 +90,8 @@ class AppBuildsPage
     end
 
     def android_get_signing_key_name_of id
-        sleep 30
+        puts "+ <action><app_builds_page> Android: Trying to get name of signing-key{id: #{id}} "
+        sleep 10
         private_resource = RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
@@ -104,8 +107,8 @@ class AppBuildsPage
 # --- BlackBerry
     def blackberry_add_signing_key
         blackberry_signing_key_title_input.send_keys "abc" + @data_signing_key[:blackberry][:name_valid]
-        blackberry_signing_key_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:cert],__FILE__)
-        blackberry_signing_key_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:cert],__FILE__)
+        blackberry_signing_key_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:csk],__FILE__)
+        blackberry_signing_key_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:db],__FILE__)
         blackberry_signing_key_submit_btn.click
     end
 
@@ -129,7 +132,8 @@ class AppBuildsPage
     end
 
     def blackberry_get_signing_key_name_of id 
-        # sleep 30
+        puts "+ <action><app_builds_page> BlackBerry: Trying to get name of signing-key{id: #{id}} "
+        sleep 10
         private_resource = RestClient::Resource.new "#{@base_url}/api/v1/apps/#{id}", {:user => @data_user[$lang][:adobe_id_free_002][:id] , :password => @data_user[$lang][:adobe_id_free_002][:password] , :timeout => 60}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)

@@ -31,9 +31,8 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
 
         @driver = browser # have to start a new instance each time to clean the cache.
-        if @driver.to_s == "firefox"
-            @driver.manage.window.maximize
-        end
+
+        @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
         @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
         @edit_account_page = EditAccountPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
@@ -79,7 +78,7 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
 
         it "IT_003: the number of iOS signing_keys should be 0 after deleting the one added above " do 
             @edit_account_page.delete_1st_ios_signing_key
-            sleep 5
+            sleep 10
             ios_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[1]/tbody").find_elements(:tag_name => "tr").count
             ios_key_count.should eql 0
         end
@@ -96,7 +95,7 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
 
         it "IT_006: the number of Android signing-key should be 0 after deleting the one added above" do 
             @edit_account_page.delete_1st_android_signing_key
-            sleep 5
+            sleep 10
             android_key_count    = @driver.find_element(:xpath => "//*[@id='person-keys']/table[2]/tbody").find_elements(:tag_name => "tr").count
             android_key_count.should eql 0
         end
@@ -113,7 +112,7 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
 
         it "IT_009: the number of BlackBerry signing-key should be 0 after deleting the one added above" do 
             @edit_account_page.delete_1st_blackberry_signing_key
-            sleep 5
+            sleep 10
             blackberry_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[3]/tbody").find_elements(:tag_name => "tr").count
             blackberry_key_count.should eql 0
         end
