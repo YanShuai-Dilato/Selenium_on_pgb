@@ -145,7 +145,7 @@ if defined? RSpec
         
         initialize_params name_subdir
 
-        t.pattern = "./testcases/TC_009_signing_key_add_and_unlock_rspec.rb"
+        t.pattern = "./testcases/TC_009_signing_key_add_unlock_delete_rspec.rb"
         #output to html file with timeframe
         t.rspec_opts = "--format d > ./auto_results/#{name_subdir}/TC_009_selenium_result.txt "
     end
