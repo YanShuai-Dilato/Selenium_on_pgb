@@ -29,7 +29,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 	$ cd Selenium_on_pgb/
 
 
-2, Please copy 'Selenium_on_pgb/assets/application/www.zip' to C:\ , if you're using Windows to run this test. 
+2, Please copy file "Selenium_on_pgb/assets/application/www.zip" and folder "Selenium_on_pgb/assets/signing_key" to "C:\" , if you're using Windows to run this test. 
 
 
 3, Manage testing task in Rakefile

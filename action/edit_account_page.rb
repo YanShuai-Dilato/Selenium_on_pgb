@@ -29,22 +29,25 @@ class EditAccountPage
 # Signing Key related --- begin 
     def add_ios_signing_key valideOne_or_invalidOne = "valid"
         type = valideOne_or_invalidOne.upcase
-        puts "+ <action><edit_account_page> add_iOS_signing_key of #{type}  -- begin"
-        if(type == "VALID")
-            ios_add_key_btn.click
-            ios_title_input.send_keys(@data_signing_key[:ios][:name_valid])
-            ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:cert],__FILE__))
-            ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:profile],__FILE__))
-            ios_submit_btn.click
-            sleep 5
+        if(type == "VALID") 
+            title = @data_signing_key[:ios][:name_valid]
         else
-            ios_add_key_btn.click
-            ios_title_input.send_keys(@data_signing_key[:ios][:name_invalid])
+            title = @data_signing_key[:ios][:name_invalid]
+        end
+        os = win_or_mac                              
+        puts "+ <action><edit_account_page> os: #{os}"
+        puts "+ <action><edit_account_page> add_iOS_signing_key of #{type}  -- begin"
+        ios_add_key_btn.click
+        ios_title_input.send_keys(title)
+        if(os == "win")
+            ios_choose_cert_file_btn.send_keys("C:\\signing_key\\ios\\LichuanIQEKey.p12")
+            ios_choose_prov_file_btn.send_keys("C:\\signing_key\\ios\\Lichuanlu.mobileprovision")
+        else
             ios_choose_cert_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:cert],__FILE__))
             ios_choose_prov_file_btn.send_keys(File.expand_path(@data_signing_key[:ios][:valid][:profile],__FILE__))
-            ios_submit_btn.click
-            sleep 5
         end
+        ios_submit_btn.click
+        sleep 5
         puts "+ <action><edit_account_page> add_iOS_signing_key of #{type}  -- end"
     end
 
@@ -116,22 +119,26 @@ class EditAccountPage
 
     def add_android_signing_key valideOne_or_invalidOne    
         type = valideOne_or_invalidOne.upcase
-        puts "+ <action><edit_account_page> add_Android_signing_key of #{type}  -- begin"
-        if(type == "VALID")
-            android_add_key_btn.click
-            android_title_input.send_keys @data_signing_key[:android][:name_valid]
-            android_alias_input.send_keys @data_signing_key[:android][:name_valid]
-            android_choose_keystore_btn.send_keys(File.expand_path(@data_signing_key[:android][:valid][:keystore],__FILE__))
-            android_submit_btn.click
-            sleep 5
+        if type == "VALID" 
+            android_title = @data_signing_key[:android][:name_valid]
+            android_alias = @data_signing_key[:android][:name_valid]
         else
-            android_add_key_btn.click
-            android_title_input.send_keys @data_signing_key[:android][:name_invalid]
-            android_alias_input.send_keys @data_signing_key[:android][:name_invalid]
-            android_choose_keystore_btn.send_keys(File.expand_path(@data_signing_key[:android][:valid][:keystore],__FILE__))
-            android_submit_btn.click
-            sleep 5
+            android_title = @data_signing_key[:android][:name_invalid]
+            android_alias = @data_signing_key[:android][:name_invalid]
         end
+        os = win_or_mac
+        puts "+ <action><edit_account_page> os: #{os}"
+        puts "+ <action><edit_account_page> add_Android_signing_key of #{type}  -- begin"
+        android_add_key_btn.click
+        android_title_input.send_keys android_title
+        android_alias_input.send_keys android_alias
+        if(os == "win")
+            android_choose_keystore_btn.send_keys("C:\\signing_key\\android\\android-dilato.keystore")
+        else
+            android_choose_keystore_btn.send_keys(File.expand_path(@data_signing_key[:android][:valid][:keystore],__FILE__))            
+        end
+        android_submit_btn.click
+        sleep 5
         puts "+ <action><edit_account_page> add_Android_signing_key of #{type}  -- end"
     end
 
@@ -199,22 +206,25 @@ class EditAccountPage
 
     def add_blackberry_signing_key valideOne_or_invalidOne
         type = valideOne_or_invalidOne.upcase
-        puts "+ <action><edit_account_page> add_BlackBerry_signing_key of #{type}  -- begin"
-        if(type == "VALID") 
-            blackberry_add_key_btn.click
-            blackberry_title_input.send_keys @data_signing_key[:blackberry][:name_valid]
-            blackberry_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:csk],__FILE__)
-            blackberry_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:db],__FILE__)
-            blackberry_submit_btn.click
-            sleep 5
+        if type == "VALID" 
+            blackberry_title = @data_signing_key[:blackberry][:name_valid]
         else
-            blackberry_add_key_btn.click
-            blackberry_title_input.send_keys @data_signing_key[:blackberry][:name_invalid]
+            blackberry_title = @data_signing_key[:blackberry][:name_invalid]
+        end
+        os = win_or_mac
+        puts "+ <action><edit_account_page> os: #{os}"
+        puts "+ <action><edit_account_page> add_BlackBerry_signing_key of #{type}  -- begin"
+        blackberry_add_key_btn.click
+        blackberry_title_input.send_keys @data_signing_key[:blackberry][:name_valid]
+        if(os == "win")
+            blackberry_choose_csk_btn.send_keys("C:\\signing_key\\blackberry\\barsigner.csk")
+            blackberry_choose_db_btn.send_keys("C:\\signing_key\\blackberry\\barsigner.db")
+        else
             blackberry_choose_csk_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:csk],__FILE__)
             blackberry_choose_db_btn.send_keys File.expand_path(@data_signing_key[:blackberry][:valid][:db],__FILE__)
-            blackberry_submit_btn.click
-            sleep 5
         end
+        blackberry_submit_btn.click
+        sleep 5
         puts "+ <action><edit_account_page> add_BlackBerry_signing_key of #{type}  -- end"
     end
 
