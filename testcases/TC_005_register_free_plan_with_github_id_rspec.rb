@@ -48,15 +48,15 @@ describe "TC_005: Register an free plan account with Github ID" do
         github_btn.click
     end
 
-    after(:each) do 
+    after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
-
-        if example.exception != nil
-            # Failure only code goes here
-            take_screenshot_with_name @name_screenshot
+        begin
+            if example.exception != nil
+                take_screenshot_with_name @name_screenshot
+            end
+        ensure
+            @driver.quit
         end
-        
-        @driver.quit
     end
 
         it "IT_001: direct to '/apps' page when sign in successfully with github id(which is connected to pgb), " do 

@@ -36,20 +36,20 @@ describe "TC_008: Sign in" do
     end
 
     before(:each) do
-        @driver = browser # have to start a new instance each time to clean the cache.
+        @driver = browser     # have to start a new instance each time to clean the cache.
         @driver.manage.window.maximize
         @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
-        # @driver.get path_format_locale("/people/sign_in")
     end
 
-    after(:each) do 
+    after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
-
-        if example.exception != nil
-            # Failure only code goes here
-            take_screenshot_with_name @name_screenshot
+        begin
+            if example.exception != nil
+                take_screenshot_with_name @name_screenshot
+            end
+        ensure
+            @driver.quit
         end
-        @driver.quit
     end
 
     context "--- with GitHub ID" do
@@ -97,24 +97,24 @@ describe "TC_008: Sign in" do
         end
     end
 
-    context "--- didn't receive confirmation" do 
-        it "IT_006: Got tips saying you will receive an email when use NOT-comfirmed-email address" do 
-            @driver.get path_format_locale("/people/sign_in")
-            @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
-            @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
-        end
+    # context "--- didn't receive confirmation" do 
+    #     it "IT_006: Got tips saying you will receive an email when use NOT-comfirmed-email address" do 
+    #         @driver.get path_format_locale("/people/sign_in")
+    #         @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_002][:id])
+    #         @tips_or_warnings.should eql @data_str[$lang][:confirmations_send_instructions]
+    #     end
 
-        it "IT_007: Got warnign which says the email was already confirmed when use an already-confirmed email address" do 
-            @driver.get path_format_locale("/people/sign_in")
-            @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_001][:id])
-            @tips_or_warnings.should eql @data_str[$lang][:confirmations_email_confirmed]
-        end
+    #     it "IT_007: Got warnign which says the email was already confirmed when use an already-confirmed email address" do 
+    #         @driver.get path_format_locale("/people/sign_in")
+    #         @tips_or_warnings = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:adobe_id_free_001][:id])
+    #         @tips_or_warnings.should eql @data_str[$lang][:confirmations_email_confirmed]
+    #     end
 
-        it "IT_008: Got warning which says the mail was not found when use invalid email address" do 
-            @driver.get path_format_locale("/people/sign_in")
-            @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
-            @errors.should eql @data_str[$lang][:PGB_email_not_found]
-        end
-    end
+    #     it "IT_008: Got warning which says the mail was not found when use invalid email address" do 
+    #         @driver.get path_format_locale("/people/sign_in")
+    #         @errors = @sign_in_page.resend_confirmation_instructions(@data_user[$lang][:invalid_user][:id])
+    #         @errors.should eql @data_str[$lang][:PGB_email_not_found]
+    #     end
+    # end
 
 end

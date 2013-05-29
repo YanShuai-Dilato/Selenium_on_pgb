@@ -58,12 +58,14 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         webhelper_delete_all_apps(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
     end
 
-    after(:each) do 
+    after(:each) do # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
-
-        # Take a screenshot if the test case fails
-        if example.exception != nil
-            take_screenshot_with_name @name_screenshot
+        begin
+            if example.exception != nil
+                take_screenshot_with_name @name_screenshot
+            end
+        ensure
+            @driver.quit
         end
     end
 

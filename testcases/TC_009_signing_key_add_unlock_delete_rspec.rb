@@ -46,12 +46,14 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
         @driver.quit
     end
 
-    after(:each) do 
+    after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
-
-        if example.exception != nil
-            # Failure only code goes here
-            take_screenshot_with_name @name_screenshot
+        begin
+            if example.exception != nil
+                take_screenshot_with_name @name_screenshot
+            end
+        ensure
+            @driver.quit
         end
     end
 

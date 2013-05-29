@@ -77,15 +77,15 @@ describe "TC_006: Register paid CCM account" do
         puts "+ after driver.switch_to.frame(0)..."
     end
 
-    after(:each) do
+    after(:each) do # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
-
-        if example.exception != nil
-            # Failure only code goes here
-            take_screenshot_with_name @name_screenshot
+        begin
+            if example.exception != nil
+                take_screenshot_with_name @name_screenshot
+            end
+        ensure
+            @driver.quit
         end
-        
-        @driver.quit
     end
 
         it "IT_001: It could create two private apps when using the paid ccm account: dil40562+stagedeannual@adobetest.com" do 
