@@ -18,6 +18,7 @@ class EditAccountPage
     def initialize(driver, options = {})
         puts "+ <action><edit_account_page> initialize EditAccountPage -- begin"
         init
+        @base_url = base_url
         @driver = driver
         @data_xpath = options.fetch(:xpath)
         @data_str = options.fetch(:str)
@@ -61,7 +62,9 @@ class EditAccountPage
     
     def to_unlock_1st_ios_signing_key
         puts "+ <action><edit_account_page> --- to UNLOCK 1st iOS signing_key --- begin"
+        puts "+++ #{ios_1st_lock_btn.text} +++"
         ios_1st_lock_btn.click
+        sleep 5
         ios_1st_cert_password_input.send_keys @data_signing_key[:ios][:cert_password]
         ios_1st_cert_submit_btn.click
         sleep 5

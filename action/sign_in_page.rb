@@ -88,18 +88,6 @@ class SignInPage
         return warnings
     end
 
-    # By receiving an email address
-    # this method helps to return the related content of tip or warning 
-    def resend_confirmation_instructions(email_address)
-        puts "+ <action> resend_confirmation_instructions --- begin"
-        didnt_receive_confirmation_link.click
-        resend_confirm_instru_email_input.send_keys(email_address)
-        resend_confirm_instru_btn.click
-        tips_or_warnings = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:tips_or_warnings]).text
-        puts "+ <action> resend_confirmation_instructions --- end"
-        return tips_or_warnings
-    end
-
     def open_forgot_my_password
         puts "+ <action> open_forgot_my_password --- begin"
         forgot_my_password_link.click

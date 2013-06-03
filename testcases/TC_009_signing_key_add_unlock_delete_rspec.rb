@@ -73,6 +73,7 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
         end
 
         it "IT_002: the above iOS signing Key was unlocked after unlocking it" do 
+            sleep 5
             @edit_account_page.to_unlock_1st_ios_signing_key 
             sleep 5
             @edit_account_page.get_status_of_1st_ios_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
@@ -118,7 +119,6 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
             blackberry_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[3]/tbody").find_elements(:tag_name => "tr").count
             blackberry_key_count.should eql 0
         end
-
     end
 
 end
