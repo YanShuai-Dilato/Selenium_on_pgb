@@ -100,7 +100,7 @@
     :not_a_valid_github_url: /html/body/section/div/div/div/form/div[2]/div/div/span
     :upload_a_zip_btn: //*[@id='app_archive']
     :connect_your_github_account_link: //*[@id="new-app"]/form/div[2]/a
-    :upgrade_now_link: //*[@id="new-app"]/form/div[2]/p/a 
+    :upgrade_now_link: //*[@id="new-app"]/form/div[2]/p/a
     :close_link: //*[@id='new-app']/form/div[1]/a[3]
     :ready_to_build_btn: /html/body/section/div/div/section[4]/article/footer/a
     :clickable_app_title: /html/body/section/div/div/section[4]/article/section/a/h1
@@ -109,46 +109,46 @@
     :settings_tab: /html/body/section/div/article/div[2]/section/nav/a[3]
 :app_builds_page:
     :builds_tab: //*[@id="app-detail-controls"]/nav/a[1]
-    :ios_signing_key_label:                 //*[@id="app-builds"]/div[2]/div[1]/article[1]/div/div/div
-    :ios_signing_key_dropdown_select:       //*[@id="app-builds"]/div[2]/div[1]/article[1]/div/div/select
-    :ios_signing_key_title_input:           //*[@id="key_title"]
-    :ios_signing_key_choose_cert_btn:       //*[@id="key_cert_file"]
-    :ios_signing_key_choose_prov_btn:       //*[@id="key_profile_file"]
-    :ios_signing_key_cancel_btn:            //*[@id="key_new"]/footer/button[1]
-    :ios_signing_key_submit_btn:            //*[@id="key_new"]/footer/button[2]
-    :ios_signing_key_status:                //*[@id="app-builds"]/div[2]/div[1]/article[1]/div[1]/div/div[2]
-    :ios_signing_key_error_btn:             //*[@id="app-builds"]/div[2]/div[1]/article[1]/div[1]/a
-    :ios_signing_key_error_msg:             //*[@id="ios_msg"]
+    :ios_signing_key_label: //*[@id="app-builds"]/div[2]/div[1]/article[1]/div/div/div
+    :ios_signing_key_dropdown_select: //*[@id="app-builds"]/div[2]/div[1]/article[1]/div/div/select
+    :ios_signing_key_title_input: //*[@id="key_title"]
+    :ios_signing_key_choose_cert_btn: //*[@id="key_cert_file"]
+    :ios_signing_key_choose_prov_btn: //*[@id="key_profile_file"]
+    :ios_signing_key_cancel_btn: //*[@id="key_new"]/footer/button[1]
+    :ios_signing_key_submit_btn: //*[@id="key_new"]/footer/button[2]
+    :ios_signing_key_status: //*[@id="app-builds"]/div[2]/div[1]/article[1]/div[1]/div/div[2]
+    :ios_signing_key_error_btn: //*[@id="app-builds"]/div[2]/div[1]/article[1]/div[1]/a
+    :ios_signing_key_error_msg: //*[@id="ios_msg"]
     :ios_signing_key_unlock_cert_pwd_input: //*[@id="key_password"]
-    :ios_signing_key_unlock_cancel_btn:     /html/body/div[2]/form/footer/button[1]
-    :ios_signing_key_unlock_submit_btn:     /html/body/div[2]/form/footer/button[2]
-    :android_signing_key_label:                     //*[@id="app-builds"]/div[2]/div[1]/article[2]/div/div/div
-    :android_signing_key_dropdown_select:           //*[@id="app-builds"]/div[2]/div[1]/article[2]/div/div/select
-    :android_signing_key_title_input:               //*[@id="key_title"]
-    :android_signing_key_alias:                     //*[@id="key_alias"]
-    :android_signing_key_choose_keystore_btn:       //*[@id="key_key_file"]
-    :android_signing_key_cancel_btn:                //*[@id="key_new"]/footer/button[1]
-    :android_signing_key_submit_btn:                //*[@id="key_new"]/footer/button[2]
-    :android_signing_key_status:                    //*[@id="app-builds"]/div[2]/div[1]/article[2]/div[1]/div/div[2]
-    :android_signing_key_error_btn:                 //*[@id="app-builds"]/div[2]/div[1]/article[2]/div[1]/a
-    :android_signing_key_error_msg:                 //*[@id="android_msg"]
-    :android_signing_key_unlock_cert_pwd_input:     //*[@id="key_key_pw"]
+    :ios_signing_key_unlock_cancel_btn: /html/body/div[2]/form/footer/button[1]
+    :ios_signing_key_unlock_submit_btn: /html/body/div[2]/form/footer/button[2]
+    :android_signing_key_label: //*[@id="app-builds"]/div[2]/div[1]/article[2]/div[1]/div/div
+    :android_signing_key_dropdown_select: //*[@id="app-builds"]/div[2]/div[1]/article[2]/div/div/select
+    :android_signing_key_title_input: //*[@id="key_title"]
+    :android_signing_key_alias: //*[@id="key_alias"]
+    :android_signing_key_choose_keystore_btn: //*[@id="key_key_file"]
+    :android_signing_key_cancel_btn: //*[@id="key_new"]/footer/button[1]
+    :android_signing_key_submit_btn: //*[@id="key_new"]/footer/button[2]
+    :android_signing_key_status: //*[@id="app-builds"]/div[2]/div[1]/article[2]/div[1]/div/div[2]
+    :android_signing_key_error_btn: //*[@id="app-builds"]/div[2]/div[1]/article[2]/div[1]/a
+    :android_signing_key_error_msg: //*[@id="android_msg"]
+    :android_signing_key_unlock_cert_pwd_input: //*[@id="key_key_pw"]
     :android_signing_key_unlock_keystore_pwd_input: //*[@id="key_keystore_pw"]
-    :android_signing_key_unlock_cancel_btn:         /html/body/div/form/footer/button[1]
-    :android_signing_key_unlock_submit_btn:         /html/body/div/form/footer/button[2]
-    :blackberry_signing_key_label:                 //*[@id="app-builds"]/div[2]/div[2]/article[2]/div/div/div
-    :blackberry_signing_key_dropdown_select:       //*[@id="app-builds"]/div[2]/div[2]/article[2]/div/div/select
-    :blackberry_signing_key_title_input:           //*[@id="key_title"]
-    :blackberry_signing_key_choose_csk_btn:        //*[@id="key_csk_file"]
-    :blackberry_signing_key_choose_db_btn:         //*[@id="key_db_file"]
-    :blackberry_signing_key_cancel_btn:            //*[@id="key_new"]/footer/button[1]
-    :blackberry_signing_key_submit_btn:            //*[@id="key_new"]/footer/button[2]
-    :blackberry_signing_key_status:                //*[@id="app-builds"]/div[2]/div[2]/article[2]/div[1]/div/div[2]
-    :blackberry_signing_key_error_btn:             //*[@id="app-builds"]/div[2]/div[2]/article[2]/div[1]/a
-    :blackberry_signing_key_error_msg:             //*[@id="blackberry_msg"]
+    :android_signing_key_unlock_cancel_btn: /html/body/div/form/footer/button[1]
+    :android_signing_key_unlock_submit_btn: /html/body/div/form/footer/button[2]
+    :blackberry_signing_key_label: //*[@id="app-builds"]/div[2]/div[2]/article[2]/div/div/div
+    :blackberry_signing_key_dropdown_select: //*[@id="app-builds"]/div[2]/div[2]/article[2]/div/div/select
+    :blackberry_signing_key_title_input: //*[@id="key_title"]
+    :blackberry_signing_key_choose_csk_btn: //*[@id="key_csk_file"]
+    :blackberry_signing_key_choose_db_btn: //*[@id="key_db_file"]
+    :blackberry_signing_key_cancel_btn: //*[@id="key_new"]/footer/button[1]
+    :blackberry_signing_key_submit_btn: //*[@id="key_new"]/footer/button[2]
+    :blackberry_signing_key_status: //*[@id="app-builds"]/div[2]/div[2]/article[2]/div[1]/div/div[2]
+    :blackberry_signing_key_error_btn: //*[@id="app-builds"]/div[2]/div[2]/article[2]/div[1]/a
+    :blackberry_signing_key_error_msg: //*[@id="blackberry_msg"]
     :blackberry_signing_key_unlock_password_input: //*[@id="key_password"]
-    :blackberry_signing_key_unlock_cancel_btn:     /html/body/div/form/footer/button[1]
-    :balckberry_signing_key_unlock_submit_btn:     /html/body/div/form/footer/button[2]
+    :blackberry_signing_key_unlock_cancel_btn: /html/body/div/form/footer/button[1]
+    :balckberry_signing_key_unlock_submit_btn: /html/body/div/form/footer/button[2]
 :edit_account_page:
     :account_details_tab: //*[@id="people-edit-controls"]/nav/a[1]
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]

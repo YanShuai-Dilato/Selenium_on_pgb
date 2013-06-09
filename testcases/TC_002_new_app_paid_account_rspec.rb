@@ -40,7 +40,6 @@ describe "TC_002: New apps with paid account" do
     end
 
     after(:all) do
-        @driver.quit
         private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:adobe_id_paid_001][:id] , :password => @data_user[$lang][:adobe_id_paid_001][:password] , :timeout => 30}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)

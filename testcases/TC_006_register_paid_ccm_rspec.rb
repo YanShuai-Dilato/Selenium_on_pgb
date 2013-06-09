@@ -31,38 +31,9 @@ describe "TC_006: Register paid CCM account" do
     end
 
     after(:all) do 
-        private_resource = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:ccm_acnt_001][:id] , :password => @data_user[$lang][:ccm_acnt_001][:password] , :timeout => 30}
-        base_url = "http://loc.build.phonegap.com"
-        response = private_resource.get :accept => :json
-        json =  JSON.parse(response)
-        json['apps'].each do |i|
-            url = base_url + i['link']
-            private_resource = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_001][:id] , :password => @data_user[$lang][:ccm_acnt_001][:password] , :timeout => 30}
-            response = private_resource.delete 
-            puts response.to_str
-        end
-
-        private_resource_2 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:ccm_acnt_002][:id] , :password => @data_user[$lang][:ccm_acnt_002][:password] , :timeout => 30}
-        response_2 = private_resource_2.get :accept => :json
-        json_2 =  JSON.parse(response_2)
-        json_2['apps'].each do |i|
-            url = base_url + i['link']
-            private_resource_2 = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_002][:id] , :password => @data_user[$lang][:ccm_acnt_002][:password] , :timeout => 30}
-            response_2 = private_resource_2.delete 
-            puts response_2.to_str
-        end
-
-        private_resource_3 = RestClient::Resource.new 'http://loc.build.phonegap.com/api/v1/apps' , {:user => @data_user[$lang][:ccm_acnt_003][:id] , :password => @data_user[$lang][:ccm_acnt_003][:password] , :timeout => 30}
-        response_3 = private_resource_3.get :accept => :json
-        json_3 =  JSON.parse(response_3)
-        json_3['apps'].each do |i|
-            url = base_url + i['link']
-            private_resource_3 = RestClient::Resource.new url , {:user => @data_user[$lang][:ccm_acnt_003][:id] , :password => @data_user[$lang][:ccm_acnt_003][:password] , :timeout => 30}
-            response_3 = private_resource_3.delete 
-            puts response_3.to_str
-        end
-
-
+        webhelper_delete_all_apps(@data_user[$lang][:ccm_acnt_001][:id], @data_user[$lang][:ccm_acnt_001][:password])
+        webhelper_delete_all_apps(@data_user[$lang][:ccm_acnt_002][:id], @data_user[$lang][:ccm_acnt_002][:password])
+        webhelper_delete_all_apps(@data_user[$lang][:ccm_acnt_003][:id], @data_user[$lang][:ccm_acnt_003][:password])
     end
 
     before(:each) do

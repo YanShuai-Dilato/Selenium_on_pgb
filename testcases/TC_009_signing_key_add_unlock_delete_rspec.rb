@@ -42,10 +42,6 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
                                             @data_user[$lang][:adobe_id_free_002][:password])
     end
 
-    after(:all) do 
-        @driver.quit
-    end
-
     after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_it.inc.to_s
         begin
@@ -72,52 +68,51 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
             @edit_account_page.get_status_of_1st_ios_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
 
-        it "IT_002: the above iOS signing Key was unlocked after unlocking it" do 
-            sleep 5
-            @edit_account_page.to_unlock_1st_ios_signing_key 
+        it "IT_002: the above iOS signing Key was unlocked after unlocking it" do
+            @edit_account_page.to_unlock_1st_ios_signing_key
             sleep 5
             @edit_account_page.get_status_of_1st_ios_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
         end
 
-        it "IT_003: the number of iOS signing_keys should be 0 after deleting the one added above " do 
-            @edit_account_page.delete_1st_ios_signing_key
-            sleep 10
-            ios_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[1]/tbody").find_elements(:tag_name => "tr").count
-            ios_key_count.should eql 0
+        it "IT_003: the number of iOS signing_keys should be 0 after deleting the one added above " do
+           @edit_account_page.delete_1st_ios_signing_key
+           sleep 10
+           ios_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[1]/tbody").find_elements(:tag_name => "tr").count
+           ios_key_count.should eql 0
         end
-
-        it "IT_004: the new-added Android signing_key should be locked after adding successfully" do 
-            @edit_account_page.add_android_signing_key "valid"
-            @edit_account_page.get_status_of_1st_android_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
+        
+        it "IT_004: the new-added Android signing_key should be locked after adding successfully" do
+           @edit_account_page.add_android_signing_key "valid"
+           @edit_account_page.get_status_of_1st_android_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
-
-        it "IT_005: the second Adroid signing_key should be locked after adding successfully" do 
-            @edit_account_page.to_unlock_1st_android_signing_key
-            @edit_account_page.get_status_of_1st_android_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
+        
+        it "IT_005: the second Adroid signing_key should be locked after adding successfully" do
+           @edit_account_page.to_unlock_1st_android_signing_key
+           @edit_account_page.get_status_of_1st_android_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
         end
-
-        it "IT_006: the number of Android signing-key should be 0 after deleting the one added above" do 
-            @edit_account_page.delete_1st_android_signing_key
-            sleep 10
-            android_key_count    = @driver.find_element(:xpath => "//*[@id='person-keys']/table[2]/tbody").find_elements(:tag_name => "tr").count
-            android_key_count.should eql 0
+        
+        it "IT_006: the number of Android signing-key should be 0 after deleting the one added above" do
+           @edit_account_page.delete_1st_android_signing_key
+           sleep 10
+           android_key_count    = @driver.find_element(:xpath => "//*[@id='person-keys']/table[2]/tbody").find_elements(:tag_name => "tr").count
+           android_key_count.should eql 0
         end
-
-        it "IT_007: the new-added BlackBerry signing_key should be locked after adding successfully" do 
-            @edit_account_page.add_blackberry_signing_key "valid"
-            @edit_account_page.get_status_of_1st_blackberry_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
+        
+        it "IT_007: the new-added BlackBerry signing_key should be locked after adding successfully" do
+           @edit_account_page.add_blackberry_signing_key "valid"
+           @edit_account_page.get_status_of_1st_blackberry_signing_key.should eql @data_str[$lang][:apps_signing_key_locked]
         end
-
-        it "IT_008: the second BlackBerry signing_key should be locked after adding successfully" do 
-            @edit_account_page.to_unlock_1st_blackberry_signing_key
-            @edit_account_page.get_status_of_1st_blackberry_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
+        
+        it "IT_008: the second BlackBerry signing_key should be locked after adding successfully" do
+           @edit_account_page.to_unlock_1st_blackberry_signing_key
+           @edit_account_page.get_status_of_1st_blackberry_signing_key.should eql @data_str[$lang][:apps_signing_key_unlocked]
         end
-
-        it "IT_009: the number of BlackBerry signing-key should be 0 after deleting the one added above" do 
-            @edit_account_page.delete_1st_blackberry_signing_key
-            sleep 10
-            blackberry_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[3]/tbody").find_elements(:tag_name => "tr").count
-            blackberry_key_count.should eql 0
+        
+        it "IT_009: the number of BlackBerry signing-key should be 0 after deleting the one added above" do
+           @edit_account_page.delete_1st_blackberry_signing_key
+           sleep 10
+           blackberry_key_count = @driver.find_element(:xpath => "//*[@id='person-keys']/table[3]/tbody").find_elements(:tag_name => "tr").count
+           blackberry_key_count.should eql 0
         end
     end
 
