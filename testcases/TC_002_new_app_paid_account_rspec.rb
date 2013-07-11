@@ -49,16 +49,14 @@ describe "TC_002: New apps with paid account" do
             response = private_resource.delete 
             puts response.to_str
         end
+        @driver.quit
     end
 
     after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_of_it.inc.to_s
-        begin
-            if example.exception != nil
-                take_screenshot_with_name @name_screenshot
-            end
-        ensure
-            @driver.quit
+
+        if example.exception != nil
+            take_screenshot_with_name @name_screenshot
         end
     end
 

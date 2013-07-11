@@ -59,92 +59,83 @@ describe "TC_006: Register paid CCM account" do
         end
     end
 
-        it "IT_001: It could create two private apps when using the paid ccm account: dil40562+stagedeannual@adobetest.com" do 
-            sleep 5
-            adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_001][:id])
-            adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_001][:password])
-            adobe_id_frame_sign_in_btn.click
-            sleep 5
-            @driver.switch_to.default_content
-            wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
-            ccm_29_99_btn.click
-            wait_for_page_load("https://creative.adobe.com/plans")
-            @driver.get @base_url
-            new_app_page = NewAppPage.new(@driver)
-            sleep 40
-            # try to create 2 private apps 
-            
-            new_app_page.new_private_app_with_repo
-            sleep 40
+    it "IT_001: It could create two private apps when using the paid ccm account: dil40562+stagedeannual@adobetest.com" do 
+        sleep 5
+        adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_001][:id])
+        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_001][:password])
+        adobe_id_frame_sign_in_btn.click
+        sleep 5
+        @driver.switch_to.default_content
+        wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
+        ccm_29_99_btn.click
+        wait_for_page_load("https://creative.adobe.com/plans")
+        @driver.get @base_url
+        new_app_page = NewAppPage.new(@driver)
+        # try to create 2 private apps 
+        
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        app_count_after = new_app_page.get_existing_app_num
+        first_app_id_after = new_app_page.get_first_app_id
+        puts "+ app_count_after: #{app_count_after}"
+        puts "+ first_app_id_after: #{first_app_id_after}"
+        app_count_after.should_not eql 0
+    end
+=begin
+    it "IT_002: It could create two private apps when using the paid ccm account: dil40562+teamfra1128@adobetest.com" do 
+        sleep 5
+        adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_002][:id])
+        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_002][:password])
+        adobe_id_frame_sign_in_btn.click
+        sleep 5
+        @driver.switch_to.default_content
+        puts "+ switch_to.default_content..."
+        wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
+        ccm_29_99_btn.click
+        wait_for_page_load("https://creative.adobe.com/plans")
+        @driver.get @base_url
+        new_app_page = NewAppPage.new(@driver)
+        sleep 40
+        # try to create 2 private apps 
+        
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        app_count_after = new_app_page.get_existing_app_num
+        first_app_id_after = new_app_page.get_first_app_id
+        puts "+ app_count_after: #{app_count_after}"
+        puts "+ first_app_id_after: #{first_app_id_after}"
+        app_count_after.should_not eql 0
+    end
 
-            new_app_page.new_private_app_with_repo
-            sleep 40
-
-            app_count_after = new_app_page.get_existing_app_num
-            first_app_id_after = new_app_page.get_first_app_id
-            puts "+ app_count_after: #{app_count_after}"
-            puts "+ first_app_id_after: #{first_app_id_after}"
-
-            app_count_after.should_not eql 0
-        end
-
-        it "IT_002: It could create two private apps when using the paid ccm account: dil40562+teamfra1128@adobetest.com" do 
-            sleep 5
-            adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_002][:id])
-            adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_002][:password])
-            adobe_id_frame_sign_in_btn.click
-            sleep 5
-            @driver.switch_to.default_content
-            puts "+ switch_to.default_content..."
-            wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
-            ccm_29_99_btn.click
-            wait_for_page_load("https://creative.adobe.com/plans")
-            @driver.get @base_url
-            new_app_page = NewAppPage.new(@driver)
-            sleep 40
-            # try to create 2 private apps 
-            
-            new_app_page.new_private_app_with_repo
-            sleep 40
-
-            new_app_page.new_private_app_with_repo
-            sleep 40
-
-            app_count_after = new_app_page.get_existing_app_num
-            first_app_id_after = new_app_page.get_first_app_id
-            puts "+ app_count_after: #{app_count_after}"
-            puts "+ first_app_id_after: #{first_app_id_after}"
-
-            app_count_after.should_not eql 0
-        end
-
-        it "IT_003: It could create two private apps when using the paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
-            sleep 5
-            adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_003][:id])
-            adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_003][:password])
-            adobe_id_frame_sign_in_btn.click
-            sleep 5
-            @driver.switch_to.default_content
-            puts "+ switch_to.default_content..."
-            wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
-            ccm_29_99_btn.click
-            wait_for_page_load("https://creative.adobe.com/plans")
-            @driver.get @base_url
-            new_app_page = NewAppPage.new(@driver)
-            sleep 40
-            # try to create 2 private apps 
-            
-            new_app_page.new_private_app_with_repo
-            sleep 40
-
-            new_app_page.new_private_app_with_repo
-            sleep 40
-
-            app_count_after = new_app_page.get_existing_app_num
-            first_app_id_after = new_app_page.get_first_app_id
-            puts "+ app_count_after: #{app_count_after}"
-            puts "+ first_app_id_after: #{first_app_id_after}"
-
-            app_count_after.should_not eql 0
-        end
+    it "IT_003: It could create two private apps when using the paid ccm account: dil40562+teamfrenuonly1128@adobetest.com" do 
+        sleep 5
+        adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_003][:id])
+        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_003][:password])
+        adobe_id_frame_sign_in_btn.click
+        sleep 5
+        @driver.switch_to.default_content
+        puts "+ switch_to.default_content..."
+        wait_for_element_present(:xpath, @data_xpath[:register_page][:ccm_29_99_btn]) 
+        ccm_29_99_btn.click
+        wait_for_page_load("https://creative.adobe.com/plans")
+        @driver.get @base_url
+        new_app_page = NewAppPage.new(@driver)
+        sleep 40
+        # try to create 2 private apps 
+        
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        new_app_page.new_private_app_with_repo
+        sleep 40
+        app_count_after = new_app_page.get_existing_app_num
+        first_app_id_after = new_app_page.get_first_app_id
+        puts "+ app_count_after: #{app_count_after}"
+        puts "+ first_app_id_after: #{first_app_id_after}"
+        app_count_after.should_not eql 0
+    end
+=end
 end

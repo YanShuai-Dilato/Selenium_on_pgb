@@ -39,14 +39,14 @@ describe "TC_004: Register as free plan with Adobe ID" do
         puts "+ after driver.switch_to.frame(0)"
     end
 
+    after(:all) do 
+        @driver.quit
+    end
+
     after(:each) do  # Take screenshot in case of failure
         @name_screenshot += @order_of_it.inc.to_s
-        begin
-            if example.exception != nil
-                take_screenshot_with_name @name_screenshot
-            end
-        ensure
-            @driver.quit
+        if example.exception != nil
+            take_screenshot_with_name @name_screenshot
         end
     end
 

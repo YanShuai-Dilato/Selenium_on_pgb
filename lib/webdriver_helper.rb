@@ -77,7 +77,7 @@ module WebdriverHelper
     # Helper Utility
     # Helps to delete all apps via API
     def webhelper_delete_all_apps base_url=@base_url, username, password
-        private_resource = RestClient::Resource.new base_url + '/api/v1/apps' , {:user => username , :password => password , :timeout => 10}
+        private_resource = RestClient::Resource.new base_url + "/api/v1/apps" , {:user => username , :password => password , :timeout => 10}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)
         json['apps'].each do |i|
