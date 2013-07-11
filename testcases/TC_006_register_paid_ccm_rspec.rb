@@ -22,7 +22,7 @@ describe "TC_006: Register paid CCM account" do
 
     before(:all) do 
         init
-        @order_it = WebdriverHelper::Counter.new
+        @order_of_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_006_IT_"
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_url = YAML::load(File.read(File.expand_path("../../data/data_url.yml",__FILE__)))
@@ -49,7 +49,7 @@ describe "TC_006: Register paid CCM account" do
     end
 
     after(:each) do # Take screenshot in case of failure
-        @name_screenshot += @order_it.inc.to_s
+        @name_screenshot += @order_of_it.inc.to_s
         begin
             if example.exception != nil
                 take_screenshot_with_name @name_screenshot

@@ -21,7 +21,7 @@ describe "TC_002: New apps with paid account" do
 
     before(:all) do
         init
-        @order_it = WebdriverHelper::Counter.new
+        @order_of_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_002_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -52,7 +52,7 @@ describe "TC_002: New apps with paid account" do
     end
 
     after(:each) do  # Take screenshot in case of failure
-        @name_screenshot += @order_it.inc.to_s
+        @name_screenshot += @order_of_it.inc.to_s
         begin
             if example.exception != nil
                 take_screenshot_with_name @name_screenshot

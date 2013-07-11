@@ -23,7 +23,7 @@ describe "TC_004: Register as free plan with Adobe ID" do
 
     before(:all) do 
         init
-        @order_it = WebdriverHelper::Counter.new
+        @order_of_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_004_IT_"
         @driver = browser
         @driver.manage.window.maximize
@@ -40,7 +40,7 @@ describe "TC_004: Register as free plan with Adobe ID" do
     end
 
     after(:each) do  # Take screenshot in case of failure
-        @name_screenshot += @order_it.inc.to_s
+        @name_screenshot += @order_of_it.inc.to_s
         begin
             if example.exception != nil
                 take_screenshot_with_name @name_screenshot

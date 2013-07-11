@@ -25,7 +25,7 @@ describe "TC_001: New app(s) with free account" do
     before(:all) do
         puts "+ <TC_001> before all outer --- begin"
         init
-        @order_it = WebdriverHelper::Counter.new
+        @order_of_it = WebdriverHelper::Counter.new
         @name_screenshot = "TC_001_IT_"
         @base_url = base_url
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
@@ -45,13 +45,13 @@ describe "TC_001: New app(s) with free account" do
     end
 
     after(:each) do  # Take screenshot in case of failure
-        @name_screenshot += @order_it.inc.to_s
+        @name_screenshot += @order_of_it.inc.to_s
         begin
             if example.exception != nil
                 take_screenshot_with_name @name_screenshot
             end
         ensure
-            @driver.quit
+            # @driver.quit
         end
     end
 
@@ -77,7 +77,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_001: verify the placeholder of 'paste .git repo' exists" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "+ new_app_btn.click"
@@ -86,18 +86,18 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_002: verify the 'Connect your Github account' link exists" do  
-            puts "IT_" + @order_it.to_s 
+            puts "IT_" + @order_of_it.to_s 
             link_connect_your_github_account.text.should eql @data_str[$lang][:PGB_connect_your_github_account]
         end
 
         it "IT_003: got an warning message when submit an invalid .git address" do    
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             @warning = @new_app_page.paste_a_git_repo("abcd")
             @warning.should eql @data_str[$lang][:PGB_not_a_valid_github_url]
         end
 
         it "IT_004: the number of apps was 1 after creating an opensource app by pasting a .git" do  
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             puts "+ before @new_app_page.new_public_app_with_repo"
 
             @new_app_page.new_public_app_with_repo
@@ -112,7 +112,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_005: the number of apps was not the same as before, after creating a private app by uploading a .zip file" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             @driver.navigate.refresh
             sleep 10
 
@@ -133,7 +133,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_006: trying to new another private app fails when there was already one private app"  do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             # @driver.navigate.refresh
             sleep 10
 
@@ -178,7 +178,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_007: the number of items of the dropdown list did not equal 0" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -192,7 +192,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_008: check if the placeholder of 'find existing repo / paste .git repo' exists" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -201,7 +201,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_009: got an errors when pasting a invalid .git address" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -211,7 +211,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_010: there be an matched item from the dropdown list when entering some letters" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -223,7 +223,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_011: there be not any matched apps in the list when enter some specific letters in the placeholder" do 
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
@@ -236,7 +236,7 @@ describe "TC_001: New app(s) with free account" do
         end
 
         it "IT_012: the number of apps did not equal to 0 after creating app by selecting and clicking one from the matched items" do  
-            puts "IT_" + @order_it.to_s
+            puts "IT_" + @order_of_it.to_s
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
