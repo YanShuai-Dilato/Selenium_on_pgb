@@ -69,7 +69,7 @@ describe "TC_004: Register as free plan with Adobe ID" do
             adobe_id_frame_enter_email(@data_user[$lang][:adobe_id_free_001][:id])
             adobe_id_frame_enter_password(@data_user[$lang][:adobe_id_free_001][:password])
             adobe_id_frame_sign_in_btn.click
-            wait_for_page_load(60, @base_url + @data_url[:sign_in_successfully])
+            wait_for_page_load(@base_url + @data_url[:sign_in_successfully])
             @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
         end
     end

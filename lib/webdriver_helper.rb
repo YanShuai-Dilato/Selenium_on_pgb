@@ -2,28 +2,28 @@
 
 module WebdriverHelper
 
-    def wait_for_element_present(how_long=60, how, what) 
+    def wait_for_element_present(how, what, how_long=60) 
         puts "+ <lib><webdriver_helper> wait_for_element_present --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) } 
         puts "+ <lib><webdriver_helper> wait_for_element_present --- end"
     end
 
-    def wait_for_page_load(how_long=60, url)
+    def wait_for_page_load(url, how_long=60)
         puts "+ <lib><webdriver_helper> wait_for_page_load --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.current_url == url } 
         puts "+ <lib><webdriver_helper> wait_for_page_load --- end"
     end
 
-    def wait_for_page_with_title(how_long=60, title)
+    def wait_for_page_with_title(title, how_long=60)
         puts "+ <lib><webdriver_helper> wait_for_page_with_title --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.title.downcase == title.downcase}
         puts "+ <lib><webdriver_helper> wait_for_page_with_title --- end"
     end
 
-    def isElementPreset?(how_long, how, what)
+    def isElementPreset?(how, what, how_long)
         puts "+ <lib><webdriver_helper> isElementPreset? --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) }
@@ -90,7 +90,7 @@ module WebdriverHelper
 
     # Helper Utility
     # Helps to delete all signing-keys via API. 
-    def webhelper_delete_all_signing_keys base_url=@base_url, username, password
+    def webhelper_delete_all_signing_keys(username, password, base_url=@base_url)
         private_resource = RestClient::Resource.new base_url + "/api/v1/keys", {:user => username , :password => password , :timeout => 30}
         response = private_resource.get :accept => :json
         json =  JSON.parse(response)

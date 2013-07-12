@@ -52,7 +52,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
     after(:all) do 
         # Helps to delete all added signing_keys and apps by invoking the API methods. 
-        webhelper_delete_all_signing_keys(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
+        # webhelper_delete_all_signing_keys(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
         webhelper_delete_all_apps(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
         
         @driver.quit
@@ -67,30 +67,30 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
     context "--- " do 
         before(:all) do 
-            @driver.get @base_url + "/people/edit"
-            puts "+ Page gets to: #{@base_url}/people/edit -> Tab: Signing-Keys"
-            sleep 5
-            signing_keys_tab.click
+            # @driver.get @base_url + "/people/edit"
+            # puts "+ Page gets to: #{@base_url}/people/edit -> Tab: Signing-Keys"
+            # sleep 5
+            # signing_keys_tab.click
 
             # Add valid and invalid signing_key for each app
-            @edit_account_page.add_ios_signing_key "valid"
-            @edit_account_page.add_ios_signing_key "invlaid"
-            @edit_account_page.to_unlock_1st_ios_signing_key
-            @edit_account_page.to_unlock_2nd_ios_signing_key_with_invalid_password
-            @edit_account_page.to_make_1st_signing_key_default
+            # @edit_account_page.add_ios_signing_key "valid"
+            # @edit_account_page.add_ios_signing_key "invlaid"
+            # @edit_account_page.to_unlock_1st_ios_signing_key
+            # @edit_account_page.to_unlock_2nd_ios_signing_key_with_invalid_password
+            # @edit_account_page.to_make_1st_signing_key_default
 
-            @edit_account_page.add_android_signing_key "valid"
-            @edit_account_page.add_android_signing_key "invalid"
-            @edit_account_page.to_unlock_1st_android_signing_key
-            @edit_account_page.to_unlock_2nd_android_signing_key_with_invalid_password
+            # @edit_account_page.add_android_signing_key "valid"
+            # @edit_account_page.add_android_signing_key "invalid"
+            # @edit_account_page.to_unlock_1st_android_signing_key
+            # @edit_account_page.to_unlock_2nd_android_signing_key_with_invalid_password
 
-            @edit_account_page.add_blackberry_signing_key "valid"
-            @edit_account_page.add_blackberry_signing_key "invalid"
-            @edit_account_page.to_unlock_1st_blackberry_signing_key
-            @edit_account_page.to_unlock_2nd_blackberry_signing_key_with_invalid_password
+            # @edit_account_page.add_blackberry_signing_key "valid"
+            # @edit_account_page.add_blackberry_signing_key "invalid"
+            # @edit_account_page.to_unlock_1st_blackberry_signing_key
+            # @edit_account_page.to_unlock_2nd_blackberry_signing_key_with_invalid_password
 
-            @driver.get @base_url + "/apps"
-            puts "+ Page gets to: #{@base_url}/apps"
+            # @driver.get @base_url + "/apps"
+            # puts "+ Page gets to: #{@base_url}/apps"
 
             # Add a public app
             @new_app_page.new_public_app_with_repo
@@ -99,13 +99,16 @@ describe "TC_010: signing_key_add_and_build_rspec" do
             @current_app_id = @new_app_page.get_first_app_id
             current_url = @driver.current_url
             puts "+ current app ID: #{@current_app_id}"
-            puts "+ current_url:    #{current_url}"
-            
+                       
+            @driver.navigate.refresh
+            sleep 10
+
             ready_to_build_btn.click
             puts "+ 'ready_to_build_btn' was clicked. "
-            sleep 10
+            sleep 30
             @driver.get "#{current_url}/#{@current_app_id}/builds"
             puts "+ Page got to:   #{current_url}/#{@current_app_id}/builds"
+            @driver.navigate.refresh
             sleep 10
         end
 
@@ -127,6 +130,8 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         end
 
         it "IT_005: iOS: the signing-key was locked after adding one. " do 
+            # @driver.navigate.refresh
+            sleep 30
             Selenium::WebDriver::Wait.new(:timeout => 300).until { ios_signing_key_dropdown_select.attribute("disabled") == nil }
             dropdown = Selenium::WebDriver::Support::Select.new(ios_signing_key_dropdown_select)
             dropdown.select_by(:text, @data_str[$lang][:apps_builds_add_a_key])

@@ -93,7 +93,7 @@ class NewAppPage
         end
 
         sleep 10
-        wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+        wait_for_element_present(:xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         puts "+ <action> New app with a zip file --- end "
         return true
     end
@@ -113,7 +113,7 @@ class NewAppPage
         paste_git_repo_input.clear
         paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
         sleep 10
-        wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+        wait_for_element_present(:xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         puts "+ <action> New public app with github repo --- end"
     end
 

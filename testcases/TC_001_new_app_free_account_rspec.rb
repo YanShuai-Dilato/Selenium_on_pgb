@@ -245,7 +245,7 @@ describe "TC_001: New app(s) with free account" do
             the_first_item.click
             sleep 5
 
-            wait_for_element_present(60, :xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
+            wait_for_element_present(:xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
 
             app_count_after = @new_app_page.get_existing_app_num
             first_app_id_after = @new_app_page.get_first_app_id

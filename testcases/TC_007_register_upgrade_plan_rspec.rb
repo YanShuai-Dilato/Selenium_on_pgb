@@ -92,7 +92,7 @@ describe "TC_007: Register -> upgrade plan (Free -> Paid)" do
 
         sleep 10
 
-        if isElementPreset?(30, :tag_name, "iframe") 
+        if isElementPreset?(:tag_name, "iframe") 
             @driver.switch_to.frame(0)
             puts "+ after @driver.switch_to.frame(0)"
             sleep 5    

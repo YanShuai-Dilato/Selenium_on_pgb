@@ -52,7 +52,7 @@ module NewAppDialog
 
 # ---------
     def ready_to_build_btn
-        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:ready_to_build_btn])
+        @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:ready_to_build_btn])
     end
     def rebuild_all_btn
         highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_succ_page][:rebuild_all_btn])
