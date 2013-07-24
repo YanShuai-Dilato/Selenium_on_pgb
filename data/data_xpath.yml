@@ -92,7 +92,7 @@
     :BillingAddressTwo: //*[@id='BillingAddressTwo']
     :BillingPhone: //*[@id='BillingPhone']
 :sign_in_succ_page: 
-    :first_app_id: /html/body/section/div/div/section[@id='apps-list']/article/section[2]/div/dl/dd
+    :first_app_id: //*[@id='apps-list']/article/section[2]/div/dl/dd #/html/body/section/div/div/section[@id='apps-list']/article/section[2]/div/dl/dd
     :new_app_btn: //*[@id='new-app-btn']
     :opensource_repo_tab: //*[@id='new-app']/form/div[1]/a[1]
     :private_repo_tab: //*[@id='new-app']/form/div[1]/a[2]
