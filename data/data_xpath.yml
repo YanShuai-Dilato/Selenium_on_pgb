@@ -244,6 +244,18 @@
             :save: /html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input
         :danger_zone: 
             :delete_this_app: //*[@id="delete-app"]
+:plugins_page:
+    :header_notifications: //*[@id="notifications-detail"]/div/section
+    :link_here_header_notifications: //*[@id="notifications-detail"]/div/section/a
+    :title: //*[@id="page-content"]/div/h1
+    :tab_all_supported_plugins: //*[@id="plugin-edit-controls"]/nav/a[1]
+    :tab_your_plugins: //*[@id="plugin-edit-controls"]/nav/a[2]
+    :link_sign_in_tab_your_plugins: //*[@id="plugin-your"]/fieldset/a
+    :you_have_no_plugins: //*[@id="plugin-your"]/fieldset/p
+    :tab_submit_plugin: //*[@id="plugin-edit-controls"]/nav/a[3]
+    :link_sign_in_tab_submit_plugin: //*[@id="plugin-your"]/fieldset/a
+    :please_sign_in_your: //*[@id="plugin-your"]/fieldset
+    :please_sign_in_add: //*[@id="plugin-add"]/fieldset
 :docs_page: 
     :header_home: //*[@id='main-nav']/a[2]
     :header_docs: //*[@id='main-nav']/a[3]
@@ -254,4 +266,3 @@
 :blog_page: 
     :recent_blog_posts: //*[@id='page-content']/div/article/header/h1
     :read_the_rest: 
----
