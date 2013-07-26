@@ -113,7 +113,7 @@
     :error_msg_ios_build_with_locked_signing_key: ""
     :error_msg_android_build_with_locked_signing_key: ""
     :error_msg_blackberry_build_with_locked_signing_key: ""
-    :plugin_header_notifications: "どのようにあなたのアプリケーションにプラグインを追加するには、変更されています。 ここにブログの記事をチェックしてください。."
+    :plugin_header_notifications: "アプリケーションへのプラグインの追加方法が変更されました。ここでブログの投稿をチェックしてください。"
     :plugin_title: "プラグイン"
     :plugin_tab_all_supported_plugins: "サポートされるすべてのプラグイン"
     :plugin_tab_your_plugins: "プラグイン"
