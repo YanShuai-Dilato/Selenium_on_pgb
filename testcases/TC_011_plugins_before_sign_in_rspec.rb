@@ -64,12 +64,12 @@ describe "TC_011: Check 'Plugins' page before signing in" do
 
     it "IT_006: should match to the localized 'Please sign in to submit or view your plugins.' at 'Your Plugins' tab " do 
         get(:tab_your_plugins).click
-        get(:link_sign_in_tab_your_plugins).text.should eql @data_str[$lang][:plugin_please_sign_in_your]
+        get(:please_sign_in_your).text.should eql @data_str[$lang][:plugin_please_sign_in_your]
     end
 
     it "IT_007: should match to the localized 'Please sign in to submit or view your plugins.' at 'Submit Plugin' tab " do 
         get(:tab_submit_plugin).click
-        get(:link_sign_in_tab_submit_plugin).text.should eql @data_str[$lang][:plugin_please_sign_in_add]
+        get(:please_sign_in_add).text.should eql @data_str[$lang][:plugin_please_sign_in_add]
     end
 
 end
