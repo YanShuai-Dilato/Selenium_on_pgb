@@ -32,9 +32,9 @@ class NewAppPage
     end
     
     # On the default page after signing in
-    # We can NOT see an btn, which says '+ new app', if there aren't any existing apps.
+    # We can NOT see the '+ new app' button, if there aren't any existing apps.
     # We can see the '+ new app' btn, if there are existing apps. 
-    # The '+ new app' btn opens the 'creating app' area, which we input information to create apps. 
+    # The '+ new app' btn opens the 'creating app' area, where we input information to create apps. 
     def new_app_btn_display?
         style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
         if style.chomp == "display: none;".chomp
