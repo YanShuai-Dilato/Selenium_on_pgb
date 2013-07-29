@@ -43,33 +43,41 @@ describe "TC_011: Check 'Plugins' page before signing in" do
     end
 
     it "IT_001: should match to the localized 'notifications' " do 
-        get(:header_notifications).text.should eql @data_str[$lang][:plugin_header_notifications]
+        plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_header_notifications]
     end
 
     it "IT_002: should match to the localized 'Plugins' " do 
-        get(:title).text.should eql @data_str[$lang][:plugin_title]
+        plugin_dialog_get(:title).text.should eql @data_str[$lang][:plugin_title]
     end
 
     it "IT_003: should match to the localized 'All Supported Plugins' " do 
-        get(:tab_all_supported_plugins).text.should eql @data_str[$lang][:plugin_tab_all_supported_plugins]
+        plugin_dialog_get(:tab_all_supported_plugins).text.should eql @data_str[$lang][:plugin_tab_all_supported_plugins]
     end
 
     it "IT_004: should match to the localized 'Your Plugins' " do 
-        get(:tab_your_plugins).text.should eql @data_str[$lang][:plugin_tab_your_plugins]
+        plugin_dialog_get(:tab_your_plugins).text.should eql @data_str[$lang][:plugin_tab_your_plugins]
     end
 
     it "IT_005: should match to the localized 'Submit Plugin' " do 
-        get(:tab_submit_plugin).text.should eql @data_str[$lang][:plugin_tab_submit_plugin]
+        plugin_dialog_get(:tab_submit_plugin).text.should eql @data_str[$lang][:plugin_tab_submit_plugin]
     end
 
     it "IT_006: should match to the localized 'Please sign in to submit or view your plugins.' at 'Your Plugins' tab " do 
-        get(:tab_your_plugins).click
-        get(:please_sign_in_your).text.should eql @data_str[$lang][:plugin_please_sign_in_your]
+        plugin_dialog_get(:tab_your_plugins).click
+        plugin_dialog_get(:please_sign_in_your).text.should eql @data_str[$lang][:plugin_please_sign_in_your]
     end
 
-    it "IT_007: should match to the localized 'Please sign in to submit or view your plugins.' at 'Submit Plugin' tab " do 
-        get(:tab_submit_plugin).click
-        get(:please_sign_in_add).text.should eql @data_str[$lang][:plugin_please_sign_in_add]
+    it "IT_007: should match to correct url '/people/sign_in'" do 
+        plugin_dialog_get(:link_sign_in_tab_your_plugins).attribute('href').should eql "#{base_url}/people/sign_in"
+    end
+
+    it "IT_008: should match to the localized 'Please sign in to submit or view your plugins.' at 'Submit Plugin' tab " do 
+        plugin_dialog_get(:tab_submit_plugin).click
+        plugin_dialog_get(:please_sign_in_add).text.should eql @data_str[$lang][:plugin_please_sign_in_add]
+    end
+
+    it "IT_009: should match to correct url '/people/sign_in'" do 
+        plugin_dialog_get(:link_sign_in_tab_submit_plugin).attribute('href').should eql "#{base_url}/people/sign_in"
     end
 
 end
