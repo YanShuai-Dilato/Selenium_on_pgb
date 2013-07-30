@@ -21,7 +21,6 @@ class SignInPage
         puts "+ <action> initialize SignInPage --- begin"
         @driver = driver
         @data_xpath = options.fetch(:xpath)
-        @data_str = options.fetch(:str)
         @data_user = options.fetch(:user)
         @data_url = options.fetch(:url)
         puts "+ <action> initialize SignInPage --- end"

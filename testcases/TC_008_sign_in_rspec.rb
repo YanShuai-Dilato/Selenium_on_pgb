@@ -38,7 +38,7 @@ describe "TC_008: Sign in" do
     before(:each) do
         @driver = browser     # have to start a new instance each time to clean the cache.
         @driver.manage.window.maximize
-        @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
+        @sign_in_page = SignInPage.new @driver, user: @data_user, url: @data_url, xpath: @data_xpath
     end
 
     after(:each) do  # Take screenshot in case of failure

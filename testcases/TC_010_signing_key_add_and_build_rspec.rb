@@ -36,13 +36,13 @@ describe "TC_010: signing_key_add_and_build_rspec" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
         @data_signing_key = YAML::load(File.read(File.expand_path("../../data/data_signing_key.yml", __FILE__)))
 
-        @driver = browser # have to start a new instance each time to clean the cache.
+        @driver = browser 
         @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
-        @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
+        @sign_in_page = SignInPage.new @driver, user: @data_user, url: @data_url, xpath: @data_xpath
         @new_app_page = NewAppPage.new(@driver)
-        @app_builds_page = AppBuildsPage.new(@driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath)
-        @edit_account_page = EditAccountPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
+        @app_builds_page = AppBuildsPage.new(@driver, user: @data_user, url: @data_url, xpath: @data_xpath)
+        @edit_account_page = EditAccountPage.new @driver, user: @data_user, url: @data_url, xpath: @data_xpath
 
         @driver.get path_format_locale("/people/sign_in")
         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],

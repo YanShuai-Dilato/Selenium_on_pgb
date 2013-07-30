@@ -294,7 +294,7 @@ class EditAccountPage
 
     def delete_my_account(id, password)
         @driver.get path_format_locale(base_url = "https://buildstage.phonegap.com", @data_url[:sign_in])
-        sign_in_page = SignInPage.new @driver, xpath: @data_xpath, user: @data_user, str: @data_str, url: @data_url
+        sign_in_page = SignInPage.new @driver, xpath: @data_xpath, user: @data_user, url: @data_url
         sign_in_page.sign_in_with_github_id(id, password)
         @driver.get path_format_locale(base_url = "https://buildstage.phonegap.com", @data_url[:edit_account])
 

@@ -63,7 +63,7 @@ describe "TC_001: New app(s) with free account" do
             @driver.manage.window.maximize
             @new_app_page = NewAppPage.new(@driver)
             @driver.get path_format_locale("/people/sign_in")
-            @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
+            @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, user: @data_user
             @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                                 @data_user[$lang][:adobe_id_free_002][:password])
             sleep 10
@@ -238,7 +238,7 @@ describe "TC_001: New app(s) with free account" do
             if @new_app_page.new_app_btn_display? 
                 new_app_btn.click
                 puts "new_app_btn.click"
-            end        
+            end
             paste_git_repo_input.clear
             paste_git_repo_input.send_keys("start")
             the_first_item = @driver.find_element(:xpath => "//*[@id='new-app']/form/div[2]/div[1]/div/ul/li")

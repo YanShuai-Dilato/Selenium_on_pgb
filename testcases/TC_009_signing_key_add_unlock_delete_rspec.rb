@@ -34,8 +34,8 @@ describe "TC_009: signing_key_add_and_unlock_rspec" do
 
         @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
-        @sign_in_page = SignInPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
-        @edit_account_page = EditAccountPage.new @driver, user: @data_user, str: @data_str, url: @data_url, xpath: @data_xpath
+        @sign_in_page = SignInPage.new @driver, user: @data_user, url: @data_url, xpath: @data_xpath
+        @edit_account_page = EditAccountPage.new @driver, user: @data_user, url: @data_url, xpath: @data_xpath
 
         @driver.get path_format_locale("/people/sign_in")
         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],

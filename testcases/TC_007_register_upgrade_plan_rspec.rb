@@ -43,7 +43,7 @@ describe "TC_007: Register -> upgrade plan (Free -> Paid)" do
     before(:each) do 
         @driver = browser
         @driver.manage.window.maximize
-        @sign_in_page = SignInPage.new @driver, url: @data_url, xpath: @data_xpath, user: @data_user, str: @data_str
+        @sign_in_page = SignInPage.new @driver, url: @data_url, xpath: @data_xpath, user: @data_user
         @new_app_page = NewAppPage.new @driver
         @driver.get path_format_locale("/people/sign_in")
 

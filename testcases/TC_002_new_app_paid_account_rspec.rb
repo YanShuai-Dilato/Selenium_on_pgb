@@ -33,7 +33,7 @@ describe "TC_002: New apps with paid account" do
         @driver.manage.window.maximize
         @new_app_page = NewAppPage.new(@driver)
         @driver.get path_format_locale("/people/sign_in")
-        @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, str: @data_str, user: @data_user
+        @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, user: @data_user
         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_paid_001][:id],
                                             @data_user[$lang][:adobe_id_paid_001][:password])
         sleep 5
