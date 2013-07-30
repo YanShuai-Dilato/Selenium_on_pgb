@@ -45,8 +45,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 	  # init config
       ENV['PGBBROWSER'] = 'chrome'
       ENV['PGBLANG'] = 'en_US'
-    end
-    # 
+    end 
     # Set testing browser for ENV['PGBBROWSER'] . Support 'chrome , firefox ,ie ...' . Full support can be found at http://docs.seleniumhq.org/docs/03_webdriver.jsp
     # Set the locale for ENV['PGBLANG'].By now , en_US , fr_FR, ja_JP are available.
     # Manage the running testcases for 't.pattern'.
@@ -55,8 +54,8 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     
 4, Run the test 
 	
-    $ rake    	                 # Run default task
-    $ rake :taskname             # Run specific task
+    $ PGBBROWSER=firefox PGBLANG=en_US rake TC[all]      # Run all testcases
+    $ PGBBROWSER=chrome  PGBLANG=fr_FR rake TC[001]      # Run the first testcase
 	
 	
 5, Then you can find the result file (log.txt) at the following directory. 
@@ -126,4 +125,7 @@ https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
     TC_008_sign_in_rspec.rb
     TC_009_signing_key_add_unlock_delete_rspec.rb
     TC_010_signing_key_add_and_build_rspec.rb
+    TC_011_plugins_before_sign_in_rspec.rb    
+    TC_012_plugins_after_sign_in_rspec.rb
+
 
