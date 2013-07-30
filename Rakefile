@@ -27,7 +27,7 @@ if defined? RSpec
 
         if "ALL" == args.order.upcase
             name_subdir = init_folders 
-            puts "------ Running all testcases ------"            
+            puts "------ Running all testcases ------" 
             t.pattern = "./testcases/*_rspec.rb"
             t.rspec_opts = "--format d >> ./auto_results/#{name_subdir}/all_result.txt "
         elsif TESTCASE_FILES.find { |e| e.include?("#{args.order}") }  
