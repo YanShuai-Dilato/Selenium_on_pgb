@@ -27,6 +27,7 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
         @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
         @data_user = YAML::load(File.read(File.expand_path("../../data/data_user.yml",__FILE__)))
+        @data_plugin = YAML::load(File.read(File.expand_path("../../data/data_plugin.yml",__FILE__)))
         @driver = browser 
         @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
@@ -64,18 +65,25 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         end
 
         it "IT_002: should match to localized error msg when filling in repo url with invalid one" do 
-            plugin_dialog_get(:plugin_git_repository_url).send_keys("xxxxx\n")
+            plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:invalid_plugin][:url])
             plugin_dialog_get(:plugin_git_repository_url_msg).text.should @data_str[$lang][:plugin_git_url_error_msg]
         end
 
-        it "IT_003: " do 
-
+        it "IT_003: should submit plugin successfully" do 
+            plugin_dialog_get(:plugin_git_repository_url).clear
+            plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
+            plugin_dialog_get(:optional_tag_or_branch).send_keys(@data_plugin[:new_plugin][:branch])
+            plugin_dialog_get(:btn_submit_plugin).click
+            plugin_dialog_get(:checkbox_accept_license).click
+            plugin_dialog_get(:btn_reset).click
+            # plugin_dialog_get(:btn_submit).click # will submit the plugin
+            "abc".should eql "abc"
         end
     end
 
     describe "Trying to submit plugin with Adobe ID (which has been connected to Github)" do 
         before do 
-            # sign off 
+            # sign out 
             # sign in with another account
             # 
         end

@@ -39,6 +39,7 @@
     :plugin_tab_submit_plugin: "Submit Plugin"
     :plugin_please_sign_in_your: "Please sign in to submit or view your plugins."
     :plugin_please_sign_in_add: "Please sign in to submit or view your plugins."
+    :plugin_git_repository_url_msg: "Not a valid Github URL"
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -80,6 +81,7 @@
     :plugin_tab_submit_plugin: "Envoyer le module externe"
     :plugin_please_sign_in_your: "not-localized-fr-FR"
     :plugin_please_sign_in_add: "not-localized-fr-FR"
+    :plugin_git_repository_url_msg: "Pas une URL Github valide"
 :ja_JP:
     :not_found_in_database: "電子メールアドレスまたはパスワードが無効です。"
     :PGB_email_not_found: "1 件のエラー :電子メールが見つかりません"
@@ -121,3 +123,4 @@
     :plugin_tab_submit_plugin: "プラグインを送信"
     :plugin_please_sign_in_your: "not-localized-ja-JP"
     :plugin_please_sign_in_add: "not-localized-ja-JP"
+    :plugin_git_repository_url_msg: "有効な Github URL ではありません"

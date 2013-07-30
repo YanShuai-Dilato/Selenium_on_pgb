@@ -1,4 +1,15 @@
 ---
+:header:
+    :main_nav_link_logo: //*[@id="logo"]
+    :main_nav_link_apps: //*[@id="main-nav"]/a[2]
+    :main_nav_link_plugins: //*[@id="main-nav"]/a[3]
+    :main_nav_link_docs: //*[@id="main-nav"]/a[4]
+    :main_nav_link_blog: //*[@id="main-nav"]/a[5]
+    :main_nav_link_faq: //*[@id="main-nav"]/a[6]
+    :main_nav_link_support: //*[@id="main-nav"]/a[7]
+    :account_navlink_edit: //*[@id="account-btn"]
+    :account_navlink_edit_account: //*[@id="account-options"]/a[1]
+    :account_navlink_sign_out: //*[@id="account-options"]/a[2]
 :home_page:
     :btn_home: //*[@id='main-nav']/a[2]
     :btn_docs: //*[@id='main-nav']/a[3]
@@ -256,13 +267,10 @@
     :link_sign_in_tab_submit_plugin: //*[@id="plugin-your"]/fieldset/a
     :please_sign_in_your: //*[@id="plugin-your"]/fieldset
     :please_sign_in_add: //*[@id="plugin-add"]/fieldset
-:docs_page: 
-    :header_home: //*[@id='main-nav']/a[2]
-    :header_docs: //*[@id='main-nav']/a[3]
-    :header_blog: //*[@id='main-nav']/a[4]
-    :header_support: //*[@id='main-nav']/a[5]
-    :documentation: //*[@id='page-content']/div/article/header/h1
-    :preparing_your_application: //*[@id='docs-menu']/a[1]
-:blog_page: 
-    :recent_blog_posts: //*[@id='page-content']/div/article/header/h1
-    :read_the_rest: 
+    :plugin_git_repository_url: //*[@id="plugin_git_url"]
+    :plugin_git_repository_url_msg: //*[@id="plugin-add"]/fieldset/form/dl[1]/dd/div/span
+    :optional_tag_or_branch: //*[@id="plugin-add"]/fieldset/form/dl[2]/dd/input
+    :btn_submit_plugin: //*[@id="submit-plugin-btn"]
+    :checkbox_accept_license: //*[@id="checkbox-accept-license"]
+    :btn_reset: //*[@id="terms-form"]/footer/button[1]
+    :btn_submit: //*[@id="terms-submit-plugin"]

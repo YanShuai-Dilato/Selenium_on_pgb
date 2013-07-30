@@ -5,9 +5,12 @@ require_relative "../lib/webdriver_helper"
 module SignInDialog
     include WebdriverHelper
 
+    def method_name element
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_page][element]) 
+    end
+
     def id_textinput
-        field = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:adobe_id]) 
-        highlight_and_return field
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_page][:adobe_id]) 
     end
     def password_textinput
         highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_page][:password]) 
@@ -37,7 +40,7 @@ module SignInDialog
         highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_page][:resend_confirm_instru_btn])
     end
     def error_message_box
-        highlight_and_return @error_message_box = @driver.find_element(:xpath => @data_xpath[:sign_in_page][:error_message]) 
+        highlight_and_return @driver.find_element(:xpath => @data_xpath[:sign_in_page][:error_message]) 
     end
 
     def enter_email_address(email)
