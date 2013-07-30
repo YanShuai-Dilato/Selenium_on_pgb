@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 module HomeDialog
-    def home_home()              @the_home_page = @data[:home_page]     end
+    def home_home()         @the_home_page = @data[:home_page]     end
     def home_link()         @driver.find_element(:xpath => home_home[:home])    end
     def docs_link()         @driver.find_element(:xpath => home_home[:docs])    end
     def blog_link()         @driver.find_element(:xpath => home_home[:blog])    end
