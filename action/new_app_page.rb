@@ -28,7 +28,7 @@ class NewAppPage
     # Get the ID of the top one of all apps
     # In order to compare it with new-created app's ID to verify if new app was created successfully. 
     def get_first_app_id
-        first_app_id.text
+        newappdialog_get(:first_app_id).text
     end
     
     # On the default page after signing in
@@ -36,7 +36,7 @@ class NewAppPage
     # We can see the '+ new app' btn, if there are existing apps. 
     # The '+ new app' btn opens the 'creating app' area, where we input information to create apps. 
     def new_app_btn_display?
-        style = @driver.find_element(:xpath, @data_xpath[:sign_in_succ_page][:new_app_btn]).attribute("style")
+        style = newappdialog_get(:new_app_btn).attribute("style")
         if style.chomp == "display: none;".chomp
             sleep 5
             puts "+ <action> new_app_btn_display? NO"
@@ -51,8 +51,8 @@ class NewAppPage
     # Return true if can not
     # Return false if can 
     def private_app_no?
-        disabled_or_not_upload =  upload_a_zip_btn.attribute('disabled') # true/false
-        disabled_or_not_paste = paste_git_repo_input.attribute('disabled') # true/false
+        disabled_or_not_upload =  newappdialog_get(:upload_a_zip_btn).attribute('disabled') 
+        disabled_or_not_paste = newappdialog_get(:paste_git_repo_input).attribute('disabled') 
         if disabled_or_not_paste && disabled_or_not_upload
             puts "+ <action> private_app_no? NO"
             return true
@@ -69,13 +69,12 @@ class NewAppPage
         puts "+ <action> New app with a zip file --- begin "
         sleep 5
         if new_app_btn_display?
-            new_app_btn.click
+            newappdialog_get(:new_app_btn).click
             sleep 2
-            private_tab.click
+            newappdialog_get(:private_repo_tab).click
             sleep 2
         end
         
-        puts private_app_no?.to_s
         sleep 3
         if private_app_no?
             puts "+ <action> New app with a zip file --- end "
@@ -83,13 +82,15 @@ class NewAppPage
         end
 
         #excute javascript to show the element in order to magic uploading file
-        @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",upload_a_zip_btn)
+        @driver.execute_script("arguments[0].style.visibility = 'visible'; arguments[0].style.width = '1px';arguments[0].style.height = '1px';arguments[0].style.opacity = 1",newappdialog_get(:upload_a_zip_btn))
 
         os = win_or_mac
         if os == 'mac' 
-            upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
-        else
-            upload_a_zip_btn.send_keys "C:\\anotherあ你äōҾӲ.zip"
+            newappdialog_get(:upload_a_zip_btn).send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
+        elsif os == 'win'
+            newappdialog_get(:upload_a_zip_btn).send_keys "C:\\anotherあ你äōҾӲ.zip"
+        else 
+            railse "Not supported Operating System."
         end
 
         sleep 10
@@ -107,11 +108,11 @@ class NewAppPage
         # Selenium::WebDriver::Wait.new(:timeout => 120).until { new_app_btn }
         sleep 10
         if new_app_btn_display?
-            new_app_btn.click
+            newappdialog_get(:new_app_btn).click
         end
-        opensource_tab.click
-        paste_git_repo_input.clear
-        paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
+        newappdialog_get(:opensource_repo_tab).click
+        newappdialog_get(:paste_git_repo_input).clear
+        newappdialog_get(:paste_git_repo_input).send_keys @data_app[:new_app][:by_repo] + "\n"
         sleep 10
         wait_for_element_present(:xpath, @data_xpath[:sign_in_succ_page][:first_app_id])
         puts "+ <action> New public app with github repo --- end"
@@ -123,12 +124,12 @@ class NewAppPage
     def new_private_app_with_repo
         puts "+ <action> New a private app with github repo --- begin" 
         if new_app_btn_display?
-            new_app_btn.click
+            newappdialog_get(:new_app_btn).click
         end
-        private_tab.click
+        newappdialog_get(:private_repo_tab).click
         if !private_app_no?
             puts "+ <action> New a private app with github repo --- end" 
-            paste_git_repo_input.send_keys @data_app[:new_app][:by_repo] + "\n"
+            newappdialog_get(:paste_git_repo_input).send_keys @data_app[:new_app][:by_repo] + "\n"
         else
             puts "+ <action> New a private app with github repo --- end" 
             return false
@@ -138,10 +139,10 @@ class NewAppPage
     
     def paste_a_git_repo(repo_address)
         if new_app_btn_display?
-            new_app_btn.click
+            newappdialog_get(:new_app_btn).click
         end
-        paste_git_repo_input.send_keys(repo_address + "\n")
-        return error_not_a_valid_address.text
+        newappdialog_get(:paste_git_repo_input).send_keys(repo_address + "\n")
+        return newappdialog_get(:not_a_valid_github_url).text
     end
 
 end
