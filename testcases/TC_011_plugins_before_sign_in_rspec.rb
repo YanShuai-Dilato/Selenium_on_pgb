@@ -42,9 +42,10 @@ describe "TC_011: Check 'Plugins' page before signing in" do
         end
     end
 
-    it "IT_001: should match to the localized 'notifications' " do 
-        plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_header_notifications]
-    end
+    # This notification has been removed, so we remove this test. 
+    # it "IT_001: should match to the localized 'notifications' " do 
+    #     plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_header_notifications]
+    # end
 
     it "IT_002: should match to the localized 'Plugins' " do 
         plugin_dialog_get(:title).text.should eql @data_str[$lang][:plugin_title]
