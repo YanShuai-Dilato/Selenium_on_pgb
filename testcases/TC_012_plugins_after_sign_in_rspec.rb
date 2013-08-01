@@ -53,6 +53,7 @@ describe "TC_012: Check 'Plugins' page after signing in" do
     end
 
     describe "The first time signing in" do 
+
         it "IT_001: should have no submitted plugins" do 
             plugin_dialog_get(:tab_your_plugins).click
             plugin_dialog_get(:you_have_no_plugins).text.should eql @data_str[$lang][:plugin_you_have_no_plugins]
@@ -60,8 +61,12 @@ describe "TC_012: Check 'Plugins' page after signing in" do
     end
 
     describe "Trying to submit plugin with Adobe ID (which has NOT been connected to Github)" do 
-        before do 
+        before(:all) do 
            plugin_dialog_get(:tab_submit_plugin).click 
+        end
+
+        after(:all) do 
+            # To delete the submitted plugin 
         end
 
         it "IT_002: should match to localized error msg when filling in repo url with invalid one" do 
@@ -69,7 +74,12 @@ describe "TC_012: Check 'Plugins' page after signing in" do
             plugin_dialog_get(:plugin_git_repository_url_msg).text.should @data_str[$lang][:plugin_git_url_error_msg]
         end
 
-        it "IT_003: should submit plugin successfully" do 
+        it "IT_003: should match to localized msg when filling in repo url with valid one" do 
+            plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
+            plugin_dialog_get(:plugin_git_repository_url_msg).text.should @data_str[$lang][:plugin_git_url_valid_msg]
+        end
+
+        it "IT_004: should submit plugin successfully" do 
             plugin_dialog_get(:plugin_git_repository_url).clear
             plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
             plugin_dialog_get(:optional_tag_or_branch).send_keys(@data_plugin[:new_plugin][:branch])
@@ -82,14 +92,23 @@ describe "TC_012: Check 'Plugins' page after signing in" do
     end
 
     describe "Trying to submit plugin with Adobe ID (which has been connected to Github)" do 
-        before do 
+        before(:all) do 
             # sign out 
-            # sign in with another account
+            # sign in with another account, which has connected with Github 
             # 
+            puts "Hello"
         end
 
-        it "" do  # do something similar to the previous describe block.  
+        after(:all) do 
+            puts "World"
+        end
 
+        it "abc should eql abc 1" do  # do something similar to the previous describe block.  
+            "abc".should eql "abc"
+        end
+
+        it "abc should eql abc 2" do 
+            "abc".should eql "abc"
         end
     end
 
