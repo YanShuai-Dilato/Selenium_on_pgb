@@ -21,7 +21,6 @@ class EditAccountPage
         @base_url = base_url
         @driver = driver
         @data_xpath = options.fetch(:xpath)
-        @data_str = options.fetch(:str)
         @data_user = options.fetch(:user)
         @data_url = options.fetch(:url)
         @data_signing_key = YAML::load(File.read(File.expand_path("../../data/data_signing_key.yml",__FILE__)))
@@ -293,14 +292,13 @@ class EditAccountPage
 
 
     def delete_my_account(id, password)
-        @driver.get path_format_locale(base_url = "https://buildstage.phonegap.com", @data_url[:sign_in])
+        @driver.get path_format_locale("http://buildstage.phonegap.com", @data_url[:sign_in])
         sign_in_page = SignInPage.new @driver, xpath: @data_xpath, user: @data_user, url: @data_url
         sign_in_page.sign_in_with_github_id(id, password)
-        @driver.get path_format_locale(base_url = "https://buildstage.phonegap.com", @data_url[:edit_account])
-
+        @driver.get path_format_locale("http://buildstage.phonegap.com", @data_url[:edit_account])
         @driver.execute_script("document.getElementById('delete-account').style['display'] = 'block'")
         puts "+ after executing script"
-        sleep 3
+        sleep 5
         
         @driver.find_element(:xpath => "//*[@id='delete-account']/section/fieldset/a").click  
 

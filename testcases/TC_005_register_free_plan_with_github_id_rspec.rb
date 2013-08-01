@@ -34,6 +34,7 @@ describe "TC_005: Register an free plan account with Github ID" do
     end
 
     after(:all) do 
+        puts "-------------after all---------------"
         EditAccountPage.new(browser, xpath: @data_xpath, url: @data_url, user: @data_user)
             .delete_my_account(
                 @data_user[$lang][:adobe_id_free_final_step][:id],
@@ -59,66 +60,68 @@ describe "TC_005: Register an free plan account with Github ID" do
         end
     end
 
-        it "IT_001: direct to '/apps' page when sign in successfully with github id(which is connected to pgb), " do 
-            github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
-            github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
-            github_login_field_submit.click
-            sleep 5
-            
-            @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
-        end
+    it "xxx" do 
+        "abc".should eql "abc"
+    end
 
-        it "IT_002: Got an error message('Existing Registration Found') when use account that can log in both. " do  
-            github_login_field_username.send_keys(@data_user[$lang][:email_that_login_both][:id])
-            github_login_field_password.send_keys(@data_user[$lang][:email_that_login_both][:password])
-            github_login_field_submit.click
-            sleep 5
-            warning_existing_registration_found.text.should eql @data_str[$lang][:PGB_existing_registration_found]
-        end
+    it "IT_001: direct to '/apps' page when sign in successfully with github id(which is connected to pgb), " do 
+        github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
+        github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
+        github_login_field_submit.click
+        sleep 5
+        
+        @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
+    end
+    it "IT_002: Got an error message('Existing Registration Found') when use account that can log in both. " do  
+        github_login_field_username.send_keys(@data_user[$lang][:email_that_login_both][:id])
+        github_login_field_password.send_keys(@data_user[$lang][:email_that_login_both][:password])
+        github_login_field_submit.click
+        sleep 5
+        warning_existing_registration_found.text.should eql @data_str[$lang][:PGB_existing_registration_found]
+    end
 
-        it "IT_003: Got an error message when proceed without selecting a country" do 
-            github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
-            github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
-            github_login_field_submit.click
-            sleep 5
-            github_login_field_agree_to_the_adobe_terms.click
-            github_login_field_complete_my_registration.click
-            sleep 3
-            github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_alert_you_must_select_a_country]
-        end
+    it "IT_003: Got an error message when proceed without selecting a country" do 
+        github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
+        github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
+        github_login_field_submit.click
+        sleep 15
+        github_login_field_agree_to_the_adobe_terms.click
+        github_login_field_complete_my_registration.click
+        sleep 3
+        github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_alert_you_must_select_a_country]
+    end
 
-        it "IT_004: Got an error message when proceed without agree to the terms of service" do 
-            github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
-            github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
-            github_login_field_submit.click
-            sleep 5
-            github_login_field_select_a_country.find_elements(:tag_name => "option").each do |country| 
-                if(country.text == "Japan") 
-                    country.click
-                    break
+    it "IT_004: Got an error message when proceed without agree to the terms of service" do 
+        github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
+        github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
+        github_login_field_submit.click
+        sleep 5
+        github_login_field_select_a_country.find_elements(:tag_name => "option").each do |country| 
+            if(country.text == "Japan") 
+                country.click
+                break
+            end
+        end
+        github_login_field_complete_my_registration.click
+        sleep 3
+        github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_you_mush_agree_to_the_terms_of_service]
+    end
+    it "IT_005: page direct to '/apps' after sign in successfully with valid appropriate account . " do 
+        github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
+        github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
+        github_login_field_submit.click
+        sleep 5
+        github_login_field_select_a_country.find_elements(:tag_name => "option").each do |country| 
+            if(country.text == "United States") 
+                puts country.text
+                country.click
+                break
                 end
             end
-            github_login_field_complete_my_registration.click
-            sleep 3
-            github_login_field_warning_msg.text.should eql @data_str[$lang][:PGB_you_mush_agree_to_the_terms_of_service]
-        end
-
-        it "IT_005: page direct to '/apps' after sign in successfully with valid appropriate account . " do 
-            github_login_field_username.send_keys(@data_user[$lang][:adobe_id_free_final_step][:id])
-            github_login_field_password.send_keys(@data_user[$lang][:adobe_id_free_final_step][:password])
-            github_login_field_submit.click
-            sleep 5
-            github_login_field_select_a_country.find_elements(:tag_name => "option").each do |country| 
-                if(country.text == "United States") 
-                    puts country.text
-                    country.click
-                    break
-                end
-            end
-            github_login_field_agree_to_the_adobe_terms.click
-            github_login_field_complete_my_registration.click
-            sleep 15
-            @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
-        end
+        github_login_field_agree_to_the_adobe_terms.click
+        github_login_field_complete_my_registration.click
+        sleep 15
+        @driver.current_url.should eql @base_url + @data_url[:sign_in_successfully]
+    end
 
 end

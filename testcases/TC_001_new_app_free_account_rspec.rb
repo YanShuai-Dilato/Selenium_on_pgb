@@ -42,7 +42,6 @@ describe "TC_001: New app(s) with free account" do
         webhelper_delete_all_apps @data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password]
         webhelper_delete_all_apps @data_user[$lang][:adobe_id_free_connected_github][:id], @data_user[$lang][:adobe_id_free_connected_github][:password]
         puts "+ <TC_001> after all outer --- end"
-        @driver.quit
     end
 
     after(:each) do  # Take screenshot in case of failure
