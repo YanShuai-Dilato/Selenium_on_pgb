@@ -3,7 +3,7 @@
 module HeaderDialog
 
   define_method :header_get do |xpth|
-    highlight_and_return @driver.find_element(:xpath => @data_xpath[:header][xpth]) 
+    @driver.find_element(:xpath => @data_xpath[:header][xpth]) 
   end
 
   define_method "go_to_page" do |which| 
