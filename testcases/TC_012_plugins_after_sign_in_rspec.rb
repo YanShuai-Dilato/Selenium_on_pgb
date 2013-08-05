@@ -58,7 +58,7 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         end
     end
 
-    describe "Trying to submit plugin with Adobe ID (which has NOT been connected to Github)" do 
+    describe "Trying to submit plugin with Adobe ID" do 
         before(:all) do 
            plugin_dialog_get(:tab_submit_plugin).click 
         end
