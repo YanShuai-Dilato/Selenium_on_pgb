@@ -7,7 +7,7 @@ module HeaderDialog
   end
 
   define_method "go_to_page" do |which| 
-    header_get("main_nav_link_#{which}").click
+    header_get("main_nav_link_#{which}".to_sym).click
   end
 
   def sign_out
