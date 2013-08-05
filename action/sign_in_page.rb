@@ -31,6 +31,9 @@ class SignInPage
     def sign_in_with_adobe_id(id,password)
         puts "+ <action> sign_in_with_adobe_id --- begin"
 
+        @driver.get path_format_locale(base_url,"/people/sign_in")
+        puts "+ <action Go to sign_in page ... " 
+
         # Chrome's warning message about invalid information just 
         # stop us to click the 'Sign in' button. 
         # So we decide to change its type and just disable the chrome feature 

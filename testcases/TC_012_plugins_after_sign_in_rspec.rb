@@ -31,8 +31,6 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         @driver = browser 
         @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
-        
-        @driver.get path_format_locale("/people/sign_in")
 
         @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, user: @data_user
         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
@@ -79,37 +77,30 @@ describe "TC_012: Check 'Plugins' page after signing in" do
             plugin_dialog_get(:plugin_git_repository_url_msg).text.should @data_str[$lang][:plugin_git_url_valid_msg]
         end
 
-        it "IT_004: should submit plugin successfully" do 
+        # it "IT_004: should submit plugin successfully" do 
+        #     plugin_dialog_get(:plugin_git_repository_url).clear
+        #     plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
+        #     plugin_dialog_get(:optional_tag_or_branch).send_keys(@data_plugin[:new_plugin][:branch])
+        #     plugin_dialog_get(:btn_submit_plugin).click
+        #     plugin_dialog_get(:checkbox_accept_license).click
+        #     plugin_dialog_get(:btn_submit).click # will submit the plugin
+        #     sleep 10
+        #     @driver.current_url.should =~ /http:\/\/loc.build.phonegap.com\/plugins\/\d+/
+        #     plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_submit_successfully_msg]
+        # end
+
+        it "IT_005: should match to localized msg 'duplicated'" do 
             plugin_dialog_get(:plugin_git_repository_url).clear
             plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
             plugin_dialog_get(:optional_tag_or_branch).send_keys(@data_plugin[:new_plugin][:branch])
             plugin_dialog_get(:btn_submit_plugin).click
             plugin_dialog_get(:checkbox_accept_license).click
-            plugin_dialog_get(:btn_reset).click
-            # plugin_dialog_get(:btn_submit).click # will submit the plugin
-            "abc".should eql "abc"
+            plugin_dialog_get(:btn_submit).click
+            sleep 10
+            @driver.current_url.should =~ /http:\/\/loc.build.phonegap.com\/plugins#add/
+            plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_submit_duplicated_msg]
         end
     end
 
-    describe "Trying to submit plugin with Adobe ID (which has been connected to Github)" do 
-        before(:all) do 
-            # sign out 
-            # sign in with another account, which has connected with Github 
-            # 
-            puts "Hello"
-        end
-
-        after(:all) do 
-            puts "World"
-        end
-
-        it "abc should eql abc 1" do  # do something similar to the previous describe block.  
-            "abc".should eql "abc"
-        end
-
-        it "abc should eql abc 2" do 
-            "abc".should eql "abc"
-        end
-    end
 
 end

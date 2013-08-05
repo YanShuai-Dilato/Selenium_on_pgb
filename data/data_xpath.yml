@@ -10,6 +10,8 @@
     :account_navlink_edit: //*[@id="account-btn"]
     :account_navlink_edit_account: //*[@id="account-options"]/a[1]
     :account_navlink_sign_out: //*[@id="account-options"]/a[2]
+    :account_navlink_sign_in: //*[@id="account-nav"]/a[1]
+    :account_navlink_register: //*[@id="account-nav"]/a[2]
 :sign_in_page: 
     :adobe_id: //*[@id='person_email']
     :password: //*[@id='person_password']

@@ -41,6 +41,9 @@
     :plugin_please_sign_in_add: "Please sign in to submit or view your plugins."
     :plugin_git_repository_url_error_msg: "Not a valid Github URL"
     :plugin_git_repository_url_valid_msg: "Valid Github URL!"
+    :plugin_submit_successfully_msg: "Thank you for submitting your plugin. It will be reviewed by Adobe, and you may be contacted if any additional information is needed."
+    :plugin_submit_duplicated_msg: "A plugin already exists with that plugin id and version"
+    :plugin_uri_invalid_msg: "GitHub repository URI is invalid"
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -84,6 +87,9 @@
     :plugin_please_sign_in_add: "not-localized-fr-FR"
     :plugin_git_repository_url_error_msg: "Pas une URL Github valide"
     :plugin_git_repository_url_valid_msg: "URL Github valide"
+    :plugin_submit_successfully_msg: "Merci d’avoir envoyé votre module externe. Il sera étudié par un employé d’Adobe. Vous serez contacté s’il manque des informations."
+    :plugin_submit_duplicated_msg: "Il existe déjà un module externe avec cet ID et cette version."
+    :plugin_uri_invalid_msg: "URI du référentiel GitHub incorrect"
 :ja_JP:
     :not_found_in_database: "電子メールアドレスまたはパスワードが無効です。"
     :PGB_email_not_found: "1 件のエラー :電子メールが見つかりません"
@@ -127,3 +133,6 @@
     :plugin_please_sign_in_add: "not-localized-ja-JP"
     :plugin_git_repository_url_error_msg: "有効な Github URL ではありません"
     :plugin_git_repository_url_valid_msg: "有効な Github URL です"
+    :plugin_submit_successfully_msg: "プラグインのご送付ありがとうございます。アドビの担当者が確認します。追加の情報が必要な場合は担当者から連絡させていただく場合があります。"
+    :plugin_submit_duplicated_msg: "このプラグイン ID およびバージョンのプラグインは既に存在します"
+    :plugin_uri_invalid_msg: "GitHub リポジトリの URI が無効です"
