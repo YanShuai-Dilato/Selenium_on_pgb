@@ -12,6 +12,10 @@
     :account_navlink_sign_out: //*[@id="account-options"]/a[2]
     :account_navlink_sign_in: //*[@id="account-nav"]/a[1]
     :account_navlink_register: //*[@id="account-nav"]/a[2]
+:footer:
+    :nav_select_locale: //*[@id="select-locale"]
+    :nav_apps: //*[@id="footer-navigation"]/nav/a[1]
+    :nav_plugins: //*[@id="footer-navigation"]/nav/a[2]
 :sign_in_page: 
     :adobe_id: //*[@id='person_email']
     :password: //*[@id='person_password']
