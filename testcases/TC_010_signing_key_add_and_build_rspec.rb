@@ -67,30 +67,30 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
     context "--- " do 
         before(:all) do 
-            # @driver.get @base_url + "/people/edit"
-            # puts "+ Page gets to: #{@base_url}/people/edit -> Tab: Signing-Keys"
-            # sleep 5
-            # signing_keys_tab.click
+            @driver.get @base_url + "/people/edit"
+            puts "+ Page gets to: #{@base_url}/people/edit -> Tab: Signing-Keys"
+            sleep 5
+            signing_keys_tab.click
 
             # Add valid and invalid signing_key for each app
-            # @edit_account_page.add_ios_signing_key "valid"
-            # @edit_account_page.add_ios_signing_key "invlaid"
-            # @edit_account_page.to_unlock_1st_ios_signing_key
-            # @edit_account_page.to_unlock_2nd_ios_signing_key_with_invalid_password
-            # @edit_account_page.to_make_1st_signing_key_default
+            @edit_account_page.add_ios_signing_key "valid"
+            @edit_account_page.add_ios_signing_key "invlaid"
+            @edit_account_page.to_unlock_1st_ios_signing_key
+            @edit_account_page.to_unlock_2nd_ios_signing_key_with_invalid_password
+            @edit_account_page.to_make_1st_signing_key_default
 
-            # @edit_account_page.add_android_signing_key "valid"
-            # @edit_account_page.add_android_signing_key "invalid"
-            # @edit_account_page.to_unlock_1st_android_signing_key
-            # @edit_account_page.to_unlock_2nd_android_signing_key_with_invalid_password
+            @edit_account_page.add_android_signing_key "valid"
+            @edit_account_page.add_android_signing_key "invalid"
+            @edit_account_page.to_unlock_1st_android_signing_key
+            @edit_account_page.to_unlock_2nd_android_signing_key_with_invalid_password
 
-            # @edit_account_page.add_blackberry_signing_key "valid"
-            # @edit_account_page.add_blackberry_signing_key "invalid"
-            # @edit_account_page.to_unlock_1st_blackberry_signing_key
-            # @edit_account_page.to_unlock_2nd_blackberry_signing_key_with_invalid_password
+            @edit_account_page.add_blackberry_signing_key "valid"
+            @edit_account_page.add_blackberry_signing_key "invalid"
+            @edit_account_page.to_unlock_1st_blackberry_signing_key
+            @edit_account_page.to_unlock_2nd_blackberry_signing_key_with_invalid_password
 
-            # @driver.get @base_url + "/apps"
-            # puts "+ Page gets to: #{@base_url}/apps"
+            @driver.get @base_url + "/apps"
+            puts "+ Page gets to: #{@base_url}/apps"
 
             # Add a public app
             @new_app_page.new_public_app_with_repo
