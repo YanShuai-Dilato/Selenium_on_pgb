@@ -88,20 +88,20 @@ describe "TC_013: 'Account details' page" do
       @current_token = nil
     end
 
-    it "IT_0xx: should be 'no token' at first" do 
+    it "IT_003: should be 'no token' at first" do 
 
       @current_token = ad_token_text.attribute('value')
       @current_token.should eql @data_str[$lang][:ad_no_token]
     end
 
-    it "IT_0xx: should be a different token after creating one" do 
+    it "IT_004: should be a different token after creating one" do 
 
       ad_token_create_reset_btn.click
       @current_token = ad_token_text.attribute('value')
       @current_token.should_not eql @data_str[$lang][:ad_no_token]
     end
 
-    it "IT_0xx: should be a different from the last one after reseting" do 
+    it "IT_005: should be a different from the last one after reseting" do 
 
       token_before = @current_token
       ad_token_create_reset_btn.click
@@ -109,7 +109,7 @@ describe "TC_013: 'Account details' page" do
       @current_token.should_not eql token_before
     end
 
-    it "IT_0xx: should be 'no token' after deleting it" do 
+    it "IT_006: should be 'no token' after deleting it" do 
 
       ad_token_delete_btn.click
       @current_token = ad_token_text.attribute('value')
