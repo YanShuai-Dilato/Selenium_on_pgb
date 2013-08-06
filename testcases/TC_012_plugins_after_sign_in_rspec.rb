@@ -32,6 +32,7 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         @driver.manage.window.maximize
         @driver.execute_script("window.resizeTo(screen.width,screen.height)")
 
+        @driver.get path_format_locale("/people/sign_in")
         @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, user: @data_user
         @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                             @data_user[$lang][:adobe_id_free_002][:password])
