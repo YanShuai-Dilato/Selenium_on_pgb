@@ -60,10 +60,6 @@ describe "TC_005: Register an free plan account with Github ID" do
         end
     end
 
-    it "xxx" do 
-        "abc".should eql "abc"
-    end
-
     it "IT_001: direct to '/apps' page when sign in successfully with github id(which is connected to pgb), " do 
         github_login_field_username.send_keys(@data_user[$lang][:github_id_only][:id])
         github_login_field_password.send_keys(@data_user[$lang][:github_id_only][:password])
