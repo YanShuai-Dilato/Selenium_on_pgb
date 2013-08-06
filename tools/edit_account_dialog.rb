@@ -8,7 +8,25 @@ module EditAccountDialog
 
 # --- Account Details Tab
 	def account_details_tab
-		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:account_details_tab])
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:account_details_tab])
+	end
+	def ad_connect_a_github_id_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_connect_a_github_id_btn])
+	end
+	def ad_notification
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_notification])
+	end
+	def ad_unlink_github_id_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_unlink_github_id_btn])
+	end
+	def ad_token_text
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_token_text])
+	end
+	def ad_token_create_reset_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_token_create_reset_btn])
+	end
+	def ad_token_delete_btn
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_token_delete_btn])
 	end
 	def delete_my_account_btn
 		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:delete_my_account])
@@ -20,14 +38,14 @@ module EditAccountDialog
 
 # --- Private code hosting Tab
 	def private_code_hosting_tab
-		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:private_code_hosting_tab])
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:private_code_hosting_tab])
 	end
 # --- / Private code hosting Tab
 
 
 # --- Signing Keys Tab
 	def signing_keys_tab
-		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:signing_keys_tab])
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:signing_keys_tab])
 	end
 
 	def ios_add_key_btn

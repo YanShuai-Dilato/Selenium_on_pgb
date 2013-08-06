@@ -32,9 +32,10 @@
     :tips_or_warnings: /html/body/p
     :you_will_receive_an_email: /html/body/p
 :sign_in_github_page: 
-    :username_or_email: //*[@id='login_field']
-    :password: //*[@id='password']
-    :sign_in_btn: //*[@id='login']/form/div[3]/input[4]
+    :username_or_email: //*[@id="login_field"]
+    :password: //*[@id="password"]
+    :sign_in_btn: //*[@id="login"]/form/div[3]/input[4]
+    :allow_access_btn: //*[@id="site-container"]/div/div[3]/form/div[4]/div/button
 :register_page: 
     :free_plan: //*[@id='plans-table']/tbody/tr[4]/td[1]/a/small
     :paid_plan: //*[@id='plans-table']/tbody/tr[4]/td[2]/a
@@ -151,6 +152,12 @@
     :balckberry_signing_key_unlock_submit_btn: /html/body/div/form/footer/button[2]
 :edit_account_page:
     :account_details_tab: //*[@id="people-edit-controls"]/nav/a[1]
+    :ad_connect_a_github_id_btn: //*[@id="github-btn"]
+    :ad_notification: //*[@id="notifications-detail"]/div/section
+    :ad_unlink_github_id_btn: //*[@id="github-details"]/dd[2]/a[1]
+    :ad_token_text: //*[@id="auth-token"]
+    :ad_token_create_reset_btn: //*[@id="create-auth-token"]
+    :ad_token_delete_btn: //*[@id="delete-auth-token"]
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
     :signing_keys_tab: //*[@id="people-edit-controls"]/nav/a[3]
     :ios_add_key_btn: //*[@id="person-keys"]/table[1]/tfoot/tr/td/a
