@@ -23,7 +23,6 @@ require_relative "../lib/webdriver_helper"
 describe "TC_007: Register -> upgrade plan (Free -> Paid)" do 
     include RegisterDialog
     include NewAppDialog
-    include SignInGithubDialog
     include AnywareContainer
     include BaseEnv
     include ConfigParam

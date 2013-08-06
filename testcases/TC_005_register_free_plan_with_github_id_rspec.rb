@@ -17,7 +17,6 @@ require_relative "../lib/webdriver_helper"
 #   situations trying to register github free account to sign in. 
 describe "TC_005: Register an free plan account with Github ID" do 
     include RegisterDialog
-    include SignInGithubDialog
     include BaseEnv
     include ConfigParam
     include WebdriverHelper

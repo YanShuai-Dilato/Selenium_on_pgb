@@ -18,7 +18,6 @@ require_relative "../tools/new_app_dialog"
 describe "TC_010: signing_key_add_and_build_rspec" do 
     include BaseEnv
     include SignInDialog
-    include SignInGithubDialog
     include EditAccountDialog
     include NewAppDialog # rebuild_all_btn
     include AppBuildsDialog

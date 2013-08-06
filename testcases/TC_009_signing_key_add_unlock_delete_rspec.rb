@@ -15,7 +15,6 @@ require_relative "../tools/edit_account_dialog"
 describe "TC_009: signing_key_add_and_unlock_rspec" do 
     include BaseEnv
     include SignInDialog
-    include SignInGithubDialog
     include EditAccountDialog
     include ConfigParam
     include WebdriverHelper

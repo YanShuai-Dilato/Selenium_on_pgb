@@ -15,7 +15,6 @@ require_relative "../lib/webdriver_helper"
 
 describe "TC_006: Register paid CCM account" do 
     include RegisterDialog
-    include SignInGithubDialog
     include BaseEnv
     include ConfigParam
     include WebdriverHelper

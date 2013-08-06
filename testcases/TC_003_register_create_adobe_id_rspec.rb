@@ -14,7 +14,6 @@ require_relative "../lib/webdriver_helper"
 
 describe "TC_003: Register -> create an Adobe ID with provided email" do 
     include RegisterDialog
-    include SignInGithubDialog
     include BaseEnv
     include ConfigParam
     include WebdriverHelper

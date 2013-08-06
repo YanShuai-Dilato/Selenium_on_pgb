@@ -19,7 +19,6 @@ require_relative "../lib/webdriver_helper"
 describe "TC_008: Sign in" do
     include BaseEnv
     include SignInDialog
-    include SignInGithubDialog
     include ConfigParam
     include WebdriverHelper
 
