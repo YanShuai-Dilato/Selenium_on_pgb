@@ -127,5 +127,8 @@ https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
     TC_010_signing_key_add_and_build_rspec.rb
     TC_011_plugins_before_sign_in_rspec.rb    
     TC_012_plugins_after_sign_in_rspec.rb
+    TC_013_account_detail_rspec.rb
+    TC_014_account_sign_delete_rspec.rb
+
 
 
