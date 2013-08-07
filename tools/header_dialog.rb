@@ -15,6 +15,10 @@ module HeaderDialog
     header_get(:account_navlink_sign_out).click
   end
 
+  def account_notice
+    header_get(:account_notice)
+  end
+
   def go_to_page_edit_account
     header_get(:account_navlink_edit).click
     header_get(:account_navlink_edit_account).click

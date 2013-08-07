@@ -46,6 +46,8 @@
     :plugin_uri_invalid_msg: "GitHub repository URI is invalid"
     :edit_account_connect_github_account_successfully: "Your GitHub account has been linked successfully."
     :ad_no_token: "no token"
+    :account_deleted_notice: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+    :user_signout_notice: "Signed out successfully."
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -94,6 +96,8 @@
     :plugin_uri_invalid_msg: "URI du référentiel GitHub incorrect"
     :edit_account_connect_github_account_successfully: "Votre compte GitHub a été associé."
     :ad_no_token: "aucun jeton"
+    :account_deleted_notice: "Au revoir. Votre compte a été annulé. Nous espérons vous revoir très bientôt."
+    :user_signout_notice: "Déconnexion réussie."
 :ja_JP:
     :not_found_in_database: "電子メールアドレスまたはパスワードが無効です。"
     :PGB_email_not_found: "1 件のエラー :電子メールが見つかりません"
@@ -142,4 +146,6 @@
     :plugin_uri_invalid_msg: "GitHub リポジトリの URI が無効です"
     :edit_account_connect_github_account_successfully: "GitHub アカウントのリンクに成功しました。"
     :ad_no_token: "トークンがありません"
+    :account_deleted_notice: "unlocalized"
+    :user_signout_notice: "unlocalized"
     :no_meaning_just_placeholder: "xxx"

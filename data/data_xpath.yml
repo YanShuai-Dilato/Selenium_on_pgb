@@ -12,6 +12,7 @@
     :account_navlink_sign_out: //*[@id="account-options"]/a[2]
     :account_navlink_sign_in: //*[@id="account-nav"]/a[1]
     :account_navlink_register: //*[@id="account-nav"]/a[2]
+    :account_notice: /html/body/p
 :footer:
     :nav_select_locale: //*[@id="select-locale"]
     :nav_apps: //*[@id="footer-navigation"]/nav/a[1]
@@ -158,6 +159,9 @@
     :ad_token_text: //*[@id="auth-token"]
     :ad_token_create_reset_btn: //*[@id="create-auth-token"]
     :ad_token_delete_btn: //*[@id="delete-auth-token"]
+    :ad_delete_account_btn: //*[@id="delete-account-btn"]
+    :ad_delete_account_comfirm_btn: //*[@id="delete-account"]/section/fieldset/a
+    :ad_account_deleted_notice: /html/body/p
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
     :signing_keys_tab: //*[@id="people-edit-controls"]/nav/a[3]
     :ios_add_key_btn: //*[@id="person-keys"]/table[1]/tfoot/tr/td/a
@@ -212,8 +216,6 @@
     :blackberry_2nd_cancel_btn: /html/body/div/form/footer/button[1]
     :blackberry_2nd_submit_btn: /html/body/div/form/footer/button[2]
     :blackberry_2nd_delete_btn: //*[@id="person-keys"]/table[3]/tbody/tr[2]/td[3]/a
-    :delete_my_account: //*[@id="delete-account-btn"]
-    :yes_delete_my_account: //*[@id="delete-account-btn"]
 :app_brief_detail:
     :app_title: /html/body/section/div/div/section[3]/article/section/div/h1
     :app_description: /html/body/section/div/div/section[3]/article/section/div[2]

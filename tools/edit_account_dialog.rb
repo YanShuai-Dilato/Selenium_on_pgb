@@ -28,11 +28,15 @@ module EditAccountDialog
 	def ad_token_delete_btn
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_token_delete_btn])
 	end
-	def delete_my_account_btn
-		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:delete_my_account])
+	def ad_delete_account()
+		@driver.execute_script("document.getElementById('delete-account').style['display'] = 'block'")
+    @driver.find_element(:xpath => "//*[@id='delete-account']/section/fieldset/a").click  
+    a = @driver.switch_to.alert
+    a.accept
+    sleep 5
 	end
-	def yes_delete_my_account_btn
-		@driver.find_element(:xpath => @data_xpath[:edit_account_page][:yes_delete_my_account])
+	def ad_account_deleted_notice
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_account_deleted_notice])
 	end
 # --- / Account Details Tab
 
