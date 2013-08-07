@@ -34,8 +34,7 @@ describe "TC_013: 'Account details' page" do
     @driver.manage.window.maximize
     @driver.execute_script("window.resizeTo(screen.width,screen.height)")
 
-    @driver.get path_format_locale(@base_url,"/people/sign_in")
-    
+    @driver.get path_format_locale(@base_url,"/people/sign_in") 
     @sign_in_page = SignInPage.new @driver, xpath: @data_xpath, url: @data_url, user: @data_user
     @sign_in_page.sign_in_with_adobe_id(@data_user[$lang][:adobe_id_free_002][:id],
                                         @data_user[$lang][:adobe_id_free_002][:password])
@@ -116,11 +115,5 @@ describe "TC_013: 'Account details' page" do
       @current_token.should eql @data_str[$lang][:ad_no_token]
     end
   end
-
-  # describe "Danger Zone" do  # Delete my account
-
-  #   it "" do 
-
-  #   end
-  # end
+  
 end
