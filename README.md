@@ -53,9 +53,14 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     
     
 4, Run the test 
-	
+	# For OSX
     $ PGBBROWSER=firefox PGBLANG=en_US rake TC[all]      # Run all testcases
     $ PGBBROWSER=chrome  PGBLANG=fr_FR rake TC[001]      # Run the first testcase
+
+    # For Windows
+    C:\Selenium_on_pgb> set PGBBROWSER=firefox
+    C:\Selenium_on_pgb> set PGBLANG=en_US
+    C:\Selenium_on_pgb> rake TC[001]
 	
 	
 5, Then you can find the result file (log.txt) at the following directory. 
