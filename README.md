@@ -53,6 +53,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     
     
 4, Run the test 
+
 	# For OSX
     $ PGBBROWSER=firefox PGBLANG=en_US rake TC[all]      # Run all testcases
     $ PGBBROWSER=chrome  PGBLANG=fr_FR rake TC[001]      # Run the first testcase
