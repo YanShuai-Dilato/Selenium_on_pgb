@@ -59,7 +59,12 @@ describe "TC_013: 'Account details' page" do
       account_details_tab.click
     end
 
-    it "IT_001: should link Github account successfully" do 
+    it "IT_001: should link to 'http://www.adobe.com/account.html' page" do 
+
+      ad_manage_your_adobe_id_link.attribute('href').should eql "http://www.adobe.com/account.html"
+    end
+
+    it "IT_002: should link Github account successfully" do 
       
       ad_connect_a_github_id_btn.click
       enter_github_account_and_sign_in_with(@data_user[$lang][:adobe_id_free_002])
@@ -68,7 +73,12 @@ describe "TC_013: 'Account details' page" do
       ad_notification.text.should eql @data_str[$lang][:edit_account_connect_github_account_successfully]
     end
 
-    it "IT_002: should unlink the Github account successfully" do 
+    it "IT_003: should link to 'https://github.com/settings/applications' page" do 
+
+      ad_manage_your_github_account_link.attribute('href').should eql "https://github.com/settings/applications"
+    end
+
+    it "IT_004: should unlink the Github account successfully" do 
 
       ad_unlink_github_id_btn.click
       a = @driver.switch_to.alert
@@ -87,20 +97,20 @@ describe "TC_013: 'Account details' page" do
       @current_token = nil
     end
 
-    it "IT_003: should be 'no token' at first" do 
+    it "IT_005: should be 'no token' at first" do 
 
       @current_token = ad_token_text.attribute('value')
       @current_token.should eql @data_str[$lang][:ad_no_token]
     end
 
-    it "IT_004: should be a different token after creating one" do 
+    it "IT_006: should be a different token after creating one" do 
 
       ad_token_create_reset_btn.click
       @current_token = ad_token_text.attribute('value')
       @current_token.should_not eql @data_str[$lang][:ad_no_token]
     end
 
-    it "IT_005: should be a different from the last one after reseting" do 
+    it "IT_007: should be a different from the last one after reseting" do 
 
       token_before = @current_token
       ad_token_create_reset_btn.click
@@ -108,7 +118,7 @@ describe "TC_013: 'Account details' page" do
       @current_token.should_not eql token_before
     end
 
-    it "IT_006: should be 'no token' after deleting it" do 
+    it "IT_008: should be 'no token' after deleting it" do 
 
       ad_token_delete_btn.click
       @current_token = ad_token_text.attribute('value')

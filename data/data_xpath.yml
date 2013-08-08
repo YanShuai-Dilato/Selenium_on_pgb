@@ -162,6 +162,8 @@
     :ad_delete_account_btn: //*[@id="delete-account-btn"]
     :ad_delete_account_comfirm_btn: //*[@id="delete-account"]/section/fieldset/a
     :ad_account_deleted_notice: /html/body/p
+    :ad_manage_your_adobe_id_link: //*[@id="adobeid-details"]/dd[2]/a
+    :ad_manage_your_github_account_link: //*[@id="github-details"]/dd[2]/a[2]
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
     :pch_person_username_text: //*[@id="person_username"]
     :pch_person_ssh_key_text: //*[@id="person_ssh_key"]

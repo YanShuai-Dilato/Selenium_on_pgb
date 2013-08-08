@@ -38,6 +38,12 @@ module EditAccountDialog
 	def ad_account_deleted_notice
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_account_deleted_notice])
 	end
+	def ad_manage_your_adobe_id_link
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_manage_your_adobe_id_link])
+	end
+	def ad_manage_your_github_account_link
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:ad_manage_your_github_account_link])
+	end
 # --- / Account Details Tab
 
 # --- Private code hosting Tab
