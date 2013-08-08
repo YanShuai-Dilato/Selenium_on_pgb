@@ -163,6 +163,9 @@
     :ad_delete_account_comfirm_btn: //*[@id="delete-account"]/section/fieldset/a
     :ad_account_deleted_notice: /html/body/p
     :private_code_hosting_tab: //*[@id="people-edit-controls"]/nav/a[2]
+    :pch_person_username_text: //*[@id="person_username"]
+    :pch_person_ssh_key_text: //*[@id="person_ssh_key"]
+    :pch_save_btn: //*[@id="person-code"]/form/footer/input
     :signing_keys_tab: //*[@id="people-edit-controls"]/nav/a[3]
     :ios_add_key_btn: //*[@id="person-keys"]/table[1]/tfoot/tr/td/a
     :ios_title_input: //*[@id="key_title"]

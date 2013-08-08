@@ -44,6 +44,18 @@ module EditAccountDialog
 	def private_code_hosting_tab
 		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:private_code_hosting_tab])
 	end
+	define_method :pch do |arg| # arg = %w[person_username_text person_ssh_key_text save_btn]
+		highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page]["pch_#{arg}".to_sym])
+	end
+	# def pch_person_username_text
+	# 	highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:pch_person_username_text])
+	# end
+	# def pch_person_ssh_key_text
+	# 	highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:pch_person_ssh_key_text])
+	# end
+	# def pch_save_btn
+	# 	highlight_and_return @driver.find_element(:xpath => @data_xpath[:edit_account_page][:pch_save_btn])
+	# end
 # --- / Private code hosting Tab
 
 
