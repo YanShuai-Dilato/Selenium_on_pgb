@@ -135,6 +135,8 @@ https://www.dropbox.com/s/fd9cvodechaj26l/selenium_Logical_view_Draft.png
     TC_012_plugins_after_sign_in_rspec.rb
     TC_013_account_detail_rspec.rb
     TC_014_account_sign_delete_rspec.rb
+    TC_015_account_edit_private_code_hosting_rspec.rb
+    
 
 
 
