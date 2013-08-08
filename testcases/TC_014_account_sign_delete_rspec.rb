@@ -24,7 +24,7 @@ describe "" do
   before(:all) do 
     init
     @order_of_it = WebdriverHelper::Counter.new
-    @name_screenshot = "TC_013_IT_"
+    @name_screenshot = "TC_014_IT_"
     @base_url = base_url
     @data_str = YAML::load(File.read(File.expand_path("../../data/data_str.yml",__FILE__)))
     @data_xpath = YAML::load(File.read(File.expand_path("../../data/data_xpath.yml",__FILE__)))
