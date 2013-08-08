@@ -25,7 +25,7 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
 
 1, Clone the repo to your local machine
 	
-	$ git clone [https://github.com/YanShuai-Dilato/Selenium_on_pgb.git](https://github.com/YanShuai-Dilato/Selenium_on_pgb.git)
+	$ git clone https://github.com/YanShuai-Dilato/Selenium_on_pgb.git
 	$ cd Selenium_on_pgb/
 
 
