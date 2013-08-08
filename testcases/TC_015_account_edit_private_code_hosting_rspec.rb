@@ -50,8 +50,8 @@ describe "" do
       go_to_page_edit_account
       private_code_hosting_tab.click
 
-      user_name = ""
-      user_ssh_key = ""
+      user_name = @data_user[$lang][:private_code_hosting][:user_name]
+      user_ssh_key = @data_user[$lang][:private_code_hosting][:user_ssh_key]
       
       pch(:person_username_text).clear
       pch(:person_username_text).send_keys(user_name)
@@ -65,7 +65,7 @@ describe "" do
       go_to_page_edit_account
       private_code_hosting_tab.click
       
-      pch(:person_username_text).text.should eql user_name
+      pch(:person_username_text).attribute('value').should eql user_name
       pch(:person_ssh_key_text).text.should eql user_ssh_key
     end
   end

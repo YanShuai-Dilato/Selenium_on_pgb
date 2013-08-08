@@ -48,7 +48,10 @@
         :password: "ÇÐäÿ×÷Ċ"
     :invalid_email_format_blank: 
         :id: ""
-        :password: "ÇÐäÿ×÷Ċ"		
+        :password: "ÇÐäÿ×÷Ċ"
+    :private_code_hosting: 
+        :user_name: "ĊęĮĿōŘťſЊ"
+        :user_ssh_key: "ĊęĮĿōŘťſЊXX_ĊęĮĿōŘťſЊ"	
 :fr_FR: *id001
 
 :ja_JP: *id001
