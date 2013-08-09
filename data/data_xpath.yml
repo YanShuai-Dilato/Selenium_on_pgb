@@ -227,37 +227,6 @@
     :app_id: /html/body/section/div/div/section[3]/article/section[2]/div/dl/dd
     :app_version: /html/body/section/div/div/section[3]/article/section[2]/div/dl[2]/dd
     :app_source: /html/body/section/div/div/section[3]/article/section[2]/div/dl[6]/dd/a
-:app_detail_page: 
-    :builds: 
-        :update_code: 
-        :rebuild_all: 
-    :collaborators: 
-        :add_collaborator: 
-        :email_address: 
-        :role_tester: 
-        :role_dev: 
-        :cancel: 
-        :add: 
-        :edit: 
-        :delete: 
-        :save: 
-    :settings: 
-        :basic: 
-            :select_file: 
-            :upload: 
-            :enable_debug: 
-            :enable_hydration: 
-            :only_approved_colla_can_dnld: 
-        :configuration: 
-            :select_file: //*[@id='app_icon_file']
-            :title: //*[@id="app_title"]
-            :package: //*[@id="app_package"]
-            :version: //*[@id="app_version"]
-            :configuration: //*[@id="app_phonegap_version"]
-            :description: //*[@id="app_desc"]
-            :save: /html/body/section/div/article/div[2]/div[3]/div/form[2]/footer/input
-        :danger_zone: 
-            :delete_this_app: //*[@id="delete-app"]
 :plugins_page:
     :header_notifications: //*[@id="notifications-detail"]/div/section
     :link_here_header_notifications: //*[@id="notifications-detail"]/div/section/a
