@@ -22,7 +22,9 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     $ gem install rest-client
     
 3, Install Chromedirver if you will use chrome broswer
-  3.1 For Mac
+
+  3.1, For Mac
+  
      3.1.1 Download chromedriver_mac_26.0.1383.0.zip from http://code.google.com/p/chromedriver/downloads/list
      3.1.2 Unzip the zip file
      3.1.3 $ echo $PATH
