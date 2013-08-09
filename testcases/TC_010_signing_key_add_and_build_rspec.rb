@@ -51,7 +51,7 @@ describe "TC_010: signing_key_add_and_build_rspec" do
 
     after(:all) do 
         # Helps to delete all added signing_keys and apps by invoking the API methods. 
-        # webhelper_delete_all_signing_keys(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
+        webhelper_delete_all_signing_keys(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
         webhelper_delete_all_apps(@data_user[$lang][:adobe_id_free_002][:id], @data_user[$lang][:adobe_id_free_002][:password])
         
         @driver.quit
