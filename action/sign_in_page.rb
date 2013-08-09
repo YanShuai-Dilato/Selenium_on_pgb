@@ -36,7 +36,7 @@ class SignInPage
         # So we decide to change its type and just disable the chrome feature 
         # to continue our steps. 
         if $browser == :chrome   
-            change_element_attribute(attribute:"type", id:"person_email", to:"text" ) 
+            change_element_type_by_id(:id => "person_email", :to_type => "text" ) 
         end
         puts "+ <action> Sign In with"
         puts "+ <action>     id:       #{id}"

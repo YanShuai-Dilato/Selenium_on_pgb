@@ -122,22 +122,37 @@ module WebdriverHelper
         end
     end
 
-    # Utility tools by executing javascript to change 
-    #  the options[:attribute] attribute of  
-    #  element whose ID was options[:id]
-    #  to options[:to] type. 
-    # It was called by method: sign_in_with_adobe_id(id,password)
-    def change_element_attribute(options = {} )
-        id = options.fetch(:id)
-        attribute = options.fetch(:attribute)
-        to = options.fetch(:to)
+    def change_element_type_by_id(options = {})
+        raise "Must pass a hash containing 'id'" if not options.is_a?(Hash) or not options.has_key?(:id) 
+        raise "Must pass a hash containing 'to_type'" if not options.is_a?(Hash) or not options.has_key?(:to_type)
 
-        # make sure 'id', 'attribute', and 'to' were not nil or empty. 
-    
+        id = options.delete(:id)
+        to_type = options.delete(:to_type)
+
         @driver.execute_script(
             " oldObj = document.getElementById('#{id}'); " + 
             " var newObject = document.createElement('input'); " + 
-            " newObject.type = '#{to}'; " + 
+            " newObject.type = '#{to_type}'; " + 
+            " if(oldObj.size) newObject.size = oldObj.size; " + 
+            " if(oldObj.value) newObject.value = oldObj.value; " + 
+            " if(oldObj.name) newObject.name = oldObj.name; " +
+            " if(oldObj.id) newObject.id = oldObj.id; " + 
+            " if(oldObj.className) newObject.className = oldObj.className; " + 
+            " oldObj.parentNode.replaceChild(newObject,oldObj); "
+        )
+    end
+
+    def change_element_type_by_name(options = {})
+        raise "Must pass a hash containing 'name'" if not options.is_a?(Hash) or not options.has_key?(:name)
+        raise "Must pass a hash containing 'to_type'" if not options.is_a?(Hash) or not options.has_key?(:to_type)
+
+        name = options.delete(:name)
+        to = options.delete(:to)
+        
+        @driver.execute_script(
+            " oldObj = document.getElementByName('#{name}'); " + 
+            " var newObject = document.createElement('input'); " + 
+            " newObject.type = '#{to_type}'; " + 
             " if(oldObj.size) newObject.size = oldObj.size; " + 
             " if(oldObj.value) newObject.value = oldObj.value; " + 
             " if(oldObj.name) newObject.name = oldObj.name; " +
