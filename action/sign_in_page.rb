@@ -92,29 +92,5 @@ class SignInPage
         forgot_my_password_link.click
         puts "+ <action> open_forgot_my_password --- end"
     end
-
-    # Utility tools by executing javascript to change 
-    #  the options[:attribute] attribute of  
-    #  element whose ID was options[:id]
-    #  to options[:to] type. 
-    # It was called by method: sign_in_with_adobe_id(id,password)
-    def change_element_attribute(options = {} )
-        id = options.fetch(:id)
-        attribute = options.fetch(:attribute)
-        to = options.fetch(:to)
-
-        # make sure 'id', 'attribute', and 'to' were not nil or empty. 
     
-        @driver.execute_script(
-            " oldObj = document.getElementById('#{id}'); " + 
-            " var newObject = document.createElement('input'); " + 
-            " newObject.type = '#{to}'; " + 
-            " if(oldObj.size) newObject.size = oldObj.size; " + 
-            " if(oldObj.value) newObject.value = oldObj.value; " + 
-            " if(oldObj.name) newObject.name = oldObj.name; " +
-            " if(oldObj.id) newObject.id = oldObj.id; " + 
-            " if(oldObj.className) newObject.className = oldObj.className; " + 
-            " oldObj.parentNode.replaceChild(newObject,oldObj); "
-        )
-    end
 end
