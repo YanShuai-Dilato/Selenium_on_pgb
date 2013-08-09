@@ -13,7 +13,7 @@ require_relative "../tools/header_dialog"
 require_relative "../tools/edit_account_dialog"
 require_relative "../tools/register_dialog"
 
-describe "" do 
+describe "TC_015: Edit 'private code hosting' at Edit account page" do 
   include BaseEnv
   include ConfigParam
   include WebdriverHelper

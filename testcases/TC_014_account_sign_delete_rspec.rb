@@ -13,7 +13,7 @@ require_relative "../tools/header_dialog"
 require_relative "../tools/edit_account_dialog"
 require_relative "../tools/register_dialog"
 
-describe "" do 
+describe "TC_014: User sign in/out and account delete" do 
   include BaseEnv
   include ConfigParam
   include WebdriverHelper
