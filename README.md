@@ -20,6 +20,23 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
     $ gem install rspec
     $ gem install selenium-webdriver
     $ gem install rest-client
+    
+3, Install Chromedirver if you will use chrome broswer
+
+  3.1, For Mac
+  
+     3.1.1 Download chromedriver_mac_26.0.1383.0.zip from http://code.google.com/p/chromedriver/downloads/list
+     3.1.2 Unzip the zip file
+     3.1.3 $ echo $PATH
+     3.1.4 Copy chromedriver file to one of your path file. Such as http://code.google.com/p/chromedriver/downloads/list
+     3.1.5 Quit chrome broswer
+
+4，IDE for developer(You can choose one of them)
+
+    1. netbeans6.9.1 // the versions higher than 6.9.1 not support ruby
+    2. sublime text 2 
+    3. textmate 
+    4. Rubymine
 
 ### Deploy manually 
 
