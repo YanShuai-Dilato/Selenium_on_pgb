@@ -43,6 +43,14 @@ describe "TC_015: Edit 'private code hosting' at Edit account page" do
     @driver.quit
   end
 
+  after(:each) do  # Take screenshot in case of failure
+    @name_screenshot += @order_of_it.inc.to_s
+
+    if example.exception != nil
+      take_screenshot_with_name @name_screenshot
+    end
+  end
+
   describe "Private code hosting" do 
 
     it "IT_001: should change the username and ssh_key successfully" do 

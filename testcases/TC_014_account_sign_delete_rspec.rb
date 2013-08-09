@@ -40,6 +40,14 @@ describe "TC_014: User sign in/out and account delete" do
     @driver.quit
   end
 
+  after(:each) do  # Take screenshot in case of failure
+    @name_screenshot += @order_of_it.inc.to_s
+
+    if example.exception != nil
+      take_screenshot_with_name @name_screenshot
+    end
+  end
+
   # User sign in/out: done! 
   describe "User sign in/out" do 
 
