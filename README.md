@@ -31,6 +31,13 @@ The project automates the I18N testing on PhonegapBuild website, using RSpec, wi
      3.1.4 Copy chromedriver file to one of your path file. Such as http://code.google.com/p/chromedriver/downloads/list
      3.1.5 Quit chrome broswer
 
+4，IDE for developer(You can choose one of them)
+
+    1. netbeans6.9.1 // the versions higher than 6.9.1 not support ruby
+    2. sublime text 2 
+    3. textmate 
+    4. Rubymine
+
 ### Deploy manually 
 
 1, Clone the repo to your local machine
