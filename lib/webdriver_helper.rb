@@ -147,10 +147,10 @@ module WebdriverHelper
         raise "Must pass a hash containing 'to_type'" if not options.is_a?(Hash) or not options.has_key?(:to_type)
 
         name = options.delete(:name)
-        to = options.delete(:to)
+        to_type = options.delete(:to_type)
         
         @driver.execute_script(
-            " oldObj = document.getElementByName('#{name}'); " + 
+            " oldObj = document.getElementsByName('#{name}')[0]; " + 
             " var newObject = document.createElement('input'); " + 
             " newObject.type = '#{to_type}'; " + 
             " if(oldObj.size) newObject.size = oldObj.size; " + 
