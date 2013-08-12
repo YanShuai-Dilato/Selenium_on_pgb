@@ -151,6 +151,19 @@
     :blackberry_signing_key_unlock_password_input: //*[@id="key_password"]
     :blackberry_signing_key_unlock_cancel_btn: /html/body/div/form/footer/button[1]
     :balckberry_signing_key_unlock_submit_btn: /html/body/div/form/footer/button[2]
+:app_collaborators_page:
+    :tab: //*[@id="app-detail-controls"]/nav/a[2]
+    :add_collaborator_btn: //*[@id="app-collaborators"]/div/a
+    :email_address_input: //*[@id="add-collaborator"]/fieldset/dl[1]/dd/input
+    :role_reader_radio_btn: //*[@id="role_reader"]
+    :role_writer_radio_btn: //*[@id="role_writer"]
+    :reset_btn: //*[@id="add-collaborator"]/footer/button[1]
+    :submit_btn: //*[@id="add-collaborator"]/footer/button[2]
+    :collaborators_block: //*[@id="app-collaborators"]/div/ul
+    :first_collaborator_edit: /html/body/section/div/article/div[2]/div[2]/div/ul/li/div/a
+    :first_collaborator_role: /html/body/section/div/article/div[2]/div[2]/div/ul/li/h3/small
+    :first_collaborator_delete: /html/body/section/div/article/div[2]/div[2]/div/ul/li/div/a[2]
+    :first_collaborator_confirm: /html/body/section/div/article/div[2]/div[2]/div/ul/li/form/button[2]
 :edit_account_page:
     :account_details_tab: //*[@id="people-edit-controls"]/nav/a[1]
     :ad_connect_a_github_id_btn: //*[@id="github-btn"]

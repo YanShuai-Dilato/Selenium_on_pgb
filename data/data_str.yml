@@ -48,6 +48,8 @@
     :ad_no_token: "no token"
     :account_deleted_notice: "Bye! Your account was successfully cancelled. We hope to see you again soon."
     :user_signout_notice: "Signed out successfully."
+    :role_tester: "Tester"
+    :role_developer: "Developer"
 :fr_FR:
     :not_found_in_database: "Adresse électronique ou mot de passe incorrects."
     :PGB_email_not_found: "1 erreur : Email introuvable"
@@ -98,6 +100,8 @@
     :ad_no_token: "aucun jeton"
     :account_deleted_notice: "Au revoir. Votre compte a été annulé. Nous espérons vous revoir très bientôt."
     :user_signout_notice: "Déconnexion réussie."
+    :role_tester: "Testeur"
+    :role_developer: "Développeur"
 :ja_JP:
     :not_found_in_database: "電子メールアドレスまたはパスワードが無効です。"
     :PGB_email_not_found: "1 件のエラー :電子メールが見つかりません"
@@ -148,4 +152,6 @@
     :ad_no_token: "トークンがありません"
     :account_deleted_notice: "unlocalized"
     :user_signout_notice: "unlocalized"
+    :role_tester: "テスター"
+    :role_developer: "開発者"
     :no_meaning_just_placeholder: "xxx"
