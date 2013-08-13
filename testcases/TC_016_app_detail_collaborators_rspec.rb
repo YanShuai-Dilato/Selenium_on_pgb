@@ -13,7 +13,7 @@ require_relative "../tools/new_app_dialog"
 require_relative "../data/base_env"
 require_relative "../tools/app_id_dialogs"
 
-describe "TC_001: New app(s) with free account" do
+describe "TC_016: App Details #Collaborators" do
   include BaseEnv
   include ConfigParam
   include WebdriverHelper
