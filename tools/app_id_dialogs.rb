@@ -9,7 +9,7 @@ module AppIDDialogs
   end
 
   define_method :builds do |arg| 
-
+    @driver.find_element(:xpath => @data_xpath[:app_builds_page][arg])
   end
 
   define_method :collaborators do |arg|
