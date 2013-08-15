@@ -88,11 +88,8 @@ describe "TC_017: App Details #Builds" do
     end
   end
 
-  describe "Check strings within 'class=\"clearfix packages\"' at 'App Builds' Page" do 
-    before do 
-      
-    end
-
+  describe "Check strings within 'class=\"clearfix packages\"' at 'App Builds' Page" do
+    
     it "IT_002: should match to localized strings: >> iOS <<" do 
 
       until @data_str[$lang][:builds_action_pending] != builds(:ios_action).text do 
