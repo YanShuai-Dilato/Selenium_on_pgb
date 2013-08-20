@@ -87,9 +87,9 @@ class NewAppPage
 
         os = win_or_mac
         if os == 'mac' 
-            upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
+            upload_a_zip_btn.send_keys (File.expand_path("../../assets/application/anotherあ你äōҾӲ.zip",__FILE__))
         elsif os == 'win'
-            upload_a_zip_btn.send_keys "C:\\anotherあ你äōҾӲ.zip"
+            upload_a_zip_btn.send_keys "C:\\www.zip"
         else 
             railse "Not supported Operating System."
         end
