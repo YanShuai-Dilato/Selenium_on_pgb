@@ -23,7 +23,7 @@ module WebdriverHelper
         puts "+ <lib><webdriver_helper> wait_for_page_with_title --- end"
     end
 
-    def isElementPreset?(how, what, how_long)
+    def isElementPreset?(how, what, how_long=60)
         puts "+ <lib><webdriver_helper> isElementPreset? --- begin"
         wait_for_it = Selenium::WebDriver::Wait.new(:timeout => how_long)
         wait_for_it.until { @driver.find_element(how, what) }
