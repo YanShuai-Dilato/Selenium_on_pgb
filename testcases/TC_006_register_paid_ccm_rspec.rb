@@ -71,7 +71,7 @@ describe "TC_006: Register paid CCM account" do
         @driver.get @base_url
         new_app_page = NewAppPage.new(@driver)
         # try to create 2 private apps 
-        
+        sleep 5
         new_app_page.new_private_app_with_repo
         sleep 40
         new_app_page.new_private_app_with_repo
