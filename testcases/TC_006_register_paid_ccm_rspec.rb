@@ -60,8 +60,8 @@ describe "TC_006: Register paid CCM account" do
 
     it "IT_001: It could create two private apps when using the paid ccm account: dil40562+stagedeannual@adobetest.com" do 
         sleep 5
-        adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_001][:id])
-        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_001][:password])
+        adobe_id_frame_enter_email(@data_user[$lang][:ccm_acnt_002][:id])
+        adobe_id_frame_enter_password(@data_user[$lang][:ccm_acnt_002][:password])
         adobe_id_frame_sign_in_btn.click
         sleep 5
         @driver.switch_to.default_content
