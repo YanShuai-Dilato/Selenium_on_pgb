@@ -62,7 +62,7 @@ describe "TC_007: Register -> upgrade plan (Free -> Paid)" do
         end
         puts "+ after new_app_btn.click"
 
-        private_tab.click
+        private_repo_tab.click
         puts "+ after private_tab.click"
 
         if !@new_app_page.private_app_no?
