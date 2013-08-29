@@ -86,6 +86,8 @@ describe "TC_012: Check 'Plugins' page after signing in" do
         plugin_dialog_get(:header_notifications).text.should eql @data_str[$lang][:plugin_submit_successfully_msg]
       end
       it "IT_005: should match to localized msg 'duplicated'" do 
+        @driver.get path_format_locale("/plugins")
+        plugin_dialog_get(:tab_submit_plugin).click
         plugin_dialog_get(:plugin_git_repository_url).clear
         plugin_dialog_get(:plugin_git_repository_url).send_keys(@data_plugin[:new_plugin][:url])
         plugin_dialog_get(:optional_tag_or_branch).send_keys(@data_plugin[:new_plugin][:branch])
